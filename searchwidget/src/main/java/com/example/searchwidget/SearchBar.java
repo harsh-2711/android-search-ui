@@ -227,10 +227,8 @@ public class SearchBar extends RelativeLayout implements View.OnClickListener,
         inflateMenuRequest(menuResource, icon);
     }
 
-    private void inflateMenuRequest(int menuResource, int iconResId
-    ) {
-        int menuResource1 = menuResource;
-        if (menuResource1 > 0) {
+    private void inflateMenuRequest(int menuResource, int iconResId) {
+        if (menuResource > 0) {
             ImageView menuIcon = findViewById(R.id.menu);
             if (iconResId != -1) {
                 menuIconRes = iconResId;
@@ -332,8 +330,8 @@ public class SearchBar extends RelativeLayout implements View.OnClickListener,
 
     //Setup Icon Colors And Drawables
     private void setupIcons() {
+
         //Drawables
-        //Animated Nav Icon
         navIconResId = R.drawable.ic_menu_animated;
         this.navIcon.setImageResource(navIconResId);
         setNavButtonEnabled(navButtonEnabled);
