@@ -42,6 +42,8 @@ import java.lang.reflect.Field;
 import java.util.ArrayList;
 import java.util.List;
 
+import io.appbase.client.AppbaseClient;
+
 import static android.content.ContentValues.TAG;
 
 public class SearchBar extends RelativeLayout implements View.OnClickListener,
@@ -109,8 +111,10 @@ public class SearchBar extends RelativeLayout implements View.OnClickListener,
     private int textCursorColor;
     private int highlightedTextColor;
 
-    //Nav/Back Arrow Flag
     private boolean navIconShown = true;
+
+    private boolean isAppbaseClientEnabled = false;
+    AppbaseClient appbaseClient;
 
     public SearchBar(Context context, AttributeSet attributeSet) {
         super(context, attributeSet);
@@ -1150,5 +1154,10 @@ public class SearchBar extends RelativeLayout implements View.OnClickListener,
             out.writeList(suggestions);
             out.writeInt(maxSuggestions);
         }
+    }
+
+    public void setAppbaseClient(String url, String appName, String username, String password) {
+        appbaseClient = new AppbaseClient(url, appName, username, password);
+        isAppbaseClientEnabled = true;
     }
 }
