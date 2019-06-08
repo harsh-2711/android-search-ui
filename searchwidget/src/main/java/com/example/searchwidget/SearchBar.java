@@ -4,6 +4,7 @@ import android.annotation.TargetApi;
 import android.content.Context;
 import android.content.res.TypedArray;
 import android.os.Build;
+import android.support.v4.content.ContextCompat;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.support.v7.widget.CardView;
@@ -104,11 +105,48 @@ public class SearchBar extends RelativeLayout {
         inflate(getContext(), R.layout.search_bar, this);
 
         TypedArray array = getContext().obtainStyledAttributes(attributeSet, R.styleable.SearchBar);
+
+        //Base Attributes
+        speechMode = array.getBoolean(R.styleable.SearchBar_speechMode, false);
+        maxSuggestionCount = array.getInt(R.styleable.SearchBar_maxSuggestionsCount, 3);
+        navButtonEnabled = array.getBoolean(R.styleable.SearchBar_navIconEnabled, false);
+        roundedSearchBarEnabled = array.getBoolean(R.styleable.SearchBar_roundedSearchBarEnabled, false);
+        menuDividerEnabled = array.getBoolean(R.styleable.SearchBar_menuDividerEnabled, false);
+        dividerColor = array.getColor(R.styleable.SearchBar_dividerColor, ContextCompat.getColor(getContext(), R.color.searchBarDividerColor));
+        searchBarColor = array.getColor(R.styleable.SearchBar_searchBarColor, ContextCompat.getColor(getContext(), R.color.searchBarPrimaryColor));
+
+        //Icon Related Attributes
+        menuIconRes = array.getResourceId(R.styleable.SearchBar_menuIconDrawable, R.drawable.ic_dots_vertical_black_48dp);
+        searchIconRes = array.getResourceId(R.styleable.SearchBar_searchIconDrawable, R.drawable.ic_magnify_black_48dp);
+        speechIconRes = array.getResourceId(R.styleable.SearchBar_speechIconDrawable, R.drawable.ic_microphone_black_48dp);
+        arrowIconRes = array.getResourceId(R.styleable.SearchBar_backIconDrawable, R.drawable.ic_arrow_left_black_48dp);
+        clearIconRes = array.getResourceId(R.styleable.SearchBar_clearIconDrawable, R.drawable.ic_close_black_48dp);
+        navIconTint = array.getColor(R.styleable.SearchBar_navIconTint, ContextCompat.getColor(getContext(), R.color.searchBarNavIconTintColor));
+        menuIconTint = array.getColor(R.styleable.SearchBar_menuIconTint, ContextCompat.getColor(getContext(), R.color.searchBarMenuIconTintColor));
+        searchIconTint = array.getColor(R.styleable.SearchBar_searchIconTint, ContextCompat.getColor(getContext(), R.color.searchBarSearchIconTintColor));
+        arrowIconTint = array.getColor(R.styleable.SearchBar_backIconTint, ContextCompat.getColor(getContext(), R.color.searchBarBackIconTintColor));
+        clearIconTint = array.getColor(R.styleable.SearchBar_clearIconTint, ContextCompat.getColor(getContext(), R.color.searchBarClearIconTintColor));
+        navIconTintEnabled = array.getBoolean(R.styleable.SearchBar_navIconUseTint, true);
+        menuIconTintEnabled = array.getBoolean(R.styleable.SearchBar_menuIconUseTint, true);
+        searchIconTintEnabled = array.getBoolean(R.styleable.SearchBar_searchIconUseTint, true);
+        arrowIconTintEnabled = array.getBoolean(R.styleable.SearchBar_backIconUseTint, true);
+        clearIconTintEnabled = array.getBoolean(R.styleable.SearchBar_clearIconUseTint, true);
+        borderlessRippleEnabled = array.getBoolean(R.styleable.SearchBar_borderlessRippleEnabled, false);
+
+        //Text Related Attributes
+        hintText = array.getString(R.styleable.SearchBar_hint);
+        placeholderText = array.getString(R.styleable.SearchBar_placeholder);
+        textColor = array.getColor(R.styleable.SearchBar_textColor, ContextCompat.getColor(getContext(), R.color.searchBarTextColor));
+        hintColor = array.getColor(R.styleable.SearchBar_hintColor, ContextCompat.getColor(getContext(), R.color.searchBarHintColor));
+        placeholderColor = array.getColor(R.styleable.SearchBar_placeholderColor, ContextCompat.getColor(getContext(), R.color.searchBarPlaceholderColor));
+        textCursorColor = array.getColor(R.styleable.SearchBar_textCursorTint, ContextCompat.getColor(getContext(), R.color.searchBarCursorColor));
+        highlightedTextColor = array.getColor(R.styleable.SearchBar_highlightedTextColor, ContextCompat.getColor(getContext(), R.color.searchBarTextHighlightColor));
+
         array.recycle();
     }
 
     /**
-     * Interface definition for MaterialSearchBar callbacks.
+     * Interface definition for SearchBar callbacks.
      */
     public interface OnSearchActionListener {
         /**
