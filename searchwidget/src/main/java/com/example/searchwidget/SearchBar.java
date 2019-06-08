@@ -2,6 +2,7 @@ package com.example.searchwidget;
 
 import android.annotation.TargetApi;
 import android.content.Context;
+import android.content.res.TypedArray;
 import android.os.Build;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
@@ -28,5 +29,8 @@ public class SearchBar extends RelativeLayout {
 
     private void init(AttributeSet attributeSet) {
         inflate(getContext(), R.layout.search_bar, this);
+
+        TypedArray array = getContext().obtainStyledAttributes(attributeSet, R.styleable.SearchBar);
+        array.recycle();
     }
 }
