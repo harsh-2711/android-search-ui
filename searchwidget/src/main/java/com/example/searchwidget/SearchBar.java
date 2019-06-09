@@ -7,6 +7,7 @@ import android.content.res.TypedArray;
 import android.graphics.PorterDuff;
 import android.graphics.drawable.Animatable;
 import android.graphics.drawable.Drawable;
+import android.os.AsyncTask;
 import android.os.Build;
 import android.os.Parcel;
 import android.os.Parcelable;
@@ -17,6 +18,7 @@ import android.support.v7.widget.CardView;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.PopupMenu;
 import android.support.v7.widget.RecyclerView;
+import android.text.Editable;
 import android.text.TextWatcher;
 import android.util.AttributeSet;
 import android.util.Log;
@@ -114,7 +116,9 @@ public class SearchBar extends RelativeLayout implements View.OnClickListener,
     private boolean navIconShown = true;
 
     private boolean isAppbaseClientEnabled = false;
-    AppbaseClient appbaseClient;
+    private AppbaseClient appbaseClient;
+    private String format, queryFormat;
+    private int fuzziness, debounce;
 
     public SearchBar(Context context, AttributeSet attributeSet) {
         super(context, attributeSet);
@@ -1089,6 +1093,91 @@ public class SearchBar extends RelativeLayout implements View.OnClickListener,
         appbaseClient = new AppbaseClient(url, appName, username, password);
         isAppbaseClientEnabled = true;
     }
+
+    /**
+     * Initiates ES based search widget parameters
+     * * @param fuzziness Value of fuzziness
+     * @param queryFormat Query format to be used i.e. 'and' or 'or'
+     * @param debounce Value of debounce
+     */
+    public void setSearchProp(int fuzziness, String queryFormat, int debounce) {
+        setQueryFormat(queryFormat);
+        setFuzziness(fuzziness);
+        setDebounce(debounce);
+    }
+
+    /**
+     * Initiates ES based search widget parameters with default debounce
+     * @param fuzziness Value of fuzziness
+     * @param queryFormat Query format to be used i.e. 'and' or 'or'
+     */
+    public void setSearchProp( int fuzziness, String queryFormat) {
+        setSearchProp(fuzziness, queryFormat, 100);
+    }
+
+    /**
+     * Initiates ES based search widget parameters with default fuzziness
+     * @param queryFormat Query format to be used i.e. 'and' or 'or'
+     * @param debounce Value of debounce
+     */
+    public void setSearchProp(String queryFormat, int debounce) {
+        setSearchProp(0, queryFormat, debounce);
+    }
+
+    /**
+     * Initiates ES based search widget parameters with default fuzziness and debounce
+     * @param queryFormat Query format to be used i.e. 'and' or 'or'
+     */
+    public void setSearchProp(String queryFormat) {
+        setSearchProp(0, queryFormat, 100);
+    }
+
+    /**
+     * Constructs an aggregation query
+     * @param aggName Aggregation name
+     * @param field Field parameter
+     * @return
+     */
+    private String getAggsQuery(String aggName, String field) {
+
+        return  "{ \"aggs\": { \"" + aggName + "\": { \"terms\": { \"field\": \"" + field + "\", }, }, }, }";
+    }
+
+    /**
+     * Constructs an aggregation query with default aggregation name
+     * @param field Field parameter
+     * @return
+     */
+    private String getAggsQuery(String field) {
+
+        return getAggsQuery(field, field);
+    }
+
+    /**
+     * Sets the query format
+     * @param setFormat Format to be used i.e. 'or' or 'and'
+     */
+    private void setQueryFormat(String setFormat) {
+        format = setFormat;
+        queryFormat = format.toLowerCase().equals("or") ? "should" : "must";
+    }
+
+    /**
+     * Sets fuzziness of the query
+     * @param setFuzziness Value of fuzziness
+     */
+    private void setFuzziness(int setFuzziness) {
+        fuzziness = setFuzziness;
+    }
+
+    /**
+     * Sets debounce for the query
+     * @param setDebounce Value of debounce
+     */
+    private void setDebounce(int setDebounce) {
+        debounce = setDebounce;
+    }
+
 
     /**
      * Interface definition for MaterialSearchBar callbacks.
