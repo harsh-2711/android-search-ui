@@ -1077,6 +1077,19 @@ public class SearchBar extends RelativeLayout implements View.OnClickListener,
         return super.dispatchKeyEvent(event);
     }
 
+
+    /**
+     * Initiates the Appbase client
+     * @param url URL of the ElasticSearch host server (If application is hosted on appbase.io, url should be https://scalr.api.appbase.io)
+     * @param appName Name of the app (aka search index)
+     * @param username Username of the account (String before ':' in credentials string)
+     * @param password Password of the account (String after ':' in credentials string)
+     */
+    public void setAppbaseClient(String url, String appName, String username, String password) {
+        appbaseClient = new AppbaseClient(url, appName, username, password);
+        isAppbaseClientEnabled = true;
+    }
+
     /**
      * Interface definition for MaterialSearchBar callbacks.
      */
@@ -1154,10 +1167,5 @@ public class SearchBar extends RelativeLayout implements View.OnClickListener,
             out.writeList(suggestions);
             out.writeInt(maxSuggestions);
         }
-    }
-
-    public void setAppbaseClient(String url, String appName, String username, String password) {
-        appbaseClient = new AppbaseClient(url, appName, username, password);
-        isAppbaseClientEnabled = true;
     }
 }
