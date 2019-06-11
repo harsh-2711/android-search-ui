@@ -1081,6 +1081,7 @@ public class SearchBar extends RelativeLayout implements View.OnClickListener,
 
     /**
      * Initiates Search prop
+     *
      * @param componentId Unique identifier of the component
      * @param dataFields Data field(s) on which search query is to be applied to
      */
@@ -1151,6 +1152,7 @@ public class SearchBar extends RelativeLayout implements View.OnClickListener,
     /**
      * Returns the query built by search prop parameters
      * This query can be directly passed into Appbase search client
+     *
      * @return
      */
     public String getRequestedQuery() {
