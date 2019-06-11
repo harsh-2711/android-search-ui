@@ -12,7 +12,7 @@ public class SearchProp {
     private String title;
     private ArrayList<Pair<String,String>> defaultValue;
     private ArrayList<Integer> weights;
-    private String placeholer;
+    private String placeholder;
     private boolean autoSuggest;
     private ArrayList<Pair<String, String>> defaultSuggestions;
     private boolean highlight;
@@ -22,7 +22,7 @@ public class SearchProp {
     private int debounce;
 
     public void SearchProp(String componentId, ArrayList<String> dataField, String categoryField, String title,
-                           ArrayList<Pair<String,String>> defaultValue, ArrayList<Integer> weights, String placeholer,
+                           ArrayList<Pair<String,String>> defaultValue, ArrayList<Integer> weights, String placeholder,
                            boolean autoSuggest, ArrayList<Pair<String, String>> defaultSuggestions, boolean highlight,
                            String highlightField, String queryFormat, int fuzziness, int debounce) {
 
@@ -32,7 +32,7 @@ public class SearchProp {
         this.title = title;
         this.defaultValue = defaultValue;
         this.weights = weights;
-        this.placeholer = placeholer;
+        this.placeholder = placeholder;
         this.autoSuggest = autoSuggest;
         this.defaultSuggestions = defaultSuggestions;
         this.highlight = highlight;
@@ -91,11 +91,11 @@ public class SearchProp {
     }
 
     public String getPlaceholer() {
-        return placeholer;
+        return placeholder;
     }
 
     public void setPlaceholer(String placeholer) {
-        this.placeholer = placeholer;
+        this.placeholder = placeholer;
     }
 
     public boolean isAutoSuggest() {

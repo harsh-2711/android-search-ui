@@ -37,6 +37,7 @@ import android.widget.LinearLayout;
 import android.widget.RelativeLayout;
 import android.widget.TextView;
 
+import com.example.searchwidget.Model.SearchProp;
 import com.example.searchwidget.adapter.DefaultSuggestionsAdapter;
 import com.example.searchwidget.adapter.SuggestionsAdapter;
 
@@ -119,6 +120,7 @@ public class SearchBar extends RelativeLayout implements View.OnClickListener,
     private AppbaseClient appbaseClient;
     private String format, queryFormat;
     private int fuzziness, debounce;
+    private SearchProp searchProp;
 
     public SearchBar(Context context, AttributeSet attributeSet) {
         super(context, attributeSet);
