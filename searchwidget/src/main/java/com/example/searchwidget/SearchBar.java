@@ -7,18 +7,14 @@ import android.content.res.TypedArray;
 import android.graphics.PorterDuff;
 import android.graphics.drawable.Animatable;
 import android.graphics.drawable.Drawable;
-import android.os.AsyncTask;
 import android.os.Build;
 import android.os.Parcel;
 import android.os.Parcelable;
 import android.support.v4.content.ContextCompat;
-import android.support.v7.app.AppCompatActivity;
-import android.os.Bundle;
 import android.support.v7.widget.CardView;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.PopupMenu;
 import android.support.v7.widget.RecyclerView;
-import android.text.Editable;
 import android.text.TextWatcher;
 import android.util.AttributeSet;
 import android.util.Log;
@@ -37,7 +33,7 @@ import android.widget.LinearLayout;
 import android.widget.RelativeLayout;
 import android.widget.TextView;
 
-import com.example.searchwidget.Model.SearchProp;
+import com.example.searchwidget.Model.SearchPropModel;
 import com.example.searchwidget.adapter.DefaultSuggestionsAdapter;
 import com.example.searchwidget.adapter.SuggestionsAdapter;
 
@@ -120,7 +116,7 @@ public class SearchBar extends RelativeLayout implements View.OnClickListener,
     private AppbaseClient appbaseClient;
     private String format, queryFormat;
     private int fuzziness, debounce;
-    private SearchProp searchProp;
+    private SearchPropModel searchPropModel;
 
     public SearchBar(Context context, AttributeSet attributeSet) {
         super(context, attributeSet);
@@ -1106,32 +1102,6 @@ public class SearchBar extends RelativeLayout implements View.OnClickListener,
         setQueryFormat(queryFormat);
         setFuzziness(fuzziness);
         setDebounce(debounce);
-    }
-
-    /**
-     * Initiates ES based search widget parameters with default debounce
-     * @param fuzziness Value of fuzziness
-     * @param queryFormat Query format to be used i.e. 'and' or 'or'
-     */
-    public void setSearchProp( int fuzziness, String queryFormat) {
-        setSearchProp(fuzziness, queryFormat, 100);
-    }
-
-    /**
-     * Initiates ES based search widget parameters with default fuzziness
-     * @param queryFormat Query format to be used i.e. 'and' or 'or'
-     * @param debounce Value of debounce
-     */
-    public void setSearchProp(String queryFormat, int debounce) {
-        setSearchProp(0, queryFormat, debounce);
-    }
-
-    /**
-     * Initiates ES based search widget parameters with default fuzziness and debounce
-     * @param queryFormat Query format to be used i.e. 'and' or 'or'
-     */
-    public void setSearchProp(String queryFormat) {
-        setSearchProp(0, queryFormat, 100);
     }
 
     /**

@@ -4,7 +4,7 @@ import android.util.Pair;
 
 import java.util.ArrayList;
 
-public class SearchProp {
+public class SearchPropModel {
 
     private String componentId;
     private ArrayList<String> dataField;
@@ -18,13 +18,13 @@ public class SearchProp {
     private boolean highlight;
     private String highlightField;
     private String queryFormat;
-    private int fuzziness;
+    private String fuzziness;
     private int debounce;
 
-    public void SearchProp(String componentId, ArrayList<String> dataField, String categoryField, String title,
+    public SearchPropModel(String componentId, ArrayList<String> dataField, String categoryField, String title,
                            ArrayList<Pair<String,String>> defaultValue, ArrayList<Integer> weights, String placeholder,
                            boolean autoSuggest, ArrayList<Pair<String, String>> defaultSuggestions, boolean highlight,
-                           String highlightField, String queryFormat, int fuzziness, int debounce) {
+                           String highlightField, String queryFormat, String fuzziness, int debounce) {
 
         this.componentId = componentId;
         this.dataField = dataField;
@@ -138,11 +138,11 @@ public class SearchProp {
         this.queryFormat = queryFormat;
     }
 
-    public int getFuzziness() {
+    public String getFuzziness() {
         return fuzziness;
     }
 
-    public void setFuzziness(int fuzziness) {
+    public void setFuzziness(String fuzziness) {
         this.fuzziness = fuzziness;
     }
 
