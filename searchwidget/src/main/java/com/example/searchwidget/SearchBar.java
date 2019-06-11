@@ -117,6 +117,9 @@ public class SearchBar extends RelativeLayout implements View.OnClickListener,
 
     private boolean isAppbaseClientEnabled = false;
     private AppbaseClient appbaseClient;
+    private boolean isPropSet = false;
+    private SearchProp searchPropDefault;
+    private String defaultQuery;
 
     public SearchBar(Context context, AttributeSet attributeSet) {
         super(context, attributeSet);
@@ -1097,7 +1100,9 @@ public class SearchBar extends RelativeLayout implements View.OnClickListener,
      * @param dataFields Data field(s) on which search query is to be applied to
      */
     public SearchProp setSearchProp(String componentId, ArrayList<String> dataFields) {
-        return new SearchProp(componentId, dataFields);
+        searchPropDefault = new SearchProp(componentId, dataFields);
+        isPropSet = true;
+        return searchPropDefault;
     }
 
     /**
@@ -1125,16 +1130,24 @@ public class SearchBar extends RelativeLayout implements View.OnClickListener,
 
         String value = searchProp.defaultValue != null ? searchProp.defaultValue : "";
         String fuzziness = searchProp.fuzziness != null ? searchProp.fuzziness : "0";
+        String fields = "";
+
+        for(int i = 0; i < searchProp.dataField.size(); i++) {
+            if(i == searchProp.dataField.size()-1)
+                fields = fields + "\"" + searchProp.dataField.get(i) + "\"";
+            else
+                fields = fields + "\"" + searchProp.dataField.get(i) + "\",";
+        }
 
         if(searchProp.queryFormat.toLowerCase().equals("and")) {
-            return "[ { \"multi_match\": { \"query\": \"" + value + "\", \"" + searchProp.dataField + "\", " +
-                    "\"type\": \"cross_fields\", \"operator\": \"and\", }, }, { \"multi_match\": { \"query\": \"" +
-                    value + "\", \"" + searchProp.dataField + "\", \"type\": \"phrase_prefix\", \"operator\": \"and\", }, }, ]";
+            return "[ { \"multi_match\": { \"query\": \"" + value + "\", \"fields\": [" + fields + "], " +
+                    "\"type\": \"cross_fields\", \"operator\": \"and\" } }, { \"multi_match\": { \"query\": \"" +
+                    value + "\", \"fields\": [" + fields + "], \"type\": \"phrase_prefix\", \"operator\": \"and\" } } ]";
         } else {
-            return "[ { \"multi_match\": { \"query\": \"" + value + "\", \"" + searchProp.dataField + "\", " +
-                    "\"type\": \"cross_fields\", \"operator\": \"or\", \"fuzziness\": \"" + fuzziness + " }, }, " +
-                    "{ \"multi_match\": { \"query\": \"" + value + "\", \"" + searchProp.dataField +
-                    "\", \"type\": \"phrase_prefix\", \"operator\": \"or\", }, }, ]";
+            return "[ { \"multi_match\": { \"query\": \"" + value + "\", \"fields\": [" + fields + "], " +
+                    "\"type\": \"cross_fields\", \"operator\": \"or\", \"fuzziness\": \"" + fuzziness + " } }, " +
+                    "{ \"multi_match\": { \"query\": \"" + value + "\", \"fields\": [" + fields +
+                    "], \"type\": \"phrase_prefix\", \"operator\": \"or\" } } ]";
         }
     }
 
@@ -1143,9 +1156,10 @@ public class SearchBar extends RelativeLayout implements View.OnClickListener,
         String finalQuery = null;
         String value = searchProp.defaultValue != null ? searchProp.defaultValue : "";
 
-        if(!value.equals("")) {
-            finalQuery = "{ \"bool\": { \"should\": " + getShouldQuery(searchProp) + ", \"minimum_should_match\": \"1\", }, }";
-        } else {
+        if(value != "") {
+            finalQuery = "{ \"bool\": { \"should\": " + getShouldQuery(searchProp) + ", \"minimum_should_match\": \"1\" } }";
+        }
+        else {
             finalQuery =  "{ \"match_all\": {}, }";
         }
 
@@ -1154,38 +1168,42 @@ public class SearchBar extends RelativeLayout implements View.OnClickListener,
 
     public void startSearch() {
 
-        searchEdit.addTextChangedListener(new TextWatcher() {
-            @Override
-            public void beforeTextChanged(CharSequence s, int start, int count, int after) {
+        if(isAppbaseClientEnabled && isPropSet) {
 
-            }
+            searchEdit.addTextChangedListener(new TextWatcher() {
+                @Override
+                public void beforeTextChanged(CharSequence s, int start, int count, int after) {
 
-            @Override
-            public void onTextChanged(CharSequence s, int start, int before, int count) {
-                Search search = new Search();
-                search.execute(String.valueOf(s));
-            }
+                }
 
-            @Override
-            public void afterTextChanged(Editable s) {
+                @Override
+                public void onTextChanged(CharSequence s, int start, int before, int count) {
+                    defaultQuery = getDefaultQuery(searchPropDefault);
+                    Search search = new Search();
+                    search.execute(String.valueOf(s));
+                }
 
-            }
-        });
+                @Override
+                public void afterTextChanged(Editable s) {
+
+                }
+            });
+        }
     }
 
     private class Search extends AsyncTask<String,Void,Void> {
         @Override
         protected Void doInBackground(String... strings) {
-            String json = "{ \"from\": 0, \"size\": 10, \"query\": { \"bool\": { \"must\":{ \"bool\": { \"should\": [ { \"multi_match\": { \"query\": \"" + strings[0] + "\"," +
-                    " \"fields\": [ \"title\", \"title.search\" ], \"operator\":\"and\" } }," +
-                    " { \"multi_match\": { \"query\": \"" + strings[0] + "\",  \"fields\": [ \"title\", \"title.search\" ], \"type\":\"phrase_prefix\"," +
-                    " \"operator\":\"and\" } } ], \"minimum_should_match\": \"1\" } } } }, \"aggs\": { \"unique-terms\": { \"terms\": { \"field\": \"tags.keyword\" } } } }";
 
+            String json = "{ \"query\":" + defaultQuery + " }";
+
+            Log.d("FINAL", json);
             try {
                 String result = appbaseClient.prepareSearch("products", json)
                         .execute()
                         .body()
                         .string();
+                Log.d("RESULT", result);
             } catch (IOException e) {
                 e.printStackTrace();
             }

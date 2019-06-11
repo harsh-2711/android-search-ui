@@ -22,6 +22,8 @@ public class SearchProp {
     public String queryFormat = "or";
     public String fuzziness = "0";
     public int debounce = 0;
+    public boolean isAggregration = false;
+    public ArrayList<String> aggregrationFields = null;
 
     public SearchProp(String componentId, ArrayList<String> dataField) {
         this.componentId = componentId;
@@ -85,6 +87,16 @@ public class SearchProp {
 
     public SearchProp setDebounce(int debounce) {
         this.debounce = debounce;
+        return this;
+    }
+
+    public SearchProp setAggregrationState(boolean isAggregration) {
+        this.isAggregration = isAggregration;
+        return this;
+    }
+
+    public SearchProp setAggregrationFields(ArrayList<String> aggregrationFields) {
+        this.aggregrationFields = aggregrationFields;
         return this;
     }
 
