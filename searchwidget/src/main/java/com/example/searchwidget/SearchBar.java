@@ -33,7 +33,7 @@ import android.widget.LinearLayout;
 import android.widget.RelativeLayout;
 import android.widget.TextView;
 
-import com.example.searchwidget.Model.SearchPropModel;
+import com.example.searchwidget.Builder.SearchProp;
 import com.example.searchwidget.adapter.DefaultSuggestionsAdapter;
 import com.example.searchwidget.adapter.SuggestionsAdapter;
 
@@ -114,9 +114,6 @@ public class SearchBar extends RelativeLayout implements View.OnClickListener,
 
     private boolean isAppbaseClientEnabled = false;
     private AppbaseClient appbaseClient;
-    private String format, queryFormat;
-    private int fuzziness, debounce;
-    private SearchPropModel searchPropModel;
 
     public SearchBar(Context context, AttributeSet attributeSet) {
         super(context, attributeSet);
@@ -1079,7 +1076,6 @@ public class SearchBar extends RelativeLayout implements View.OnClickListener,
         return super.dispatchKeyEvent(event);
     }
 
-
     /**
      * Initiates the Appbase client
      * @param url URL of the ElasticSearch host server (If application is hosted on appbase.io, url should be https://scalr.api.appbase.io)
@@ -1093,15 +1089,12 @@ public class SearchBar extends RelativeLayout implements View.OnClickListener,
     }
 
     /**
-     * Initiates ES based search widget parameters
-     * * @param fuzziness Value of fuzziness
-     * @param queryFormat Query format to be used i.e. 'and' or 'or'
-     * @param debounce Value of debounce
+     * Initiates Search prop
+     * @param componentId Unique identifier of the component
+     * @param dataFields Data field(s) on which search query is to be applied to
      */
-    public void setSearchProp(int fuzziness, String queryFormat, int debounce) {
-        setQueryFormat(queryFormat);
-        setFuzziness(fuzziness);
-        setDebounce(debounce);
+    public SearchProp setSearchProp(String componentId, ArrayList<String> dataFields) {
+        return new SearchProp(componentId, dataFields);
     }
 
     /**
@@ -1125,31 +1118,16 @@ public class SearchBar extends RelativeLayout implements View.OnClickListener,
         return getAggsQuery(field, field);
     }
 
-    /**
-     * Sets the query format
-     * @param setFormat Format to be used i.e. 'or' or 'and'
-     */
-    private void setQueryFormat(String setFormat) {
-        format = setFormat;
-        queryFormat = format.toLowerCase().equals("or") ? "should" : "must";
-    }
+    private String getShouldQuery(SearchProp searchProp) {
 
-    /**
-     * Sets fuzziness of the query
-     * @param setFuzziness Value of fuzziness
-     */
-    private void setFuzziness(int setFuzziness) {
-        fuzziness = setFuzziness;
-    }
+        String value = searchProp.defaultValue != null ? searchProp.defaultValue : "";
 
-    /**
-     * Sets debounce for the query
-     * @param setDebounce Value of debounce
-     */
-    private void setDebounce(int setDebounce) {
-        debounce = setDebounce;
-    }
+        if(searchProp.queryFormat.toLowerCase().equals("and")) {
+            //return "{ \"multi_match\": { \"query\": \"" + value + "\" } }"
+        }
 
+        return "";
+    }
 
     /**
      * Interface definition for MaterialSearchBar callbacks.

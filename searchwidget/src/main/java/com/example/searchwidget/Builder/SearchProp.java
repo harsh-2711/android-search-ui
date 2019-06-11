@@ -8,87 +8,87 @@ import java.util.ArrayList;
 
 public class SearchProp {
 
-    private String componentId;
-    private ArrayList<String> dataField;
-    private String categoryField = null;
-    private String title = null;
-    private ArrayList<Pair<String, String>> defaultValue = null;
-    private ArrayList<Integer> weights = null;
-    private String placeholder = "Search";
-    private boolean autoSuggest = true;
-    private ArrayList<Pair<String, String>> defaultSuggestions = null;
-    private boolean highlight = false;
-    private String highlightField = null;
-    private String queryFormat = "or";
-    private String fuzziness = "0";
-    private int debounce = 0;
+    public String componentId;
+    public ArrayList<String> dataField;
+    public String categoryField = null;
+    public String title = null;
+    public String defaultValue = null;
+    public ArrayList<Integer> weights = null;
+    public String placeholder = "Search";
+    public boolean autoSuggest = true;
+    public ArrayList<Pair<String, String>> defaultSuggestions = null;
+    public boolean highlight = false;
+    public String highlightField = null;
+    public String queryFormat = "or";
+    public String fuzziness = "0";
+    public int debounce = 0;
 
     public SearchProp(String componentId, ArrayList<String> dataField) {
         this.componentId = componentId;
         this.dataField = dataField;
     }
 
-    SearchProp setCategoryField(String categoryField) {
+    public SearchProp setCategoryField(String categoryField) {
         this.categoryField = categoryField;
         return this;
     }
 
-    SearchProp setTitle(String title) {
+    public SearchProp setTitle(String title) {
         this.title = title;
         return this;
     }
 
-    SearchProp setDefaultValue(ArrayList<Pair<String, String>> defaultValue) {
+    public SearchProp setDefaultValue(String defaultValue) {
         this.defaultValue = defaultValue;
         return this;
     }
 
-    SearchProp setWeights(ArrayList<Integer> weights) {
+    public SearchProp setWeights(ArrayList<Integer> weights) {
         this.weights = weights;
         return this;
     }
 
-    SearchProp setPlaceholder(String placeholder) {
+    public SearchProp setPlaceholder(String placeholder) {
         this.placeholder = placeholder;
         return this;
     }
 
-    SearchProp setAutoSuggest(Boolean autoSuggest) {
+    public SearchProp setAutoSuggest(Boolean autoSuggest) {
         this.autoSuggest = autoSuggest;
         return this;
     }
 
-    SearchProp setDefaultSuggestions(ArrayList<Pair<String, String>> defaultSuggestions) {
+    public SearchProp setDefaultSuggestions(ArrayList<Pair<String, String>> defaultSuggestions) {
         this.defaultSuggestions = defaultSuggestions;
         return this;
     }
 
-    SearchProp setHighlight(Boolean highlight) {
+    public SearchProp setHighlight(Boolean highlight) {
         this.highlight = highlight;
         return this;
     }
 
-    SearchProp setHighlightField(String highlightField) {
+    public SearchProp setHighlightField(String highlightField) {
         this.highlightField = highlightField;
         return this;
     }
 
-    SearchProp setQueryFormat(String queryFormat) {
+    public SearchProp setQueryFormat(String queryFormat) {
         this.queryFormat = queryFormat;
         return this;
     }
 
-    SearchProp setFuzziness(String fuzziness) {
+    public SearchProp setFuzziness(String fuzziness) {
         this.fuzziness = fuzziness;
         return this;
     }
 
-    SearchProp setDebounce(int debounce) {
+    public SearchProp setDebounce(int debounce) {
         this.debounce = debounce;
         return this;
     }
 
-    SearchPropModel build() {
+    public SearchPropModel build() {
         return new SearchPropModel(componentId, dataField, categoryField, title, defaultValue, weights, placeholder, autoSuggest,
                 defaultSuggestions, highlight, highlightField, queryFormat, fuzziness, debounce);
     }

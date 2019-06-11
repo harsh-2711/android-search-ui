@@ -10,7 +10,7 @@ public class SearchPropModel {
     private ArrayList<String> dataField;
     private String categoryField;
     private String title;
-    private ArrayList<Pair<String,String>> defaultValue;
+    private String defaultValue;
     private ArrayList<Integer> weights;
     private String placeholder;
     private boolean autoSuggest;
@@ -22,7 +22,7 @@ public class SearchPropModel {
     private int debounce;
 
     public SearchPropModel(String componentId, ArrayList<String> dataField, String categoryField, String title,
-                           ArrayList<Pair<String,String>> defaultValue, ArrayList<Integer> weights, String placeholder,
+                           String defaultValue, ArrayList<Integer> weights, String placeholder,
                            boolean autoSuggest, ArrayList<Pair<String, String>> defaultSuggestions, boolean highlight,
                            String highlightField, String queryFormat, String fuzziness, int debounce) {
 
@@ -74,11 +74,11 @@ public class SearchPropModel {
         this.title = title;
     }
 
-    public ArrayList<Pair<String, String>> getDefaultValue() {
+    public String getDefaultValue() {
         return defaultValue;
     }
 
-    public void setDefaultValue(ArrayList<Pair<String, String>> defaultValue) {
+    public void setDefaultValue(String defaultValue) {
         this.defaultValue = defaultValue;
     }
 
