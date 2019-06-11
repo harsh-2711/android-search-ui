@@ -7,7 +7,6 @@ import android.content.res.TypedArray;
 import android.graphics.PorterDuff;
 import android.graphics.drawable.Animatable;
 import android.graphics.drawable.Drawable;
-import android.os.AsyncTask;
 import android.os.Build;
 import android.os.Parcel;
 import android.os.Parcelable;
@@ -16,7 +15,6 @@ import android.support.v7.widget.CardView;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.PopupMenu;
 import android.support.v7.widget.RecyclerView;
-import android.text.Editable;
 import android.text.TextWatcher;
 import android.util.AttributeSet;
 import android.util.Log;
@@ -39,12 +37,10 @@ import com.example.searchwidget.Builder.SearchProp;
 import com.example.searchwidget.adapter.DefaultSuggestionsAdapter;
 import com.example.searchwidget.adapter.SuggestionsAdapter;
 
-import java.io.IOException;
 import java.lang.reflect.Field;
 import java.util.ArrayList;
 import java.util.List;
 
-import io.appbase.client.AppbaseClient;
 
 import static android.content.ContentValues.TAG;
 
@@ -115,12 +111,9 @@ public class SearchBar extends RelativeLayout implements View.OnClickListener,
 
     private boolean navIconShown = true;
 
-    private boolean isAppbaseClientEnabled = false;
-    private AppbaseClient appbaseClient;
     private boolean isPropSet = false;
     private SearchProp searchPropDefault;
     private String defaultQuery;
-    private String appType;
 
     public SearchBar(Context context, AttributeSet attributeSet) {
         super(context, attributeSet);
@@ -192,7 +185,7 @@ public class SearchBar extends RelativeLayout implements View.OnClickListener,
 
         array.recycle();
 
-        //View References
+        // View References
         searchBarCardView = findViewById(R.id.container);
         suggestionDivider = findViewById(R.id.divider);
         menuDivider = findViewById(R.id.menu_divider);
@@ -206,13 +199,16 @@ public class SearchBar extends RelativeLayout implements View.OnClickListener,
         navIcon = findViewById(R.id.nav);
         findViewById(R.id.clear).setOnClickListener(this);
 
-        //Listeners
+        // Listeners
         setOnClickListener(this);
         arrowIcon.setOnClickListener(this);
         searchIcon.setOnClickListener(this);
         searchEdit.setOnFocusChangeListener(this);
         searchEdit.setOnEditorActionListener(this);
         navIcon.setOnClickListener(this);
+
+        // Placeholder
+        placeholderText = "Search Widget";
 
         postSetup();
     }
@@ -671,7 +667,16 @@ public class SearchBar extends RelativeLayout implements View.OnClickListener,
     }
 
     /**
-     * Set the place holder text
+     * Sets search bar placeholder text
+     *
+     * @param placeHolderText
+     */
+    public void setPlaceHolderText(CharSequence placeHolderText) {
+        this.placeholderText = placeHolderText;
+    }
+
+    /**
+     * Returns the place holder text
      *
      * @return placeholder text
      */
@@ -929,15 +934,6 @@ public class SearchBar extends RelativeLayout implements View.OnClickListener,
         return placeHolder;
     }
 
-    /**
-     * Set the place holder text
-     *
-     * @param placeholder placeholder text
-     */
-    public void setPlaceHolder(CharSequence placeholder) {
-        this.placeholderText = placeholder;
-        placeHolder.setText(placeholder);
-    }
 
     private boolean listenerExists() {
         return onSearchActionListener != null;
@@ -1084,19 +1080,6 @@ public class SearchBar extends RelativeLayout implements View.OnClickListener,
     }
 
     /**
-     * Initiates the Appbase client
-     * @param url URL of the ElasticSearch host server (If application is hosted on appbase.io, url should be https://scalr.api.appbase.io)
-     * @param appName Name of the app (aka search index)
-     * @param username Username of the account (String before ':' in credentials string)
-     * @param password Password of the account (String after ':' in credentials string)
-     */
-    public void setAppbaseClient(String url, String appName, String username, String password, String type) {
-        appbaseClient = new AppbaseClient(url, appName, username, password);
-        isAppbaseClientEnabled = true;
-        appType = type;
-    }
-
-    /**
      * Initiates Search prop
      * @param componentId Unique identifier of the component
      * @param dataFields Data field(s) on which search query is to be applied to
@@ -1165,54 +1148,27 @@ public class SearchBar extends RelativeLayout implements View.OnClickListener,
         return "{ \"query\":" + query + " }";
     }
 
-    public void startSearch() {
+    /**
+     * Returns the query built by search prop parameters
+     * This query can be directly passed into Appbase search client
+     * @return
+     */
+    public String getRequestedQuery() {
 
-        if(isAppbaseClientEnabled && isPropSet) {
+        if(isPropSet) {
+            defaultQuery = getDefaultQuery(searchPropDefault);
+            defaultQuery = getWrappedQuery(defaultQuery);
 
-            searchEdit.addTextChangedListener(new TextWatcher() {
-                @Override
-                public void beforeTextChanged(CharSequence s, int start, int count, int after) {
-
-                }
-
-                @Override
-                public void onTextChanged(CharSequence s, int start, int before, int count) {
-                    defaultQuery = getDefaultQuery(searchPropDefault);
-                    defaultQuery = getWrappedQuery(defaultQuery);
-
-                    if(searchPropDefault.isAggregation) {
-                        defaultQuery = defaultQuery.substring(0, defaultQuery.length() - 1);
-                        defaultQuery = defaultQuery + ", " + getAggsQuery(searchPropDefault) + " }";
-                    }
-
-                    Search search = new Search();
-                    search.execute(String.valueOf(s));
-                }
-
-                @Override
-                public void afterTextChanged(Editable s) {
-
-                }
-            });
-        }
-    }
-
-    private class Search extends AsyncTask<String,Void,Void> {
-        @Override
-        protected Void doInBackground(String... strings) {
-
-            try {
-                String result = appbaseClient.prepareSearch(appType, defaultQuery)
-                        .execute()
-                        .body()
-                        .string();
-
-                Log.d("RESULT", result);
-
-            } catch (IOException e) {
-                e.printStackTrace();
+            if (searchPropDefault.isAggregation) {
+                defaultQuery = defaultQuery.substring(0, defaultQuery.length() - 1);
+                defaultQuery = defaultQuery + ", " + getAggsQuery(searchPropDefault) + " }";
             }
-            return null;
+
+            return defaultQuery;
+
+        } else {
+            Log.e("Error", "Please set search prop properly");
+            return "";
         }
     }
 
