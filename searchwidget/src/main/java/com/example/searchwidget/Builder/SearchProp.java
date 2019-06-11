@@ -24,6 +24,7 @@ public class SearchProp {
     public int debounce = 0;
     public boolean isAggregration = false;
     public ArrayList<String> aggregrationFields = null;
+    public String aggregrationName = "unique-terms";
 
     public SearchProp(String componentId, ArrayList<String> dataField) {
         this.componentId = componentId;
@@ -97,6 +98,11 @@ public class SearchProp {
 
     public SearchProp setAggregrationFields(ArrayList<String> aggregrationFields) {
         this.aggregrationFields = aggregrationFields;
+        return this;
+    }
+
+    public SearchProp setAggregrationName(String aggregrationName) {
+        this.aggregrationName = aggregrationName;
         return this;
     }
 

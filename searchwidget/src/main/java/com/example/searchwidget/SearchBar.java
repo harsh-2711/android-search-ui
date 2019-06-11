@@ -1105,25 +1105,18 @@ public class SearchBar extends RelativeLayout implements View.OnClickListener,
         return searchPropDefault;
     }
 
-    /**
-     * Constructs an aggregation query
-     * @param aggName Aggregation name
-     * @param field Field parameter
-     * @return
-     */
-    private String getAggsQuery(String aggName, String field) {
+    private String getAggsQuery(SearchProp searchProp) {
 
-        return  "{ \"aggs\": { \"" + aggName + "\": { \"terms\": { \"field\": \"" + field + "\", }, }, }, }";
-    }
+        String fields = "";
 
-    /**
-     * Constructs an aggregation query with default aggregation name
-     * @param field Field parameter
-     * @return
-     */
-    private String getAggsQuery(String field) {
+        for(int i = 0; i < searchProp.aggregrationFields.size(); i++) {
+            if(i == searchProp.aggregrationFields.size()-1)
+                fields = fields + "\"" + searchProp.aggregrationFields.get(i) + "\"";
+            else
+                fields = fields + "\"" + searchProp.aggregrationFields.get(i) + "\",";
+        }
 
-        return getAggsQuery(field, field);
+        return  "{ \"aggs\": { \"" + searchProp.aggregrationName + "\": { \"terms\": { \"field\": \"" + fields + "\", } } } }";
     }
 
     private String getShouldQuery(SearchProp searchProp) {
