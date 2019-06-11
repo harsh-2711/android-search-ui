@@ -1121,12 +1121,18 @@ public class SearchBar extends RelativeLayout implements View.OnClickListener,
     private String getShouldQuery(SearchProp searchProp) {
 
         String value = searchProp.defaultValue != null ? searchProp.defaultValue : "";
+        String fuzziness = searchProp.fuzziness != null ? searchProp.fuzziness : "0";
 
         if(searchProp.queryFormat.toLowerCase().equals("and")) {
-            //return "{ \"multi_match\": { \"query\": \"" + value + "\" } }"
+            return "[ { \"multi_match\": { \"query\": \"" + value + "\", \"" + searchProp.dataField + "\", " +
+                    "\"type\": \"cross_fields\", \"operator\": \"and\", }, }, { \"multi_match\": { \"query\": \"" +
+                    value + "\", \"" + searchProp.dataField + "\", \"type\": \"phrase_prefix\", \"operator\": \"and\", }, }, ]";
+        } else {
+            return "[ { \"multi_match\": { \"query\": \"" + value + "\", \"" + searchProp.dataField + "\", " +
+                    "\"type\": \"cross_fields\", \"operator\": \"or\", \"fuzziness\": \"" + fuzziness + " }, }, " +
+                    "{ \"multi_match\": { \"query\": \"" + value + "\", \"" + searchProp.dataField +
+                    "\", \"type\": \"phrase_prefix\", \"operator\": \"or\", }, }, ]";
         }
-
-        return "";
     }
 
     /**
