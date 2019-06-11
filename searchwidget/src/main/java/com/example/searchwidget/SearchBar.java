@@ -120,6 +120,7 @@ public class SearchBar extends RelativeLayout implements View.OnClickListener,
     private boolean isPropSet = false;
     private SearchProp searchPropDefault;
     private String defaultQuery;
+    private String appType;
 
     public SearchBar(Context context, AttributeSet attributeSet) {
         super(context, attributeSet);
@@ -1089,9 +1090,10 @@ public class SearchBar extends RelativeLayout implements View.OnClickListener,
      * @param username Username of the account (String before ':' in credentials string)
      * @param password Password of the account (String after ':' in credentials string)
      */
-    public void setAppbaseClient(String url, String appName, String username, String password) {
+    public void setAppbaseClient(String url, String appName, String username, String password, String type) {
         appbaseClient = new AppbaseClient(url, appName, username, password);
         isAppbaseClientEnabled = true;
+        appType = type;
     }
 
     /**
@@ -1109,14 +1111,14 @@ public class SearchBar extends RelativeLayout implements View.OnClickListener,
 
         String fields = "";
 
-        for(int i = 0; i < searchProp.aggregrationFields.size(); i++) {
-            if(i == searchProp.aggregrationFields.size()-1)
-                fields = fields + "\"" + searchProp.aggregrationFields.get(i) + "\"";
+        for(int i = 0; i < searchProp.aggregationFields.size(); i++) {
+            if(i == searchProp.aggregationFields.size()-1)
+                fields = fields + "\"" + searchProp.aggregationFields.get(i) + "\"";
             else
-                fields = fields + "\"" + searchProp.aggregrationFields.get(i) + "\",";
+                fields = fields + "\"" + searchProp.aggregationFields.get(i) + "\",";
         }
 
-        return  "\"aggs\": { \"" + searchProp.aggregrationName + "\": { \"terms\": { \"field\": \"" + fields + "\", } } }";
+        return  "\"aggs\": { \"" + searchProp.aggregationName + "\": { \"terms\": { \"field\": \"" + fields + "\", } } }";
     }
 
     private String getShouldQuery(SearchProp searchProp) {
@@ -1178,7 +1180,7 @@ public class SearchBar extends RelativeLayout implements View.OnClickListener,
                     defaultQuery = getDefaultQuery(searchPropDefault);
                     defaultQuery = getWrappedQuery(defaultQuery);
 
-                    if(searchPropDefault.isAggregration) {
+                    if(searchPropDefault.isAggregation) {
                         defaultQuery = defaultQuery.substring(0, defaultQuery.length() - 1);
                         defaultQuery = defaultQuery + ", " + getAggsQuery(searchPropDefault) + " }";
                     }
@@ -1200,11 +1202,13 @@ public class SearchBar extends RelativeLayout implements View.OnClickListener,
         protected Void doInBackground(String... strings) {
 
             try {
-                String result = appbaseClient.prepareSearch("products", defaultQuery)
+                String result = appbaseClient.prepareSearch(appType, defaultQuery)
                         .execute()
                         .body()
                         .string();
+
                 Log.d("RESULT", result);
+
             } catch (IOException e) {
                 e.printStackTrace();
             }

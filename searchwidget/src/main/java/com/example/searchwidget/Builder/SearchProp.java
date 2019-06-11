@@ -20,9 +20,9 @@ public class SearchProp {
     public String queryFormat = "or";
     public String fuzziness = "0";
     public int debounce = 0;
-    public boolean isAggregration = false;
-    public ArrayList<String> aggregrationFields = null;
-    public String aggregrationName = "unique-terms";
+    public boolean isAggregation = false;
+    public ArrayList<String> aggregationFields = null;
+    public String aggregationName = "unique-terms";
 
     public SearchProp(String componentId, ArrayList<String> dataField) {
         this.componentId = componentId;
@@ -80,22 +80,22 @@ public class SearchProp {
     }
 
     public SearchProp setAggregrationState(boolean isAggregration) {
-        this.isAggregration = isAggregration;
+        this.isAggregation = isAggregration;
         return this;
     }
 
-    public SearchProp setAggregrationFields(ArrayList<String> aggregrationFields) {
-        this.aggregrationFields = aggregrationFields;
+    public SearchProp setAggregationFields(ArrayList<String> aggregationFields) {
+        this.aggregationFields = aggregationFields;
         return this;
     }
 
-    public SearchProp setAggregrationName(String aggregrationName) {
-        this.aggregrationName = aggregrationName;
+    public SearchProp setAggregationName(String aggregationName) {
+        this.aggregationName = aggregationName;
         return this;
     }
 
     public SearchPropModel build() {
         return new SearchPropModel(componentId, dataField, categoryField, defaultValue, weights, autoSuggest,
-                defaultSuggestions, highlight, highlightField, queryFormat, fuzziness, debounce, isAggregration, aggregrationFields, aggregrationName);
+                defaultSuggestions, highlight, highlightField, queryFormat, fuzziness, debounce, isAggregation, aggregationFields, aggregationName);
     }
 }

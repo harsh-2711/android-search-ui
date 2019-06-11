@@ -18,14 +18,14 @@ public class SearchPropModel {
     private String queryFormat;
     private String fuzziness;
     private int debounce;
-    private boolean isAggregration;
-    private ArrayList<String> aggregrationFields;
-    private String aggregrationName;
+    private boolean isAggregation;
+    private ArrayList<String> aggregationFields;
+    private String aggregationName;
 
     public SearchPropModel(String componentId, ArrayList<String> dataField, String categoryField, String defaultValue,
                            ArrayList<Integer> weights, boolean autoSuggest, ArrayList<Pair<String, String>> defaultSuggestions,
                            boolean highlight, String highlightField, String queryFormat, String fuzziness, int debounce,
-                           boolean isAggregration, ArrayList<String> aggregrationFields, String aggregrationName) {
+                           boolean isAggregation, ArrayList<String> aggregationFields, String aggregationName) {
 
         this.componentId = componentId;
         this.dataField = dataField;
@@ -39,9 +39,9 @@ public class SearchPropModel {
         this.queryFormat = queryFormat;
         this.fuzziness = fuzziness;
         this.debounce = debounce;
-        this.isAggregration = isAggregration;
-        this.aggregrationFields = aggregrationFields;
-        this.aggregrationName = aggregrationName;
+        this.isAggregation = isAggregation;
+        this.aggregationFields = aggregationFields;
+        this.aggregationName = aggregationName;
     }
 
     public String getComponentId() {
@@ -141,26 +141,26 @@ public class SearchPropModel {
     }
 
     public boolean getAggregrationState() {
-        return isAggregration;
+        return isAggregation;
     }
 
     public void setAggregrationState(boolean aggregrationState) {
-        this.isAggregration = aggregrationState;
+        this.isAggregation = aggregrationState;
     }
 
-    public ArrayList<String> getAggregrationFields() {
-        return aggregrationFields;
+    public ArrayList<String> getAggregationFields() {
+        return aggregationFields;
     }
 
-    public void setAggregrationFields(ArrayList<String> aggregrationFields) {
-        this.aggregrationFields = aggregrationFields;
+    public void setAggregationFields(ArrayList<String> aggregationFields) {
+        this.aggregationFields = aggregationFields;
     }
 
-    public String getAggregrationName() {
-        return aggregrationName;
+    public String getAggregationName() {
+        return aggregationName;
     }
 
-    public void setAggregrationName(String aggregrationName) {
-        this.aggregrationName = aggregrationName;
+    public void setAggregationName(String aggregationName) {
+        this.aggregationName = aggregationName;
     }
 }
