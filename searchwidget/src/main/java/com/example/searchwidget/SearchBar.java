@@ -1116,7 +1116,7 @@ public class SearchBar extends RelativeLayout implements View.OnClickListener,
                 fields = fields + "\"" + searchProp.aggregrationFields.get(i) + "\",";
         }
 
-        return  "{ \"aggs\": { \"" + searchProp.aggregrationName + "\": { \"terms\": { \"field\": \"" + fields + "\", } } } }";
+        return  "\"aggs\": { \"" + searchProp.aggregrationName + "\": { \"terms\": { \"field\": \"" + fields + "\", } } }";
     }
 
     private String getShouldQuery(SearchProp searchProp) {
@@ -1177,6 +1177,12 @@ public class SearchBar extends RelativeLayout implements View.OnClickListener,
                 public void onTextChanged(CharSequence s, int start, int before, int count) {
                     defaultQuery = getDefaultQuery(searchPropDefault);
                     defaultQuery = getWrappedQuery(defaultQuery);
+
+                    if(searchPropDefault.isAggregration) {
+                        defaultQuery = defaultQuery.substring(0, defaultQuery.length() - 1);
+                        defaultQuery = defaultQuery + ", " + getAggsQuery(searchPropDefault) + " }";
+                    }
+                    
                     Search search = new Search();
                     search.execute(String.valueOf(s));
                 }
