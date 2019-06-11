@@ -1159,6 +1159,10 @@ public class SearchBar extends RelativeLayout implements View.OnClickListener,
         return finalQuery;
     }
 
+    private String getWrappedQuery(String query) {
+        return "{ \"query\":" + query + " }";
+    }
+
     public void startSearch() {
 
         if(isAppbaseClientEnabled && isPropSet) {
@@ -1172,6 +1176,7 @@ public class SearchBar extends RelativeLayout implements View.OnClickListener,
                 @Override
                 public void onTextChanged(CharSequence s, int start, int before, int count) {
                     defaultQuery = getDefaultQuery(searchPropDefault);
+                    defaultQuery = getWrappedQuery(defaultQuery);
                     Search search = new Search();
                     search.execute(String.valueOf(s));
                 }
@@ -1188,11 +1193,8 @@ public class SearchBar extends RelativeLayout implements View.OnClickListener,
         @Override
         protected Void doInBackground(String... strings) {
 
-            String json = "{ \"query\":" + defaultQuery + " }";
-
-            Log.d("FINAL", json);
             try {
-                String result = appbaseClient.prepareSearch("products", json)
+                String result = appbaseClient.prepareSearch("products", defaultQuery)
                         .execute()
                         .body()
                         .string();
