@@ -11,10 +11,8 @@ public class SearchProp {
     public String componentId;
     public ArrayList<String> dataField;
     public String categoryField = null;
-    public String title = null;
     public String defaultValue = null;
     public ArrayList<Integer> weights = null;
-    public String placeholder = "Search";
     public boolean autoSuggest = true;
     public ArrayList<Pair<String, String>> defaultSuggestions = null;
     public boolean highlight = false;
@@ -36,11 +34,6 @@ public class SearchProp {
         return this;
     }
 
-    public SearchProp setTitle(String title) {
-        this.title = title;
-        return this;
-    }
-
     public SearchProp setDefaultValue(String defaultValue) {
         this.defaultValue = defaultValue;
         return this;
@@ -48,11 +41,6 @@ public class SearchProp {
 
     public SearchProp setWeights(ArrayList<Integer> weights) {
         this.weights = weights;
-        return this;
-    }
-
-    public SearchProp setPlaceholder(String placeholder) {
-        this.placeholder = placeholder;
         return this;
     }
 
@@ -107,7 +95,7 @@ public class SearchProp {
     }
 
     public SearchPropModel build() {
-        return new SearchPropModel(componentId, dataField, categoryField, title, defaultValue, weights, placeholder, autoSuggest,
+        return new SearchPropModel(componentId, dataField, categoryField, defaultValue, weights, autoSuggest,
                 defaultSuggestions, highlight, highlightField, queryFormat, fuzziness, debounce, isAggregration, aggregrationFields, aggregrationName);
     }
 }

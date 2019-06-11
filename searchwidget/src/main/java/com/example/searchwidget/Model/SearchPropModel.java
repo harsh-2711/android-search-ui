@@ -9,10 +9,8 @@ public class SearchPropModel {
     private String componentId;
     private ArrayList<String> dataField;
     private String categoryField;
-    private String title;
     private String defaultValue;
     private ArrayList<Integer> weights;
-    private String placeholder;
     private boolean autoSuggest;
     private ArrayList<Pair<String, String>> defaultSuggestions;
     private boolean highlight;
@@ -24,19 +22,16 @@ public class SearchPropModel {
     private ArrayList<String> aggregrationFields;
     private String aggregrationName;
 
-    public SearchPropModel(String componentId, ArrayList<String> dataField, String categoryField, String title,
-                           String defaultValue, ArrayList<Integer> weights, String placeholder,
-                           boolean autoSuggest, ArrayList<Pair<String, String>> defaultSuggestions, boolean highlight,
-                           String highlightField, String queryFormat, String fuzziness, int debounce, boolean isAggregration,
-                           ArrayList<String> aggregrationFields, String aggregrationName) {
+    public SearchPropModel(String componentId, ArrayList<String> dataField, String categoryField, String defaultValue,
+                           ArrayList<Integer> weights, boolean autoSuggest, ArrayList<Pair<String, String>> defaultSuggestions,
+                           boolean highlight, String highlightField, String queryFormat, String fuzziness, int debounce,
+                           boolean isAggregration, ArrayList<String> aggregrationFields, String aggregrationName) {
 
         this.componentId = componentId;
         this.dataField = dataField;
         this.categoryField = categoryField;
-        this.title = title;
         this.defaultValue = defaultValue;
         this.weights = weights;
-        this.placeholder = placeholder;
         this.autoSuggest = autoSuggest;
         this.defaultSuggestions = defaultSuggestions;
         this.highlight = highlight;
@@ -73,14 +68,6 @@ public class SearchPropModel {
         this.categoryField = categoryField;
     }
 
-    public String getTitle() {
-        return title;
-    }
-
-    public void setTitle(String title) {
-        this.title = title;
-    }
-
     public String getDefaultValue() {
         return defaultValue;
     }
@@ -95,14 +82,6 @@ public class SearchPropModel {
 
     public void setWeights(ArrayList<Integer> weights) {
         this.weights = weights;
-    }
-
-    public String getPlaceholer() {
-        return placeholder;
-    }
-
-    public void setPlaceholer(String placeholer) {
-        this.placeholder = placeholer;
     }
 
     public boolean isAutoSuggest() {
