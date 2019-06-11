@@ -1182,7 +1182,7 @@ public class SearchBar extends RelativeLayout implements View.OnClickListener,
                         defaultQuery = defaultQuery.substring(0, defaultQuery.length() - 1);
                         defaultQuery = defaultQuery + ", " + getAggsQuery(searchPropDefault) + " }";
                     }
-                    
+
                     Search search = new Search();
                     search.execute(String.valueOf(s));
                 }

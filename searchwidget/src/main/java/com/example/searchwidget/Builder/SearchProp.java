@@ -108,6 +108,6 @@ public class SearchProp {
 
     public SearchPropModel build() {
         return new SearchPropModel(componentId, dataField, categoryField, title, defaultValue, weights, placeholder, autoSuggest,
-                defaultSuggestions, highlight, highlightField, queryFormat, fuzziness, debounce);
+                defaultSuggestions, highlight, highlightField, queryFormat, fuzziness, debounce, isAggregration, aggregrationFields, aggregrationName);
     }
 }
