@@ -7,6 +7,7 @@ import android.content.res.TypedArray;
 import android.graphics.PorterDuff;
 import android.graphics.drawable.Animatable;
 import android.graphics.drawable.Drawable;
+import android.os.AsyncTask;
 import android.os.Build;
 import android.os.Parcel;
 import android.os.Parcelable;
@@ -15,6 +16,7 @@ import android.support.v7.widget.CardView;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.PopupMenu;
 import android.support.v7.widget.RecyclerView;
+import android.text.Editable;
 import android.text.TextWatcher;
 import android.util.AttributeSet;
 import android.util.Log;
@@ -37,6 +39,7 @@ import com.example.searchwidget.Builder.SearchProp;
 import com.example.searchwidget.adapter.DefaultSuggestionsAdapter;
 import com.example.searchwidget.adapter.SuggestionsAdapter;
 
+import java.io.IOException;
 import java.lang.reflect.Field;
 import java.util.ArrayList;
 import java.util.List;
@@ -1132,6 +1135,61 @@ public class SearchBar extends RelativeLayout implements View.OnClickListener,
                     "\"type\": \"cross_fields\", \"operator\": \"or\", \"fuzziness\": \"" + fuzziness + " }, }, " +
                     "{ \"multi_match\": { \"query\": \"" + value + "\", \"" + searchProp.dataField +
                     "\", \"type\": \"phrase_prefix\", \"operator\": \"or\", }, }, ]";
+        }
+    }
+
+    private String getDefaultQuery(SearchProp searchProp) {
+
+        String finalQuery = null;
+        String value = searchProp.defaultValue != null ? searchProp.defaultValue : "";
+
+        if(!value.equals("")) {
+            finalQuery = "{ \"bool\": { \"should\": " + getShouldQuery(searchProp) + ", \"minimum_should_match\": \"1\", }, }";
+        } else {
+            finalQuery =  "{ \"match_all\": {}, }";
+        }
+
+        return finalQuery;
+    }
+
+    public void startSearch() {
+
+        searchEdit.addTextChangedListener(new TextWatcher() {
+            @Override
+            public void beforeTextChanged(CharSequence s, int start, int count, int after) {
+
+            }
+
+            @Override
+            public void onTextChanged(CharSequence s, int start, int before, int count) {
+                Search search = new Search();
+                search.execute(String.valueOf(s));
+            }
+
+            @Override
+            public void afterTextChanged(Editable s) {
+
+            }
+        });
+    }
+
+    private class Search extends AsyncTask<String,Void,Void> {
+        @Override
+        protected Void doInBackground(String... strings) {
+            String json = "{ \"from\": 0, \"size\": 10, \"query\": { \"bool\": { \"must\":{ \"bool\": { \"should\": [ { \"multi_match\": { \"query\": \"" + strings[0] + "\"," +
+                    " \"fields\": [ \"title\", \"title.search\" ], \"operator\":\"and\" } }," +
+                    " { \"multi_match\": { \"query\": \"" + strings[0] + "\",  \"fields\": [ \"title\", \"title.search\" ], \"type\":\"phrase_prefix\"," +
+                    " \"operator\":\"and\" } } ], \"minimum_should_match\": \"1\" } } } }, \"aggs\": { \"unique-terms\": { \"terms\": { \"field\": \"tags.keyword\" } } } }";
+
+            try {
+                String result = appbaseClient.prepareSearch("products", json)
+                        .execute()
+                        .body()
+                        .string();
+            } catch (IOException e) {
+                e.printStackTrace();
+            }
+            return null;
         }
     }
 
