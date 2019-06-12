@@ -42,6 +42,8 @@ import java.util.ArrayList;
 import java.util.List;
 
 
+import io.appbase.client.AppbaseClient;
+
 import static android.content.ContentValues.TAG;
 
 public class SearchBar extends RelativeLayout implements View.OnClickListener,
@@ -1080,6 +1082,18 @@ public class SearchBar extends RelativeLayout implements View.OnClickListener,
     }
 
     /**
+     *
+     * @param url URL of the ElasticSearch host server (If application is hosted on appbase.io, url should be https://scalr.api.appbase.io)
+     * @param appName Name of the app (aka search index)
+     * @param username Username for basic auth (String before ':' in credentials string)
+     * @param password Password for given username (String after ':' in credentials string)
+     * @return
+     */
+    public AppbaseClient setAppbaseClient(String url, String appName, String username, String password) {
+        return new AppbaseClient(url, appName, username, password);
+    }
+
+    /**
      * Initiates Search prop
      *
      * @param componentId Unique identifier of the component
@@ -1135,7 +1149,7 @@ public class SearchBar extends RelativeLayout implements View.OnClickListener,
         String finalQuery = null;
         String value = searchProp.defaultValue != null ? searchProp.defaultValue : "";
 
-        if(value != "") {
+        if(!value.equals("")) {
             finalQuery = "{ \"bool\": { \"should\": " + getShouldQuery(searchProp) + ", \"minimum_should_match\": \"1\" } }";
         }
         else {
