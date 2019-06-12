@@ -1159,6 +1159,33 @@ public class SearchBar extends RelativeLayout implements View.OnClickListener,
         return finalQuery;
     }
 
+    private String getHighlightQuery(SearchProp searchProp) {
+
+        if(!searchProp.highlight)
+            return null;
+
+        String fields = "";
+        if(searchProp.highlightField != null) {
+            for(int i = 0; i < searchProp.highlightField.size(); i++) {
+                if(i == searchProp.highlightField.size()-1)
+                    fields = fields + "\"" + searchProp.highlightField.get(i) + "\": {}";
+                else
+                    fields = fields + "\"" + searchProp.highlightField.get(i) + "\": {},";
+            }
+        } else {
+            for(int i = 0; i < searchProp.dataField.size(); i++) {
+                if(i == searchProp.dataField.size()-1)
+                    fields = fields + "\"" + searchProp.dataField.get(i) + "\"";
+                else
+                    fields = fields + "\"" + searchProp.dataField.get(i) + "\",";
+            }
+        }
+
+        return "{ \"highlight\": { \"pre_tags\": [\"<mark>\"], \"post_tags\": [\"</mark>\"], \"fields\": {" + fields + "}, " +
+                "\"number_of_fragments\": \"0\" } }";
+
+    }
+
     private String getWrappedQuery(String query) {
         return "{ \"query\":" + query + " }";
     }

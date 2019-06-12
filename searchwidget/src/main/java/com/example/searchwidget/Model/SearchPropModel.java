@@ -14,7 +14,7 @@ public class SearchPropModel {
     private boolean autoSuggest;
     private ArrayList<Pair<String, String>> defaultSuggestions;
     private boolean highlight;
-    private String highlightField;
+    private ArrayList<String> highlightField;
     private String queryFormat;
     private String fuzziness;
     private int debounce;
@@ -24,7 +24,7 @@ public class SearchPropModel {
 
     public SearchPropModel(String componentId, ArrayList<String> dataField, String categoryField, String defaultValue,
                            ArrayList<Integer> weights, boolean autoSuggest, ArrayList<Pair<String, String>> defaultSuggestions,
-                           boolean highlight, String highlightField, String queryFormat, String fuzziness, int debounce,
+                           boolean highlight, ArrayList<String> highlightField, String queryFormat, String fuzziness, int debounce,
                            boolean isAggregation, ArrayList<String> aggregationFields, String aggregationName) {
 
         this.componentId = componentId;
@@ -108,11 +108,11 @@ public class SearchPropModel {
         this.highlight = highlight;
     }
 
-    public String getHighlightField() {
+    public ArrayList<String> getHighlightField() {
         return highlightField;
     }
 
-    public void setHighlightField(String highlightField) {
+    public void setHighlightField(ArrayList<String> highlightField) {
         this.highlightField = highlightField;
     }
 

@@ -16,7 +16,7 @@ public class SearchProp {
     public boolean autoSuggest = true;
     public ArrayList<Pair<String, String>> defaultSuggestions = null;
     public boolean highlight = false;
-    public String highlightField = null;
+    public ArrayList<String> highlightField = null;
     public String queryFormat = "or";
     public String fuzziness = "0";
     public int debounce = 0;
@@ -59,7 +59,7 @@ public class SearchProp {
         return this;
     }
 
-    public SearchProp setHighlightField(String highlightField) {
+    public SearchProp setHighlightField(ArrayList<String> highlightField) {
         this.highlightField = highlightField;
         return this;
     }
