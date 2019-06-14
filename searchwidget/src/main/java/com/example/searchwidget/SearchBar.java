@@ -7,6 +7,7 @@ import android.content.res.TypedArray;
 import android.graphics.PorterDuff;
 import android.graphics.drawable.Animatable;
 import android.graphics.drawable.Drawable;
+import android.os.AsyncTask;
 import android.os.Build;
 import android.os.Parcel;
 import android.os.Parcelable;
@@ -15,6 +16,7 @@ import android.support.v7.widget.CardView;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.PopupMenu;
 import android.support.v7.widget.RecyclerView;
+import android.text.Editable;
 import android.text.TextWatcher;
 import android.util.AttributeSet;
 import android.util.Log;
@@ -120,7 +122,7 @@ public class SearchBar extends RelativeLayout implements View.OnClickListener,
 
     private AppbaseClient client;
     private boolean isAppbaseClientSet = false;
-    private TextChangeListner textChangeListner;
+    private TextChangeListener textChangeListener;
 
     public SearchBar(Context context, AttributeSet attributeSet) {
         super(context, attributeSet);
@@ -1249,11 +1251,15 @@ public class SearchBar extends RelativeLayout implements View.OnClickListener,
     }
 
     /**
-     * Registers listner for text change callbacks
-     * @param textChangeListner Text change callbacks
+     * Registers listener for text change callbacks
+     * @param textChangeListener Text change callbacks
      */
-    public void setOnTextChangeListner(TextChangeListner textChangeListner) {
-        this.textChangeListner = textChangeListner;
+    public void setOnTextChangeListner(TextChangeListener textChangeListener) {
+        this.textChangeListener = textChangeListener;
+    }
+
+    private boolean textChangeListenerExists() {
+        return textChangeListener != null;
     }
 
     /**
@@ -1285,14 +1291,66 @@ public class SearchBar extends RelativeLayout implements View.OnClickListener,
     /**
      * Interface for getting continuous response on text change in search widget
      */
-    public interface TextChangeListner {
+    public interface TextChangeListener {
 
         /**
          * Invoked when text is changed in search bar
-         * @param v View of the widget
          * @param response Response for the query made from search prop parameters using Appbase client
          */
-        void onTextChange(View v, String response);
+        void onTextChange(String response);
+    }
+
+    /**
+     * Starts on text change callbacks to be handled by the listener.
+     * Call this method after setting TextChangeListener to start its functionality
+     */
+    public void startSearch() {
+
+        searchEdit.addTextChangedListener(new TextWatcher() {
+            @Override
+            public void beforeTextChanged(CharSequence s, int start, int count, int after) {
+
+            }
+
+            @Override
+            public void onTextChanged(CharSequence s, int start, int before, int count) {
+
+                if(isPropSet && isAppbaseClientSet && textChangeListenerExists()) {
+                    searchPropDefault.setDefaultValue(String.valueOf(s));
+                    StartSearching startSearching = new StartSearching();
+                    startSearching.execute(getDefaultQuery(searchPropDefault));
+                } else {
+                    Log.e("Error", "Please check if Appbase client, Search props and Text change listeners are set properly");
+                }
+            }
+
+            @Override
+            public void afterTextChanged(Editable s) {
+
+            }
+        });
+    }
+
+    private class StartSearching extends AsyncTask<String, Void, Void> {
+
+        String result = "Query wasn't initiated";
+
+        @Override
+        protected Void doInBackground(String... strings) {
+            try {
+                result = client.prepareSearch("products", strings[0]).execute().body().string();
+            } catch (IOException e) {
+                e.printStackTrace();
+                result = e.toString();
+            }
+            return null;
+        }
+
+        @Override
+        protected void onPostExecute(Void aVoid) {
+            super.onPostExecute(aVoid);
+            textChangeListener.onTextChange(result);
+        }
     }
 
     private static class SavedState extends BaseSavedState {
