@@ -1224,10 +1224,9 @@ public class SearchBar extends RelativeLayout implements View.OnClickListener,
     }
 
     /**
-     * Returns the query built by search prop parameters
-     * This query can be directly passed into Appbase search client
+     * The query built using search prop parameters and which can be directly passed into Appbase search client
      *
-     * @return
+     * @return Returns the query built by search prop parameters
      */
     public String getRequestedQuery() {
 
