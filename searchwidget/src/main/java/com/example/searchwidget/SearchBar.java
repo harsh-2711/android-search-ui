@@ -120,6 +120,7 @@ public class SearchBar extends RelativeLayout implements View.OnClickListener,
 
     private AppbaseClient client;
     private boolean isAppbaseClientSet = false;
+    private TextChangeListner textChangeListner;
 
     public SearchBar(Context context, AttributeSet attributeSet) {
         super(context, attributeSet);
@@ -1248,6 +1249,14 @@ public class SearchBar extends RelativeLayout implements View.OnClickListener,
     }
 
     /**
+     * Registers listner for text change callbacks
+     * @param textChangeListner Text change callbacks
+     */
+    public void setOnTextChangeListner(TextChangeListner textChangeListner) {
+        this.textChangeListner = textChangeListner;
+    }
+
+    /**
      * Interface definition for MaterialSearchBar callbacks.
      */
     public interface OnSearchActionListener {
@@ -1271,6 +1280,19 @@ public class SearchBar extends RelativeLayout implements View.OnClickListener,
          * @param buttonCode {@link #BUTTON_NAVIGATION}, {@link #BUTTON_SPEECH} or {@link #BUTTON_BACK} will be passed
          */
         void onButtonClicked(int buttonCode);
+    }
+
+    /**
+     * Interface for getting continuous response on text change in search widget
+     */
+    public interface TextChangeListner {
+
+        /**
+         * Invoked when text is changed in search bar
+         * @param v View of the widget
+         * @param response Response for the query made from search prop parameters using Appbase client
+         */
+        void onTextChange(View v, String response);
     }
 
     private static class SavedState extends BaseSavedState {
