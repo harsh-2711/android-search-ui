@@ -37,6 +37,7 @@ import com.example.searchwidget.Builder.SearchProp;
 import com.example.searchwidget.adapter.DefaultSuggestionsAdapter;
 import com.example.searchwidget.adapter.SuggestionsAdapter;
 
+import java.io.IOException;
 import java.lang.reflect.Field;
 import java.util.ArrayList;
 import java.util.List;
@@ -116,6 +117,9 @@ public class SearchBar extends RelativeLayout implements View.OnClickListener,
     private boolean isPropSet = false;
     private SearchProp searchPropDefault;
     private String defaultQuery;
+
+    private AppbaseClient client;
+    private boolean isAppbaseClientSet = false;
 
     public SearchBar(Context context, AttributeSet attributeSet) {
         super(context, attributeSet);
@@ -1089,8 +1093,24 @@ public class SearchBar extends RelativeLayout implements View.OnClickListener,
      * @param password Password for given username (String after ':' in credentials string)
      * @return
      */
-    public AppbaseClient setAppbaseClient(String url, String appName, String username, String password) {
-        return new AppbaseClient(url, appName, username, password);
+    public void setAppbaseClient(String url, String appName, String username, String password) {
+        this.client = new AppbaseClient(url, appName, username, password);
+        isAppbaseClientSet = true;
+    }
+
+    /**
+     * Gives response for the request query using Appbase client
+     * @param type Type to be queried
+     * @param query JSON structured body
+     * @return
+     * @throws IOException
+     */
+    public String search(String type, String query) throws IOException {
+        if(isAppbaseClientSet) {
+            return client.prepareSearch(type, query).execute().body().string();
+        } else {
+            return "Please set Appbase client";
+        }
     }
 
     /**
