@@ -122,6 +122,8 @@ public class SearchBar extends RelativeLayout implements View.OnClickListener,
 
     private AppbaseClient client;
     private boolean isAppbaseClientSet = false;
+    private String clientType;
+
     private TextChangeListener textChangeListener;
 
     public SearchBar(Context context, AttributeSet attributeSet) {
@@ -1089,7 +1091,21 @@ public class SearchBar extends RelativeLayout implements View.OnClickListener,
     }
 
     /**
-     *
+     * Initiates the Appbase client for giving additional functionality to search bar
+     * @param url URL of the ElasticSearch host server (If application is hosted on appbase.io, url should be https://scalr.api.appbase.io)
+     * @param appName Name of the app (aka search index)
+     * @param username Username for basic auth (String before ':' in credentials string)
+     * @param password Password for given username (String after ':' in credentials string)
+     * @param type Type to be queried
+     */
+    public void setAppbaseClient(String url, String appName, String username, String password, String type) {
+        this.client = new AppbaseClient(url, appName, username, password);
+        isAppbaseClientSet = true;
+        this.clientType = type;
+    }
+
+    /**
+     * Initiates the Appbase client for giving additional functionality to search bar - with default type
      * @param url URL of the ElasticSearch host server (If application is hosted on appbase.io, url should be https://scalr.api.appbase.io)
      * @param appName Name of the app (aka search index)
      * @param username Username for basic auth (String before ':' in credentials string)
@@ -1098,32 +1114,18 @@ public class SearchBar extends RelativeLayout implements View.OnClickListener,
     public void setAppbaseClient(String url, String appName, String username, String password) {
         this.client = new AppbaseClient(url, appName, username, password);
         isAppbaseClientSet = true;
+        this.clientType = "_type";
     }
 
     /**
      * Gives response for the requested query using Appbase client
-     * @param type Type to be queried
-     * @param query JSON structured body
-     * @return Response received for the requested query
-     * @throws IOException
-     */
-    public String search(String type, String query) throws IOException {
-        if(isAppbaseClientSet) {
-            return client.prepareSearch(type, query).execute().body().string();
-        } else {
-            return "Please set Appbase client";
-        }
-    }
-
-    /**
-     * Gives response for the requested query using Appbase client - default type
      * @param query JSON structured body
      * @return Response received for the requested query
      * @throws IOException
      */
     public String search(String query) throws IOException {
         if(isAppbaseClientSet) {
-            return client.prepareSearch("_type", query).execute().body().string();
+            return client.prepareSearch(clientType, query).execute().body().string();
         } else {
             return "Please set Appbase client";
         }
@@ -1338,7 +1340,7 @@ public class SearchBar extends RelativeLayout implements View.OnClickListener,
         @Override
         protected Void doInBackground(String... strings) {
             try {
-                result = client.prepareSearch("products", strings[0]).execute().body().string();
+                result = client.prepareSearch(clientType, strings[0]).execute().body().string();
             } catch (IOException e) {
                 e.printStackTrace();
                 result = e.toString();
