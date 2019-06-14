@@ -1091,7 +1091,6 @@ public class SearchBar extends RelativeLayout implements View.OnClickListener,
      * @param appName Name of the app (aka search index)
      * @param username Username for basic auth (String before ':' in credentials string)
      * @param password Password for given username (String after ':' in credentials string)
-     * @return
      */
     public void setAppbaseClient(String url, String appName, String username, String password) {
         this.client = new AppbaseClient(url, appName, username, password);
@@ -1099,15 +1098,29 @@ public class SearchBar extends RelativeLayout implements View.OnClickListener,
     }
 
     /**
-     * Gives response for the request query using Appbase client
+     * Gives response for the requested query using Appbase client
      * @param type Type to be queried
      * @param query JSON structured body
-     * @return
+     * @return Response received for the requested query
      * @throws IOException
      */
     public String search(String type, String query) throws IOException {
         if(isAppbaseClientSet) {
             return client.prepareSearch(type, query).execute().body().string();
+        } else {
+            return "Please set Appbase client";
+        }
+    }
+
+    /**
+     * Gives response for the requested query using Appbase client - default type
+     * @param query JSON structured body
+     * @return Response received for the requested query
+     * @throws IOException
+     */
+    public String search(String query) throws IOException {
+        if(isAppbaseClientSet) {
+            return client.prepareSearch("_type", query).execute().body().string();
         } else {
             return "Please set Appbase client";
         }
