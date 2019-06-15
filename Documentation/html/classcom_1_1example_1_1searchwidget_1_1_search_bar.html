@@ -9,6 +9,14 @@
 <link href="tabs.css" rel="stylesheet" type="text/css"/>
 <script type="text/javascript" src="jquery.js"></script>
 <script type="text/javascript" src="dynsections.js"></script>
+<link href="navtree.css" rel="stylesheet" type="text/css"/>
+<script type="text/javascript" src="resize.js"></script>
+<script type="text/javascript" src="navtreedata.js"></script>
+<script type="text/javascript" src="navtree.js"></script>
+<script type="text/javascript">
+/* @license magnet:?xt=urn:btih:cf05388f2679ee054f2beb29a391d25f4e673ac3&amp;dn=gpl-2.0.txt GPL-v2 */
+  $(document).ready(initResizable);
+/* @license-end */</script>
 <link href="search/search.css" rel="stylesheet" type="text/css"/>
 <script type="text/javascript" src="search/searchdata.js"></script>
 <script type="text/javascript" src="search/search.js"></script>
@@ -46,6 +54,23 @@ $(function() {
 });
 /* @license-end */</script>
 <div id="main-nav"></div>
+</div><!-- top -->
+<div id="side-nav" class="ui-resizable side-nav-resizable">
+  <div id="nav-tree">
+    <div id="nav-tree-contents">
+      <div id="nav-sync" class="sync"></div>
+    </div>
+  </div>
+  <div id="splitbar" style="-moz-user-select:none;" 
+       class="ui-resizable-handle">
+  </div>
+</div>
+<script type="text/javascript">
+/* @license magnet:?xt=urn:btih:cf05388f2679ee054f2beb29a391d25f4e673ac3&amp;dn=gpl-2.0.txt GPL-v2 */
+$(document).ready(function(){initNavTree('classcom_1_1example_1_1searchwidget_1_1_search_bar.html','');});
+/* @license-end */
+</script>
+<div id="doc-content">
 <!-- window showing the filter options -->
 <div id="MSearchSelectWindow"
      onmouseover="return searchBox.OnSearchSelectShow()"
@@ -60,11 +85,6 @@ $(function() {
 </iframe>
 </div>
 
-<div id="nav-path" class="navpath">
-  <ul>
-<li class="navelem"><b>com</b></li><li class="navelem"><b>example</b></li><li class="navelem"><b>searchwidget</b></li><li class="navelem"><a class="el" href="classcom_1_1example_1_1searchwidget_1_1_search_bar.html">SearchBar</a></li>  </ul>
-</div>
-</div><!-- top -->
 <div class="header">
   <div class="summary">
 <a href="#nested-classes">Classes</a> &#124;
@@ -76,8 +96,15 @@ $(function() {
 <div class="title">com.example.searchwidget.SearchBar Class Reference</div>  </div>
 </div><!--header-->
 <div class="contents">
-
-<p>Inherits RelativeLayout, OnClickListener, AnimationListener, <a class="el" href="interfacecom_1_1example_1_1searchwidget_1_1adapter_1_1_suggestions_adapter_1_1_on_item_view_click_listener.html">com.example.searchwidget.adapter.SuggestionsAdapter&lt; S, V extends RecyclerView.ViewHolder &gt;.OnItemViewClickListener</a>, OnFocusChangeListener, and OnEditorActionListener.</p>
+<div class="dynheader">
+Inheritance diagram for com.example.searchwidget.SearchBar:</div>
+<div class="dyncontent">
+ <div class="center">
+  <img src="classcom_1_1example_1_1searchwidget_1_1_search_bar.png" usemap="#com.example.searchwidget.SearchBar_map" alt=""/>
+  <map id="com.example.searchwidget.SearchBar_map" name="com.example.searchwidget.SearchBar_map">
+<area href="interfacecom_1_1example_1_1searchwidget_1_1adapter_1_1_suggestions_adapter_1_1_on_item_view_click_listener.html" alt="com.example.searchwidget.adapter.SuggestionsAdapter&lt; S, V extends RecyclerView.ViewHolder &gt;.OnItemViewClickListener" shape="rect" coords="2202,0,2926,24"/>
+  </map>
+</div></div>
 <table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="nested-classes"></a>
 Classes</h2></td></tr>
@@ -237,6 +264,8 @@ boolean&#160;</td><td class="memItemRight" valign="bottom"><b>dispatchKeyEvent</
 <tr class="separator:a4adb569b19b3f944775531927ab378cf"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a4e9189e7948cfa925689c3aea179b3a5"><td class="memItemLeft" align="right" valign="top">String&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classcom_1_1example_1_1searchwidget_1_1_search_bar.html#a4e9189e7948cfa925689c3aea179b3a5">getRequestedQuery</a> ()</td></tr>
 <tr class="separator:a4e9189e7948cfa925689c3aea179b3a5"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ad7ebfb25a69de44d845b39a130edcbed"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classcom_1_1example_1_1searchwidget_1_1_search_bar.html#ad7ebfb25a69de44d845b39a130edcbed">setLoggingQuery</a> (boolean state)</td></tr>
+<tr class="separator:ad7ebfb25a69de44d845b39a130edcbed"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:afe1c0fa7bdb6574a8c22229de073fa2f"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classcom_1_1example_1_1searchwidget_1_1_search_bar.html#afe1c0fa7bdb6574a8c22229de073fa2f">setOnTextChangeListner</a> (<a class="el" href="interfacecom_1_1example_1_1searchwidget_1_1_search_bar_1_1_text_change_listener.html">TextChangeListener</a> textChangeListener)</td></tr>
 <tr class="separator:afe1c0fa7bdb6574a8c22229de073fa2f"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a8cdd994a66ea763883b6d3ed89d2d299"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classcom_1_1example_1_1searchwidget_1_1_search_bar.html#a8cdd994a66ea763883b6d3ed89d2d299">startSearch</a> ()</td></tr>
@@ -931,6 +960,30 @@ void&#160;</td><td class="memItemRight" valign="bottom"><b>onRestoreInstanceStat
 
 </div>
 </div>
+<a id="ad7ebfb25a69de44d845b39a130edcbed"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#ad7ebfb25a69de44d845b39a130edcbed">&#9670;&nbsp;</a></span>setLoggingQuery()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">void com.example.searchwidget.SearchBar.setLoggingQuery </td>
+          <td>(</td>
+          <td class="paramtype">boolean&#160;</td>
+          <td class="paramname"><em>state</em></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+<p>Sets the value of parameter used for checking whether to log requested query for debugging </p><dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">state</td><td>Boolean state of the logging parameter </td></tr>
+  </table>
+  </dd>
+</dl>
+
+</div>
+</div>
 <a id="a0f4236bdaf89946d9bdc0eb982cb7cce"></a>
 <h2 class="memtitle"><span class="permalink"><a href="#a0f4236bdaf89946d9bdc0eb982cb7cce">&#9670;&nbsp;</a></span>setMaxSuggestionCount()</h2>
 
@@ -1487,11 +1540,15 @@ void&#160;</td><td class="memItemRight" valign="bottom"><b>onRestoreInstanceStat
 <li>/Users/harshpatel/Desktop/Appbase/SearchWidgetDemo/searchwidget/src/main/java/com/example/searchwidget/SearchBar.java</li>
 </ul>
 </div><!-- contents -->
+</div><!-- doc-content -->
 <!-- start footer part -->
-<hr class="footer"/><address class="footer"><small>
-Generated by &#160;<a href="http://www.doxygen.org/index.html">
-<img class="footer" src="doxygen.png" alt="doxygen"/>
-</a> 1.8.15
-</small></address>
+<div id="nav-path" class="navpath"><!-- id is needed for treeview function! -->
+  <ul>
+    <li class="navelem"><b>com</b></li><li class="navelem"><b>example</b></li><li class="navelem"><b>searchwidget</b></li><li class="navelem"><a class="el" href="classcom_1_1example_1_1searchwidget_1_1_search_bar.html">SearchBar</a></li>
+    <li class="footer">Generated by
+    <a href="http://www.doxygen.org/index.html">
+    <img class="footer" src="doxygen.png" alt="doxygen"/></a> 1.8.15 </li>
+  </ul>
+</div>
 </body>
 </html>

@@ -1,0 +1,5 @@
+var interfacecom_1_1example_1_1searchwidget_1_1adapter_1_1_default_suggestions_adapter_1_1_on_item_view_click_listener =
+[
+    [ "OnItemClickListener", "interfacecom_1_1example_1_1searchwidget_1_1adapter_1_1_default_suggestions_adapter_1_1_on_item_view_click_listener.html#a2bda06ac8344c754954b2fa6f6c08469", null ],
+    [ "OnItemDeleteListener", "interfacecom_1_1example_1_1searchwidget_1_1adapter_1_1_default_suggestions_adapter_1_1_on_item_view_click_listener.html#a4c3dd27b260e7f4aa7d048e09698fa58", null ]
+];

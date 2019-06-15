@@ -14,6 +14,7 @@ var searchData=
   ['sethint',['setHint',['../classcom_1_1example_1_1searchwidget_1_1_search_bar.html#a0f7d73658027bd472ea96b299249f48b',1,'com::example::searchwidget::SearchBar']]],
   ['seticonripplestyle',['setIconRippleStyle',['../classcom_1_1example_1_1searchwidget_1_1_search_bar.html#a2b5871caacebd12411dbc3bdf3d7c5a1',1,'com::example::searchwidget::SearchBar']]],
   ['setlastsuggestions',['setLastSuggestions',['../classcom_1_1example_1_1searchwidget_1_1_search_bar.html#a36b0bcb2dd221d8cba1b64955a51b597',1,'com::example::searchwidget::SearchBar']]],
+  ['setloggingquery',['setLoggingQuery',['../classcom_1_1example_1_1searchwidget_1_1_search_bar.html#ad7ebfb25a69de44d845b39a130edcbed',1,'com::example::searchwidget::SearchBar']]],
   ['setmaxsuggestioncount',['setMaxSuggestionCount',['../classcom_1_1example_1_1searchwidget_1_1_search_bar.html#a0f4236bdaf89946d9bdc0eb982cb7cce',1,'com::example::searchwidget::SearchBar']]],
   ['setmenuicon',['setMenuIcon',['../classcom_1_1example_1_1searchwidget_1_1_search_bar.html#a06e0a90b2e6483038bb3d28a92a1a05c',1,'com::example::searchwidget::SearchBar']]],
   ['setmenuicontint',['setMenuIconTint',['../classcom_1_1example_1_1searchwidget_1_1_search_bar.html#a14d304a30b0065246ea3319c730f2e5c',1,'com::example::searchwidget::SearchBar']]],

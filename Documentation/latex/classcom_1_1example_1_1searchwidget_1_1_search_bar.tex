@@ -1,9 +1,11 @@
 \hypertarget{classcom_1_1example_1_1searchwidget_1_1_search_bar}{}\section{com.\+example.\+searchwidget.\+Search\+Bar Class Reference}
 \label{classcom_1_1example_1_1searchwidget_1_1_search_bar}\index{com.example.searchwidget.SearchBar@{com.example.searchwidget.SearchBar}}
-
-
-Inherits Relative\+Layout, On\+Click\+Listener, Animation\+Listener, \mbox{\hyperlink{interfacecom_1_1example_1_1searchwidget_1_1adapter_1_1_suggestions_adapter_1_1_on_item_view_click_listener}{com.\+example.\+searchwidget.\+adapter.\+Suggestions\+Adapter$<$ S, V extends Recycler\+View.\+View\+Holder $>$.\+On\+Item\+View\+Click\+Listener}}, On\+Focus\+Change\+Listener, and On\+Editor\+Action\+Listener.
-
+Inheritance diagram for com.\+example.\+searchwidget.\+Search\+Bar\+:\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[height=0.255009cm]{classcom_1_1example_1_1searchwidget_1_1_search_bar}
+\end{center}
+\end{figure}
 \subsection*{Classes}
 \begin{DoxyCompactItemize}
 \item 
@@ -162,6 +164,8 @@ String \mbox{\hyperlink{classcom_1_1example_1_1searchwidget_1_1_search_bar_a3ccf
 \mbox{\hyperlink{classcom_1_1example_1_1searchwidget_1_1_builder_1_1_search_prop}{Search\+Prop}} \mbox{\hyperlink{classcom_1_1example_1_1searchwidget_1_1_search_bar_a4adb569b19b3f944775531927ab378cf}{set\+Search\+Prop}} (String component\+Id, Array\+List$<$ String $>$ data\+Fields)
 \item 
 String \mbox{\hyperlink{classcom_1_1example_1_1searchwidget_1_1_search_bar_a4e9189e7948cfa925689c3aea179b3a5}{get\+Requested\+Query}} ()
+\item 
+void \mbox{\hyperlink{classcom_1_1example_1_1searchwidget_1_1_search_bar_ad7ebfb25a69de44d845b39a130edcbed}{set\+Logging\+Query}} (boolean state)
 \item 
 void \mbox{\hyperlink{classcom_1_1example_1_1searchwidget_1_1_search_bar_afe1c0fa7bdb6574a8c22229de073fa2f}{set\+On\+Text\+Change\+Listner}} (\mbox{\hyperlink{interfacecom_1_1example_1_1searchwidget_1_1_search_bar_1_1_text_change_listener}{Text\+Change\+Listener}} text\+Change\+Listener)
 \item 
@@ -530,6 +534,17 @@ Sets the array of recent search queries. It is advisable to save the queries whe
 
 \mbox{\hyperlink{classcom_1_1example_1_1searchwidget_1_1_search_bar_a0f4236bdaf89946d9bdc0eb982cb7cce}{set\+Max\+Suggestion\+Count(int)}} 
 \end{DoxySeeAlso}
+\mbox{\Hypertarget{classcom_1_1example_1_1searchwidget_1_1_search_bar_ad7ebfb25a69de44d845b39a130edcbed}\label{classcom_1_1example_1_1searchwidget_1_1_search_bar_ad7ebfb25a69de44d845b39a130edcbed}} 
+\index{com.example.searchwidget.SearchBar@{com.example.searchwidget.SearchBar}!setLoggingQuery@{setLoggingQuery}}
+\index{setLoggingQuery@{setLoggingQuery}!com.example.searchwidget.SearchBar@{com.example.searchwidget.SearchBar}}
+\subsubsection{\texorpdfstring{setLoggingQuery()}{setLoggingQuery()}}
+{\footnotesize\ttfamily void com.\+example.\+searchwidget.\+Search\+Bar.\+set\+Logging\+Query (\begin{DoxyParamCaption}\item[{boolean}]{state }\end{DoxyParamCaption})}
+
+Sets the value of parameter used for checking whether to log requested query for debugging 
+\begin{DoxyParams}{Parameters}
+{\em state} & Boolean state of the logging parameter \\
+\hline
+\end{DoxyParams}
 \mbox{\Hypertarget{classcom_1_1example_1_1searchwidget_1_1_search_bar_a0f4236bdaf89946d9bdc0eb982cb7cce}\label{classcom_1_1example_1_1searchwidget_1_1_search_bar_a0f4236bdaf89946d9bdc0eb982cb7cce}} 
 \index{com.example.searchwidget.SearchBar@{com.example.searchwidget.SearchBar}!setMaxSuggestionCount@{setMaxSuggestionCount}}
 \index{setMaxSuggestionCount@{setMaxSuggestionCount}!com.example.searchwidget.SearchBar@{com.example.searchwidget.SearchBar}}
