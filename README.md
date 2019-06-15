@@ -181,6 +181,6 @@ public class MainActivity extends AppCompatActivity {
 
 ### Documentation
 
-* [Clone/Download](https://github.com/harsh-2711/appbase-search-widget.git) the project
+* [Clone](https://github.com/harsh-2711/appbase-search-widget.git)/[Download](https://github.com/harsh-2711/appbase-search-widget/archive/master.zip) the project
 
 * Go to appbase-search-widget -> Documentation -> html -> index.html
