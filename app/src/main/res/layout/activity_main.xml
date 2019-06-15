@@ -9,6 +9,9 @@
     <com.example.searchwidget.SearchBar
         android:id="@+id/searchBar"
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"/>
+        android:layout_height="wrap_content"
+        app:maxSuggestionsCount="10"
+        app:hint="Search Books"
+        app:placeholder="Search" />
 
 </LinearLayout>

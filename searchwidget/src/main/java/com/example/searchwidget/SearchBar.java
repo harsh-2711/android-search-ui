@@ -126,6 +126,8 @@ public class SearchBar extends RelativeLayout implements View.OnClickListener,
 
     private TextChangeListener textChangeListener;
 
+    private boolean shouldLogQuery = false;
+
     public SearchBar(Context context, AttributeSet attributeSet) {
         super(context, attributeSet);
         init(attributeSet);
@@ -1253,6 +1255,14 @@ public class SearchBar extends RelativeLayout implements View.OnClickListener,
     }
 
     /**
+     * Sets the value of parameter used for checking whether to log requested query for debugging
+     * @param state Boolean state of the logging parameter
+     */
+    public void setLoggingQuery(boolean state) {
+        this.shouldLogQuery = state;
+    }
+
+    /**
      * Registers listener for text change callbacks
      * @param textChangeListener Text change callbacks
      */
@@ -1320,7 +1330,9 @@ public class SearchBar extends RelativeLayout implements View.OnClickListener,
                 if(isPropSet && isAppbaseClientSet && textChangeListenerExists()) {
                     searchPropDefault.setDefaultValue(String.valueOf(s));
                     StartSearching startSearching = new StartSearching();
-                    startSearching.execute(getDefaultQuery(searchPropDefault));
+                    startSearching.execute(getRequestedQuery());
+                    if(shouldLogQuery)
+                        Log.d("QUERY", getRequestedQuery());
                 } else {
                     Log.e("Error", "Please check if Appbase client, Search props and Text change listeners are set properly");
                 }
