@@ -1,0 +1,818 @@
+\hypertarget{classcom_1_1example_1_1searchwidget_1_1_search_bar}{}\section{com.\+example.\+searchwidget.\+Search\+Bar Class Reference}
+\label{classcom_1_1example_1_1searchwidget_1_1_search_bar}\index{com.example.searchwidget.SearchBar@{com.example.searchwidget.SearchBar}}
+
+
+Inherits Relative\+Layout, On\+Click\+Listener, Animation\+Listener, \mbox{\hyperlink{interfacecom_1_1example_1_1searchwidget_1_1adapter_1_1_suggestions_adapter_1_1_on_item_view_click_listener}{com.\+example.\+searchwidget.\+adapter.\+Suggestions\+Adapter$<$ S, V extends Recycler\+View.\+View\+Holder $>$.\+On\+Item\+View\+Click\+Listener}}, On\+Focus\+Change\+Listener, and On\+Editor\+Action\+Listener.
+
+\subsection*{Classes}
+\begin{DoxyCompactItemize}
+\item 
+interface \mbox{\hyperlink{interfacecom_1_1example_1_1searchwidget_1_1_search_bar_1_1_on_search_action_listener}{On\+Search\+Action\+Listener}}
+\item 
+interface \mbox{\hyperlink{interfacecom_1_1example_1_1searchwidget_1_1_search_bar_1_1_text_change_listener}{Text\+Change\+Listener}}
+\end{DoxyCompactItemize}
+\subsection*{Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\Hypertarget{classcom_1_1example_1_1searchwidget_1_1_search_bar_abe1b4f1eae5f17d0ead6e93fb0981f9e}\label{classcom_1_1example_1_1searchwidget_1_1_search_bar_abe1b4f1eae5f17d0ead6e93fb0981f9e}} 
+{\bfseries Search\+Bar} (Context context, Attribute\+Set attribute\+Set)
+\item 
+\mbox{\Hypertarget{classcom_1_1example_1_1searchwidget_1_1_search_bar_a8fc1b79e76688bcf3a85d48576ef12b7}\label{classcom_1_1example_1_1searchwidget_1_1_search_bar_a8fc1b79e76688bcf3a85d48576ef12b7}} 
+{\bfseries Search\+Bar} (Context context, Attribute\+Set attribute\+Set, int def\+Style\+Attr)
+\item 
+\mbox{\Hypertarget{classcom_1_1example_1_1searchwidget_1_1_search_bar_a5da4deb66d6fbb4441e3d27bd82da15d}\label{classcom_1_1example_1_1searchwidget_1_1_search_bar_a5da4deb66d6fbb4441e3d27bd82da15d}} 
+{\bfseries Search\+Bar} (Context context, Attribute\+Set attribute\+Set, int def\+Style\+Attr, int def\+Style\+Res)
+\item 
+void \mbox{\hyperlink{classcom_1_1example_1_1searchwidget_1_1_search_bar_a3b4bfd362b0867b487bb2cc354232e3e}{inflate\+Menu}} (int menu\+Resource)
+\item 
+void \mbox{\hyperlink{classcom_1_1example_1_1searchwidget_1_1_search_bar_a71f7fc6ed5b0797b263734590ef49a16}{inflate\+Menu}} (int menu\+Resource, int icon)
+\item 
+Popup\+Menu \mbox{\hyperlink{classcom_1_1example_1_1searchwidget_1_1_search_bar_af3e813af6c49f88e24d593dfa41037be}{get\+Menu}} ()
+\item 
+void \mbox{\hyperlink{classcom_1_1example_1_1searchwidget_1_1_search_bar_a065921f97e1f2d1d3c496a5670482f28}{set\+On\+Search\+Action\+Listener}} (\mbox{\hyperlink{interfacecom_1_1example_1_1searchwidget_1_1_search_bar_1_1_on_search_action_listener}{On\+Search\+Action\+Listener}} on\+Search\+Action\+Listener)
+\item 
+void \mbox{\hyperlink{classcom_1_1example_1_1searchwidget_1_1_search_bar_a3327b14ae63c960269fa8b3ac7dadfd8}{disable\+Search}} ()
+\item 
+void \mbox{\hyperlink{classcom_1_1example_1_1searchwidget_1_1_search_bar_a039b132a7be1dda56d6020b07017b277}{enable\+Search}} ()
+\item 
+\mbox{\Hypertarget{classcom_1_1example_1_1searchwidget_1_1_search_bar_a050d0db47fa9e7291ab21504221568a1}\label{classcom_1_1example_1_1searchwidget_1_1_search_bar_a050d0db47fa9e7291ab21504221568a1}} 
+void {\bfseries show\+Suggestions\+List} ()
+\item 
+\mbox{\Hypertarget{classcom_1_1example_1_1searchwidget_1_1_search_bar_a01ec47e108f94db7991ea3e7e3e0ab4d}\label{classcom_1_1example_1_1searchwidget_1_1_search_bar_a01ec47e108f94db7991ea3e7e3e0ab4d}} 
+void {\bfseries hide\+Suggestions\+List} ()
+\item 
+\mbox{\Hypertarget{classcom_1_1example_1_1searchwidget_1_1_search_bar_a0df6d7493a354659852a45778500c96e}\label{classcom_1_1example_1_1searchwidget_1_1_search_bar_a0df6d7493a354659852a45778500c96e}} 
+void {\bfseries clear\+Suggestions} ()
+\item 
+boolean \mbox{\hyperlink{classcom_1_1example_1_1searchwidget_1_1_search_bar_aab6325bdf7997340d11ba29cbca66a34}{is\+Suggestions\+Visible}} ()
+\item 
+boolean \mbox{\hyperlink{classcom_1_1example_1_1searchwidget_1_1_search_bar_afc87e89a8864899a626d2dcafb5db5b2}{is\+Suggestions\+Enabled}} ()
+\item 
+void \mbox{\hyperlink{classcom_1_1example_1_1searchwidget_1_1_search_bar_af24e5b6d3487e7ac76d615e5260a0054}{set\+Suggestions\+Enabled}} (boolean suggestions\+Enabled)
+\item 
+void \mbox{\hyperlink{classcom_1_1example_1_1searchwidget_1_1_search_bar_a06e0a90b2e6483038bb3d28a92a1a05c}{set\+Menu\+Icon}} (int menu\+Icon\+Res\+Id)
+\item 
+void \mbox{\hyperlink{classcom_1_1example_1_1searchwidget_1_1_search_bar_a3f9335e4481de2b5db38735df6b19753}{set\+Search\+Icon}} (int search\+Icon\+Res\+Id)
+\item 
+void \mbox{\hyperlink{classcom_1_1example_1_1searchwidget_1_1_search_bar_a38c90dccdf3d37fb78613230997e91a8}{set\+Arrow\+Icon}} (int arrow\+Icon\+Res\+Id)
+\item 
+void \mbox{\hyperlink{classcom_1_1example_1_1searchwidget_1_1_search_bar_a26dd3ac06416bc0d666d2ce792656c05}{set\+Clear\+Icon}} (int clear\+Icon\+Res\+Id)
+\item 
+void \mbox{\hyperlink{classcom_1_1example_1_1searchwidget_1_1_search_bar_a9bfe579751743d32b1008418c6787142}{set\+Nav\+Icon\+Tint}} (int nav\+Icon\+Tint)
+\item 
+void \mbox{\hyperlink{classcom_1_1example_1_1searchwidget_1_1_search_bar_a14d304a30b0065246ea3319c730f2e5c}{set\+Menu\+Icon\+Tint}} (int menu\+Icon\+Tint)
+\item 
+void \mbox{\hyperlink{classcom_1_1example_1_1searchwidget_1_1_search_bar_adca3a2ec79965621b5d77a52ecc68c5b}{set\+Search\+Icon\+Tint}} (int search\+Icon\+Tint)
+\item 
+void \mbox{\hyperlink{classcom_1_1example_1_1searchwidget_1_1_search_bar_aaf5917642f41df0d4836a7ebe1f5205b}{set\+Arrow\+Icon\+Tint}} (int arrow\+Icon\+Tint)
+\item 
+void \mbox{\hyperlink{classcom_1_1example_1_1searchwidget_1_1_search_bar_aed6f9a5ee6a225ee697304e6a3ed5d5d}{set\+Clear\+Icon\+Tint}} (int clear\+Icon\+Tint)
+\item 
+void \mbox{\hyperlink{classcom_1_1example_1_1searchwidget_1_1_search_bar_a2b5871caacebd12411dbc3bdf3d7c5a1}{set\+Icon\+Ripple\+Style}} (boolean borderless\+Ripple\+Enabled)
+\item 
+void \mbox{\hyperlink{classcom_1_1example_1_1searchwidget_1_1_search_bar_a0f7d73658027bd472ea96b299249f48b}{set\+Hint}} (Char\+Sequence hint\+Text)
+\item 
+void \mbox{\hyperlink{classcom_1_1example_1_1searchwidget_1_1_search_bar_a27d40730d4d6a78b9ee89a8c33120d13}{set\+Place\+Holder\+Text}} (Char\+Sequence place\+Holder\+Text)
+\item 
+Char\+Sequence \mbox{\hyperlink{classcom_1_1example_1_1searchwidget_1_1_search_bar_a97ca29bf8c1fe951bec0dee054187108}{get\+Place\+Holder\+Text}} ()
+\item 
+\mbox{\Hypertarget{classcom_1_1example_1_1searchwidget_1_1_search_bar_a0da1cdfc1b6d647721c7f0daa34c7bd7}\label{classcom_1_1example_1_1searchwidget_1_1_search_bar_a0da1cdfc1b6d647721c7f0daa34c7bd7}} 
+void {\bfseries set\+Menu\+Divider\+Enabled} (boolean menu\+Divider\+Enabled)
+\item 
+void \mbox{\hyperlink{classcom_1_1example_1_1searchwidget_1_1_search_bar_abcb40436e4d424c4f5ac721d5f507412}{set\+Speech\+Mode}} (boolean speech\+Mode)
+\item 
+boolean \mbox{\hyperlink{classcom_1_1example_1_1searchwidget_1_1_search_bar_a1bf37ff1703370a852d5573dfffe5daf}{is\+Speech\+Mode\+Enabled}} ()
+\item 
+boolean \mbox{\hyperlink{classcom_1_1example_1_1searchwidget_1_1_search_bar_a101525ef181280109b31396c3175c91c}{is\+Search\+Enabled}} ()
+\item 
+void \mbox{\hyperlink{classcom_1_1example_1_1searchwidget_1_1_search_bar_a0f4236bdaf89946d9bdc0eb982cb7cce}{set\+Max\+Suggestion\+Count}} (int max\+Suggestions\+Count)
+\item 
+void \mbox{\hyperlink{classcom_1_1example_1_1searchwidget_1_1_search_bar_ac3d6b348b32c8129fca764c3cfe9b810}{set\+Custom\+Suggestion\+Adapter}} (\mbox{\hyperlink{classcom_1_1example_1_1searchwidget_1_1adapter_1_1_suggestions_adapter}{Suggestions\+Adapter}} suggestion\+Adapter)
+\item 
+List \mbox{\hyperlink{classcom_1_1example_1_1searchwidget_1_1_search_bar_a29fff6f8fe5011b1854e4fd4a55ea65f}{get\+Last\+Suggestions}} ()
+\item 
+void \mbox{\hyperlink{classcom_1_1example_1_1searchwidget_1_1_search_bar_a36b0bcb2dd221d8cba1b64955a51b597}{set\+Last\+Suggestions}} (List suggestions)
+\item 
+void \mbox{\hyperlink{classcom_1_1example_1_1searchwidget_1_1_search_bar_af6c85628bb5df58074e37d47193bc3f0}{update\+Last\+Suggestions}} (List suggestions)
+\item 
+void \mbox{\hyperlink{classcom_1_1example_1_1searchwidget_1_1_search_bar_a2c7e29edef133c2885ed261f14dcd329}{set\+Suggestions\+Click\+Listener}} (Suggestions\+Adapter.\+On\+Item\+View\+Click\+Listener listener)
+\item 
+void \mbox{\hyperlink{classcom_1_1example_1_1searchwidget_1_1_search_bar_ac6711d0557a28b29ac41b0ed4e489e02}{set\+Text\+Color}} (int text\+Color)
+\item 
+void \mbox{\hyperlink{classcom_1_1example_1_1searchwidget_1_1_search_bar_a70b21b5c03c532cb74f64e16c992f95d}{set\+Text\+Hint\+Color}} (int hint\+Color)
+\item 
+void \mbox{\hyperlink{classcom_1_1example_1_1searchwidget_1_1_search_bar_aa27cf7d4a9e11d4b452a7be85c15e9e6}{set\+Place\+Holder\+Color}} (int placeholder\+Color)
+\item 
+void \mbox{\hyperlink{classcom_1_1example_1_1searchwidget_1_1_search_bar_a538551052205575951500130dc5ed591}{set\+Text\+Highlight\+Color}} (int highlighted\+Text\+Color)
+\item 
+\mbox{\Hypertarget{classcom_1_1example_1_1searchwidget_1_1_search_bar_a7bc0782abebd55d66cf53dc26491aefb}\label{classcom_1_1example_1_1searchwidget_1_1_search_bar_a7bc0782abebd55d66cf53dc26491aefb}} 
+void {\bfseries set\+Divider\+Color} (int divider\+Color)
+\item 
+void \mbox{\hyperlink{classcom_1_1example_1_1searchwidget_1_1_search_bar_a4ad3a854a853a3f990f493b053ba8297}{set\+Nav\+Button\+Enabled}} (boolean nav\+Button\+Enabled)
+\item 
+void \mbox{\hyperlink{classcom_1_1example_1_1searchwidget_1_1_search_bar_af2188426a0fd543d09dfcc0042c9cee9}{set\+Rounded\+Search\+Bar\+Enabled}} (boolean rounded\+Search\+Bar\+Enabled)
+\item 
+void \mbox{\hyperlink{classcom_1_1example_1_1searchwidget_1_1_search_bar_af60f6509efc9ca6466b54e46bd3a5709}{set\+Card\+View\+Elevation}} (int elevation)
+\item 
+String \mbox{\hyperlink{classcom_1_1example_1_1searchwidget_1_1_search_bar_a91a9c3d2ffd4729c083325d8e2ce952d}{get\+Text}} ()
+\item 
+void \mbox{\hyperlink{classcom_1_1example_1_1searchwidget_1_1_search_bar_a63dbff92b8fbbdb0fbe556055a99978d}{set\+Text}} (String text)
+\item 
+void \mbox{\hyperlink{classcom_1_1example_1_1searchwidget_1_1_search_bar_ab80fd82e7e87b0473480f3b30c56ce45}{add\+Text\+Change\+Listener}} (Text\+Watcher text\+Watcher)
+\item 
+\mbox{\Hypertarget{classcom_1_1example_1_1searchwidget_1_1_search_bar_a5ef1085c4bf834bb128db3bcb72365ee}\label{classcom_1_1example_1_1searchwidget_1_1_search_bar_a5ef1085c4bf834bb128db3bcb72365ee}} 
+Edit\+Text {\bfseries get\+Search\+Edit\+Text} ()
+\item 
+\mbox{\Hypertarget{classcom_1_1example_1_1searchwidget_1_1_search_bar_a3f69ccd0cc73d12d3e67eef0e1b5fc89}\label{classcom_1_1example_1_1searchwidget_1_1_search_bar_a3f69ccd0cc73d12d3e67eef0e1b5fc89}} 
+Text\+View {\bfseries get\+Place\+Holder\+View} ()
+\item 
+\mbox{\Hypertarget{classcom_1_1example_1_1searchwidget_1_1_search_bar_a79d95f4c7725b4502bb7bb755785a651}\label{classcom_1_1example_1_1searchwidget_1_1_search_bar_a79d95f4c7725b4502bb7bb755785a651}} 
+void {\bfseries on\+Click} (View v)
+\item 
+\mbox{\Hypertarget{classcom_1_1example_1_1searchwidget_1_1_search_bar_aa4f5e934b260e80db8b8d10fd894e82e}\label{classcom_1_1example_1_1searchwidget_1_1_search_bar_aa4f5e934b260e80db8b8d10fd894e82e}} 
+void {\bfseries on\+Animation\+Start} (Animation animation)
+\item 
+\mbox{\Hypertarget{classcom_1_1example_1_1searchwidget_1_1_search_bar_a99f87d74da1d9b790d08bf826afa7b73}\label{classcom_1_1example_1_1searchwidget_1_1_search_bar_a99f87d74da1d9b790d08bf826afa7b73}} 
+void {\bfseries on\+Animation\+End} (Animation animation)
+\item 
+\mbox{\Hypertarget{classcom_1_1example_1_1searchwidget_1_1_search_bar_a5acb69e1e64b9a72477e4008929d826e}\label{classcom_1_1example_1_1searchwidget_1_1_search_bar_a5acb69e1e64b9a72477e4008929d826e}} 
+void {\bfseries on\+Animation\+Repeat} (Animation animation)
+\item 
+\mbox{\Hypertarget{classcom_1_1example_1_1searchwidget_1_1_search_bar_ad46a0151eb2a77593ff91118228eefdc}\label{classcom_1_1example_1_1searchwidget_1_1_search_bar_ad46a0151eb2a77593ff91118228eefdc}} 
+void {\bfseries on\+Focus\+Change} (View v, boolean has\+Focus)
+\item 
+\mbox{\Hypertarget{classcom_1_1example_1_1searchwidget_1_1_search_bar_a2475a3f619ffe2b0d010e4c14a0a1025}\label{classcom_1_1example_1_1searchwidget_1_1_search_bar_a2475a3f619ffe2b0d010e4c14a0a1025}} 
+boolean {\bfseries on\+Editor\+Action} (Text\+View v, int action\+Id, Key\+Event event)
+\item 
+\mbox{\Hypertarget{classcom_1_1example_1_1searchwidget_1_1_search_bar_a8ed52376e01a1777559c5dc1f5d3a695}\label{classcom_1_1example_1_1searchwidget_1_1_search_bar_a8ed52376e01a1777559c5dc1f5d3a695}} 
+void {\bfseries On\+Item\+Click\+Listener} (int position, View v)
+\item 
+\mbox{\Hypertarget{classcom_1_1example_1_1searchwidget_1_1_search_bar_aa5cf65345d66fd669f0af9de500005cc}\label{classcom_1_1example_1_1searchwidget_1_1_search_bar_aa5cf65345d66fd669f0af9de500005cc}} 
+void {\bfseries On\+Item\+Delete\+Listener} (int position, View v)
+\item 
+\mbox{\Hypertarget{classcom_1_1example_1_1searchwidget_1_1_search_bar_aee224a53845c6480afcf0589aabbf2e8}\label{classcom_1_1example_1_1searchwidget_1_1_search_bar_aee224a53845c6480afcf0589aabbf2e8}} 
+boolean {\bfseries dispatch\+Key\+Event} (Key\+Event event)
+\item 
+void \mbox{\hyperlink{classcom_1_1example_1_1searchwidget_1_1_search_bar_aeee8a868bca0435ece56efb35e84602d}{set\+Appbase\+Client}} (String url, String app\+Name, String username, String password, String type)
+\item 
+void \mbox{\hyperlink{classcom_1_1example_1_1searchwidget_1_1_search_bar_a4a4eddac44d1c06f0ac24e31dd653a79}{set\+Appbase\+Client}} (String url, String app\+Name, String username, String password)
+\item 
+String \mbox{\hyperlink{classcom_1_1example_1_1searchwidget_1_1_search_bar_a3ccff2a33e4f3bba007aa04840265b47}{search}} (String query)  throws I\+O\+Exception 
+\item 
+\mbox{\hyperlink{classcom_1_1example_1_1searchwidget_1_1_builder_1_1_search_prop}{Search\+Prop}} \mbox{\hyperlink{classcom_1_1example_1_1searchwidget_1_1_search_bar_a4adb569b19b3f944775531927ab378cf}{set\+Search\+Prop}} (String component\+Id, Array\+List$<$ String $>$ data\+Fields)
+\item 
+String \mbox{\hyperlink{classcom_1_1example_1_1searchwidget_1_1_search_bar_a4e9189e7948cfa925689c3aea179b3a5}{get\+Requested\+Query}} ()
+\item 
+void \mbox{\hyperlink{classcom_1_1example_1_1searchwidget_1_1_search_bar_afe1c0fa7bdb6574a8c22229de073fa2f}{set\+On\+Text\+Change\+Listner}} (\mbox{\hyperlink{interfacecom_1_1example_1_1searchwidget_1_1_search_bar_1_1_text_change_listener}{Text\+Change\+Listener}} text\+Change\+Listener)
+\item 
+void \mbox{\hyperlink{classcom_1_1example_1_1searchwidget_1_1_search_bar_a8cdd994a66ea763883b6d3ed89d2d299}{start\+Search}} ()
+\end{DoxyCompactItemize}
+\subsection*{Static Public Attributes}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\Hypertarget{classcom_1_1example_1_1searchwidget_1_1_search_bar_ae139a32ab2444cb37c5d6b79cae9260a}\label{classcom_1_1example_1_1searchwidget_1_1_search_bar_ae139a32ab2444cb37c5d6b79cae9260a}} 
+static final int {\bfseries B\+U\+T\+T\+O\+N\+\_\+\+S\+P\+E\+E\+CH} = 1
+\item 
+\mbox{\Hypertarget{classcom_1_1example_1_1searchwidget_1_1_search_bar_a211b332dd33cb120cc2fedcb863305db}\label{classcom_1_1example_1_1searchwidget_1_1_search_bar_a211b332dd33cb120cc2fedcb863305db}} 
+static final int {\bfseries B\+U\+T\+T\+O\+N\+\_\+\+N\+A\+V\+I\+G\+A\+T\+I\+ON} = 2
+\item 
+\mbox{\Hypertarget{classcom_1_1example_1_1searchwidget_1_1_search_bar_aa1da6582751136cdfc8e8a70b397ddec}\label{classcom_1_1example_1_1searchwidget_1_1_search_bar_aa1da6582751136cdfc8e8a70b397ddec}} 
+static final int {\bfseries B\+U\+T\+T\+O\+N\+\_\+\+B\+A\+CK} = 3
+\item 
+\mbox{\Hypertarget{classcom_1_1example_1_1searchwidget_1_1_search_bar_a921fb67210beb96c881b3b5c251c44c1}\label{classcom_1_1example_1_1searchwidget_1_1_search_bar_a921fb67210beb96c881b3b5c251c44c1}} 
+static final int {\bfseries V\+I\+E\+W\+\_\+\+V\+I\+S\+I\+B\+LE} = 1
+\item 
+\mbox{\Hypertarget{classcom_1_1example_1_1searchwidget_1_1_search_bar_a9be22df277227d2baaa1ebe3a3addc4c}\label{classcom_1_1example_1_1searchwidget_1_1_search_bar_a9be22df277227d2baaa1ebe3a3addc4c}} 
+static final int {\bfseries V\+I\+E\+W\+\_\+\+I\+N\+V\+I\+S\+I\+B\+LE} = 0
+\end{DoxyCompactItemize}
+\subsection*{Protected Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\Hypertarget{classcom_1_1example_1_1searchwidget_1_1_search_bar_ac12f3725e2896a793e6b726c5bbb8a80}\label{classcom_1_1example_1_1searchwidget_1_1_search_bar_ac12f3725e2896a793e6b726c5bbb8a80}} 
+Parcelable {\bfseries on\+Save\+Instance\+State} ()
+\item 
+\mbox{\Hypertarget{classcom_1_1example_1_1searchwidget_1_1_search_bar_a068a22be59a7fac18f7797c4e499be74}\label{classcom_1_1example_1_1searchwidget_1_1_search_bar_a068a22be59a7fac18f7797c4e499be74}} 
+void {\bfseries on\+Restore\+Instance\+State} (Parcelable state)
+\end{DoxyCompactItemize}
+
+
+\subsection{Member Function Documentation}
+\mbox{\Hypertarget{classcom_1_1example_1_1searchwidget_1_1_search_bar_ab80fd82e7e87b0473480f3b30c56ce45}\label{classcom_1_1example_1_1searchwidget_1_1_search_bar_ab80fd82e7e87b0473480f3b30c56ce45}} 
+\index{com.example.searchwidget.SearchBar@{com.example.searchwidget.SearchBar}!addTextChangeListener@{addTextChangeListener}}
+\index{addTextChangeListener@{addTextChangeListener}!com.example.searchwidget.SearchBar@{com.example.searchwidget.SearchBar}}
+\subsubsection{\texorpdfstring{addTextChangeListener()}{addTextChangeListener()}}
+{\footnotesize\ttfamily void com.\+example.\+searchwidget.\+Search\+Bar.\+add\+Text\+Change\+Listener (\begin{DoxyParamCaption}\item[{Text\+Watcher}]{text\+Watcher }\end{DoxyParamCaption})}
+
+Add text watcher to searchbar\textquotesingle{}s Edit\+Text
+
+
+\begin{DoxyParams}{Parameters}
+{\em text\+Watcher} & text\+Watcher to add \\
+\hline
+\end{DoxyParams}
+\mbox{\Hypertarget{classcom_1_1example_1_1searchwidget_1_1_search_bar_a3327b14ae63c960269fa8b3ac7dadfd8}\label{classcom_1_1example_1_1searchwidget_1_1_search_bar_a3327b14ae63c960269fa8b3ac7dadfd8}} 
+\index{com.example.searchwidget.SearchBar@{com.example.searchwidget.SearchBar}!disableSearch@{disableSearch}}
+\index{disableSearch@{disableSearch}!com.example.searchwidget.SearchBar@{com.example.searchwidget.SearchBar}}
+\subsubsection{\texorpdfstring{disableSearch()}{disableSearch()}}
+{\footnotesize\ttfamily void com.\+example.\+searchwidget.\+Search\+Bar.\+disable\+Search (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
+
+Hides search input and close arrow \mbox{\Hypertarget{classcom_1_1example_1_1searchwidget_1_1_search_bar_a039b132a7be1dda56d6020b07017b277}\label{classcom_1_1example_1_1searchwidget_1_1_search_bar_a039b132a7be1dda56d6020b07017b277}} 
+\index{com.example.searchwidget.SearchBar@{com.example.searchwidget.SearchBar}!enableSearch@{enableSearch}}
+\index{enableSearch@{enableSearch}!com.example.searchwidget.SearchBar@{com.example.searchwidget.SearchBar}}
+\subsubsection{\texorpdfstring{enableSearch()}{enableSearch()}}
+{\footnotesize\ttfamily void com.\+example.\+searchwidget.\+Search\+Bar.\+enable\+Search (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
+
+Shows search input and close arrow \mbox{\Hypertarget{classcom_1_1example_1_1searchwidget_1_1_search_bar_a29fff6f8fe5011b1854e4fd4a55ea65f}\label{classcom_1_1example_1_1searchwidget_1_1_search_bar_a29fff6f8fe5011b1854e4fd4a55ea65f}} 
+\index{com.example.searchwidget.SearchBar@{com.example.searchwidget.SearchBar}!getLastSuggestions@{getLastSuggestions}}
+\index{getLastSuggestions@{getLastSuggestions}!com.example.searchwidget.SearchBar@{com.example.searchwidget.SearchBar}}
+\subsubsection{\texorpdfstring{getLastSuggestions()}{getLastSuggestions()}}
+{\footnotesize\ttfamily List com.\+example.\+searchwidget.\+Search\+Bar.\+get\+Last\+Suggestions (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
+
+Returns the last search queries. The queries are stored only for the duration of one activity session. When the activity is destroyed, the queries will be deleted. To save queries, use the method \mbox{\hyperlink{classcom_1_1example_1_1searchwidget_1_1_search_bar_a29fff6f8fe5011b1854e4fd4a55ea65f}{get\+Last\+Suggestions()}}. To recover the queries use the method \mbox{\hyperlink{classcom_1_1example_1_1searchwidget_1_1_search_bar_a36b0bcb2dd221d8cba1b64955a51b597}{set\+Last\+Suggestions()}}. 
+
+{\bfseries{List$<$ String $>$ will be returned if You don\textquotesingle{}t use custom adapter.}}
+
+\begin{DoxyReturn}{Returns}
+array with the latest search queries 
+\end{DoxyReturn}
+\begin{DoxySeeAlso}{See also}
+\mbox{\hyperlink{classcom_1_1example_1_1searchwidget_1_1_search_bar_a36b0bcb2dd221d8cba1b64955a51b597}{set\+Last\+Suggestions(\+List)}} 
+
+\mbox{\hyperlink{classcom_1_1example_1_1searchwidget_1_1_search_bar_a0f4236bdaf89946d9bdc0eb982cb7cce}{set\+Max\+Suggestion\+Count(int)}} 
+\end{DoxySeeAlso}
+\mbox{\Hypertarget{classcom_1_1example_1_1searchwidget_1_1_search_bar_af3e813af6c49f88e24d593dfa41037be}\label{classcom_1_1example_1_1searchwidget_1_1_search_bar_af3e813af6c49f88e24d593dfa41037be}} 
+\index{com.example.searchwidget.SearchBar@{com.example.searchwidget.SearchBar}!getMenu@{getMenu}}
+\index{getMenu@{getMenu}!com.example.searchwidget.SearchBar@{com.example.searchwidget.SearchBar}}
+\subsubsection{\texorpdfstring{getMenu()}{getMenu()}}
+{\footnotesize\ttfamily Popup\+Menu com.\+example.\+searchwidget.\+Search\+Bar.\+get\+Menu (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
+
+Get popup menu
+
+\begin{DoxyReturn}{Returns}
+Popup\+Menu 
+\end{DoxyReturn}
+\mbox{\Hypertarget{classcom_1_1example_1_1searchwidget_1_1_search_bar_a97ca29bf8c1fe951bec0dee054187108}\label{classcom_1_1example_1_1searchwidget_1_1_search_bar_a97ca29bf8c1fe951bec0dee054187108}} 
+\index{com.example.searchwidget.SearchBar@{com.example.searchwidget.SearchBar}!getPlaceHolderText@{getPlaceHolderText}}
+\index{getPlaceHolderText@{getPlaceHolderText}!com.example.searchwidget.SearchBar@{com.example.searchwidget.SearchBar}}
+\subsubsection{\texorpdfstring{getPlaceHolderText()}{getPlaceHolderText()}}
+{\footnotesize\ttfamily Char\+Sequence com.\+example.\+searchwidget.\+Search\+Bar.\+get\+Place\+Holder\+Text (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
+
+Returns the place holder text
+
+\begin{DoxyReturn}{Returns}
+placeholder text 
+\end{DoxyReturn}
+\mbox{\Hypertarget{classcom_1_1example_1_1searchwidget_1_1_search_bar_a4e9189e7948cfa925689c3aea179b3a5}\label{classcom_1_1example_1_1searchwidget_1_1_search_bar_a4e9189e7948cfa925689c3aea179b3a5}} 
+\index{com.example.searchwidget.SearchBar@{com.example.searchwidget.SearchBar}!getRequestedQuery@{getRequestedQuery}}
+\index{getRequestedQuery@{getRequestedQuery}!com.example.searchwidget.SearchBar@{com.example.searchwidget.SearchBar}}
+\subsubsection{\texorpdfstring{getRequestedQuery()}{getRequestedQuery()}}
+{\footnotesize\ttfamily String com.\+example.\+searchwidget.\+Search\+Bar.\+get\+Requested\+Query (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
+
+The query built using search prop parameters and which can be directly passed into Appbase search client
+
+\begin{DoxyReturn}{Returns}
+Returns the query built by search prop parameters 
+\end{DoxyReturn}
+\mbox{\Hypertarget{classcom_1_1example_1_1searchwidget_1_1_search_bar_a91a9c3d2ffd4729c083325d8e2ce952d}\label{classcom_1_1example_1_1searchwidget_1_1_search_bar_a91a9c3d2ffd4729c083325d8e2ce952d}} 
+\index{com.example.searchwidget.SearchBar@{com.example.searchwidget.SearchBar}!getText@{getText}}
+\index{getText@{getText}!com.example.searchwidget.SearchBar@{com.example.searchwidget.SearchBar}}
+\subsubsection{\texorpdfstring{getText()}{getText()}}
+{\footnotesize\ttfamily String com.\+example.\+searchwidget.\+Search\+Bar.\+get\+Text (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
+
+Get search text
+
+\begin{DoxyReturn}{Returns}
+text 
+\end{DoxyReturn}
+\mbox{\Hypertarget{classcom_1_1example_1_1searchwidget_1_1_search_bar_a3b4bfd362b0867b487bb2cc354232e3e}\label{classcom_1_1example_1_1searchwidget_1_1_search_bar_a3b4bfd362b0867b487bb2cc354232e3e}} 
+\index{com.example.searchwidget.SearchBar@{com.example.searchwidget.SearchBar}!inflateMenu@{inflateMenu}}
+\index{inflateMenu@{inflateMenu}!com.example.searchwidget.SearchBar@{com.example.searchwidget.SearchBar}}
+\subsubsection{\texorpdfstring{inflateMenu()}{inflateMenu()}\hspace{0.1cm}{\footnotesize\ttfamily [1/2]}}
+{\footnotesize\ttfamily void com.\+example.\+searchwidget.\+Search\+Bar.\+inflate\+Menu (\begin{DoxyParamCaption}\item[{int}]{menu\+Resource }\end{DoxyParamCaption})}
+
+Inflate menu for search\+Bar
+
+
+\begin{DoxyParams}{Parameters}
+{\em menu\+Resource} & -\/ menu resource \\
+\hline
+\end{DoxyParams}
+\mbox{\Hypertarget{classcom_1_1example_1_1searchwidget_1_1_search_bar_a71f7fc6ed5b0797b263734590ef49a16}\label{classcom_1_1example_1_1searchwidget_1_1_search_bar_a71f7fc6ed5b0797b263734590ef49a16}} 
+\index{com.example.searchwidget.SearchBar@{com.example.searchwidget.SearchBar}!inflateMenu@{inflateMenu}}
+\index{inflateMenu@{inflateMenu}!com.example.searchwidget.SearchBar@{com.example.searchwidget.SearchBar}}
+\subsubsection{\texorpdfstring{inflateMenu()}{inflateMenu()}\hspace{0.1cm}{\footnotesize\ttfamily [2/2]}}
+{\footnotesize\ttfamily void com.\+example.\+searchwidget.\+Search\+Bar.\+inflate\+Menu (\begin{DoxyParamCaption}\item[{int}]{menu\+Resource,  }\item[{int}]{icon }\end{DoxyParamCaption})}
+
+Inflate menu for search\+Bar with custom Icon
+
+
+\begin{DoxyParams}{Parameters}
+{\em menu\+Resource} & -\/ menu resource \\
+\hline
+{\em icon} & -\/ icon resource id \\
+\hline
+\end{DoxyParams}
+\mbox{\Hypertarget{classcom_1_1example_1_1searchwidget_1_1_search_bar_a101525ef181280109b31396c3175c91c}\label{classcom_1_1example_1_1searchwidget_1_1_search_bar_a101525ef181280109b31396c3175c91c}} 
+\index{com.example.searchwidget.SearchBar@{com.example.searchwidget.SearchBar}!isSearchEnabled@{isSearchEnabled}}
+\index{isSearchEnabled@{isSearchEnabled}!com.example.searchwidget.SearchBar@{com.example.searchwidget.SearchBar}}
+\subsubsection{\texorpdfstring{isSearchEnabled()}{isSearchEnabled()}}
+{\footnotesize\ttfamily boolean com.\+example.\+searchwidget.\+Search\+Bar.\+is\+Search\+Enabled (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
+
+Check if search bar is in edit mode
+
+\begin{DoxyReturn}{Returns}
+true if search bar is in edit mode 
+\end{DoxyReturn}
+\mbox{\Hypertarget{classcom_1_1example_1_1searchwidget_1_1_search_bar_a1bf37ff1703370a852d5573dfffe5daf}\label{classcom_1_1example_1_1searchwidget_1_1_search_bar_a1bf37ff1703370a852d5573dfffe5daf}} 
+\index{com.example.searchwidget.SearchBar@{com.example.searchwidget.SearchBar}!isSpeechModeEnabled@{isSpeechModeEnabled}}
+\index{isSpeechModeEnabled@{isSpeechModeEnabled}!com.example.searchwidget.SearchBar@{com.example.searchwidget.SearchBar}}
+\subsubsection{\texorpdfstring{isSpeechModeEnabled()}{isSpeechModeEnabled()}}
+{\footnotesize\ttfamily boolean com.\+example.\+searchwidget.\+Search\+Bar.\+is\+Speech\+Mode\+Enabled (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
+
+True if Material\+Search\+Bar is in speech mode
+
+\begin{DoxyReturn}{Returns}
+speech mode 
+\end{DoxyReturn}
+\mbox{\Hypertarget{classcom_1_1example_1_1searchwidget_1_1_search_bar_afc87e89a8864899a626d2dcafb5db5b2}\label{classcom_1_1example_1_1searchwidget_1_1_search_bar_afc87e89a8864899a626d2dcafb5db5b2}} 
+\index{com.example.searchwidget.SearchBar@{com.example.searchwidget.SearchBar}!isSuggestionsEnabled@{isSuggestionsEnabled}}
+\index{isSuggestionsEnabled@{isSuggestionsEnabled}!com.example.searchwidget.SearchBar@{com.example.searchwidget.SearchBar}}
+\subsubsection{\texorpdfstring{isSuggestionsEnabled()}{isSuggestionsEnabled()}}
+{\footnotesize\ttfamily boolean com.\+example.\+searchwidget.\+Search\+Bar.\+is\+Suggestions\+Enabled (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
+
+Check if suggestions are enabled \mbox{\Hypertarget{classcom_1_1example_1_1searchwidget_1_1_search_bar_aab6325bdf7997340d11ba29cbca66a34}\label{classcom_1_1example_1_1searchwidget_1_1_search_bar_aab6325bdf7997340d11ba29cbca66a34}} 
+\index{com.example.searchwidget.SearchBar@{com.example.searchwidget.SearchBar}!isSuggestionsVisible@{isSuggestionsVisible}}
+\index{isSuggestionsVisible@{isSuggestionsVisible}!com.example.searchwidget.SearchBar@{com.example.searchwidget.SearchBar}}
+\subsubsection{\texorpdfstring{isSuggestionsVisible()}{isSuggestionsVisible()}}
+{\footnotesize\ttfamily boolean com.\+example.\+searchwidget.\+Search\+Bar.\+is\+Suggestions\+Visible (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
+
+Check if suggestions are shown
+
+\begin{DoxyReturn}{Returns}
+return result 
+\end{DoxyReturn}
+\mbox{\Hypertarget{classcom_1_1example_1_1searchwidget_1_1_search_bar_a3ccff2a33e4f3bba007aa04840265b47}\label{classcom_1_1example_1_1searchwidget_1_1_search_bar_a3ccff2a33e4f3bba007aa04840265b47}} 
+\index{com.example.searchwidget.SearchBar@{com.example.searchwidget.SearchBar}!search@{search}}
+\index{search@{search}!com.example.searchwidget.SearchBar@{com.example.searchwidget.SearchBar}}
+\subsubsection{\texorpdfstring{search()}{search()}}
+{\footnotesize\ttfamily String com.\+example.\+searchwidget.\+Search\+Bar.\+search (\begin{DoxyParamCaption}\item[{String}]{query }\end{DoxyParamCaption}) throws I\+O\+Exception}
+
+Gives response for the requested query using Appbase client 
+\begin{DoxyParams}{Parameters}
+{\em query} & J\+S\+ON structured body \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+Response received for the requested query 
+\end{DoxyReturn}
+
+\begin{DoxyExceptions}{Exceptions}
+{\em I\+O\+Exception} & \\
+\hline
+\end{DoxyExceptions}
+\mbox{\Hypertarget{classcom_1_1example_1_1searchwidget_1_1_search_bar_aeee8a868bca0435ece56efb35e84602d}\label{classcom_1_1example_1_1searchwidget_1_1_search_bar_aeee8a868bca0435ece56efb35e84602d}} 
+\index{com.example.searchwidget.SearchBar@{com.example.searchwidget.SearchBar}!setAppbaseClient@{setAppbaseClient}}
+\index{setAppbaseClient@{setAppbaseClient}!com.example.searchwidget.SearchBar@{com.example.searchwidget.SearchBar}}
+\subsubsection{\texorpdfstring{setAppbaseClient()}{setAppbaseClient()}\hspace{0.1cm}{\footnotesize\ttfamily [1/2]}}
+{\footnotesize\ttfamily void com.\+example.\+searchwidget.\+Search\+Bar.\+set\+Appbase\+Client (\begin{DoxyParamCaption}\item[{String}]{url,  }\item[{String}]{app\+Name,  }\item[{String}]{username,  }\item[{String}]{password,  }\item[{String}]{type }\end{DoxyParamCaption})}
+
+Initiates the Appbase client for giving additional functionality to search bar 
+\begin{DoxyParams}{Parameters}
+{\em url} & U\+RL of the Elastic\+Search host server (If application is hosted on appbase.\+io, url should be \href{https://scalr.api.appbase.io}{\texttt{ https\+://scalr.\+api.\+appbase.\+io}}) \\
+\hline
+{\em app\+Name} & Name of the app (aka search index) \\
+\hline
+{\em username} & Username for basic auth (String before \textquotesingle{}\+:\textquotesingle{} in credentials string) \\
+\hline
+{\em password} & Password for given username (String after \textquotesingle{}\+:\textquotesingle{} in credentials string) \\
+\hline
+{\em type} & Type to be queried \\
+\hline
+\end{DoxyParams}
+\mbox{\Hypertarget{classcom_1_1example_1_1searchwidget_1_1_search_bar_a4a4eddac44d1c06f0ac24e31dd653a79}\label{classcom_1_1example_1_1searchwidget_1_1_search_bar_a4a4eddac44d1c06f0ac24e31dd653a79}} 
+\index{com.example.searchwidget.SearchBar@{com.example.searchwidget.SearchBar}!setAppbaseClient@{setAppbaseClient}}
+\index{setAppbaseClient@{setAppbaseClient}!com.example.searchwidget.SearchBar@{com.example.searchwidget.SearchBar}}
+\subsubsection{\texorpdfstring{setAppbaseClient()}{setAppbaseClient()}\hspace{0.1cm}{\footnotesize\ttfamily [2/2]}}
+{\footnotesize\ttfamily void com.\+example.\+searchwidget.\+Search\+Bar.\+set\+Appbase\+Client (\begin{DoxyParamCaption}\item[{String}]{url,  }\item[{String}]{app\+Name,  }\item[{String}]{username,  }\item[{String}]{password }\end{DoxyParamCaption})}
+
+Initiates the Appbase client for giving additional functionality to search bar -\/ with default type 
+\begin{DoxyParams}{Parameters}
+{\em url} & U\+RL of the Elastic\+Search host server (If application is hosted on appbase.\+io, url should be \href{https://scalr.api.appbase.io}{\texttt{ https\+://scalr.\+api.\+appbase.\+io}}) \\
+\hline
+{\em app\+Name} & Name of the app (aka search index) \\
+\hline
+{\em username} & Username for basic auth (String before \textquotesingle{}\+:\textquotesingle{} in credentials string) \\
+\hline
+{\em password} & Password for given username (String after \textquotesingle{}\+:\textquotesingle{} in credentials string) \\
+\hline
+\end{DoxyParams}
+\mbox{\Hypertarget{classcom_1_1example_1_1searchwidget_1_1_search_bar_a38c90dccdf3d37fb78613230997e91a8}\label{classcom_1_1example_1_1searchwidget_1_1_search_bar_a38c90dccdf3d37fb78613230997e91a8}} 
+\index{com.example.searchwidget.SearchBar@{com.example.searchwidget.SearchBar}!setArrowIcon@{setArrowIcon}}
+\index{setArrowIcon@{setArrowIcon}!com.example.searchwidget.SearchBar@{com.example.searchwidget.SearchBar}}
+\subsubsection{\texorpdfstring{setArrowIcon()}{setArrowIcon()}}
+{\footnotesize\ttfamily void com.\+example.\+searchwidget.\+Search\+Bar.\+set\+Arrow\+Icon (\begin{DoxyParamCaption}\item[{int}]{arrow\+Icon\+Res\+Id }\end{DoxyParamCaption})}
+
+Set back arrow icon drawable
+
+
+\begin{DoxyParams}{Parameters}
+{\em arrow\+Icon\+Res\+Id} & icon resource id \\
+\hline
+\end{DoxyParams}
+\mbox{\Hypertarget{classcom_1_1example_1_1searchwidget_1_1_search_bar_aaf5917642f41df0d4836a7ebe1f5205b}\label{classcom_1_1example_1_1searchwidget_1_1_search_bar_aaf5917642f41df0d4836a7ebe1f5205b}} 
+\index{com.example.searchwidget.SearchBar@{com.example.searchwidget.SearchBar}!setArrowIconTint@{setArrowIconTint}}
+\index{setArrowIconTint@{setArrowIconTint}!com.example.searchwidget.SearchBar@{com.example.searchwidget.SearchBar}}
+\subsubsection{\texorpdfstring{setArrowIconTint()}{setArrowIconTint()}}
+{\footnotesize\ttfamily void com.\+example.\+searchwidget.\+Search\+Bar.\+set\+Arrow\+Icon\+Tint (\begin{DoxyParamCaption}\item[{int}]{arrow\+Icon\+Tint }\end{DoxyParamCaption})}
+
+Set the tint color of the back arrow icon
+
+
+\begin{DoxyParams}{Parameters}
+{\em arrow\+Icon\+Tint} & arrow icon color \\
+\hline
+\end{DoxyParams}
+\mbox{\Hypertarget{classcom_1_1example_1_1searchwidget_1_1_search_bar_af60f6509efc9ca6466b54e46bd3a5709}\label{classcom_1_1example_1_1searchwidget_1_1_search_bar_af60f6509efc9ca6466b54e46bd3a5709}} 
+\index{com.example.searchwidget.SearchBar@{com.example.searchwidget.SearchBar}!setCardViewElevation@{setCardViewElevation}}
+\index{setCardViewElevation@{setCardViewElevation}!com.example.searchwidget.SearchBar@{com.example.searchwidget.SearchBar}}
+\subsubsection{\texorpdfstring{setCardViewElevation()}{setCardViewElevation()}}
+{\footnotesize\ttfamily void com.\+example.\+searchwidget.\+Search\+Bar.\+set\+Card\+View\+Elevation (\begin{DoxyParamCaption}\item[{int}]{elevation }\end{DoxyParamCaption})}
+
+Set Card\+View elevation
+
+
+\begin{DoxyParams}{Parameters}
+{\em elevation} & desired elevation \\
+\hline
+\end{DoxyParams}
+\mbox{\Hypertarget{classcom_1_1example_1_1searchwidget_1_1_search_bar_a26dd3ac06416bc0d666d2ce792656c05}\label{classcom_1_1example_1_1searchwidget_1_1_search_bar_a26dd3ac06416bc0d666d2ce792656c05}} 
+\index{com.example.searchwidget.SearchBar@{com.example.searchwidget.SearchBar}!setClearIcon@{setClearIcon}}
+\index{setClearIcon@{setClearIcon}!com.example.searchwidget.SearchBar@{com.example.searchwidget.SearchBar}}
+\subsubsection{\texorpdfstring{setClearIcon()}{setClearIcon()}}
+{\footnotesize\ttfamily void com.\+example.\+searchwidget.\+Search\+Bar.\+set\+Clear\+Icon (\begin{DoxyParamCaption}\item[{int}]{clear\+Icon\+Res\+Id }\end{DoxyParamCaption})}
+
+Set clear icon drawable
+
+
+\begin{DoxyParams}{Parameters}
+{\em clear\+Icon\+Res\+Id} & icon resource id \\
+\hline
+\end{DoxyParams}
+\mbox{\Hypertarget{classcom_1_1example_1_1searchwidget_1_1_search_bar_aed6f9a5ee6a225ee697304e6a3ed5d5d}\label{classcom_1_1example_1_1searchwidget_1_1_search_bar_aed6f9a5ee6a225ee697304e6a3ed5d5d}} 
+\index{com.example.searchwidget.SearchBar@{com.example.searchwidget.SearchBar}!setClearIconTint@{setClearIconTint}}
+\index{setClearIconTint@{setClearIconTint}!com.example.searchwidget.SearchBar@{com.example.searchwidget.SearchBar}}
+\subsubsection{\texorpdfstring{setClearIconTint()}{setClearIconTint()}}
+{\footnotesize\ttfamily void com.\+example.\+searchwidget.\+Search\+Bar.\+set\+Clear\+Icon\+Tint (\begin{DoxyParamCaption}\item[{int}]{clear\+Icon\+Tint }\end{DoxyParamCaption})}
+
+Set the tint color of the clear icon
+
+
+\begin{DoxyParams}{Parameters}
+{\em clear\+Icon\+Tint} & clear icon tint \\
+\hline
+\end{DoxyParams}
+\mbox{\Hypertarget{classcom_1_1example_1_1searchwidget_1_1_search_bar_ac3d6b348b32c8129fca764c3cfe9b810}\label{classcom_1_1example_1_1searchwidget_1_1_search_bar_ac3d6b348b32c8129fca764c3cfe9b810}} 
+\index{com.example.searchwidget.SearchBar@{com.example.searchwidget.SearchBar}!setCustomSuggestionAdapter@{setCustomSuggestionAdapter}}
+\index{setCustomSuggestionAdapter@{setCustomSuggestionAdapter}!com.example.searchwidget.SearchBar@{com.example.searchwidget.SearchBar}}
+\subsubsection{\texorpdfstring{setCustomSuggestionAdapter()}{setCustomSuggestionAdapter()}}
+{\footnotesize\ttfamily void com.\+example.\+searchwidget.\+Search\+Bar.\+set\+Custom\+Suggestion\+Adapter (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{classcom_1_1example_1_1searchwidget_1_1adapter_1_1_suggestions_adapter}{Suggestions\+Adapter}}}]{suggestion\+Adapter }\end{DoxyParamCaption})}
+
+Sets a custom adapter for suggestions list view.
+
+
+\begin{DoxyParams}{Parameters}
+{\em suggestion\+Adapter} & customized adapter \\
+\hline
+\end{DoxyParams}
+\mbox{\Hypertarget{classcom_1_1example_1_1searchwidget_1_1_search_bar_a0f7d73658027bd472ea96b299249f48b}\label{classcom_1_1example_1_1searchwidget_1_1_search_bar_a0f7d73658027bd472ea96b299249f48b}} 
+\index{com.example.searchwidget.SearchBar@{com.example.searchwidget.SearchBar}!setHint@{setHint}}
+\index{setHint@{setHint}!com.example.searchwidget.SearchBar@{com.example.searchwidget.SearchBar}}
+\subsubsection{\texorpdfstring{setHint()}{setHint()}}
+{\footnotesize\ttfamily void com.\+example.\+searchwidget.\+Search\+Bar.\+set\+Hint (\begin{DoxyParamCaption}\item[{Char\+Sequence}]{hint\+Text }\end{DoxyParamCaption})}
+
+Sets search bar hint\+Text
+
+
+\begin{DoxyParams}{Parameters}
+{\em hint\+Text} & hint\+Text text \\
+\hline
+\end{DoxyParams}
+\mbox{\Hypertarget{classcom_1_1example_1_1searchwidget_1_1_search_bar_a2b5871caacebd12411dbc3bdf3d7c5a1}\label{classcom_1_1example_1_1searchwidget_1_1_search_bar_a2b5871caacebd12411dbc3bdf3d7c5a1}} 
+\index{com.example.searchwidget.SearchBar@{com.example.searchwidget.SearchBar}!setIconRippleStyle@{setIconRippleStyle}}
+\index{setIconRippleStyle@{setIconRippleStyle}!com.example.searchwidget.SearchBar@{com.example.searchwidget.SearchBar}}
+\subsubsection{\texorpdfstring{setIconRippleStyle()}{setIconRippleStyle()}}
+{\footnotesize\ttfamily void com.\+example.\+searchwidget.\+Search\+Bar.\+set\+Icon\+Ripple\+Style (\begin{DoxyParamCaption}\item[{boolean}]{borderless\+Ripple\+Enabled }\end{DoxyParamCaption})}
+
+Show a borderless ripple(circular) when icon is pressed Borderless only available on S\+DK V21+
+
+
+\begin{DoxyParams}{Parameters}
+{\em borderless\+Ripple\+Enabled} & true for borderless, false for default \\
+\hline
+\end{DoxyParams}
+\mbox{\Hypertarget{classcom_1_1example_1_1searchwidget_1_1_search_bar_a36b0bcb2dd221d8cba1b64955a51b597}\label{classcom_1_1example_1_1searchwidget_1_1_search_bar_a36b0bcb2dd221d8cba1b64955a51b597}} 
+\index{com.example.searchwidget.SearchBar@{com.example.searchwidget.SearchBar}!setLastSuggestions@{setLastSuggestions}}
+\index{setLastSuggestions@{setLastSuggestions}!com.example.searchwidget.SearchBar@{com.example.searchwidget.SearchBar}}
+\subsubsection{\texorpdfstring{setLastSuggestions()}{setLastSuggestions()}}
+{\footnotesize\ttfamily void com.\+example.\+searchwidget.\+Search\+Bar.\+set\+Last\+Suggestions (\begin{DoxyParamCaption}\item[{List}]{suggestions }\end{DoxyParamCaption})}
+
+Sets the array of recent search queries. It is advisable to save the queries when the activity is destroyed and call this method when creating the activity. 
+
+{\bfseries{Pass a List$<$ String $>$ if You don\textquotesingle{}t use custom adapter.}}
+
+
+\begin{DoxyParams}{Parameters}
+{\em suggestions} & an array of queries \\
+\hline
+\end{DoxyParams}
+\begin{DoxySeeAlso}{See also}
+\mbox{\hyperlink{classcom_1_1example_1_1searchwidget_1_1_search_bar_a29fff6f8fe5011b1854e4fd4a55ea65f}{get\+Last\+Suggestions()}} 
+
+\mbox{\hyperlink{classcom_1_1example_1_1searchwidget_1_1_search_bar_a0f4236bdaf89946d9bdc0eb982cb7cce}{set\+Max\+Suggestion\+Count(int)}} 
+\end{DoxySeeAlso}
+\mbox{\Hypertarget{classcom_1_1example_1_1searchwidget_1_1_search_bar_a0f4236bdaf89946d9bdc0eb982cb7cce}\label{classcom_1_1example_1_1searchwidget_1_1_search_bar_a0f4236bdaf89946d9bdc0eb982cb7cce}} 
+\index{com.example.searchwidget.SearchBar@{com.example.searchwidget.SearchBar}!setMaxSuggestionCount@{setMaxSuggestionCount}}
+\index{setMaxSuggestionCount@{setMaxSuggestionCount}!com.example.searchwidget.SearchBar@{com.example.searchwidget.SearchBar}}
+\subsubsection{\texorpdfstring{setMaxSuggestionCount()}{setMaxSuggestionCount()}}
+{\footnotesize\ttfamily void com.\+example.\+searchwidget.\+Search\+Bar.\+set\+Max\+Suggestion\+Count (\begin{DoxyParamCaption}\item[{int}]{max\+Suggestions\+Count }\end{DoxyParamCaption})}
+
+Specifies the maximum number of search queries stored until the activity is destroyed
+
+
+\begin{DoxyParams}{Parameters}
+{\em max\+Suggestions\+Count} & maximum queries \\
+\hline
+\end{DoxyParams}
+\mbox{\Hypertarget{classcom_1_1example_1_1searchwidget_1_1_search_bar_a06e0a90b2e6483038bb3d28a92a1a05c}\label{classcom_1_1example_1_1searchwidget_1_1_search_bar_a06e0a90b2e6483038bb3d28a92a1a05c}} 
+\index{com.example.searchwidget.SearchBar@{com.example.searchwidget.SearchBar}!setMenuIcon@{setMenuIcon}}
+\index{setMenuIcon@{setMenuIcon}!com.example.searchwidget.SearchBar@{com.example.searchwidget.SearchBar}}
+\subsubsection{\texorpdfstring{setMenuIcon()}{setMenuIcon()}}
+{\footnotesize\ttfamily void com.\+example.\+searchwidget.\+Search\+Bar.\+set\+Menu\+Icon (\begin{DoxyParamCaption}\item[{int}]{menu\+Icon\+Res\+Id }\end{DoxyParamCaption})}
+
+Set Menu Icon Drawable
+
+
+\begin{DoxyParams}{Parameters}
+{\em menu\+Icon\+Res\+Id} & icon resource id \\
+\hline
+\end{DoxyParams}
+\mbox{\Hypertarget{classcom_1_1example_1_1searchwidget_1_1_search_bar_a14d304a30b0065246ea3319c730f2e5c}\label{classcom_1_1example_1_1searchwidget_1_1_search_bar_a14d304a30b0065246ea3319c730f2e5c}} 
+\index{com.example.searchwidget.SearchBar@{com.example.searchwidget.SearchBar}!setMenuIconTint@{setMenuIconTint}}
+\index{setMenuIconTint@{setMenuIconTint}!com.example.searchwidget.SearchBar@{com.example.searchwidget.SearchBar}}
+\subsubsection{\texorpdfstring{setMenuIconTint()}{setMenuIconTint()}}
+{\footnotesize\ttfamily void com.\+example.\+searchwidget.\+Search\+Bar.\+set\+Menu\+Icon\+Tint (\begin{DoxyParamCaption}\item[{int}]{menu\+Icon\+Tint }\end{DoxyParamCaption})}
+
+Set the tint color of the menu icon
+
+
+\begin{DoxyParams}{Parameters}
+{\em menu\+Icon\+Tint} & menu icon color \\
+\hline
+\end{DoxyParams}
+\mbox{\Hypertarget{classcom_1_1example_1_1searchwidget_1_1_search_bar_a4ad3a854a853a3f990f493b053ba8297}\label{classcom_1_1example_1_1searchwidget_1_1_search_bar_a4ad3a854a853a3f990f493b053ba8297}} 
+\index{com.example.searchwidget.SearchBar@{com.example.searchwidget.SearchBar}!setNavButtonEnabled@{setNavButtonEnabled}}
+\index{setNavButtonEnabled@{setNavButtonEnabled}!com.example.searchwidget.SearchBar@{com.example.searchwidget.SearchBar}}
+\subsubsection{\texorpdfstring{setNavButtonEnabled()}{setNavButtonEnabled()}}
+{\footnotesize\ttfamily void com.\+example.\+searchwidget.\+Search\+Bar.\+set\+Nav\+Button\+Enabled (\begin{DoxyParamCaption}\item[{boolean}]{nav\+Button\+Enabled }\end{DoxyParamCaption})}
+
+Set navigation drawer menu icon enabled
+
+
+\begin{DoxyParams}{Parameters}
+{\em nav\+Button\+Enabled} & icon enabled \\
+\hline
+\end{DoxyParams}
+\mbox{\Hypertarget{classcom_1_1example_1_1searchwidget_1_1_search_bar_a9bfe579751743d32b1008418c6787142}\label{classcom_1_1example_1_1searchwidget_1_1_search_bar_a9bfe579751743d32b1008418c6787142}} 
+\index{com.example.searchwidget.SearchBar@{com.example.searchwidget.SearchBar}!setNavIconTint@{setNavIconTint}}
+\index{setNavIconTint@{setNavIconTint}!com.example.searchwidget.SearchBar@{com.example.searchwidget.SearchBar}}
+\subsubsection{\texorpdfstring{setNavIconTint()}{setNavIconTint()}}
+{\footnotesize\ttfamily void com.\+example.\+searchwidget.\+Search\+Bar.\+set\+Nav\+Icon\+Tint (\begin{DoxyParamCaption}\item[{int}]{nav\+Icon\+Tint }\end{DoxyParamCaption})}
+
+Set the tint color of the navigation icon
+
+
+\begin{DoxyParams}{Parameters}
+{\em nav\+Icon\+Tint} & nav icon color \\
+\hline
+\end{DoxyParams}
+\mbox{\Hypertarget{classcom_1_1example_1_1searchwidget_1_1_search_bar_a065921f97e1f2d1d3c496a5670482f28}\label{classcom_1_1example_1_1searchwidget_1_1_search_bar_a065921f97e1f2d1d3c496a5670482f28}} 
+\index{com.example.searchwidget.SearchBar@{com.example.searchwidget.SearchBar}!setOnSearchActionListener@{setOnSearchActionListener}}
+\index{setOnSearchActionListener@{setOnSearchActionListener}!com.example.searchwidget.SearchBar@{com.example.searchwidget.SearchBar}}
+\subsubsection{\texorpdfstring{setOnSearchActionListener()}{setOnSearchActionListener()}}
+{\footnotesize\ttfamily void com.\+example.\+searchwidget.\+Search\+Bar.\+set\+On\+Search\+Action\+Listener (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{interfacecom_1_1example_1_1searchwidget_1_1_search_bar_1_1_on_search_action_listener}{On\+Search\+Action\+Listener}}}]{on\+Search\+Action\+Listener }\end{DoxyParamCaption})}
+
+Register listener for search bar callbacks.
+
+
+\begin{DoxyParams}{Parameters}
+{\em on\+Search\+Action\+Listener} & the callback listener \\
+\hline
+\end{DoxyParams}
+\mbox{\Hypertarget{classcom_1_1example_1_1searchwidget_1_1_search_bar_afe1c0fa7bdb6574a8c22229de073fa2f}\label{classcom_1_1example_1_1searchwidget_1_1_search_bar_afe1c0fa7bdb6574a8c22229de073fa2f}} 
+\index{com.example.searchwidget.SearchBar@{com.example.searchwidget.SearchBar}!setOnTextChangeListner@{setOnTextChangeListner}}
+\index{setOnTextChangeListner@{setOnTextChangeListner}!com.example.searchwidget.SearchBar@{com.example.searchwidget.SearchBar}}
+\subsubsection{\texorpdfstring{setOnTextChangeListner()}{setOnTextChangeListner()}}
+{\footnotesize\ttfamily void com.\+example.\+searchwidget.\+Search\+Bar.\+set\+On\+Text\+Change\+Listner (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{interfacecom_1_1example_1_1searchwidget_1_1_search_bar_1_1_text_change_listener}{Text\+Change\+Listener}}}]{text\+Change\+Listener }\end{DoxyParamCaption})}
+
+Registers listener for text change callbacks 
+\begin{DoxyParams}{Parameters}
+{\em text\+Change\+Listener} & Text change callbacks \\
+\hline
+\end{DoxyParams}
+\mbox{\Hypertarget{classcom_1_1example_1_1searchwidget_1_1_search_bar_aa27cf7d4a9e11d4b452a7be85c15e9e6}\label{classcom_1_1example_1_1searchwidget_1_1_search_bar_aa27cf7d4a9e11d4b452a7be85c15e9e6}} 
+\index{com.example.searchwidget.SearchBar@{com.example.searchwidget.SearchBar}!setPlaceHolderColor@{setPlaceHolderColor}}
+\index{setPlaceHolderColor@{setPlaceHolderColor}!com.example.searchwidget.SearchBar@{com.example.searchwidget.SearchBar}}
+\subsubsection{\texorpdfstring{setPlaceHolderColor()}{setPlaceHolderColor()}}
+{\footnotesize\ttfamily void com.\+example.\+searchwidget.\+Search\+Bar.\+set\+Place\+Holder\+Color (\begin{DoxyParamCaption}\item[{int}]{placeholder\+Color }\end{DoxyParamCaption})}
+
+Set placeholder text color
+
+
+\begin{DoxyParams}{Parameters}
+{\em placeholder\+Color} & placeholder color \\
+\hline
+\end{DoxyParams}
+\mbox{\Hypertarget{classcom_1_1example_1_1searchwidget_1_1_search_bar_a27d40730d4d6a78b9ee89a8c33120d13}\label{classcom_1_1example_1_1searchwidget_1_1_search_bar_a27d40730d4d6a78b9ee89a8c33120d13}} 
+\index{com.example.searchwidget.SearchBar@{com.example.searchwidget.SearchBar}!setPlaceHolderText@{setPlaceHolderText}}
+\index{setPlaceHolderText@{setPlaceHolderText}!com.example.searchwidget.SearchBar@{com.example.searchwidget.SearchBar}}
+\subsubsection{\texorpdfstring{setPlaceHolderText()}{setPlaceHolderText()}}
+{\footnotesize\ttfamily void com.\+example.\+searchwidget.\+Search\+Bar.\+set\+Place\+Holder\+Text (\begin{DoxyParamCaption}\item[{Char\+Sequence}]{place\+Holder\+Text }\end{DoxyParamCaption})}
+
+Sets search bar placeholder text
+
+
+\begin{DoxyParams}{Parameters}
+{\em place\+Holder\+Text} & \\
+\hline
+\end{DoxyParams}
+\mbox{\Hypertarget{classcom_1_1example_1_1searchwidget_1_1_search_bar_af2188426a0fd543d09dfcc0042c9cee9}\label{classcom_1_1example_1_1searchwidget_1_1_search_bar_af2188426a0fd543d09dfcc0042c9cee9}} 
+\index{com.example.searchwidget.SearchBar@{com.example.searchwidget.SearchBar}!setRoundedSearchBarEnabled@{setRoundedSearchBarEnabled}}
+\index{setRoundedSearchBarEnabled@{setRoundedSearchBarEnabled}!com.example.searchwidget.SearchBar@{com.example.searchwidget.SearchBar}}
+\subsubsection{\texorpdfstring{setRoundedSearchBarEnabled()}{setRoundedSearchBarEnabled()}}
+{\footnotesize\ttfamily void com.\+example.\+searchwidget.\+Search\+Bar.\+set\+Rounded\+Search\+Bar\+Enabled (\begin{DoxyParamCaption}\item[{boolean}]{rounded\+Search\+Bar\+Enabled }\end{DoxyParamCaption})}
+
+Enable capsule shaped \mbox{\hyperlink{classcom_1_1example_1_1searchwidget_1_1_search_bar}{Search\+Bar}} (A\+PI 21+)
+
+
+\begin{DoxyParams}{Parameters}
+{\em rounded\+Search\+Bar\+Enabled} & capsule shape enabled @ \\
+\hline
+\end{DoxyParams}
+\mbox{\Hypertarget{classcom_1_1example_1_1searchwidget_1_1_search_bar_a3f9335e4481de2b5db38735df6b19753}\label{classcom_1_1example_1_1searchwidget_1_1_search_bar_a3f9335e4481de2b5db38735df6b19753}} 
+\index{com.example.searchwidget.SearchBar@{com.example.searchwidget.SearchBar}!setSearchIcon@{setSearchIcon}}
+\index{setSearchIcon@{setSearchIcon}!com.example.searchwidget.SearchBar@{com.example.searchwidget.SearchBar}}
+\subsubsection{\texorpdfstring{setSearchIcon()}{setSearchIcon()}}
+{\footnotesize\ttfamily void com.\+example.\+searchwidget.\+Search\+Bar.\+set\+Search\+Icon (\begin{DoxyParamCaption}\item[{int}]{search\+Icon\+Res\+Id }\end{DoxyParamCaption})}
+
+Set search icon drawable
+
+
+\begin{DoxyParams}{Parameters}
+{\em search\+Icon\+Res\+Id} & icon resource id \\
+\hline
+\end{DoxyParams}
+\mbox{\Hypertarget{classcom_1_1example_1_1searchwidget_1_1_search_bar_adca3a2ec79965621b5d77a52ecc68c5b}\label{classcom_1_1example_1_1searchwidget_1_1_search_bar_adca3a2ec79965621b5d77a52ecc68c5b}} 
+\index{com.example.searchwidget.SearchBar@{com.example.searchwidget.SearchBar}!setSearchIconTint@{setSearchIconTint}}
+\index{setSearchIconTint@{setSearchIconTint}!com.example.searchwidget.SearchBar@{com.example.searchwidget.SearchBar}}
+\subsubsection{\texorpdfstring{setSearchIconTint()}{setSearchIconTint()}}
+{\footnotesize\ttfamily void com.\+example.\+searchwidget.\+Search\+Bar.\+set\+Search\+Icon\+Tint (\begin{DoxyParamCaption}\item[{int}]{search\+Icon\+Tint }\end{DoxyParamCaption})}
+
+Set the tint color of the search/speech icon
+
+
+\begin{DoxyParams}{Parameters}
+{\em search\+Icon\+Tint} & search icon color \\
+\hline
+\end{DoxyParams}
+\mbox{\Hypertarget{classcom_1_1example_1_1searchwidget_1_1_search_bar_a4adb569b19b3f944775531927ab378cf}\label{classcom_1_1example_1_1searchwidget_1_1_search_bar_a4adb569b19b3f944775531927ab378cf}} 
+\index{com.example.searchwidget.SearchBar@{com.example.searchwidget.SearchBar}!setSearchProp@{setSearchProp}}
+\index{setSearchProp@{setSearchProp}!com.example.searchwidget.SearchBar@{com.example.searchwidget.SearchBar}}
+\subsubsection{\texorpdfstring{setSearchProp()}{setSearchProp()}}
+{\footnotesize\ttfamily \mbox{\hyperlink{classcom_1_1example_1_1searchwidget_1_1_builder_1_1_search_prop}{Search\+Prop}} com.\+example.\+searchwidget.\+Search\+Bar.\+set\+Search\+Prop (\begin{DoxyParamCaption}\item[{String}]{component\+Id,  }\item[{Array\+List$<$ String $>$}]{data\+Fields }\end{DoxyParamCaption})}
+
+Initiates Search prop
+
+
+\begin{DoxyParams}{Parameters}
+{\em component\+Id} & Unique identifier of the component \\
+\hline
+{\em data\+Fields} & Data field(s) on which search query is to be applied to \\
+\hline
+\end{DoxyParams}
+\mbox{\Hypertarget{classcom_1_1example_1_1searchwidget_1_1_search_bar_abcb40436e4d424c4f5ac721d5f507412}\label{classcom_1_1example_1_1searchwidget_1_1_search_bar_abcb40436e4d424c4f5ac721d5f507412}} 
+\index{com.example.searchwidget.SearchBar@{com.example.searchwidget.SearchBar}!setSpeechMode@{setSpeechMode}}
+\index{setSpeechMode@{setSpeechMode}!com.example.searchwidget.SearchBar@{com.example.searchwidget.SearchBar}}
+\subsubsection{\texorpdfstring{setSpeechMode()}{setSpeechMode()}}
+{\footnotesize\ttfamily void com.\+example.\+searchwidget.\+Search\+Bar.\+set\+Speech\+Mode (\begin{DoxyParamCaption}\item[{boolean}]{speech\+Mode }\end{DoxyParamCaption})}
+
+sets the speech\+Mode for the search bar. If set to true, microphone icon will display instead of the search icon. Also clicking on this icon will trigger the callback method on\+Button\+Clicked()
+
+
+\begin{DoxyParams}{Parameters}
+{\em speech\+Mode} & enable speech \\
+\hline
+\end{DoxyParams}
+\begin{DoxySeeAlso}{See also}
+\#\+B\+U\+T\+T\+O\+N\+\_\+\+S\+P\+E\+E\+CH 
+
+\mbox{\hyperlink{interfacecom_1_1example_1_1searchwidget_1_1_search_bar_1_1_on_search_action_listener_aece2474e59c571f0364cbe3bfffc982a}{On\+Search\+Action\+Listener\+::on\+Button\+Clicked(int)}} 
+\end{DoxySeeAlso}
+\mbox{\Hypertarget{classcom_1_1example_1_1searchwidget_1_1_search_bar_a2c7e29edef133c2885ed261f14dcd329}\label{classcom_1_1example_1_1searchwidget_1_1_search_bar_a2c7e29edef133c2885ed261f14dcd329}} 
+\index{com.example.searchwidget.SearchBar@{com.example.searchwidget.SearchBar}!setSuggestionsClickListener@{setSuggestionsClickListener}}
+\index{setSuggestionsClickListener@{setSuggestionsClickListener}!com.example.searchwidget.SearchBar@{com.example.searchwidget.SearchBar}}
+\subsubsection{\texorpdfstring{setSuggestionsClickListener()}{setSuggestionsClickListener()}}
+{\footnotesize\ttfamily void com.\+example.\+searchwidget.\+Search\+Bar.\+set\+Suggestions\+Click\+Listener (\begin{DoxyParamCaption}\item[{Suggestions\+Adapter.\+On\+Item\+View\+Click\+Listener}]{listener }\end{DoxyParamCaption})}
+
+Allows you to intercept the suggestions click event 
+
+{\bfseries{This method will not work with custom Suggestion Adapter}}
+
+
+\begin{DoxyParams}{Parameters}
+{\em listener} & click listener \\
+\hline
+\end{DoxyParams}
+\mbox{\Hypertarget{classcom_1_1example_1_1searchwidget_1_1_search_bar_af24e5b6d3487e7ac76d615e5260a0054}\label{classcom_1_1example_1_1searchwidget_1_1_search_bar_af24e5b6d3487e7ac76d615e5260a0054}} 
+\index{com.example.searchwidget.SearchBar@{com.example.searchwidget.SearchBar}!setSuggestionsEnabled@{setSuggestionsEnabled}}
+\index{setSuggestionsEnabled@{setSuggestionsEnabled}!com.example.searchwidget.SearchBar@{com.example.searchwidget.SearchBar}}
+\subsubsection{\texorpdfstring{setSuggestionsEnabled()}{setSuggestionsEnabled()}}
+{\footnotesize\ttfamily void com.\+example.\+searchwidget.\+Search\+Bar.\+set\+Suggestions\+Enabled (\begin{DoxyParamCaption}\item[{boolean}]{suggestions\+Enabled }\end{DoxyParamCaption})}
+
+Set suggestions enabled \mbox{\Hypertarget{classcom_1_1example_1_1searchwidget_1_1_search_bar_a63dbff92b8fbbdb0fbe556055a99978d}\label{classcom_1_1example_1_1searchwidget_1_1_search_bar_a63dbff92b8fbbdb0fbe556055a99978d}} 
+\index{com.example.searchwidget.SearchBar@{com.example.searchwidget.SearchBar}!setText@{setText}}
+\index{setText@{setText}!com.example.searchwidget.SearchBar@{com.example.searchwidget.SearchBar}}
+\subsubsection{\texorpdfstring{setText()}{setText()}}
+{\footnotesize\ttfamily void com.\+example.\+searchwidget.\+Search\+Bar.\+set\+Text (\begin{DoxyParamCaption}\item[{String}]{text }\end{DoxyParamCaption})}
+
+Set search text
+
+
+\begin{DoxyParams}{Parameters}
+{\em text} & text \\
+\hline
+\end{DoxyParams}
+\mbox{\Hypertarget{classcom_1_1example_1_1searchwidget_1_1_search_bar_ac6711d0557a28b29ac41b0ed4e489e02}\label{classcom_1_1example_1_1searchwidget_1_1_search_bar_ac6711d0557a28b29ac41b0ed4e489e02}} 
+\index{com.example.searchwidget.SearchBar@{com.example.searchwidget.SearchBar}!setTextColor@{setTextColor}}
+\index{setTextColor@{setTextColor}!com.example.searchwidget.SearchBar@{com.example.searchwidget.SearchBar}}
+\subsubsection{\texorpdfstring{setTextColor()}{setTextColor()}}
+{\footnotesize\ttfamily void com.\+example.\+searchwidget.\+Search\+Bar.\+set\+Text\+Color (\begin{DoxyParamCaption}\item[{int}]{text\+Color }\end{DoxyParamCaption})}
+
+Set search input text color
+
+
+\begin{DoxyParams}{Parameters}
+{\em text\+Color} & text color \\
+\hline
+\end{DoxyParams}
+\mbox{\Hypertarget{classcom_1_1example_1_1searchwidget_1_1_search_bar_a538551052205575951500130dc5ed591}\label{classcom_1_1example_1_1searchwidget_1_1_search_bar_a538551052205575951500130dc5ed591}} 
+\index{com.example.searchwidget.SearchBar@{com.example.searchwidget.SearchBar}!setTextHighlightColor@{setTextHighlightColor}}
+\index{setTextHighlightColor@{setTextHighlightColor}!com.example.searchwidget.SearchBar@{com.example.searchwidget.SearchBar}}
+\subsubsection{\texorpdfstring{setTextHighlightColor()}{setTextHighlightColor()}}
+{\footnotesize\ttfamily void com.\+example.\+searchwidget.\+Search\+Bar.\+set\+Text\+Highlight\+Color (\begin{DoxyParamCaption}\item[{int}]{highlighted\+Text\+Color }\end{DoxyParamCaption})}
+
+Set the color of the highlight when text is selected
+
+
+\begin{DoxyParams}{Parameters}
+{\em highlighted\+Text\+Color} & selected text highlight color \\
+\hline
+\end{DoxyParams}
+\mbox{\Hypertarget{classcom_1_1example_1_1searchwidget_1_1_search_bar_a70b21b5c03c532cb74f64e16c992f95d}\label{classcom_1_1example_1_1searchwidget_1_1_search_bar_a70b21b5c03c532cb74f64e16c992f95d}} 
+\index{com.example.searchwidget.SearchBar@{com.example.searchwidget.SearchBar}!setTextHintColor@{setTextHintColor}}
+\index{setTextHintColor@{setTextHintColor}!com.example.searchwidget.SearchBar@{com.example.searchwidget.SearchBar}}
+\subsubsection{\texorpdfstring{setTextHintColor()}{setTextHintColor()}}
+{\footnotesize\ttfamily void com.\+example.\+searchwidget.\+Search\+Bar.\+set\+Text\+Hint\+Color (\begin{DoxyParamCaption}\item[{int}]{hint\+Color }\end{DoxyParamCaption})}
+
+Set text input hint\+Text color
+
+
+\begin{DoxyParams}{Parameters}
+{\em hint\+Color} & text hint\+Text color \\
+\hline
+\end{DoxyParams}
+\mbox{\Hypertarget{classcom_1_1example_1_1searchwidget_1_1_search_bar_a8cdd994a66ea763883b6d3ed89d2d299}\label{classcom_1_1example_1_1searchwidget_1_1_search_bar_a8cdd994a66ea763883b6d3ed89d2d299}} 
+\index{com.example.searchwidget.SearchBar@{com.example.searchwidget.SearchBar}!startSearch@{startSearch}}
+\index{startSearch@{startSearch}!com.example.searchwidget.SearchBar@{com.example.searchwidget.SearchBar}}
+\subsubsection{\texorpdfstring{startSearch()}{startSearch()}}
+{\footnotesize\ttfamily void com.\+example.\+searchwidget.\+Search\+Bar.\+start\+Search (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
+
+Starts on text change callbacks to be handled by the listener. Call this method after setting \mbox{\hyperlink{interfacecom_1_1example_1_1searchwidget_1_1_search_bar_1_1_text_change_listener}{Text\+Change\+Listener}} to start its functionality \mbox{\Hypertarget{classcom_1_1example_1_1searchwidget_1_1_search_bar_af6c85628bb5df58074e37d47193bc3f0}\label{classcom_1_1example_1_1searchwidget_1_1_search_bar_af6c85628bb5df58074e37d47193bc3f0}} 
+\index{com.example.searchwidget.SearchBar@{com.example.searchwidget.SearchBar}!updateLastSuggestions@{updateLastSuggestions}}
+\index{updateLastSuggestions@{updateLastSuggestions}!com.example.searchwidget.SearchBar@{com.example.searchwidget.SearchBar}}
+\subsubsection{\texorpdfstring{updateLastSuggestions()}{updateLastSuggestions()}}
+{\footnotesize\ttfamily void com.\+example.\+searchwidget.\+Search\+Bar.\+update\+Last\+Suggestions (\begin{DoxyParamCaption}\item[{List}]{suggestions }\end{DoxyParamCaption})}
+
+Changes the array of recent search queries with animation. 
+
+{\bfseries{Pass a List$<$ String $>$ if You don\textquotesingle{}t use custom adapter.}}
+
+
+\begin{DoxyParams}{Parameters}
+{\em suggestions} & an array of queries \\
+\hline
+\end{DoxyParams}
+
+
+The documentation for this class was generated from the following file\+:\begin{DoxyCompactItemize}
+\item 
+/\+Users/harshpatel/\+Desktop/\+Appbase/\+Search\+Widget\+Demo/searchwidget/src/main/java/com/example/searchwidget/Search\+Bar.\+java\end{DoxyCompactItemize}

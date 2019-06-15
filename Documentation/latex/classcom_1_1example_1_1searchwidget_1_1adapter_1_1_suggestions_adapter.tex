@@ -1,0 +1,102 @@
+\hypertarget{classcom_1_1example_1_1searchwidget_1_1adapter_1_1_suggestions_adapter}{}\section{com.\+example.\+searchwidget.\+adapter.\+Suggestions\+Adapter$<$ S, V extends Recycler\+View.\+View\+Holder $>$ Class Template Reference}
+\label{classcom_1_1example_1_1searchwidget_1_1adapter_1_1_suggestions_adapter}\index{com.example.searchwidget.adapter.SuggestionsAdapter$<$ S, V extends RecyclerView.ViewHolder $>$@{com.example.searchwidget.adapter.SuggestionsAdapter$<$ S, V extends RecyclerView.ViewHolder $>$}}
+
+
+Inherits Adapter$<$ V $>$, and Filterable.
+
+\subsection*{Classes}
+\begin{DoxyCompactItemize}
+\item 
+interface \mbox{\hyperlink{interfacecom_1_1example_1_1searchwidget_1_1adapter_1_1_suggestions_adapter_1_1_on_item_view_click_listener}{On\+Item\+View\+Click\+Listener}}
+\end{DoxyCompactItemize}
+\subsection*{Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\Hypertarget{classcom_1_1example_1_1searchwidget_1_1adapter_1_1_suggestions_adapter_a74ed9e53538271ab7e484eb7c928f4df}\label{classcom_1_1example_1_1searchwidget_1_1adapter_1_1_suggestions_adapter_a74ed9e53538271ab7e484eb7c928f4df}} 
+{\bfseries Suggestions\+Adapter} (Layout\+Inflater inflater)
+\item 
+\mbox{\Hypertarget{classcom_1_1example_1_1searchwidget_1_1adapter_1_1_suggestions_adapter_a2c17ddd340d2471a312db63cfe816635}\label{classcom_1_1example_1_1searchwidget_1_1adapter_1_1_suggestions_adapter_a2c17ddd340d2471a312db63cfe816635}} 
+void {\bfseries add\+Suggestion} (S r)
+\item 
+\mbox{\Hypertarget{classcom_1_1example_1_1searchwidget_1_1adapter_1_1_suggestions_adapter_a0722e129a1646a0df19059cb4559e69b}\label{classcom_1_1example_1_1searchwidget_1_1adapter_1_1_suggestions_adapter_a0722e129a1646a0df19059cb4559e69b}} 
+void {\bfseries set\+Suggestions} (List$<$ S $>$ suggestions)
+\item 
+\mbox{\Hypertarget{classcom_1_1example_1_1searchwidget_1_1adapter_1_1_suggestions_adapter_a7aeaddc5231ccb2fb7dbd6050b284d7a}\label{classcom_1_1example_1_1searchwidget_1_1adapter_1_1_suggestions_adapter_a7aeaddc5231ccb2fb7dbd6050b284d7a}} 
+void {\bfseries clear\+Suggestions} ()
+\item 
+\mbox{\Hypertarget{classcom_1_1example_1_1searchwidget_1_1adapter_1_1_suggestions_adapter_ac626ad38b68a3acaa5e25db47fa3d0c1}\label{classcom_1_1example_1_1searchwidget_1_1adapter_1_1_suggestions_adapter_ac626ad38b68a3acaa5e25db47fa3d0c1}} 
+void {\bfseries delete\+Suggestion} (int position, S r)
+\item 
+\mbox{\Hypertarget{classcom_1_1example_1_1searchwidget_1_1adapter_1_1_suggestions_adapter_ab9774e4ae3a2cbbbefcbac9f0ccf83c7}\label{classcom_1_1example_1_1searchwidget_1_1adapter_1_1_suggestions_adapter_ab9774e4ae3a2cbbbefcbac9f0ccf83c7}} 
+List$<$ S $>$ {\bfseries get\+Suggestions} ()
+\item 
+\mbox{\Hypertarget{classcom_1_1example_1_1searchwidget_1_1adapter_1_1_suggestions_adapter_a200bf8dd9c4962eb3600209b9ef0a590}\label{classcom_1_1example_1_1searchwidget_1_1adapter_1_1_suggestions_adapter_a200bf8dd9c4962eb3600209b9ef0a590}} 
+int {\bfseries get\+Max\+Suggestions\+Count} ()
+\item 
+\mbox{\Hypertarget{classcom_1_1example_1_1searchwidget_1_1adapter_1_1_suggestions_adapter_a13781c358775ea2666f7feff1bbfd8d3}\label{classcom_1_1example_1_1searchwidget_1_1adapter_1_1_suggestions_adapter_a13781c358775ea2666f7feff1bbfd8d3}} 
+void {\bfseries set\+Max\+Suggestions\+Count} (int max\+Suggestions\+Count)
+\item 
+\mbox{\Hypertarget{classcom_1_1example_1_1searchwidget_1_1adapter_1_1_suggestions_adapter_ada04416ccc16b867639cdf890f2b1b49}\label{classcom_1_1example_1_1searchwidget_1_1adapter_1_1_suggestions_adapter_ada04416ccc16b867639cdf890f2b1b49}} 
+void {\bfseries on\+Bind\+View\+Holder} (V holder, int position)
+\item 
+\mbox{\Hypertarget{classcom_1_1example_1_1searchwidget_1_1adapter_1_1_suggestions_adapter_a5675b07715faacc6b4a4bb0800cc5e72}\label{classcom_1_1example_1_1searchwidget_1_1adapter_1_1_suggestions_adapter_a5675b07715faacc6b4a4bb0800cc5e72}} 
+abstract void {\bfseries on\+Bind\+Suggestion\+Holder} (S suggestion, V holder, int position)
+\item 
+abstract int \mbox{\hyperlink{classcom_1_1example_1_1searchwidget_1_1adapter_1_1_suggestions_adapter_aaf293d78ccf1a0fd43c9c3dee5dbd567}{get\+Single\+View\+Height}} ()
+\item 
+\mbox{\Hypertarget{classcom_1_1example_1_1searchwidget_1_1adapter_1_1_suggestions_adapter_ad6db0de2b373bb5c44f9d399846d37aa}\label{classcom_1_1example_1_1searchwidget_1_1adapter_1_1_suggestions_adapter_ad6db0de2b373bb5c44f9d399846d37aa}} 
+int {\bfseries get\+List\+Height} ()
+\item 
+\mbox{\Hypertarget{classcom_1_1example_1_1searchwidget_1_1adapter_1_1_suggestions_adapter_ae2289ecf96f56a892450b7a78536c6e3}\label{classcom_1_1example_1_1searchwidget_1_1adapter_1_1_suggestions_adapter_ae2289ecf96f56a892450b7a78536c6e3}} 
+int {\bfseries get\+Item\+Count} ()
+\item 
+Filter \mbox{\hyperlink{classcom_1_1example_1_1searchwidget_1_1adapter_1_1_suggestions_adapter_ac5668046367eab0b8c0dbffaf378e0b9}{get\+Filter}} ()
+\end{DoxyCompactItemize}
+\subsection*{Protected Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\Hypertarget{classcom_1_1example_1_1searchwidget_1_1adapter_1_1_suggestions_adapter_ac3d51c05737f8a8e216c82b6583410e7}\label{classcom_1_1example_1_1searchwidget_1_1adapter_1_1_suggestions_adapter_ac3d51c05737f8a8e216c82b6583410e7}} 
+Layout\+Inflater {\bfseries get\+Layout\+Inflater} ()
+\end{DoxyCompactItemize}
+\subsection*{Protected Attributes}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\Hypertarget{classcom_1_1example_1_1searchwidget_1_1adapter_1_1_suggestions_adapter_a0b2422548b88b244f502146a92b85956}\label{classcom_1_1example_1_1searchwidget_1_1adapter_1_1_suggestions_adapter_a0b2422548b88b244f502146a92b85956}} 
+List$<$ S $>$ {\bfseries suggestions} = new Array\+List$<$$>$()
+\item 
+\mbox{\Hypertarget{classcom_1_1example_1_1searchwidget_1_1adapter_1_1_suggestions_adapter_a21779cad1870be8e5a97a23720a7d336}\label{classcom_1_1example_1_1searchwidget_1_1adapter_1_1_suggestions_adapter_a21779cad1870be8e5a97a23720a7d336}} 
+List$<$ S $>$ {\bfseries suggestions\+\_\+clone} = new Array\+List$<$$>$()
+\item 
+\mbox{\Hypertarget{classcom_1_1example_1_1searchwidget_1_1adapter_1_1_suggestions_adapter_af6a720e4b7c613d7f4c86a0dc2b3d95f}\label{classcom_1_1example_1_1searchwidget_1_1adapter_1_1_suggestions_adapter_af6a720e4b7c613d7f4c86a0dc2b3d95f}} 
+int {\bfseries max\+Suggestions\+Count} = 5
+\end{DoxyCompactItemize}
+
+
+\subsection{Member Function Documentation}
+\mbox{\Hypertarget{classcom_1_1example_1_1searchwidget_1_1adapter_1_1_suggestions_adapter_ac5668046367eab0b8c0dbffaf378e0b9}\label{classcom_1_1example_1_1searchwidget_1_1adapter_1_1_suggestions_adapter_ac5668046367eab0b8c0dbffaf378e0b9}} 
+\index{com.example.searchwidget.adapter.SuggestionsAdapter$<$ S, V extends RecyclerView.ViewHolder $>$@{com.example.searchwidget.adapter.SuggestionsAdapter$<$ S, V extends RecyclerView.ViewHolder $>$}!getFilter@{getFilter}}
+\index{getFilter@{getFilter}!com.example.searchwidget.adapter.SuggestionsAdapter$<$ S, V extends RecyclerView.ViewHolder $>$@{com.example.searchwidget.adapter.SuggestionsAdapter$<$ S, V extends RecyclerView.ViewHolder $>$}}
+\subsubsection{\texorpdfstring{getFilter()}{getFilter()}}
+{\footnotesize\ttfamily Filter \mbox{\hyperlink{classcom_1_1example_1_1searchwidget_1_1adapter_1_1_suggestions_adapter}{com.\+example.\+searchwidget.\+adapter.\+Suggestions\+Adapter}}$<$ S, V extends Recycler\+View.\+View\+Holder $>$.get\+Filter (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
+
+Returns a filter that can be used to constrain data with a filtering pattern.
+
+This method is usually implemented by \mbox{\hyperlink{}{Adapter}} classes.
+
+\begin{DoxyReturn}{Returns}
+a filter used to constrain data 
+\end{DoxyReturn}
+\mbox{\Hypertarget{classcom_1_1example_1_1searchwidget_1_1adapter_1_1_suggestions_adapter_aaf293d78ccf1a0fd43c9c3dee5dbd567}\label{classcom_1_1example_1_1searchwidget_1_1adapter_1_1_suggestions_adapter_aaf293d78ccf1a0fd43c9c3dee5dbd567}} 
+\index{com.example.searchwidget.adapter.SuggestionsAdapter$<$ S, V extends RecyclerView.ViewHolder $>$@{com.example.searchwidget.adapter.SuggestionsAdapter$<$ S, V extends RecyclerView.ViewHolder $>$}!getSingleViewHeight@{getSingleViewHeight}}
+\index{getSingleViewHeight@{getSingleViewHeight}!com.example.searchwidget.adapter.SuggestionsAdapter$<$ S, V extends RecyclerView.ViewHolder $>$@{com.example.searchwidget.adapter.SuggestionsAdapter$<$ S, V extends RecyclerView.ViewHolder $>$}}
+\subsubsection{\texorpdfstring{getSingleViewHeight()}{getSingleViewHeight()}}
+{\footnotesize\ttfamily abstract int \mbox{\hyperlink{classcom_1_1example_1_1searchwidget_1_1adapter_1_1_suggestions_adapter}{com.\+example.\+searchwidget.\+adapter.\+Suggestions\+Adapter}}$<$ S, V extends Recycler\+View.\+View\+Holder $>$.get\+Single\+View\+Height (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [abstract]}}
+
+Returns the height of single view item in list. {\bfseries{Note that all views must have the same height}} \begin{DoxyReturn}{Returns}
+height 
+\end{DoxyReturn}
+
+
+The documentation for this class was generated from the following file\+:\begin{DoxyCompactItemize}
+\item 
+/\+Users/harshpatel/\+Desktop/\+Appbase/\+Search\+Widget\+Demo/searchwidget/src/main/java/com/example/searchwidget/adapter/Suggestions\+Adapter.\+java\end{DoxyCompactItemize}
