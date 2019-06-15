@@ -179,6 +179,34 @@ public class MainActivity extends AppCompatActivity {
 }
 ```
 
+#### Quick Fixes
+
+If you are facing this error
+
+```
+error: cannot access RecyclerView
+class file for android.support.v7.widget.RecyclerView not found
+```
+
+and/or this one
+
+```
+error: method does not override or implement a method from a supertype
+```
+
+and/or this one
+```
+error: cannot find symbol constructor ()
+```
+
+there should be a problem with the recycler view version in the project. A quick fix would be to add 
+
+```
+implementation "com.android.support:recyclerview-v7:28.0.0"
+```
+
+in the app level dependencies
+
 ### Documentation
 
 The documentation for appbase-search-widget library is hosted on [GitHub pages](https://harsh-2711.github.io/appbase-search-widget/)
