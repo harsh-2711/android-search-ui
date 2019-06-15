@@ -17,7 +17,7 @@ allprojects {
 
 ```
 dependencies {
-	implementation 'com.github.User:Repo:Tag'
+	implementation 'com.github.harsh-2711:appbase-search-widget:Tag'
 }
 ```
 
