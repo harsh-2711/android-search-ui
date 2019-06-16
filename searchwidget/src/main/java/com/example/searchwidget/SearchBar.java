@@ -1165,11 +1165,30 @@ public class SearchBar extends RelativeLayout implements View.OnClickListener,
         String fuzziness = searchProp.fuzziness != null ? searchProp.fuzziness : "0";
         String fields = "";
 
-        for(int i = 0; i < searchProp.dataField.size(); i++) {
-            if(i == searchProp.dataField.size()-1)
-                fields = fields + "\"" + searchProp.dataField.get(i) + "\"";
-            else
-                fields = fields + "\"" + searchProp.dataField.get(i) + "\",";
+        if(searchProp.weights != null) {
+            if(searchProp.weights.size() == searchProp.dataField.size()) {
+                for(int i = 0; i < searchProp.dataField.size(); i++) {
+                    if(i == searchProp.dataField.size()-1)
+                        fields = fields + "\"" + searchProp.dataField.get(i) + "^" + searchProp.weights.get(i) + "\"";
+                    else
+                        fields = fields + "\"" + searchProp.dataField.get(i) + "^" + searchProp.weights.get(i) + "\",";
+                }
+            } else {
+                Log.d("Size Error", "Size of weights array doesn't match size of dataFields array");
+                for(int i = 0; i < searchProp.dataField.size(); i++) {
+                    if(i == searchProp.dataField.size()-1)
+                        fields = fields + "\"" + searchProp.dataField.get(i) + "\"";
+                    else
+                        fields = fields + "\"" + searchProp.dataField.get(i) + "\",";
+                }
+            }
+        } else {
+            for(int i = 0; i < searchProp.dataField.size(); i++) {
+                if(i == searchProp.dataField.size()-1)
+                    fields = fields + "\"" + searchProp.dataField.get(i) + "\"";
+                else
+                    fields = fields + "\"" + searchProp.dataField.get(i) + "\",";
+            }
         }
 
         if(searchProp.queryFormat.toLowerCase().equals("and")) {

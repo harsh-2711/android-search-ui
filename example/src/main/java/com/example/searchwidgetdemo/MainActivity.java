@@ -12,6 +12,7 @@ public class MainActivity extends AppCompatActivity {
 
     SearchBar searchBar;
     private ArrayList<String> dataFields;
+    private ArrayList<Integer> weights;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -27,7 +28,13 @@ public class MainActivity extends AppCompatActivity {
         dataFields = new ArrayList<>();
         dataFields.add("tags");
         dataFields.add("tags.search");
+
+        weights = new ArrayList<>();
+        weights.add(1);
+        weights.add(3);
+
         searchBar.setSearchProp("Demo Widget", dataFields)
+                .setWeights(weights)
                 .setQueryFormat("and")
                 .setFuzziness("10")
                 .setDebounce(100)
