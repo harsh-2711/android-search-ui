@@ -1387,6 +1387,7 @@ public class SearchBar extends RelativeLayout implements View.OnClickListener,
 
         String result = "Query wasn't initiated";
         ArrayList<String> entries;
+        ArrayList<String> duplicateCheck;
 
         @Override
         protected Void doInBackground(String... strings) {
@@ -1405,6 +1406,7 @@ public class SearchBar extends RelativeLayout implements View.OnClickListener,
                     JSONArray finalHits = hits.getJSONArray("hits");
 
                     entries = new ArrayList<>();
+                    duplicateCheck = new ArrayList<>();
                     for (int i = 0; i < finalHits.length(); i++) {
 
                         JSONObject obj = finalHits.getJSONObject(i);
@@ -1412,7 +1414,10 @@ public class SearchBar extends RelativeLayout implements View.OnClickListener,
 
                         for(int j = 0; j < searchPropDefault.dataField.size(); j++) {
                             String entry = source.getString(searchPropDefault.dataField.get(j));
-                            entries.add(entry);
+                            if(!duplicateCheck.contains(entry.toLowerCase())) {
+                                entries.add(entry);
+                                duplicateCheck.add(entry.toLowerCase());
+                            }
                         }
                     }
 
