@@ -972,8 +972,12 @@ public class SearchBar extends RelativeLayout implements View.OnClickListener,
             if (!searchEnabled) {
                 enableSearch();
             }
-        } else if (id == R.id.arrow) {
+        } else if (id == R.id.arrow || !navIconShown) {
             disableSearch();
+            if(defaultClientSuggestionsAdapter != null) {
+                defaultClientSuggestionsAdapter.clear();
+                recyclerView.setAdapter(defaultClientSuggestionsAdapter);
+            }
         } else if (id == R.id.search) {
             if (listenerExists())
                 onSearchActionListener.onButtonClicked(BUTTON_SPEECH);
@@ -1359,14 +1363,16 @@ public class SearchBar extends RelativeLayout implements View.OnClickListener,
             @Override
             public void onTextChanged(CharSequence s, int start, int before, int count) {
 
-                if(isPropSet && isAppbaseClientSet && textChangeListenerExists()) {
-                    searchPropDefault.setDefaultValue(String.valueOf(s));
-                    StartSearching startSearching = new StartSearching();
-                    startSearching.execute(getRequestedQuery());
-                    if(shouldLogQuery)
-                        Log.d("QUERY", getRequestedQuery());
-                } else {
-                    Log.e("Error", "Please check if Appbase client, Search props and Text change listeners are set properly");
+                if(!String.valueOf(s).equals("")) {
+                    if(isPropSet && isAppbaseClientSet && textChangeListenerExists()) {
+                        searchPropDefault.setDefaultValue(String.valueOf(s));
+                        StartSearching startSearching = new StartSearching();
+                        startSearching.execute(getRequestedQuery());
+                        if(shouldLogQuery)
+                            Log.d("QUERY", getRequestedQuery());
+                    } else {
+                        Log.e("Error", "Please check if Appbase client, Search props and Text change listeners are set properly");
+                    }
                 }
             }
 
