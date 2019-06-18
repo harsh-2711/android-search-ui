@@ -113,5 +113,13 @@ public class DefaultClientSuggestionsAdapter extends RecyclerView.Adapter<Sugges
         suggestions.remove(position);
         notifyItemRemoved(position);
     }
+
+    public void clear() {
+        int size = getItemCount();
+        for(int i = size - 1; i >= 0; i--) {
+            suggestions.remove(i);
+            notifyItemRemoved(i);
+        }
+    }
 }
 

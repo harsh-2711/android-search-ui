@@ -37,6 +37,8 @@ import android.widget.RelativeLayout;
 import android.widget.TextView;
 
 import com.example.searchwidget.Builder.SearchProp;
+import com.example.searchwidget.Builder.Suggestions;
+import com.example.searchwidget.adapter.DefaultClientSuggestionsAdapter;
 import com.example.searchwidget.adapter.DefaultSuggestionsAdapter;
 import com.example.searchwidget.adapter.SuggestionsAdapter;
 
@@ -128,6 +130,9 @@ public class SearchBar extends RelativeLayout implements View.OnClickListener,
     private TextChangeListener textChangeListener;
 
     private boolean shouldLogQuery = false;
+
+    private DefaultClientSuggestionsAdapter defaultClientSuggestionsAdapter;
+    private boolean areSuggestionsEnabled = true;
 
     public SearchBar(Context context, AttributeSet attributeSet) {
         super(context, attributeSet);
@@ -1387,13 +1392,17 @@ public class SearchBar extends RelativeLayout implements View.OnClickListener,
         }
     }
 
-    public void setDefaultSuggestionsFromClient(boolean state) {
-        if(state) {
-            adapter.addSuggestion("ABCD");
-            adapter.addSuggestion("XYZ");
-            adapter.notifyDataSetChanged();
-            setCustomSuggestionAdapter(adapter);
+    public void diableDefaultClientSuggestions () {
+        if(defaultClientSuggestionsAdapter != null) {
+            defaultClientSuggestionsAdapter.clear();
+            defaultClientSuggestionsAdapter.notifyDataSetChanged();
+            areSuggestionsEnabled = false;
         }
+    }
+
+    public Suggestions enableDefaultClientSuggestions (ArrayList<String> suggestions) {
+        areSuggestionsEnabled = true;
+        return new Suggestions(suggestions);
     }
 
     private static class SavedState extends BaseSavedState {
