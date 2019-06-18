@@ -4,6 +4,7 @@
     <color name="colorPrimaryDark">#303F9F</color>
     <color name="colorAccent">#FF4081</color>
     <color name="white">#FFFFFF</color>
+    <color name="light_gray">#D3D3D3</color>
 
 
     //Material SearchBar Light Theme Colors
