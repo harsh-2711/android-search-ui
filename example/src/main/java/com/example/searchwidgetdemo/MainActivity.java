@@ -21,6 +21,9 @@ public class MainActivity extends AppCompatActivity {
 
         searchBar = (SearchBar) findViewById(R.id.searchBar);
 
+        // Setting max suggestions count
+        searchBar.setMaxSuggestionCount(5);
+
         // Setting Appbase Client - type is optional here
         searchBar.setAppbaseClient("https://scalr.api.appbase.io", "shopify-flipkart-test", "xJC6pHyMz", "54fabdda-4f7d-43c9-9960-66ff45d8d4cf", "products");
 

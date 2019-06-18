@@ -1263,7 +1263,7 @@ public class SearchBar extends RelativeLayout implements View.OnClickListener,
     }
 
     private String getWrappedQuery(String query) {
-        return "{ \"query\":" + query + " }";
+        return "{ \"size\": \"" + maxSuggestionCount + "\", \"query\":" + query + " }";
     }
 
     /**
