@@ -22,6 +22,7 @@
         android:textAppearance="?android:attr/textAppearanceSmall"
         android:text="Last request"
         android:id="@+id/text"
+        android:layout_marginLeft="10dp"
         android:textColor="@android:color/black" />
 
     <ImageView
