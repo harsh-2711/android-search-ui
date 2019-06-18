@@ -26,22 +26,21 @@ public class MainActivity extends AppCompatActivity {
 
         // Setting basic search prop
         dataFields = new ArrayList<>();
-        dataFields.add("tags");
-        dataFields.add("tags.search");
+        dataFields.add("title");
 
         weights = new ArrayList<>();
         weights.add(1);
         weights.add(3);
 
         searchBar.setSearchProp("Demo Widget", dataFields)
-                .setWeights(weights)
                 .setQueryFormat("and")
                 .setFuzziness("10")
                 .setDebounce(100)
                 .build();
 
         // To log the queries made by Appbase client for debugging
-        searchBar.setLoggingQuery(true);
+        // searchBar.setLoggingQuery(true);
+        searchBar.enableDefaultClientSuggestions();
 
         // Setting listener to handle callbacks
         searchBar.setOnTextChangeListner(new SearchBar.TextChangeListener() {
@@ -57,6 +56,5 @@ public class MainActivity extends AppCompatActivity {
         searchBar.startSearch();
 
         searchBar.setNavButtonEnabled(true);
-        searchBar.setDefaultSuggestionsFromClient(true);
     }
 }

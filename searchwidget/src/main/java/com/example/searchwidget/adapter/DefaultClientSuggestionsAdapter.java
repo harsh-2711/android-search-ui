@@ -1,7 +1,9 @@
 package com.example.searchwidget.adapter;
 
 import android.content.Context;
+import android.support.annotation.NonNull;
 import android.support.v7.widget.RecyclerView;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -65,12 +67,11 @@ public class DefaultClientSuggestionsAdapter extends RecyclerView.Adapter<Sugges
     }
 
     @Override
-    public void onBindViewHolder(Suggestions_View_Holder holder, int position) {
+    public void onBindViewHolder(@NonNull Suggestions_View_Holder holder, int position) {
         holder.text.setText(suggestions.get(position).getText());
         holder.hits.setText(suggestions.get(position).getHits());
         holder.searchIcon.setImageResource(suggestions.get(position).getSearchIcon());
         holder.trendingIcon.setImageResource(suggestions.get(position).getTrendingIcon());
-
         if (topEntries == -1)
             holder.category.setVisibility(View.GONE);
         else

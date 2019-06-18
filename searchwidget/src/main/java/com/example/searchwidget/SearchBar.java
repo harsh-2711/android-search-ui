@@ -38,14 +38,20 @@ import android.widget.TextView;
 
 import com.example.searchwidget.Builder.SearchProp;
 import com.example.searchwidget.Builder.Suggestions;
+import com.example.searchwidget.Model.SuggestionsModel;
 import com.example.searchwidget.adapter.DefaultClientSuggestionsAdapter;
 import com.example.searchwidget.adapter.DefaultSuggestionsAdapter;
 import com.example.searchwidget.adapter.SuggestionsAdapter;
+
+import org.json.JSONArray;
+import org.json.JSONException;
+import org.json.JSONObject;
 
 import java.io.IOException;
 import java.lang.reflect.Field;
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Random;
 
 
 import io.appbase.client.AppbaseClient;
@@ -133,6 +139,7 @@ public class SearchBar extends RelativeLayout implements View.OnClickListener,
 
     private DefaultClientSuggestionsAdapter defaultClientSuggestionsAdapter;
     private boolean areSuggestionsEnabled = true;
+    RecyclerView recyclerView;
 
     public SearchBar(Context context, AttributeSet attributeSet) {
         super(context, attributeSet);
@@ -198,7 +205,7 @@ public class SearchBar extends RelativeLayout implements View.OnClickListener,
         if (adapter instanceof DefaultSuggestionsAdapter)
             ((DefaultSuggestionsAdapter) adapter).setListener(this);
         adapter.setMaxSuggestionsCount(maxSuggestionCount);
-        RecyclerView recyclerView = findViewById(R.id.recycler);
+        recyclerView = findViewById(R.id.recycler);
         recyclerView.setAdapter(adapter);
         recyclerView.setLayoutManager(new LinearLayoutManager(getContext()));
 
@@ -1358,8 +1365,6 @@ public class SearchBar extends RelativeLayout implements View.OnClickListener,
                     startSearching.execute(getRequestedQuery());
                     if(shouldLogQuery)
                         Log.d("QUERY", getRequestedQuery());
-
-                    
                 } else {
                     Log.e("Error", "Please check if Appbase client, Search props and Text change listeners are set properly");
                 }
@@ -1375,6 +1380,7 @@ public class SearchBar extends RelativeLayout implements View.OnClickListener,
     private class StartSearching extends AsyncTask<String, Void, Void> {
 
         String result = "Query wasn't initiated";
+        ArrayList<String> entries;
 
         @Override
         protected Void doInBackground(String... strings) {
@@ -1384,6 +1390,30 @@ public class SearchBar extends RelativeLayout implements View.OnClickListener,
                 e.printStackTrace();
                 result = e.toString();
             }
+            if(areSuggestionsEnabled) {
+
+                JSONObject resultJSON = null;
+                try {
+                    resultJSON = new JSONObject(result);
+                    JSONObject hits = resultJSON.getJSONObject("hits");
+                    JSONArray finalHits = hits.getJSONArray("hits");
+
+                    entries = new ArrayList<>();
+                    for (int i = 0; i < finalHits.length(); i++) {
+
+                        JSONObject obj = finalHits.getJSONObject(i);
+                        JSONObject source = obj.getJSONObject("_source");
+
+                        for(int j = 0; j < searchPropDefault.dataField.size(); j++) {
+                            String entry = source.getString(searchPropDefault.dataField.get(j));
+                            entries.add(entry);
+                        }
+                    }
+
+                } catch (JSONException e) {
+                    e.printStackTrace();
+                }
+            }
             return null;
         }
 
@@ -1391,6 +1421,14 @@ public class SearchBar extends RelativeLayout implements View.OnClickListener,
         protected void onPostExecute(Void aVoid) {
             super.onPostExecute(aVoid);
             textChangeListener.onTextChange(result);
+
+            if(areSuggestionsEnabled) {
+                ArrayList<SuggestionsModel> adapterEntries = new Suggestions(entries).build();
+                defaultClientSuggestionsAdapter = new DefaultClientSuggestionsAdapter(adapterEntries, getContext());
+                LinearLayoutManager mLayoutManager = new LinearLayoutManager(getContext());
+                recyclerView.setLayoutManager(mLayoutManager);
+                recyclerView.setAdapter(defaultClientSuggestionsAdapter);
+            }
         }
     }
 

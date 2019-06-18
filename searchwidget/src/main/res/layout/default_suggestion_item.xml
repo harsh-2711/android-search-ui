@@ -6,7 +6,8 @@
     android:background="?attr/selectableItemBackground"
     android:clickable="true"
     android:gravity="center_vertical"
-    android:orientation="horizontal">
+    android:orientation="horizontal"
+    android:focusable="true">
 
     <ImageView
         android:id="@+id/searchIcon"
@@ -49,14 +50,14 @@
         android:layout_marginLeft="20dp"
         android:layout_marginRight="10dp"
         android:text="6000"
-        android:textSize="?android:attr/textAppearanceSmall" />
+        android:textAppearance="?android:attr/textAppearanceSmall" />
 
     <ImageView
         android:id="@+id/trending_icon"
-        android:layout_width="50dp"
-        android:layout_height="50dp"
+        android:layout_width="45dp"
+        android:layout_height="45dp"
         android:background="?attr/selectableItemBackground"
-        android:padding="13dp"
+        android:padding="15dp"
         android:src="@drawable/top_left_arrow"
         android:tint="@color/material_grey_600" />
 
