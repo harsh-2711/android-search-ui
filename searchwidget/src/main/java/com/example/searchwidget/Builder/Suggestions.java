@@ -1,6 +1,7 @@
 package com.example.searchwidget.Builder;
 
 import com.example.searchwidget.Model.SuggestionsModel;
+import com.example.searchwidget.R;
 import com.example.searchwidget.adapter.DefaultClientSuggestionsAdapter;
 
 import java.util.ArrayList;
@@ -102,23 +103,23 @@ public class Suggestions {
             }
 
             if(this.searchIcon == null)
-                searchicon = 0;
+                searchicon = R.drawable.ic_search_icon;
             else {
                 if(this.searchIcon.size() >= i) {
                     searchicon = this.searchIcon.get(i);
                 }
                 else
-                    searchicon = 0;
+                    searchicon = R.drawable.ic_search_icon;
             }
 
             if(this.trendingIcon == null)
-                trendingicon = 0;
+                trendingicon = R.drawable.top_left_arrow;
             else {
                 if(this.trendingIcon.size() >= i) {
                     trendingicon = this.trendingIcon.get(i);
                 }
                 else
-                    trendingicon = 0;
+                    trendingicon = R.drawable.top_left_arrow;
             }
 
             suggestions.add(new SuggestionsModel(this.suggestions.get(i),category, hit, searchicon, trendingicon ));

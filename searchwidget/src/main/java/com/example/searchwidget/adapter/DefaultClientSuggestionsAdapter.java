@@ -34,7 +34,7 @@ public class DefaultClientSuggestionsAdapter extends RecyclerView.Adapter<Sugges
 
     /**
      * Initiates DefaultClientSuggestionsAdapter with default topEntries parameter
-     * Using this constructor, categories for all search results will be shown
+     * Using this constructor, no categories for any search results will be shown
      * @param suggestions List of suggestions to be added
      * @param context Context of the activity
      */
@@ -72,10 +72,12 @@ public class DefaultClientSuggestionsAdapter extends RecyclerView.Adapter<Sugges
         holder.trendingIcon.setImageResource(suggestions.get(position).getTrendingIcon());
 
         if (topEntries == -1)
-            holder.category.setText(suggestions.get(position).getCategory());
+            holder.category.setVisibility(View.GONE);
         else
             if (position < topEntries)
                 holder.category.setText(suggestions.get(position).getCategory());
+            else
+                holder.category.setVisibility(View.GONE);
     }
 
     @Override

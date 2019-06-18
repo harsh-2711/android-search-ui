@@ -1358,6 +1358,8 @@ public class SearchBar extends RelativeLayout implements View.OnClickListener,
                     startSearching.execute(getRequestedQuery());
                     if(shouldLogQuery)
                         Log.d("QUERY", getRequestedQuery());
+
+                    
                 } else {
                     Log.e("Error", "Please check if Appbase client, Search props and Text change listeners are set properly");
                 }
@@ -1392,6 +1394,9 @@ public class SearchBar extends RelativeLayout implements View.OnClickListener,
         }
     }
 
+    /**
+     * Disables default suggestions from client
+     */
     public void diableDefaultClientSuggestions () {
         if(defaultClientSuggestionsAdapter != null) {
             defaultClientSuggestionsAdapter.clear();
@@ -1400,7 +1405,14 @@ public class SearchBar extends RelativeLayout implements View.OnClickListener,
         }
     }
 
-    public Suggestions enableDefaultClientSuggestions (ArrayList<String> suggestions) {
+    /**
+     * Enables default suggestions from client
+     */
+    public void enableDefaultClientSuggestions () {
+        areSuggestionsEnabled = true;
+    }
+
+    public Suggestions buildCustomSuggestions (ArrayList<String> suggestions) {
         areSuggestionsEnabled = true;
         return new Suggestions(suggestions);
     }
