@@ -47,18 +47,18 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_gravity="center"
-        android:layout_marginLeft="20dp"
-        android:layout_marginRight="10dp"
+        android:layout_marginLeft="30dp"
+        android:layout_marginRight="15dp"
         android:text="6000"
         android:textAppearance="?android:attr/textAppearanceSmall" />
 
     <ImageView
         android:id="@+id/trending_icon"
-        android:layout_width="45dp"
-        android:layout_height="45dp"
+        android:layout_width="40dp"
+        android:layout_height="40dp"
         android:background="?attr/selectableItemBackground"
-        android:padding="15dp"
-        android:src="@drawable/top_left_arrow"
-        android:tint="@color/material_grey_600" />
+        android:padding="10dp"
+        android:layout_marginRight="10dp"
+        android:src="@drawable/top_left_arrow" />
 
 </LinearLayout>
