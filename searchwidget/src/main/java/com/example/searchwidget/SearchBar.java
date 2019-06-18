@@ -11,6 +11,7 @@ import android.os.AsyncTask;
 import android.os.Build;
 import android.os.Parcel;
 import android.os.Parcelable;
+import android.support.annotation.NonNull;
 import android.support.v4.content.ContextCompat;
 import android.support.v7.widget.CardView;
 import android.support.v7.widget.LinearLayoutManager;
@@ -1383,6 +1384,15 @@ public class SearchBar extends RelativeLayout implements View.OnClickListener,
         protected void onPostExecute(Void aVoid) {
             super.onPostExecute(aVoid);
             textChangeListener.onTextChange(result);
+        }
+    }
+
+    public void setDefaultSuggestionsFromClient(boolean state) {
+        if(state) {
+            adapter.addSuggestion("ABCD");
+            adapter.addSuggestion("XYZ");
+            adapter.notifyDataSetChanged();
+            setCustomSuggestionAdapter(adapter);
         }
     }
 

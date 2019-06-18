@@ -55,5 +55,8 @@ public class MainActivity extends AppCompatActivity {
 
         // Start search
         searchBar.startSearch();
+
+        searchBar.setNavButtonEnabled(true);
+        searchBar.setDefaultSuggestionsFromClient(true);
     }
 }
