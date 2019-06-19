@@ -31,7 +31,6 @@ public class MainActivity extends AppCompatActivity {
         dataFields = new ArrayList<>();
         dataFields.add("title");
         dataFields.add("title.search");
-        //dataFields.add("title.search");
 
         weights = new ArrayList<>();
         weights.add(1);
@@ -62,6 +61,7 @@ public class MainActivity extends AppCompatActivity {
         // Start search
         searchBar.startSearch();
 
+        // Sets navigation bar icon inside the search bar
         searchBar.setNavButtonEnabled(true);
     }
 }
