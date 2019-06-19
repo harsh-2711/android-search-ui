@@ -693,7 +693,7 @@ public class SearchBar extends RelativeLayout implements View.OnClickListener,
     /**
      * Sets search bar placeholder text
      *
-     * @param placeHolderText
+     * @param placeHolderText Text to be shown while search bar is disabled
      */
     public void setPlaceHolderText(CharSequence placeHolderText) {
         this.placeholderText = placeHolderText;
