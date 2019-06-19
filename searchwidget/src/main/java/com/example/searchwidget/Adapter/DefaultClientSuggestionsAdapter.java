@@ -34,6 +34,7 @@ public class DefaultClientSuggestionsAdapter extends RecyclerView.Adapter<Sugges
     /**
      * Initiates DefaultClientSuggestionsAdapter with default topEntries parameter
      * Using this constructor, no categories for any search results will be shown
+     *
      * @param suggestions List of suggestions to be added
      * @param context Context of the activity
      */

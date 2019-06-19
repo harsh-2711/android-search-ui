@@ -5,7 +5,7 @@ import com.example.searchwidget.R;
 
 import java.util.ArrayList;
 
-public class Suggestions {
+public class DefaultSuggestions {
 
     ArrayList<String> suggestions;
     ArrayList<String> categories = null;
@@ -18,7 +18,7 @@ public class Suggestions {
      *
      * @param suggestions List of suggestions
      */
-    public Suggestions(ArrayList<String> suggestions) {
+    public DefaultSuggestions(ArrayList<String> suggestions) {
         this.suggestions = suggestions;
     }
 
@@ -28,7 +28,7 @@ public class Suggestions {
      * @param categories List of categories
      * @return
      */
-    public Suggestions setCategories(ArrayList<String> categories) {
+    public DefaultSuggestions setCategories(ArrayList<String> categories) {
         this.categories = categories;
         return this;
     }
@@ -39,7 +39,7 @@ public class Suggestions {
      * @param searchIcon List of resource ids for each suggestion
      * @return
      */
-    public Suggestions setSearchImages(ArrayList<Integer> searchIcon) {
+    public DefaultSuggestions setSearchImages(ArrayList<Integer> searchIcon) {
         this.searchIcon = searchIcon;
         return this;
     }
@@ -50,7 +50,7 @@ public class Suggestions {
      * @param trendingIcon List of resource ids for each suggestion
      * @return
      */
-    public Suggestions setIcons(ArrayList<Integer> trendingIcon) {
+    public DefaultSuggestions setIcons(ArrayList<Integer> trendingIcon) {
         this.trendingIcon = trendingIcon;
         return this;
     }
@@ -61,7 +61,7 @@ public class Suggestions {
      * @param hits List of hits
      * @return
      */
-    public Suggestions hits(ArrayList<String> hits) {
+    public DefaultSuggestions hits(ArrayList<String> hits) {
         this.hits = hits;
         return this;
     }

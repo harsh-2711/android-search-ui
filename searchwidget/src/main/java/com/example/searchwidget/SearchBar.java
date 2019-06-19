@@ -35,8 +35,8 @@ import android.widget.LinearLayout;
 import android.widget.RelativeLayout;
 import android.widget.TextView;
 
+import com.example.searchwidget.Builder.DefaultSuggestions;
 import com.example.searchwidget.Builder.SearchProp;
-import com.example.searchwidget.Builder.Suggestions;
 import com.example.searchwidget.Model.SuggestionsModel;
 import com.example.searchwidget.Adapter.DefaultClientSuggestionsAdapter;
 import com.example.searchwidget.Adapter.DefaultSuggestionsAdapter;
@@ -1432,7 +1432,7 @@ public class SearchBar extends RelativeLayout implements View.OnClickListener,
             textChangeListener.onTextChange(result);
 
             if(areSuggestionsEnabled) {
-                ArrayList<SuggestionsModel> adapterEntries = new Suggestions(entries).build();
+                ArrayList<SuggestionsModel> adapterEntries = new DefaultSuggestions(entries).build();
                 defaultClientSuggestionsAdapter = new DefaultClientSuggestionsAdapter(adapterEntries, getContext());
                 LinearLayoutManager mLayoutManager = new LinearLayoutManager(getContext());
                 recyclerView.setLayoutManager(mLayoutManager);
@@ -1459,9 +1459,15 @@ public class SearchBar extends RelativeLayout implements View.OnClickListener,
         areSuggestionsEnabled = true;
     }
 
-    public Suggestions buildCustomSuggestions (ArrayList<String> suggestions) {
+    /**
+     * Returns object of DefaultSuggestions model to modify the search results as required before setting the DefaultClientSuggestionsAdapter
+     *
+     * @param suggestions List of suggestions
+     * @return Object of DefaultSuggestions Model
+     */
+    public DefaultSuggestions buildCustomSuggestions (ArrayList<String> suggestions) {
         areSuggestionsEnabled = true;
-        return new Suggestions(suggestions);
+        return new DefaultSuggestions(suggestions);
     }
 
     private static class SavedState extends BaseSavedState {
