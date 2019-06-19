@@ -1425,11 +1425,18 @@ public class SearchBar extends RelativeLayout implements View.OnClickListener,
                         JSONObject source = obj.getJSONObject("_source");
 
                         for(int j = 0; j < searchPropDefault.dataField.size(); j++) {
-                            String entry = source.getString(searchPropDefault.dataField.get(j));
-                            if(!duplicateCheck.contains(entry.toLowerCase())) {
-                                entries.add(entry);
-                                duplicateCheck.add(entry.toLowerCase());
+
+                            try {
+                                String entry = source.getString(searchPropDefault.dataField.get(j));
+                                if(!duplicateCheck.contains(entry.toLowerCase())) {
+                                    entries.add(entry);
+                                    duplicateCheck.add(entry.toLowerCase());
+                                }
+                            } catch (JSONException e) {
+                                // Error finding data field
+                                e.printStackTrace();
                             }
+
                         }
                     }
 
