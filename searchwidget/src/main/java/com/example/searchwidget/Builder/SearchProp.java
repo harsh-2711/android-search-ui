@@ -23,6 +23,7 @@ public class SearchProp {
     public boolean isAggregation = false;
     public ArrayList<String> aggregationFields = null;
     public String aggregationName = "unique-terms";
+    public boolean hitsEnabled = false;
 
     public SearchProp(String componentId, ArrayList<String> dataField) {
         this.componentId = componentId;
@@ -91,6 +92,11 @@ public class SearchProp {
 
     public SearchProp setAggregationName(String aggregationName) {
         this.aggregationName = aggregationName;
+        return this;
+    }
+
+    public SearchProp setHitsEnabled(boolean hitsEnabled) {
+        this.hitsEnabled = hitsEnabled;
         return this;
     }
 

@@ -30,6 +30,7 @@ public class MainActivity extends AppCompatActivity {
         // Setting basic search prop
         dataFields = new ArrayList<>();
         dataFields.add("title");
+        //dataFields.add("title.search");
 
         weights = new ArrayList<>();
         weights.add(1);

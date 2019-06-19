@@ -20,6 +20,7 @@ public class DefaultClientSuggestionsAdapter extends RecyclerView.Adapter<Sugges
     private int topEntries;
     private boolean shouldHighlight;
     private String queryText;
+    private boolean showHits;
 
     /**
      * Listener for click on recycler view's items
@@ -40,13 +41,18 @@ public class DefaultClientSuggestionsAdapter extends RecyclerView.Adapter<Sugges
      *
      * @param suggestions List of suggestions to be added
      * @param context Context of the activity
+     * @param context Context of the activity
+     * @param queryText The text which is queried/written in the search bar
+     * @param shouldHighlight Should highlight the queried text or not
+     * @param showHits Should show number of hits or not
      */
-    public DefaultClientSuggestionsAdapter(ArrayList<SuggestionsModel> suggestions, Context context, String queryText, boolean shouldHighlight) {
+    public DefaultClientSuggestionsAdapter(ArrayList<SuggestionsModel> suggestions, Context context, String queryText, boolean shouldHighlight, boolean showHits) {
         this.suggestions = suggestions;
         this.context = context;
         this.queryText = queryText;
         this.shouldHighlight = shouldHighlight;
         this.topEntries = -1;
+        this.showHits = showHits;
     }
 
     /**
@@ -54,14 +60,18 @@ public class DefaultClientSuggestionsAdapter extends RecyclerView.Adapter<Sugges
      *
      * @param suggestions List of suggestions to be added
      * @param context Context of the activity
-     * @param topEntries Number of entries for which categories needs to be shown under search result
+     * @param queryText The text which is queried/written in the search bar
+     * @param shouldHighlight Should highlight the queried text or not
+     * @param showHits Should show number of hits or not
+     * @param topEntries  Number of entries for which categories needs to be shown under search result
      */
-    public DefaultClientSuggestionsAdapter(ArrayList<SuggestionsModel> suggestions, Context context, String queryText, boolean shouldHighlight, int topEntries) {
+    public DefaultClientSuggestionsAdapter(ArrayList<SuggestionsModel> suggestions, Context context, String queryText, boolean shouldHighlight, boolean showHits, int topEntries) {
         this.suggestions = suggestions;
         this.context = context;
         this.queryText = queryText;
         this.shouldHighlight = shouldHighlight;
         this.topEntries = topEntries;
+        this.showHits = showHits;
     }
 
     @Override
@@ -91,7 +101,12 @@ public class DefaultClientSuggestionsAdapter extends RecyclerView.Adapter<Sugges
             holder.text.setText(suggestions.get(position).getText());
         }
 
-        holder.hits.setText(suggestions.get(position).getHits());
+        if(showHits) {
+            holder.hits.setVisibility(View.VISIBLE);
+            holder.hits.setText(suggestions.get(position).getHits());
+        } else
+            holder.hits.setVisibility(View.GONE);
+
         holder.searchIcon.setImageResource(suggestions.get(position).getSearchIcon());
         holder.trendingIcon.setImageResource(suggestions.get(position).getTrendingIcon());
         if (topEntries == -1)

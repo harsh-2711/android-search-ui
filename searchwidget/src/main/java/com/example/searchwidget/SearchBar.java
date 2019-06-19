@@ -1447,7 +1447,7 @@ public class SearchBar extends RelativeLayout implements View.OnClickListener,
 
             if(areSuggestionsEnabled) {
                 ArrayList<SuggestionsModel> adapterEntries = new DefaultSuggestions(entries).build();
-                defaultClientSuggestionsAdapter = new DefaultClientSuggestionsAdapter(adapterEntries, getContext(), query, searchPropDefault.highlight);
+                defaultClientSuggestionsAdapter = new DefaultClientSuggestionsAdapter(adapterEntries, getContext(), query, searchPropDefault.highlight, searchPropDefault.hitsEnabled);
                 LinearLayoutManager mLayoutManager = new LinearLayoutManager(getContext());
                 recyclerView.setLayoutManager(mLayoutManager);
                 recyclerView.setAdapter(defaultClientSuggestionsAdapter);
