@@ -1212,7 +1212,7 @@ public class SearchBar extends RelativeLayout implements View.OnClickListener,
                     value + "\", \"fields\": [" + fields + "], \"type\": \"phrase_prefix\", \"operator\": \"and\" } } ]";
         } else {
             return "[ { \"multi_match\": { \"query\": \"" + value + "\", \"fields\": [" + fields + "], " +
-                    "\"type\": \"cross_fields\", \"operator\": \"or\", \"fuzziness\": \"" + fuzziness + " } }, " +
+                    "\"operator\": \"or\", \"fuzziness\": \"" + fuzziness + "\" } }, " +
                     "{ \"multi_match\": { \"query\": \"" + value + "\", \"fields\": [" + fields +
                     "], \"type\": \"phrase_prefix\", \"operator\": \"or\" } } ]";
         }

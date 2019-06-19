@@ -36,10 +36,10 @@ public class MainActivity extends AppCompatActivity {
         weights.add(3);
 
         searchBar.setSearchProp("Demo Widget", dataFields)
-                .setQueryFormat("and")
+                .setQueryFormat("or")
                 .setFuzziness("10")
                 .setDebounce(100)
-                .setHighlight(false)
+                .setHighlight(true)
                 .build();
 
         // To log the queries made by Appbase client for debugging
