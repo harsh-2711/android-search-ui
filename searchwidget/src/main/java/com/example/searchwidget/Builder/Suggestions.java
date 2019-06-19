@@ -2,7 +2,6 @@ package com.example.searchwidget.Builder;
 
 import com.example.searchwidget.Model.SuggestionsModel;
 import com.example.searchwidget.R;
-import com.example.searchwidget.adapter.DefaultClientSuggestionsAdapter;
 
 import java.util.ArrayList;
 

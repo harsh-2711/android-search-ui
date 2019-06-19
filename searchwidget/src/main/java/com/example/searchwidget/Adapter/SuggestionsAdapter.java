@@ -1,4 +1,4 @@
-package com.example.searchwidget.adapter;
+package com.example.searchwidget.Adapter;
 
 import android.support.v7.widget.RecyclerView;
 import android.view.LayoutInflater;

@@ -11,7 +11,6 @@ import android.os.AsyncTask;
 import android.os.Build;
 import android.os.Parcel;
 import android.os.Parcelable;
-import android.support.annotation.NonNull;
 import android.support.v4.content.ContextCompat;
 import android.support.v7.widget.CardView;
 import android.support.v7.widget.LinearLayoutManager;
@@ -39,9 +38,9 @@ import android.widget.TextView;
 import com.example.searchwidget.Builder.SearchProp;
 import com.example.searchwidget.Builder.Suggestions;
 import com.example.searchwidget.Model.SuggestionsModel;
-import com.example.searchwidget.adapter.DefaultClientSuggestionsAdapter;
-import com.example.searchwidget.adapter.DefaultSuggestionsAdapter;
-import com.example.searchwidget.adapter.SuggestionsAdapter;
+import com.example.searchwidget.Adapter.DefaultClientSuggestionsAdapter;
+import com.example.searchwidget.Adapter.DefaultSuggestionsAdapter;
+import com.example.searchwidget.Adapter.SuggestionsAdapter;
 
 import org.json.JSONArray;
 import org.json.JSONException;
@@ -51,7 +50,6 @@ import java.io.IOException;
 import java.lang.reflect.Field;
 import java.util.ArrayList;
 import java.util.List;
-import java.util.Random;
 
 
 import io.appbase.client.AppbaseClient;
