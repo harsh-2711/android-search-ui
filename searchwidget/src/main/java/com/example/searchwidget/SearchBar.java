@@ -1346,6 +1346,16 @@ public class SearchBar extends RelativeLayout implements View.OnClickListener,
         void onTextChange(String response);
     }
 
+    private static class RequestParams {
+        String queryText;
+        String requestedQuery;
+
+        RequestParams(String queryText, String requestedQuery) {
+            this.queryText = queryText;
+            this.requestedQuery = requestedQuery;
+        }
+    }
+
     /**
      * Starts on text change callbacks to be handled by the listener.
      * Call this method after setting TextChangeListener to start its functionality
@@ -1365,7 +1375,8 @@ public class SearchBar extends RelativeLayout implements View.OnClickListener,
                     if(isPropSet && isAppbaseClientSet && textChangeListenerExists()) {
                         searchPropDefault.setDefaultValue(String.valueOf(s));
                         StartSearching startSearching = new StartSearching();
-                        startSearching.execute(getRequestedQuery());
+                        RequestParams requestParams = new RequestParams(String.valueOf(s), getRequestedQuery());
+                        startSearching.execute(requestParams);
                         if(shouldLogQuery)
                             Log.d("QUERY", getRequestedQuery());
                     } else {
@@ -1381,16 +1392,19 @@ public class SearchBar extends RelativeLayout implements View.OnClickListener,
         });
     }
 
-    private class StartSearching extends AsyncTask<String, Void, Void> {
+    private class StartSearching extends AsyncTask<RequestParams, Void, Void> {
 
         String result = "Query wasn't initiated";
         ArrayList<String> entries;
         ArrayList<String> duplicateCheck;
+        String query;
 
         @Override
-        protected Void doInBackground(String... strings) {
+        protected Void doInBackground(RequestParams... params) {
+            query = params[0].queryText;
+
             try {
-                result = client.prepareSearch(clientType, strings[0]).execute().body().string();
+                result = client.prepareSearch(clientType, params[0].requestedQuery).execute().body().string();
             } catch (IOException e) {
                 e.printStackTrace();
                 result = e.toString();
@@ -1433,7 +1447,7 @@ public class SearchBar extends RelativeLayout implements View.OnClickListener,
 
             if(areSuggestionsEnabled) {
                 ArrayList<SuggestionsModel> adapterEntries = new DefaultSuggestions(entries).build();
-                defaultClientSuggestionsAdapter = new DefaultClientSuggestionsAdapter(adapterEntries, getContext());
+                defaultClientSuggestionsAdapter = new DefaultClientSuggestionsAdapter(adapterEntries, getContext(), query, searchPropDefault.highlight);
                 LinearLayoutManager mLayoutManager = new LinearLayoutManager(getContext());
                 recyclerView.setLayoutManager(mLayoutManager);
                 recyclerView.setAdapter(defaultClientSuggestionsAdapter);

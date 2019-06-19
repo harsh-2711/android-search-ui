@@ -3,6 +3,7 @@ package com.example.searchwidget.Adapter;
 import android.content.Context;
 import android.support.annotation.NonNull;
 import android.support.v7.widget.RecyclerView;
+import android.text.Html;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -17,6 +18,8 @@ public class DefaultClientSuggestionsAdapter extends RecyclerView.Adapter<Sugges
     private ArrayList<SuggestionsModel> suggestions;
     private Context context;
     private int topEntries;
+    private boolean shouldHighlight;
+    private String queryText;
 
     /**
      * Listener for click on recycler view's items
@@ -38,9 +41,11 @@ public class DefaultClientSuggestionsAdapter extends RecyclerView.Adapter<Sugges
      * @param suggestions List of suggestions to be added
      * @param context Context of the activity
      */
-    public DefaultClientSuggestionsAdapter(ArrayList<SuggestionsModel> suggestions, Context context) {
+    public DefaultClientSuggestionsAdapter(ArrayList<SuggestionsModel> suggestions, Context context, String queryText, boolean shouldHighlight) {
         this.suggestions = suggestions;
         this.context = context;
+        this.queryText = queryText;
+        this.shouldHighlight = shouldHighlight;
         this.topEntries = -1;
     }
 
@@ -51,9 +56,11 @@ public class DefaultClientSuggestionsAdapter extends RecyclerView.Adapter<Sugges
      * @param context Context of the activity
      * @param topEntries Number of entries for which categories needs to be shown under search result
      */
-    public DefaultClientSuggestionsAdapter(ArrayList<SuggestionsModel> suggestions, Context context, int topEntries) {
+    public DefaultClientSuggestionsAdapter(ArrayList<SuggestionsModel> suggestions, Context context, String queryText, boolean shouldHighlight, int topEntries) {
         this.suggestions = suggestions;
         this.context = context;
+        this.queryText = queryText;
+        this.shouldHighlight = shouldHighlight;
         this.topEntries = topEntries;
     }
 
@@ -66,7 +73,24 @@ public class DefaultClientSuggestionsAdapter extends RecyclerView.Adapter<Sugges
 
     @Override
     public void onBindViewHolder(@NonNull Suggestions_View_Holder holder, int position) {
-        holder.text.setText(suggestions.get(position).getText());
+
+        if(shouldHighlight) {
+            if(suggestions.get(position).getText().toLowerCase().contains(queryText.toLowerCase())) {
+                int start = suggestions.get(position).getText().toLowerCase().indexOf(queryText.toLowerCase());
+                int end = start + queryText.length();
+
+                String firstHalf = suggestions.get(position).getText().substring(0, start);
+                String secondHalf = suggestions.get(position).getText().substring(end);
+                String highlight = suggestions.get(position).getText().substring(start, end);
+
+                holder.text.setText(Html.fromHtml(firstHalf + "<font color=#000000>" + highlight + "</font>" + secondHalf));
+            } else
+                holder.text.setText(suggestions.get(position).getText());
+        }
+        else {
+            holder.text.setText(suggestions.get(position).getText());
+        }
+
         holder.hits.setText(suggestions.get(position).getHits());
         holder.searchIcon.setImageResource(suggestions.get(position).getSearchIcon());
         holder.trendingIcon.setImageResource(suggestions.get(position).getTrendingIcon());

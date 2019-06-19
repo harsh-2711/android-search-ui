@@ -39,10 +39,12 @@ public class MainActivity extends AppCompatActivity {
                 .setQueryFormat("and")
                 .setFuzziness("10")
                 .setDebounce(100)
+                .setHighlight(false)
                 .build();
 
         // To log the queries made by Appbase client for debugging
-        // searchBar.setLoggingQuery(true);
+         searchBar.setLoggingQuery(true);
+
         searchBar.enableDefaultClientSuggestions();
 
         // Setting listener to handle callbacks
