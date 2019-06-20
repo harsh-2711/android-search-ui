@@ -179,6 +179,8 @@ public class MainActivity extends AppCompatActivity {
 }
 ```
 
+For more detailed examples, checkout [MainActivity.java](https://github.com/harsh-2711/appbase-search-widget/blob/master/example/src/main/java/com/example/searchwidgetdemo/MainActivity.java) file in [example](https://github.com/harsh-2711/appbase-search-widget/tree/master/example) app
+
 #### Quick Fixes
 
 If you are facing this error
