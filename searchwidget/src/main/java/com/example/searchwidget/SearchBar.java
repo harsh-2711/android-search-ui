@@ -128,17 +128,17 @@ public class SearchBar extends RelativeLayout implements View.OnClickListener,
     private static SearchPropModel defaultSearchPropModel;
     private String defaultQuery;
 
-    private static AppbaseClient client;
+    private AppbaseClient client;
     private boolean isAppbaseClientSet = false;
-    private static String clientType;
+    private String clientType;
 
-    private static TextChangeListener textChangeListener;
+    private TextChangeListener textChangeListener;
 
     private boolean shouldLogQuery = false;
 
-    private static DefaultClientSuggestionsAdapter defaultClientSuggestionsAdapter;
-    private static boolean areSuggestionsEnabled = true;
-    private static RecyclerView recyclerView;
+    private DefaultClientSuggestionsAdapter defaultClientSuggestionsAdapter;
+    private boolean areSuggestionsEnabled = true;
+    private RecyclerView recyclerView;
 
     public SearchBar(Context context, AttributeSet attributeSet) {
         super(context, attributeSet);
@@ -1302,7 +1302,7 @@ public class SearchBar extends RelativeLayout implements View.OnClickListener,
      * @param textChangeListener Text change callbacks
      */
     public void setOnTextChangeListner(TextChangeListener textChangeListener) {
-        SearchBar.textChangeListener = textChangeListener;
+        this.textChangeListener = textChangeListener;
     }
 
     private boolean textChangeListenerExists() {
@@ -1397,7 +1397,7 @@ public class SearchBar extends RelativeLayout implements View.OnClickListener,
         });
     }
 
-    private static class StartSearching extends AsyncTask<RequestParams, Void, Void> {
+    private class StartSearching extends AsyncTask<RequestParams, Void, Void> {
 
         String result = "Query wasn't initiated";
         ArrayList<String> entries;
