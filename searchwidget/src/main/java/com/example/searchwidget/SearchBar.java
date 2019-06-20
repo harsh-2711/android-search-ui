@@ -1275,7 +1275,7 @@ public class SearchBar extends RelativeLayout implements View.OnClickListener,
             defaultQuery = getDefaultQuery(searchPropDefault);
             defaultQuery = getWrappedQuery(defaultQuery);
 
-            if (searchPropDefault.isAggregation) {
+            if (searchPropDefault.aggregation) {
                 defaultQuery = defaultQuery.substring(0, defaultQuery.length() - 1);
                 defaultQuery = defaultQuery + ", " + getAggsQuery(searchPropDefault) + " }";
             }
@@ -1454,7 +1454,7 @@ public class SearchBar extends RelativeLayout implements View.OnClickListener,
 
             if(areSuggestionsEnabled) {
                 ArrayList<ClientSuggestionsModel> adapterEntries = new DefaultClientSuggestions(entries).build();
-                defaultClientSuggestionsAdapter = new DefaultClientSuggestionsAdapter(adapterEntries, getContext(), query, searchPropDefault.highlight, searchPropDefault.hitsEnabled);
+                defaultClientSuggestionsAdapter = new DefaultClientSuggestionsAdapter(adapterEntries, getContext(), query, searchPropDefault.highlight, searchPropDefault.hits);
                 LinearLayoutManager mLayoutManager = new LinearLayoutManager(getContext());
                 recyclerView.setLayoutManager(mLayoutManager);
                 recyclerView.setAdapter(defaultClientSuggestionsAdapter);

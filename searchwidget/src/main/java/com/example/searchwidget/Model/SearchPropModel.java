@@ -18,14 +18,15 @@ public class SearchPropModel {
     private String queryFormat;
     private String fuzziness;
     private int debounce;
-    private boolean isAggregation;
+    private boolean aggregation;
     private ArrayList<String> aggregationFields;
     private String aggregationName;
+    private boolean hits;
 
     public SearchPropModel(String componentId, ArrayList<String> dataField, String categoryField, String defaultValue,
                            ArrayList<Integer> weights, boolean autoSuggest, ArrayList<Pair<String, String>> defaultSuggestions,
                            boolean highlight, ArrayList<String> highlightField, String queryFormat, String fuzziness, int debounce,
-                           boolean isAggregation, ArrayList<String> aggregationFields, String aggregationName) {
+                           boolean aggregation, ArrayList<String> aggregationFields, String aggregationName, boolean hits) {
 
         this.componentId = componentId;
         this.dataField = dataField;
@@ -39,7 +40,7 @@ public class SearchPropModel {
         this.queryFormat = queryFormat;
         this.fuzziness = fuzziness;
         this.debounce = debounce;
-        this.isAggregation = isAggregation;
+        this.aggregation = aggregation;
         this.aggregationFields = aggregationFields;
         this.aggregationName = aggregationName;
     }
@@ -141,11 +142,11 @@ public class SearchPropModel {
     }
 
     public boolean getAggregrationState() {
-        return isAggregation;
+        return aggregation;
     }
 
-    public void setAggregrationState(boolean aggregrationState) {
-        this.isAggregation = aggregrationState;
+    public void setAggregrationState(boolean aggregationState) {
+        this.aggregation = aggregationState;
     }
 
     public ArrayList<String> getAggregationFields() {
@@ -162,5 +163,13 @@ public class SearchPropModel {
 
     public void setAggregationName(String aggregationName) {
         this.aggregationName = aggregationName;
+    }
+
+    public boolean getHitsState() {
+        return hits;
+    }
+
+    public void setHitsState(boolean hits) {
+        this.hits = hits;
     }
 }
