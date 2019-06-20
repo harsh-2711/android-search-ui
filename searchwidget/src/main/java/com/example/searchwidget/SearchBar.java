@@ -1405,6 +1405,7 @@ public class SearchBar extends RelativeLayout implements View.OnClickListener,
         ArrayList<String> entries;
         ArrayList<String> duplicateCheck;
         String query;
+        ArrayList<String> categories;
 
         @Override
         protected Void doInBackground(RequestParams... params) {
@@ -1425,6 +1426,7 @@ public class SearchBar extends RelativeLayout implements View.OnClickListener,
                     JSONArray finalHits = hits.getJSONArray("hits");
 
                     entries = new ArrayList<>();
+                    categories = new ArrayList<>();
                     duplicateCheck = new ArrayList<>();
                     for (int i = 0; i < finalHits.length(); i++) {
 
@@ -1445,6 +1447,26 @@ public class SearchBar extends RelativeLayout implements View.OnClickListener,
                             }
 
                         }
+
+                        if(defaultSearchPropModel.isHighlight()) {
+                                if(defaultSearchPropModel.getHighlightField() != null) {
+                                    for(int j = 0; j < defaultSearchPropModel.getHighlightField().size(); j++) {
+
+                                        try {
+                                            JSONArray categoryArray = source.getJSONArray(defaultSearchPropModel.getHighlightField().get(j));
+                                            categories.add(categoryArray.get(0).toString());
+                                        } catch (JSONException e) {
+                                            e.printStackTrace();
+                                            try {
+                                                String category = source.getString(defaultSearchPropModel.getHighlightField().get(j));
+                                                categories.add(category);
+                                            } catch (JSONException err) {
+                                                err.printStackTrace();
+                                            }
+                                        }
+                                    }
+                                }
+                        }
                     }
 
                 } catch (JSONException e) {
@@ -1460,8 +1482,16 @@ public class SearchBar extends RelativeLayout implements View.OnClickListener,
             textChangeListener.onTextChange(result);
 
             if(defaultSearchPropModel.isAutoSuggest()) {
-                ArrayList<ClientSuggestionsModel> adapterEntries = new DefaultClientSuggestions(entries).build();
-                defaultClientSuggestionsAdapter = new DefaultClientSuggestionsAdapter(adapterEntries, query, defaultSearchPropModel.isHighlight(), defaultSearchPropModel.getHitsState());
+                ArrayList<ClientSuggestionsModel> adapterEntries;
+                if(!defaultSearchPropModel.isHighlight()) {
+                    adapterEntries = new DefaultClientSuggestions(entries).build();
+                    defaultClientSuggestionsAdapter = new DefaultClientSuggestionsAdapter(adapterEntries, query, defaultSearchPropModel.isHighlight(), defaultSearchPropModel.getHitsState());
+                }
+                else {
+                    adapterEntries = new DefaultClientSuggestions(entries).setCategories(categories).build();
+                    defaultClientSuggestionsAdapter = new DefaultClientSuggestionsAdapter(adapterEntries, query, defaultSearchPropModel.isHighlight(), defaultSearchPropModel.getHitsState(), 2);
+                }
+
                 recyclerView.setAdapter(defaultClientSuggestionsAdapter);
             }
         }

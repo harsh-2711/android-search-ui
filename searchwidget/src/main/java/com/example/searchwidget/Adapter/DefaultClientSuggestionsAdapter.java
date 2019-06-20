@@ -105,8 +105,12 @@ public class DefaultClientSuggestionsAdapter extends RecyclerView.Adapter<Client
         if (topEntries == -1)
             holder.category.setVisibility(View.GONE);
         else
-            if (position < topEntries)
-                holder.category.setText(suggestions.get(position).getCategory());
+            if (position < topEntries) {
+                if(suggestions.get(position).getCategory() != null && !suggestions.get(position).getCategory().equals(""))
+                    holder.category.setText("in " + suggestions.get(position).getCategory());
+                else
+                    holder.category.setText(suggestions.get(position).getCategory());
+            }
             else
                 holder.category.setVisibility(View.GONE);
     }

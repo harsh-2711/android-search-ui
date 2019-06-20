@@ -14,6 +14,7 @@ public class MainActivity extends AppCompatActivity {
     SearchBar searchBar;
     private ArrayList<String> dataFields;
     private ArrayList<Integer> weights;
+    private ArrayList<String> highlightFields;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -37,11 +38,15 @@ public class MainActivity extends AppCompatActivity {
         weights.add(1);
         weights.add(3);
 
+        highlightFields = new ArrayList<>();
+        highlightFields.add("tags");
+
         SearchPropModel searchPropModel = searchBar.setSearchProp("Demo Widget", dataFields)
                 .setQueryFormat("or")
                 .setFuzziness("10")
                 .setDebounce(100)
                 .setHighlight(true)
+                .setHighlightField(highlightFields)
                 .build();
 
         // To log the queries made by Appbase client for debugging
