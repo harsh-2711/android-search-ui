@@ -8,22 +8,22 @@ import java.util.ArrayList;
 
 public class SearchProp {
 
-    public String componentId;
-    public ArrayList<String> dataField;
-    public String categoryField = null;
-    public String defaultValue = null;
-    public ArrayList<Integer> weights = null;
-    public boolean autoSuggest = true;
-    public ArrayList<Pair<String, String>> defaultSuggestions = null;
-    public boolean highlight = false;
-    public ArrayList<String> highlightField = null;
-    public String queryFormat = "or";
-    public String fuzziness = "0";
-    public int debounce = 0;
-    public boolean aggregation = false;
-    public ArrayList<String> aggregationFields = null;
-    public String aggregationName = "unique-terms";
-    public boolean hits = false;
+    private String componentId;
+    private ArrayList<String> dataField;
+    private String categoryField = null;
+    private String defaultValue = null;
+    private ArrayList<Integer> weights = null;
+    private boolean autoSuggest = true;
+    private ArrayList<Pair<String, String>> defaultSuggestions = null;
+    private boolean highlight = false;
+    private ArrayList<String> highlightField = null;
+    private String queryFormat = "or";
+    private String fuzziness = "0";
+    private int debounce = 0;
+    private boolean aggregation = false;
+    private ArrayList<String> aggregationFields = null;
+    private String aggregationName = "unique-terms";
+    private boolean hits = false;
 
     public SearchProp(String componentId, ArrayList<String> dataField) {
         this.componentId = componentId;

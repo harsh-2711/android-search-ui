@@ -41,6 +41,7 @@ import com.example.searchwidget.Builder.SearchProp;
 import com.example.searchwidget.Model.ClientSuggestionsModel;
 import com.example.searchwidget.Adapter.DefaultClientSuggestionsAdapter;
 import com.example.searchwidget.Adapter.SuggestionsAdapter;
+import com.example.searchwidget.Model.SearchPropModel;
 
 import org.json.JSONArray;
 import org.json.JSONException;
@@ -124,20 +125,20 @@ public class SearchBar extends RelativeLayout implements View.OnClickListener,
     private boolean navIconShown = true;
 
     private boolean isPropSet = false;
-    private SearchProp searchPropDefault;
+    private static SearchPropModel defaultSearchPropModel;
     private String defaultQuery;
 
-    private AppbaseClient client;
+    private static AppbaseClient client;
     private boolean isAppbaseClientSet = false;
-    private String clientType;
+    private static String clientType;
 
-    private TextChangeListener textChangeListener;
+    private static TextChangeListener textChangeListener;
 
     private boolean shouldLogQuery = false;
 
-    private DefaultClientSuggestionsAdapter defaultClientSuggestionsAdapter;
-    private boolean areSuggestionsEnabled = true;
-    RecyclerView recyclerView;
+    private static DefaultClientSuggestionsAdapter defaultClientSuggestionsAdapter;
+    private static boolean areSuggestionsEnabled = true;
+    private static RecyclerView recyclerView;
 
     public SearchBar(Context context, AttributeSet attributeSet) {
         super(context, attributeSet);
@@ -1155,58 +1156,57 @@ public class SearchBar extends RelativeLayout implements View.OnClickListener,
      * @param dataFields Data field(s) on which search query is to be applied to
      */
     public SearchProp setSearchProp(String componentId, ArrayList<String> dataFields) {
-        searchPropDefault = new SearchProp(componentId, dataFields);
         isPropSet = true;
-        return searchPropDefault;
+        return new SearchProp(componentId, dataFields);
     }
 
-    private String getAggsQuery(SearchProp searchProp) {
+    private String getAggsQuery(SearchPropModel searchPropModel) {
 
         String fields = "";
 
-        for(int i = 0; i < searchProp.aggregationFields.size(); i++) {
-            if(i == searchProp.aggregationFields.size()-1)
-                fields = fields + "\"" + searchProp.aggregationFields.get(i) + "\"";
+        for(int i = 0; i < searchPropModel.getAggregationFields().size(); i++) {
+            if(i == searchPropModel.getAggregationFields().size()-1)
+                fields = fields + "\"" + searchPropModel.getAggregationFields().get(i) + "\"";
             else
-                fields = fields + "\"" + searchProp.aggregationFields.get(i) + "\",";
+                fields = fields + "\"" + searchPropModel.getAggregationFields().get(i) + "\",";
         }
 
-        return  "\"aggs\": { \"" + searchProp.aggregationName + "\": { \"terms\": { \"field\": \"" + fields + "\", } } }";
+        return  "\"aggs\": { \"" + searchPropModel.getAggregationName() + "\": { \"terms\": { \"field\": \"" + fields + "\", } } }";
     }
 
-    private String getShouldQuery(SearchProp searchProp) {
+    private String getShouldQuery(SearchPropModel searchPropModel) {
 
-        String value = searchProp.defaultValue != null ? searchProp.defaultValue : "";
-        String fuzziness = searchProp.fuzziness != null ? searchProp.fuzziness : "0";
+        String value = searchPropModel.getDefaultValue() != null ? searchPropModel.getDefaultValue() : "";
+        String fuzziness = searchPropModel.getFuzziness() != null ? searchPropModel.getFuzziness() : "0";
         String fields = "";
 
-        if(searchProp.weights != null) {
-            if(searchProp.weights.size() == searchProp.dataField.size()) {
-                for(int i = 0; i < searchProp.dataField.size(); i++) {
-                    if(i == searchProp.dataField.size()-1)
-                        fields = fields + "\"" + searchProp.dataField.get(i) + "^" + searchProp.weights.get(i) + "\"";
+        if(searchPropModel.getWeights() != null) {
+            if(searchPropModel.getWeights().size() == searchPropModel.getDataField().size()) {
+                for(int i = 0; i < searchPropModel.getDataField().size(); i++) {
+                    if(i == searchPropModel.getDataField().size()-1)
+                        fields = fields + "\"" + searchPropModel.getDataField().get(i) + "^" + searchPropModel.getWeights().get(i) + "\"";
                     else
-                        fields = fields + "\"" + searchProp.dataField.get(i) + "^" + searchProp.weights.get(i) + "\",";
+                        fields = fields + "\"" + searchPropModel.getDataField().get(i) + "^" + searchPropModel.getWeights().get(i) + "\",";
                 }
             } else {
                 Log.d("Size Error", "Size of weights array doesn't match size of dataFields array");
-                for(int i = 0; i < searchProp.dataField.size(); i++) {
-                    if(i == searchProp.dataField.size()-1)
-                        fields = fields + "\"" + searchProp.dataField.get(i) + "\"";
+                for(int i = 0; i < searchPropModel.getDataField().size(); i++) {
+                    if(i == searchPropModel.getDataField().size()-1)
+                        fields = fields + "\"" + searchPropModel.getDataField().get(i) + "\"";
                     else
-                        fields = fields + "\"" + searchProp.dataField.get(i) + "\",";
+                        fields = fields + "\"" + searchPropModel.getDataField().get(i) + "\",";
                 }
             }
         } else {
-            for(int i = 0; i < searchProp.dataField.size(); i++) {
-                if(i == searchProp.dataField.size()-1)
-                    fields = fields + "\"" + searchProp.dataField.get(i) + "\"";
+            for(int i = 0; i < searchPropModel.getDataField().size(); i++) {
+                if(i == searchPropModel.getDataField().size()-1)
+                    fields = fields + "\"" + searchPropModel.getDataField().get(i) + "\"";
                 else
-                    fields = fields + "\"" + searchProp.dataField.get(i) + "\",";
+                    fields = fields + "\"" + searchPropModel.getDataField().get(i) + "\",";
             }
         }
 
-        if(searchProp.queryFormat.toLowerCase().equals("and")) {
+        if(searchPropModel.getQueryFormat().toLowerCase().equals("and")) {
             return "[ { \"multi_match\": { \"query\": \"" + value + "\", \"fields\": [" + fields + "], " +
                     "\"type\": \"cross_fields\", \"operator\": \"and\" } }, { \"multi_match\": { \"query\": \"" +
                     value + "\", \"fields\": [" + fields + "], \"type\": \"phrase_prefix\", \"operator\": \"and\" } } ]";
@@ -1218,13 +1218,13 @@ public class SearchBar extends RelativeLayout implements View.OnClickListener,
         }
     }
 
-    private String getDefaultQuery(SearchProp searchProp) {
+    private String getDefaultQuery(SearchPropModel searchPropModel) {
 
         String finalQuery = null;
-        String value = searchProp.defaultValue != null ? searchProp.defaultValue : "";
+        String value = searchPropModel.getDefaultValue() != null ? searchPropModel.getDefaultValue() : "";
 
         if(!value.equals("")) {
-            finalQuery = "{ \"bool\": { \"should\": " + getShouldQuery(searchProp) + ", \"minimum_should_match\": \"1\" } }";
+            finalQuery = "{ \"bool\": { \"should\": " + getShouldQuery(searchPropModel) + ", \"minimum_should_match\": \"1\" } }";
         }
         else {
             finalQuery =  "{ \"match_all\": {}, }";
@@ -1233,25 +1233,25 @@ public class SearchBar extends RelativeLayout implements View.OnClickListener,
         return finalQuery;
     }
 
-    private String getHighlightQuery(SearchProp searchProp) {
+    private String getHighlightQuery(SearchPropModel searchPropModel) {
 
-        if(!searchProp.highlight)
+        if(!searchPropModel.isHighlight())
             return null;
 
         String fields = "";
-        if(searchProp.highlightField != null) {
-            for(int i = 0; i < searchProp.highlightField.size(); i++) {
-                if(i == searchProp.highlightField.size()-1)
-                    fields = fields + "\"" + searchProp.highlightField.get(i) + "\": {}";
+        if(searchPropModel.getHighlightField() != null) {
+            for(int i = 0; i < searchPropModel.getHighlightField().size(); i++) {
+                if(i == searchPropModel.getHighlightField().size()-1)
+                    fields = fields + "\"" + searchPropModel.getHighlightField().get(i) + "\": {}";
                 else
-                    fields = fields + "\"" + searchProp.highlightField.get(i) + "\": {},";
+                    fields = fields + "\"" + searchPropModel.getHighlightField().get(i) + "\": {},";
             }
         } else {
-            for(int i = 0; i < searchProp.dataField.size(); i++) {
-                if(i == searchProp.dataField.size()-1)
-                    fields = fields + "\"" + searchProp.dataField.get(i) + "\"";
+            for(int i = 0; i < searchPropModel.getDataField().size(); i++) {
+                if(i == searchPropModel.getDataField().size()-1)
+                    fields = fields + "\"" + searchPropModel.getDataField().get(i) + "\"";
                 else
-                    fields = fields + "\"" + searchProp.dataField.get(i) + "\",";
+                    fields = fields + "\"" + searchPropModel.getDataField().get(i) + "\",";
             }
         }
 
@@ -1267,17 +1267,18 @@ public class SearchBar extends RelativeLayout implements View.OnClickListener,
     /**
      * The query built using search prop parameters and which can be directly passed into Appbase search client
      *
+     * @param searchPropModel Search prop model which is returned building the search prop
      * @return Returns the query built by search prop parameters
      */
-    public String getRequestedQuery() {
+    public String getRequestedQuery(SearchPropModel searchPropModel) {
 
         if(isPropSet) {
-            defaultQuery = getDefaultQuery(searchPropDefault);
+            defaultQuery = getDefaultQuery(searchPropModel);
             defaultQuery = getWrappedQuery(defaultQuery);
 
-            if (searchPropDefault.aggregation) {
+            if (searchPropModel.getAggregrationState()) {
                 defaultQuery = defaultQuery.substring(0, defaultQuery.length() - 1);
-                defaultQuery = defaultQuery + ", " + getAggsQuery(searchPropDefault) + " }";
+                defaultQuery = defaultQuery + ", " + getAggsQuery(searchPropModel) + " }";
             }
 
             return defaultQuery;
@@ -1301,7 +1302,7 @@ public class SearchBar extends RelativeLayout implements View.OnClickListener,
      * @param textChangeListener Text change callbacks
      */
     public void setOnTextChangeListner(TextChangeListener textChangeListener) {
-        this.textChangeListener = textChangeListener;
+        SearchBar.textChangeListener = textChangeListener;
     }
 
     private boolean textChangeListenerExists() {
@@ -1359,8 +1360,12 @@ public class SearchBar extends RelativeLayout implements View.OnClickListener,
     /**
      * Starts on text change callbacks to be handled by the listener.
      * Call this method after setting TextChangeListener to start its functionality
+     *
+     * @param searchPropModel Search prop model which is returned building the search prop
      */
-    public void startSearch() {
+    public void startSearch(final SearchPropModel searchPropModel) {
+
+        defaultSearchPropModel = searchPropModel;
 
         searchEdit.addTextChangedListener(new TextWatcher() {
             @Override
@@ -1373,12 +1378,12 @@ public class SearchBar extends RelativeLayout implements View.OnClickListener,
 
                 if(!String.valueOf(s).equals("")) {
                     if(isPropSet && isAppbaseClientSet && textChangeListenerExists()) {
-                        searchPropDefault.setDefaultValue(String.valueOf(s));
+                        searchPropModel.setDefaultValue(String.valueOf(s));
                         StartSearching startSearching = new StartSearching();
-                        RequestParams requestParams = new RequestParams(String.valueOf(s), getRequestedQuery());
+                        RequestParams requestParams = new RequestParams(String.valueOf(s), getRequestedQuery(searchPropModel));
                         startSearching.execute(requestParams);
                         if(shouldLogQuery)
-                            Log.d("QUERY", getRequestedQuery());
+                            Log.d("QUERY", getRequestedQuery(searchPropModel));
                     } else {
                         Log.e("Error", "Please check if Appbase client, Search props and Text change listeners are set properly");
                     }
@@ -1392,7 +1397,7 @@ public class SearchBar extends RelativeLayout implements View.OnClickListener,
         });
     }
 
-    private class StartSearching extends AsyncTask<RequestParams, Void, Void> {
+    private static class StartSearching extends AsyncTask<RequestParams, Void, Void> {
 
         String result = "Query wasn't initiated";
         ArrayList<String> entries;
@@ -1424,10 +1429,10 @@ public class SearchBar extends RelativeLayout implements View.OnClickListener,
                         JSONObject obj = finalHits.getJSONObject(i);
                         JSONObject source = obj.getJSONObject("_source");
 
-                        for(int j = 0; j < searchPropDefault.dataField.size(); j++) {
+                        for(int j = 0; j < defaultSearchPropModel.getDataField().size(); j++) {
 
                             try {
-                                String entry = source.getString(searchPropDefault.dataField.get(j));
+                                String entry = source.getString(defaultSearchPropModel.getDataField().get(j));
                                 if(!duplicateCheck.contains(entry.toLowerCase())) {
                                     entries.add(entry);
                                     duplicateCheck.add(entry.toLowerCase());
@@ -1454,9 +1459,7 @@ public class SearchBar extends RelativeLayout implements View.OnClickListener,
 
             if(areSuggestionsEnabled) {
                 ArrayList<ClientSuggestionsModel> adapterEntries = new DefaultClientSuggestions(entries).build();
-                defaultClientSuggestionsAdapter = new DefaultClientSuggestionsAdapter(adapterEntries, getContext(), query, searchPropDefault.highlight, searchPropDefault.hits);
-                LinearLayoutManager mLayoutManager = new LinearLayoutManager(getContext());
-                recyclerView.setLayoutManager(mLayoutManager);
+                defaultClientSuggestionsAdapter = new DefaultClientSuggestionsAdapter(adapterEntries, query, defaultSearchPropModel.isHighlight(), defaultSearchPropModel.getHitsState());
                 recyclerView.setAdapter(defaultClientSuggestionsAdapter);
             }
         }

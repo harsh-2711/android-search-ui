@@ -4,6 +4,7 @@ import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.util.Log;
 
+import com.example.searchwidget.Model.SearchPropModel;
 import com.example.searchwidget.SearchBar;
 
 import java.util.ArrayList;
@@ -36,7 +37,7 @@ public class MainActivity extends AppCompatActivity {
         weights.add(1);
         weights.add(3);
 
-        searchBar.setSearchProp("Demo Widget", dataFields)
+        SearchPropModel searchPropModel = searchBar.setSearchProp("Demo Widget", dataFields)
                 .setQueryFormat("or")
                 .setFuzziness("10")
                 .setDebounce(100)
@@ -59,7 +60,7 @@ public class MainActivity extends AppCompatActivity {
         });
 
         // Start search
-        searchBar.startSearch();
+        searchBar.startSearch(searchPropModel);
 
         // Sets navigation bar icon inside the search bar
         searchBar.setNavButtonEnabled(true);

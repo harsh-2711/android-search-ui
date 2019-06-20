@@ -1,6 +1,5 @@
 package com.example.searchwidget.Adapter;
 
-import android.content.Context;
 import android.support.annotation.NonNull;
 import android.support.v7.widget.RecyclerView;
 import android.text.Html;
@@ -16,7 +15,6 @@ import java.util.ArrayList;
 
 public class DefaultClientSuggestionsAdapter extends RecyclerView.Adapter<ClientSuggestionsViewHolder> {
     private ArrayList<ClientSuggestionsModel> suggestions;
-    private Context context;
     private int topEntries;
     private boolean shouldHighlight;
     private String queryText;
@@ -40,15 +38,12 @@ public class DefaultClientSuggestionsAdapter extends RecyclerView.Adapter<Client
      * Using this constructor, no categories for any search results will be shown
      *
      * @param suggestions List of suggestions to be added
-     * @param context Context of the activity
-     * @param context Context of the activity
      * @param queryText The text which is queried/written in the search bar
      * @param shouldHighlight Should highlight the queried text or not
      * @param showHits Should show number of hits or not
      */
-    public DefaultClientSuggestionsAdapter(ArrayList<ClientSuggestionsModel> suggestions, Context context, String queryText, boolean shouldHighlight, boolean showHits) {
+    public DefaultClientSuggestionsAdapter(ArrayList<ClientSuggestionsModel> suggestions, String queryText, boolean shouldHighlight, boolean showHits) {
         this.suggestions = suggestions;
-        this.context = context;
         this.queryText = queryText;
         this.shouldHighlight = shouldHighlight;
         this.topEntries = -1;
@@ -59,15 +54,13 @@ public class DefaultClientSuggestionsAdapter extends RecyclerView.Adapter<Client
      * Initiates DefaultClientSuggestionsAdapter
      *
      * @param suggestions List of suggestions to be added
-     * @param context Context of the activity
      * @param queryText The text which is queried/written in the search bar
      * @param shouldHighlight Should highlight the queried text or not
      * @param showHits Should show number of hits or not
      * @param topEntries  Number of entries for which categories needs to be shown under search result
      */
-    public DefaultClientSuggestionsAdapter(ArrayList<ClientSuggestionsModel> suggestions, Context context, String queryText, boolean shouldHighlight, boolean showHits, int topEntries) {
+    public DefaultClientSuggestionsAdapter(ArrayList<ClientSuggestionsModel> suggestions, String queryText, boolean shouldHighlight, boolean showHits, int topEntries) {
         this.suggestions = suggestions;
-        this.context = context;
         this.queryText = queryText;
         this.shouldHighlight = shouldHighlight;
         this.topEntries = topEntries;
