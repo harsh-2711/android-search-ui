@@ -47,8 +47,6 @@ public class MainActivity extends AppCompatActivity {
         // To log the queries made by Appbase client for debugging
          searchBar.setLoggingQuery(true);
 
-        searchBar.enableDefaultClientSuggestions();
-
         // Setting listener to handle callbacks
         searchBar.setOnTextChangeListner(new SearchBar.TextChangeListener() {
             @Override

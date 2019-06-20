@@ -137,7 +137,6 @@ public class SearchBar extends RelativeLayout implements View.OnClickListener,
     private boolean shouldLogQuery = false;
 
     private DefaultClientSuggestionsAdapter defaultClientSuggestionsAdapter;
-    private boolean areSuggestionsEnabled = true;
     private RecyclerView recyclerView;
 
     public SearchBar(Context context, AttributeSet attributeSet) {
@@ -1110,6 +1109,7 @@ public class SearchBar extends RelativeLayout implements View.OnClickListener,
 
     /**
      * Initiates the Appbase client for giving additional functionality to search bar
+     *
      * @param url URL of the ElasticSearch host server (If application is hosted on appbase.io, url should be https://scalr.api.appbase.io)
      * @param appName Name of the app (aka search index)
      * @param username Username for basic auth (String before ':' in credentials string)
@@ -1124,6 +1124,7 @@ public class SearchBar extends RelativeLayout implements View.OnClickListener,
 
     /**
      * Initiates the Appbase client for giving additional functionality to search bar - with default type
+     *
      * @param url URL of the ElasticSearch host server (If application is hosted on appbase.io, url should be https://scalr.api.appbase.io)
      * @param appName Name of the app (aka search index)
      * @param username Username for basic auth (String before ':' in credentials string)
@@ -1137,6 +1138,7 @@ public class SearchBar extends RelativeLayout implements View.OnClickListener,
 
     /**
      * Gives response for the requested query using Appbase client
+     *
      * @param query JSON structured body
      * @return Response received for the requested query
      * @throws IOException
@@ -1267,7 +1269,7 @@ public class SearchBar extends RelativeLayout implements View.OnClickListener,
     /**
      * The query built using search prop parameters and which can be directly passed into Appbase search client
      *
-     * @param searchPropModel Search prop model which is returned building the search prop
+     * @param searchPropModel Model which is returned on building the search prop
      * @return Returns the query built by search prop parameters
      */
     public String getRequestedQuery(SearchPropModel searchPropModel) {
@@ -1361,7 +1363,7 @@ public class SearchBar extends RelativeLayout implements View.OnClickListener,
      * Starts on text change callbacks to be handled by the listener.
      * Call this method after setting TextChangeListener to start its functionality
      *
-     * @param searchPropModel Search prop model which is returned building the search prop
+     * @param searchPropModel Model which is returned on building the search prop
      */
     public void startSearch(final SearchPropModel searchPropModel) {
 
@@ -1414,7 +1416,7 @@ public class SearchBar extends RelativeLayout implements View.OnClickListener,
                 e.printStackTrace();
                 result = e.toString();
             }
-            if(areSuggestionsEnabled) {
+            if(defaultSearchPropModel.isAutoSuggest()) {
 
                 JSONObject resultJSON = null;
                 try {
@@ -1457,7 +1459,7 @@ public class SearchBar extends RelativeLayout implements View.OnClickListener,
             super.onPostExecute(aVoid);
             textChangeListener.onTextChange(result);
 
-            if(areSuggestionsEnabled) {
+            if(defaultSearchPropModel.isAutoSuggest()) {
                 ArrayList<ClientSuggestionsModel> adapterEntries = new DefaultClientSuggestions(entries).build();
                 defaultClientSuggestionsAdapter = new DefaultClientSuggestionsAdapter(adapterEntries, query, defaultSearchPropModel.isHighlight(), defaultSearchPropModel.getHitsState());
                 recyclerView.setAdapter(defaultClientSuggestionsAdapter);
@@ -1466,31 +1468,15 @@ public class SearchBar extends RelativeLayout implements View.OnClickListener,
     }
 
     /**
-     * Disables default suggestions from client
-     */
-    public void diableDefaultClientSuggestions () {
-        if(defaultClientSuggestionsAdapter != null) {
-            defaultClientSuggestionsAdapter.clear();
-            defaultClientSuggestionsAdapter.notifyDataSetChanged();
-            areSuggestionsEnabled = false;
-        }
-    }
-
-    /**
-     * Enables default suggestions from client
-     */
-    public void enableDefaultClientSuggestions () {
-        areSuggestionsEnabled = true;
-    }
-
-    /**
      * Returns object of DefaultClientSuggestions model to modify the search results as required before setting the DefaultClientSuggestionsAdapter
      *
+     * @param searchPropModel Model which is returned on building the search prop
      * @param suggestions List of suggestions
      * @return Object of DefaultClientSuggestions Model
      */
-    public DefaultClientSuggestions buildCustomSuggestions (ArrayList<String> suggestions) {
-        areSuggestionsEnabled = true;
+    public DefaultClientSuggestions buildCustomSuggestions (SearchPropModel searchPropModel, ArrayList<String> suggestions) {
+        searchPropModel.setAutoSuggest(true);
+        defaultSearchPropModel = searchPropModel;
         return new DefaultClientSuggestions(suggestions);
     }
 
