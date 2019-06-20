@@ -1,5 +1,0 @@
-var interfacecom_1_1example_1_1searchwidget_1_1adapter_1_1_suggestions_adapter_1_1_on_item_view_click_listener =
-[
-    [ "OnItemClickListener", "interfacecom_1_1example_1_1searchwidget_1_1adapter_1_1_suggestions_adapter_1_1_on_item_view_click_listener.html#aa0d42ca45d0bbaaa2b7c49fdf9366bb8", null ],
-    [ "OnItemDeleteListener", "interfacecom_1_1example_1_1searchwidget_1_1adapter_1_1_suggestions_adapter_1_1_on_item_view_click_listener.html#a4edf1e9e364a9069cff26e3c978f505f", null ]
-];

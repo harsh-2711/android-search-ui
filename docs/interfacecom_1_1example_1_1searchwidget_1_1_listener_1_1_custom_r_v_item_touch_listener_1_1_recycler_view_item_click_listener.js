@@ -1,0 +1,5 @@
+var interfacecom_1_1example_1_1searchwidget_1_1_listener_1_1_custom_r_v_item_touch_listener_1_1_recycler_view_item_click_listener =
+[
+    [ "onClick", "interfacecom_1_1example_1_1searchwidget_1_1_listener_1_1_custom_r_v_item_touch_listener_1_1_recycler_view_item_click_listener.html#a50c18da6ad54bebea5e007ba1b6ca2ff", null ],
+    [ "onLongClick", "interfacecom_1_1example_1_1searchwidget_1_1_listener_1_1_custom_r_v_item_touch_listener_1_1_recycler_view_item_click_listener.html#a3df5a6d936d96d22535c5cdfb78d470d", null ]
+];

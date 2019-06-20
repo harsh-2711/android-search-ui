@@ -1,9 +1,11 @@
 var searchData=
 [
-  ['onbuttonclicked',['onButtonClicked',['../interfacecom_1_1example_1_1searchwidget_1_1_search_bar_1_1_on_search_action_listener.html#aece2474e59c571f0364cbe3bfffc982a',1,'com::example::searchwidget::SearchBar::OnSearchActionListener']]],
-  ['onitemviewclicklistener',['OnItemViewClickListener',['../interfacecom_1_1example_1_1searchwidget_1_1adapter_1_1_default_suggestions_adapter_1_1_on_item_view_click_listener.html',1,'com.example.searchwidget.adapter.DefaultSuggestionsAdapter.OnItemViewClickListener'],['../interfacecom_1_1example_1_1searchwidget_1_1adapter_1_1_suggestions_adapter_1_1_on_item_view_click_listener.html',1,'com.example.searchwidget.adapter.SuggestionsAdapter&lt; S, V extends RecyclerView.ViewHolder &gt;.OnItemViewClickListener']]],
-  ['onsearchactionlistener',['OnSearchActionListener',['../interfacecom_1_1example_1_1searchwidget_1_1_search_bar_1_1_on_search_action_listener.html',1,'com::example::searchwidget::SearchBar']]],
-  ['onsearchconfirmed',['onSearchConfirmed',['../interfacecom_1_1example_1_1searchwidget_1_1_search_bar_1_1_on_search_action_listener.html#ad6782046ddbac0931a46b375f0e590e5',1,'com::example::searchwidget::SearchBar::OnSearchActionListener']]],
-  ['onsearchstatechanged',['onSearchStateChanged',['../interfacecom_1_1example_1_1searchwidget_1_1_search_bar_1_1_on_search_action_listener.html#a22a7fc0f894797efc55657f882f03af6',1,'com::example::searchwidget::SearchBar::OnSearchActionListener']]],
-  ['ontextchange',['onTextChange',['../interfacecom_1_1example_1_1searchwidget_1_1_search_bar_1_1_text_change_listener.html#a805aa2c8e3d67db651fac86758ba448e',1,'com::example::searchwidget::SearchBar::TextChangeListener']]]
+  ['getfilter',['getFilter',['../classcom_1_1example_1_1searchwidget_1_1_adapter_1_1_suggestions_adapter.html#a6c6bf3f7e14e1843e2e4108b8fd05476',1,'com::example::searchwidget::Adapter::SuggestionsAdapter']]],
+  ['getitemcount',['getItemCount',['../classcom_1_1example_1_1searchwidget_1_1_adapter_1_1_default_client_suggestions_adapter.html#a5e8c48cf900c2d10e0a8d8ded0877cb2',1,'com::example::searchwidget::Adapter::DefaultClientSuggestionsAdapter']]],
+  ['getlastsuggestions',['getLastSuggestions',['../classcom_1_1example_1_1searchwidget_1_1_search_bar.html#a29fff6f8fe5011b1854e4fd4a55ea65f',1,'com::example::searchwidget::SearchBar']]],
+  ['getmenu',['getMenu',['../classcom_1_1example_1_1searchwidget_1_1_search_bar.html#af3e813af6c49f88e24d593dfa41037be',1,'com::example::searchwidget::SearchBar']]],
+  ['getplaceholdertext',['getPlaceHolderText',['../classcom_1_1example_1_1searchwidget_1_1_search_bar.html#a97ca29bf8c1fe951bec0dee054187108',1,'com::example::searchwidget::SearchBar']]],
+  ['getrequestedquery',['getRequestedQuery',['../classcom_1_1example_1_1searchwidget_1_1_search_bar.html#a4e9189e7948cfa925689c3aea179b3a5',1,'com::example::searchwidget::SearchBar']]],
+  ['getsingleviewheight',['getSingleViewHeight',['../classcom_1_1example_1_1searchwidget_1_1_adapter_1_1_suggestions_adapter.html#a5a3d0b988d5f843dae2c31c8a7939176',1,'com::example::searchwidget::Adapter::SuggestionsAdapter']]],
+  ['gettext',['getText',['../classcom_1_1example_1_1searchwidget_1_1_search_bar.html#a91a9c3d2ffd4729c083325d8e2ce952d',1,'com::example::searchwidget::SearchBar']]]
 ];

@@ -1,8 +1,5 @@
 var searchData=
 [
-  ['inflatemenu',['inflateMenu',['../classcom_1_1example_1_1searchwidget_1_1_search_bar.html#a3b4bfd362b0867b487bb2cc354232e3e',1,'com.example.searchwidget.SearchBar.inflateMenu(int menuResource)'],['../classcom_1_1example_1_1searchwidget_1_1_search_bar.html#a71f7fc6ed5b0797b263734590ef49a16',1,'com.example.searchwidget.SearchBar.inflateMenu(int menuResource, int icon)']]],
-  ['issearchenabled',['isSearchEnabled',['../classcom_1_1example_1_1searchwidget_1_1_search_bar.html#a101525ef181280109b31396c3175c91c',1,'com::example::searchwidget::SearchBar']]],
-  ['isspeechmodeenabled',['isSpeechModeEnabled',['../classcom_1_1example_1_1searchwidget_1_1_search_bar.html#a1bf37ff1703370a852d5573dfffe5daf',1,'com::example::searchwidget::SearchBar']]],
-  ['issuggestionsenabled',['isSuggestionsEnabled',['../classcom_1_1example_1_1searchwidget_1_1_search_bar.html#afc87e89a8864899a626d2dcafb5db5b2',1,'com::example::searchwidget::SearchBar']]],
-  ['issuggestionsvisible',['isSuggestionsVisible',['../classcom_1_1example_1_1searchwidget_1_1_search_bar.html#aab6325bdf7997340d11ba29cbca66a34',1,'com::example::searchwidget::SearchBar']]]
+  ['enabledefaultclientsuggestions',['enableDefaultClientSuggestions',['../classcom_1_1example_1_1searchwidget_1_1_search_bar.html#afa4378511022ca8b06bbc1c19e599d67',1,'com::example::searchwidget::SearchBar']]],
+  ['enablesearch',['enableSearch',['../classcom_1_1example_1_1searchwidget_1_1_search_bar.html#a039b132a7be1dda56d6020b07017b277',1,'com::example::searchwidget::SearchBar']]]
 ];

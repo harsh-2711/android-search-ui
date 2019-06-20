@@ -13,6 +13,7 @@ var classcom_1_1example_1_1searchwidget_1_1_builder_1_1_search_prop =
     [ "setFuzziness", "classcom_1_1example_1_1searchwidget_1_1_builder_1_1_search_prop.html#af8913b039969c4a33109324554ccee5b", null ],
     [ "setHighlight", "classcom_1_1example_1_1searchwidget_1_1_builder_1_1_search_prop.html#a60c9e4bf95a16108265d029e94c8e908", null ],
     [ "setHighlightField", "classcom_1_1example_1_1searchwidget_1_1_builder_1_1_search_prop.html#a6d0206033754f17f2faeedbd46b54e39", null ],
+    [ "setHitsEnabled", "classcom_1_1example_1_1searchwidget_1_1_builder_1_1_search_prop.html#ab331be8e2f324624245a41fcb725b23d", null ],
     [ "setQueryFormat", "classcom_1_1example_1_1searchwidget_1_1_builder_1_1_search_prop.html#a89945b79d0b5eaa7b78c85aa921228e9", null ],
     [ "setWeights", "classcom_1_1example_1_1searchwidget_1_1_builder_1_1_search_prop.html#a5b1de91451f74cc827ed342ac134f39c", null ],
     [ "aggregationFields", "classcom_1_1example_1_1searchwidget_1_1_builder_1_1_search_prop.html#a1cd7de2fa2c5af4998fe6dbd695f09dc", null ],
@@ -27,6 +28,7 @@ var classcom_1_1example_1_1searchwidget_1_1_builder_1_1_search_prop =
     [ "fuzziness", "classcom_1_1example_1_1searchwidget_1_1_builder_1_1_search_prop.html#a78152e6165d519e2585e454ab26515ad", null ],
     [ "highlight", "classcom_1_1example_1_1searchwidget_1_1_builder_1_1_search_prop.html#a41c9db4f0cf3c1cb7f2a2beb228cd33e", null ],
     [ "highlightField", "classcom_1_1example_1_1searchwidget_1_1_builder_1_1_search_prop.html#a4ef4c4d48ffb32bfcd80ac8875bc25b3", null ],
+    [ "hitsEnabled", "classcom_1_1example_1_1searchwidget_1_1_builder_1_1_search_prop.html#ab65488ce97e315a10b752d5e436ab1f9", null ],
     [ "isAggregation", "classcom_1_1example_1_1searchwidget_1_1_builder_1_1_search_prop.html#a7fc9001937e2d719d07d0459c04ed6f7", null ],
     [ "queryFormat", "classcom_1_1example_1_1searchwidget_1_1_builder_1_1_search_prop.html#a1c30b0c77aa609f899093a9158eda628", null ],
     [ "weights", "classcom_1_1example_1_1searchwidget_1_1_builder_1_1_search_prop.html#a4dac5c2d38ff1192e2e7710dbda46b63", null ]
