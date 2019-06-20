@@ -8,14 +8,14 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 
-import com.example.searchwidget.Model.SuggestionsModel;
+import com.example.searchwidget.Model.ClientSuggestionsModel;
 import com.example.searchwidget.R;
-import com.example.searchwidget.View.Suggestions_View_Holder;
+import com.example.searchwidget.View.ClientSuggestionsViewHolder;
 
 import java.util.ArrayList;
 
-public class DefaultClientSuggestionsAdapter extends RecyclerView.Adapter<Suggestions_View_Holder> {
-    private ArrayList<SuggestionsModel> suggestions;
+public class DefaultClientSuggestionsAdapter extends RecyclerView.Adapter<ClientSuggestionsViewHolder> {
+    private ArrayList<ClientSuggestionsModel> suggestions;
     private Context context;
     private int topEntries;
     private boolean shouldHighlight;
@@ -46,7 +46,7 @@ public class DefaultClientSuggestionsAdapter extends RecyclerView.Adapter<Sugges
      * @param shouldHighlight Should highlight the queried text or not
      * @param showHits Should show number of hits or not
      */
-    public DefaultClientSuggestionsAdapter(ArrayList<SuggestionsModel> suggestions, Context context, String queryText, boolean shouldHighlight, boolean showHits) {
+    public DefaultClientSuggestionsAdapter(ArrayList<ClientSuggestionsModel> suggestions, Context context, String queryText, boolean shouldHighlight, boolean showHits) {
         this.suggestions = suggestions;
         this.context = context;
         this.queryText = queryText;
@@ -65,7 +65,7 @@ public class DefaultClientSuggestionsAdapter extends RecyclerView.Adapter<Sugges
      * @param showHits Should show number of hits or not
      * @param topEntries  Number of entries for which categories needs to be shown under search result
      */
-    public DefaultClientSuggestionsAdapter(ArrayList<SuggestionsModel> suggestions, Context context, String queryText, boolean shouldHighlight, boolean showHits, int topEntries) {
+    public DefaultClientSuggestionsAdapter(ArrayList<ClientSuggestionsModel> suggestions, Context context, String queryText, boolean shouldHighlight, boolean showHits, int topEntries) {
         this.suggestions = suggestions;
         this.context = context;
         this.queryText = queryText;
@@ -75,14 +75,14 @@ public class DefaultClientSuggestionsAdapter extends RecyclerView.Adapter<Sugges
     }
 
     @Override
-    public Suggestions_View_Holder onCreateViewHolder(ViewGroup parent, int viewType) {
+    public ClientSuggestionsViewHolder onCreateViewHolder(ViewGroup parent, int viewType) {
         View v = LayoutInflater.from(parent.getContext()).inflate(R.layout.default_suggestion_item, parent, false);
-        Suggestions_View_Holder holder = new Suggestions_View_Holder(v);
+        ClientSuggestionsViewHolder holder = new ClientSuggestionsViewHolder(v);
         return holder;
     }
 
     @Override
-    public void onBindViewHolder(@NonNull Suggestions_View_Holder holder, int position) {
+    public void onBindViewHolder(@NonNull ClientSuggestionsViewHolder holder, int position) {
 
         if(shouldHighlight) {
             if(suggestions.get(position).getText().toLowerCase().contains(queryText.toLowerCase())) {
@@ -139,7 +139,7 @@ public class DefaultClientSuggestionsAdapter extends RecyclerView.Adapter<Sugges
      * @param position Position where the item needs to be added
      * @param data Item that needs to be added
      */
-    public void insert(int position, SuggestionsModel data) {
+    public void insert(int position, ClientSuggestionsModel data) {
         suggestions.add(position, data);
         notifyItemInserted(position);
     }
@@ -148,7 +148,7 @@ public class DefaultClientSuggestionsAdapter extends RecyclerView.Adapter<Sugges
      * Deletes an item from DefaultClientSuggestionsAdapter
      * @param data Item that needs to be deleted
      */
-    public void remove(SuggestionsModel data) {
+    public void remove(ClientSuggestionsModel data) {
         int position = suggestions.indexOf(data);
         suggestions.remove(position);
         notifyItemRemoved(position);

@@ -9,10 +9,10 @@ import android.widget.TextView;
 
 import com.example.searchwidget.R;
 
-public class DefaultSuggestionsAdapter extends SuggestionsAdapter<String, DefaultSuggestionsAdapter.SuggestionHolder> {
+public class DefaultLocalSuggestionsAdapter extends SuggestionsAdapter<String, DefaultLocalSuggestionsAdapter.SuggestionHolder> {
     private SuggestionsAdapter.OnItemViewClickListener listener;
 
-    public DefaultSuggestionsAdapter(LayoutInflater inflater) {
+    public DefaultLocalSuggestionsAdapter(LayoutInflater inflater) {
         super(inflater);
     }
 
@@ -26,9 +26,9 @@ public class DefaultSuggestionsAdapter extends SuggestionsAdapter<String, Defaul
     }
 
     @Override
-    public DefaultSuggestionsAdapter.SuggestionHolder onCreateViewHolder(ViewGroup parent, int viewType) {
+    public DefaultLocalSuggestionsAdapter.SuggestionHolder onCreateViewHolder(ViewGroup parent, int viewType) {
         View view = getLayoutInflater().inflate(R.layout.item_last_request, parent, false);
-        return new DefaultSuggestionsAdapter.SuggestionHolder(view);
+        return new DefaultLocalSuggestionsAdapter.SuggestionHolder(view);
     }
 
     @Override

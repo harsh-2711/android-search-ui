@@ -35,11 +35,11 @@ import android.widget.LinearLayout;
 import android.widget.RelativeLayout;
 import android.widget.TextView;
 
-import com.example.searchwidget.Builder.DefaultSuggestions;
+import com.example.searchwidget.Adapter.DefaultLocalSuggestionsAdapter;
+import com.example.searchwidget.Builder.DefaultClientSuggestions;
 import com.example.searchwidget.Builder.SearchProp;
-import com.example.searchwidget.Model.SuggestionsModel;
+import com.example.searchwidget.Model.ClientSuggestionsModel;
 import com.example.searchwidget.Adapter.DefaultClientSuggestionsAdapter;
-import com.example.searchwidget.Adapter.DefaultSuggestionsAdapter;
 import com.example.searchwidget.Adapter.SuggestionsAdapter;
 
 import org.json.JSONArray;
@@ -198,10 +198,10 @@ public class SearchBar extends RelativeLayout implements View.OnClickListener,
 
         destiny = getResources().getDisplayMetrics().density;
         if (adapter == null) {
-            adapter = new DefaultSuggestionsAdapter(LayoutInflater.from(getContext()));
+            adapter = new DefaultLocalSuggestionsAdapter(LayoutInflater.from(getContext()));
         }
-        if (adapter instanceof DefaultSuggestionsAdapter)
-            ((DefaultSuggestionsAdapter) adapter).setListener(this);
+        if (adapter instanceof DefaultLocalSuggestionsAdapter)
+            ((DefaultLocalSuggestionsAdapter) adapter).setListener(this);
         adapter.setMaxSuggestionsCount(maxSuggestionCount);
         recyclerView = findViewById(R.id.recycler);
         recyclerView.setAdapter(adapter);
@@ -826,8 +826,8 @@ public class SearchBar extends RelativeLayout implements View.OnClickListener,
      * @param listener click listener
      */
     public void setSuggestionsClickListener(SuggestionsAdapter.OnItemViewClickListener listener) {
-        if (adapter instanceof DefaultSuggestionsAdapter)
-            ((DefaultSuggestionsAdapter) adapter).setListener(listener);
+        if (adapter instanceof DefaultLocalSuggestionsAdapter)
+            ((DefaultLocalSuggestionsAdapter) adapter).setListener(listener);
     }
 
     /**
@@ -1032,7 +1032,7 @@ public class SearchBar extends RelativeLayout implements View.OnClickListener,
             onSearchActionListener.onSearchConfirmed(searchEdit.getText());
         if (suggestionsVisible)
             hideSuggestionsList();
-        if (adapter instanceof DefaultSuggestionsAdapter)
+        if (adapter instanceof DefaultLocalSuggestionsAdapter)
             adapter.addSuggestion(searchEdit.getText().toString());
         return true;
     }
@@ -1453,7 +1453,7 @@ public class SearchBar extends RelativeLayout implements View.OnClickListener,
             textChangeListener.onTextChange(result);
 
             if(areSuggestionsEnabled) {
-                ArrayList<SuggestionsModel> adapterEntries = new DefaultSuggestions(entries).build();
+                ArrayList<ClientSuggestionsModel> adapterEntries = new DefaultClientSuggestions(entries).build();
                 defaultClientSuggestionsAdapter = new DefaultClientSuggestionsAdapter(adapterEntries, getContext(), query, searchPropDefault.highlight, searchPropDefault.hitsEnabled);
                 LinearLayoutManager mLayoutManager = new LinearLayoutManager(getContext());
                 recyclerView.setLayoutManager(mLayoutManager);
@@ -1481,14 +1481,14 @@ public class SearchBar extends RelativeLayout implements View.OnClickListener,
     }
 
     /**
-     * Returns object of DefaultSuggestions model to modify the search results as required before setting the DefaultClientSuggestionsAdapter
+     * Returns object of DefaultClientSuggestions model to modify the search results as required before setting the DefaultClientSuggestionsAdapter
      *
      * @param suggestions List of suggestions
-     * @return Object of DefaultSuggestions Model
+     * @return Object of DefaultClientSuggestions Model
      */
-    public DefaultSuggestions buildCustomSuggestions (ArrayList<String> suggestions) {
+    public DefaultClientSuggestions buildCustomSuggestions (ArrayList<String> suggestions) {
         areSuggestionsEnabled = true;
-        return new DefaultSuggestions(suggestions);
+        return new DefaultClientSuggestions(suggestions);
     }
 
     private static class SavedState extends BaseSavedState {

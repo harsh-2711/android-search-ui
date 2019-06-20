@@ -1,7 +1,7 @@
 package com.example.searchwidget.Model;
 
 
-public class SuggestionsModel {
+public class ClientSuggestionsModel {
 
     private String text;
     private String category;
@@ -9,7 +9,7 @@ public class SuggestionsModel {
     private int searchIcon;
     private int trendingIcon;
 
-    public SuggestionsModel(String text, String category, String hits, int searchIcon, int trendingIcon) {
+    public ClientSuggestionsModel(String text, String category, String hits, int searchIcon, int trendingIcon) {
         this.text = text;
         this.category = category;
         this.hits = hits;

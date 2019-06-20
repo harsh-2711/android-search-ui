@@ -7,7 +7,7 @@ import android.widget.TextView;
 
 import com.example.searchwidget.R;
 
-public class Suggestions_View_Holder extends RecyclerView.ViewHolder {
+public class ClientSuggestionsViewHolder extends RecyclerView.ViewHolder {
 
     public TextView text;
     public TextView category;
@@ -15,7 +15,7 @@ public class Suggestions_View_Holder extends RecyclerView.ViewHolder {
     public ImageView searchIcon;
     public ImageView trendingIcon;
 
-    public Suggestions_View_Holder(View itemView) {
+    public ClientSuggestionsViewHolder(View itemView) {
         super(itemView);
         text = (TextView) itemView.findViewById(R.id.text);
         category = (TextView) itemView.findViewById(R.id.categoryText);

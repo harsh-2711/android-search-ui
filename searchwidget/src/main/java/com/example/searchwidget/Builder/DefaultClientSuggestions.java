@@ -1,11 +1,11 @@
 package com.example.searchwidget.Builder;
 
-import com.example.searchwidget.Model.SuggestionsModel;
+import com.example.searchwidget.Model.ClientSuggestionsModel;
 import com.example.searchwidget.R;
 
 import java.util.ArrayList;
 
-public class DefaultSuggestions {
+public class DefaultClientSuggestions {
 
     ArrayList<String> suggestions;
     ArrayList<String> categories = null;
@@ -18,7 +18,7 @@ public class DefaultSuggestions {
      *
      * @param suggestions List of suggestions
      */
-    public DefaultSuggestions(ArrayList<String> suggestions) {
+    public DefaultClientSuggestions(ArrayList<String> suggestions) {
         this.suggestions = suggestions;
     }
 
@@ -28,7 +28,7 @@ public class DefaultSuggestions {
      * @param categories List of categories
      * @return
      */
-    public DefaultSuggestions setCategories(ArrayList<String> categories) {
+    public DefaultClientSuggestions setCategories(ArrayList<String> categories) {
         this.categories = categories;
         return this;
     }
@@ -39,7 +39,7 @@ public class DefaultSuggestions {
      * @param searchIcon List of resource ids for each suggestion
      * @return
      */
-    public DefaultSuggestions setSearchImages(ArrayList<Integer> searchIcon) {
+    public DefaultClientSuggestions setSearchImages(ArrayList<Integer> searchIcon) {
         this.searchIcon = searchIcon;
         return this;
     }
@@ -50,7 +50,7 @@ public class DefaultSuggestions {
      * @param trendingIcon List of resource ids for each suggestion
      * @return
      */
-    public DefaultSuggestions setIcons(ArrayList<Integer> trendingIcon) {
+    public DefaultClientSuggestions setIcons(ArrayList<Integer> trendingIcon) {
         this.trendingIcon = trendingIcon;
         return this;
     }
@@ -61,7 +61,7 @@ public class DefaultSuggestions {
      * @param hits List of hits
      * @return
      */
-    public DefaultSuggestions hits(ArrayList<String> hits) {
+    public DefaultClientSuggestions hits(ArrayList<String> hits) {
         this.hits = hits;
         return this;
     }
@@ -71,9 +71,9 @@ public class DefaultSuggestions {
      *
      * @return List of items of SuggestionModel class
      */
-    public ArrayList<SuggestionsModel> build() {
+    public ArrayList<ClientSuggestionsModel> build() {
 
-        ArrayList<SuggestionsModel> suggestions = new ArrayList<>();
+        ArrayList<ClientSuggestionsModel> suggestions = new ArrayList<>();
         String category;
         String hit;
         int searchicon;
@@ -121,7 +121,7 @@ public class DefaultSuggestions {
                     trendingicon = R.drawable.top_left_arrow;
             }
 
-            suggestions.add(new SuggestionsModel(this.suggestions.get(i),category, hit, searchicon, trendingicon ));
+            suggestions.add(new ClientSuggestionsModel(this.suggestions.get(i),category, hit, searchicon, trendingicon ));
         }
 
         return suggestions;
