@@ -17,6 +17,7 @@ public class SearchProp {
     private ArrayList<Pair<String, String>> defaultSuggestions = null;
     private boolean highlight = false;
     private ArrayList<String> highlightField = null;
+    private int topEntriesToHighlight = 1;
     private String queryFormat = "or";
     private String fuzziness = "0";
     private int debounce = 0;
@@ -65,6 +66,11 @@ public class SearchProp {
         return this;
     }
 
+    public SearchProp setTopEntriesForHighlight(int topEntries) {
+        this.topEntriesToHighlight = topEntries;
+        return this;
+    }
+
     public SearchProp setQueryFormat(String queryFormat) {
         this.queryFormat = queryFormat;
         return this;
@@ -102,6 +108,6 @@ public class SearchProp {
 
     public SearchPropModel build() {
         return new SearchPropModel(componentId, dataField, categoryField, defaultValue, weights, autoSuggest,
-                defaultSuggestions, highlight, highlightField, queryFormat, fuzziness, debounce, aggregation, aggregationFields, aggregationName, hits);
+                defaultSuggestions, highlight, highlightField, topEntriesToHighlight, queryFormat, fuzziness, debounce, aggregation, aggregationFields, aggregationName, hits);
     }
 }

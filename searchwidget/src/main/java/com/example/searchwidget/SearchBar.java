@@ -1489,7 +1489,7 @@ public class SearchBar extends RelativeLayout implements View.OnClickListener,
                 }
                 else {
                     adapterEntries = new DefaultClientSuggestions(entries).setCategories(categories).build();
-                    defaultClientSuggestionsAdapter = new DefaultClientSuggestionsAdapter(adapterEntries, query, defaultSearchPropModel.isHighlight(), defaultSearchPropModel.getHitsState(), 2);
+                    defaultClientSuggestionsAdapter = new DefaultClientSuggestionsAdapter(adapterEntries, query, defaultSearchPropModel.isHighlight(), defaultSearchPropModel.getHitsState(), defaultSearchPropModel.getTopEntriesToHighlight());
                 }
 
                 recyclerView.setAdapter(defaultClientSuggestionsAdapter);
