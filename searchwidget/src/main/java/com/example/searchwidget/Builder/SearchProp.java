@@ -25,6 +25,8 @@ public class SearchProp {
     private ArrayList<String> aggregationFields = null;
     private String aggregationName = "unique-terms";
     private boolean hits = false;
+    private boolean searchResultImage = true;
+    private boolean redirectIcon = true;
 
     /**
      * Initialises SearchProp builder
@@ -203,12 +205,33 @@ public class SearchProp {
     }
 
     /**
+     * Sets image or icon before the search results/suggestions
+     * @param searchResultImageState Whether to show search icon/image before search results
+     * @return
+     */
+    public SearchProp setSearchResultImage(boolean searchResultImageState) {
+        this.searchResultImage = searchResultImageState;
+        return this;
+    }
+
+    /**
+     * Sets redirect icon at the end of every search result entry (Applicable only if the search result redirects to the actual product)
+     * @param redirectIconState Whether to show redirect icon
+     * @return
+     */
+    public SearchProp setRedirectIcon(boolean redirectIconState) {
+        this.redirectIcon = redirectIconState;
+        return this;
+    }
+
+    /**
      * Compiles all the parameter into one SearchPropModel
      * 
      * @return Object of SearchPropModel
      */
     public SearchPropModel build() {
         return new SearchPropModel(componentId, dataField, categoryField, defaultValue, weights, autoSuggest,
-                defaultSuggestions, highlight, highlightField, topEntriesToHighlight, queryFormat, fuzziness, debounce, aggregation, aggregationFields, aggregationName, hits);
+                defaultSuggestions, highlight, highlightField, topEntriesToHighlight, queryFormat, fuzziness,
+                debounce, aggregation, aggregationFields, aggregationName, hits, searchResultImage, redirectIcon);
     }
 }

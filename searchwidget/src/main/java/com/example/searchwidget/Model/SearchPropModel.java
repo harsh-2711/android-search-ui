@@ -23,12 +23,14 @@ public class SearchPropModel {
     private ArrayList<String> aggregationFields;
     private String aggregationName;
     private boolean hits;
+    private boolean searchResultImage;
+    private boolean redirectIcon;
 
     public SearchPropModel(String componentId, ArrayList<String> dataField, String categoryField, String defaultValue,
                            ArrayList<Integer> weights, boolean autoSuggest, ArrayList<Pair<String, String>> defaultSuggestions,
                            boolean highlight, ArrayList<String> highlightField, int topEntriesToHighlight, String queryFormat,
                            String fuzziness, int debounce, boolean aggregation, ArrayList<String> aggregationFields, String aggregationName,
-                           boolean hits) {
+                           boolean hits, boolean searchResultImage, boolean redirectIcon) {
 
         this.componentId = componentId;
         this.dataField = dataField;
@@ -46,6 +48,8 @@ public class SearchPropModel {
         this.aggregation = aggregation;
         this.aggregationFields = aggregationFields;
         this.aggregationName = aggregationName;
+        this.searchResultImage = searchResultImage;
+        this.redirectIcon = redirectIcon;
     }
 
     public String getComponentId() {
@@ -182,5 +186,21 @@ public class SearchPropModel {
 
     public void setHitsState(boolean hits) {
         this.hits = hits;
+    }
+
+    public boolean isSearchResultImage() {
+        return searchResultImage;
+    }
+
+    public void setSearchResultImage(boolean searchResultImage) {
+        this.searchResultImage = searchResultImage;
+    }
+
+    public boolean isRedirectIcon() {
+        return redirectIcon;
+    }
+
+    public void setRedirectIcon(boolean redirectIcon) {
+        this.redirectIcon = redirectIcon;
     }
 }

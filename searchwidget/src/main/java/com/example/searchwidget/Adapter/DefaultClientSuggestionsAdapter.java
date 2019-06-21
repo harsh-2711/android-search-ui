@@ -19,6 +19,8 @@ public class DefaultClientSuggestionsAdapter extends RecyclerView.Adapter<Client
     private boolean shouldHighlight;
     private String queryText;
     private boolean showHits;
+    private boolean searchResultImage;
+    private boolean redirectIcon;
 
     /**
      * Listener for click on recycler view's items
@@ -41,13 +43,17 @@ public class DefaultClientSuggestionsAdapter extends RecyclerView.Adapter<Client
      * @param queryText The text which is queried/written in the search bar
      * @param shouldHighlight Should highlight the queried text or not
      * @param showHits Should show number of hits or not
+     * @param searchResultImage Whether to show search image/icon before search results/suggestions
+     * @param redirectIcon Whether to show redirect icon for every search result entry
      */
-    public DefaultClientSuggestionsAdapter(ArrayList<ClientSuggestionsModel> suggestions, String queryText, boolean shouldHighlight, boolean showHits) {
+    public DefaultClientSuggestionsAdapter(ArrayList<ClientSuggestionsModel> suggestions, String queryText, boolean shouldHighlight, boolean showHits, boolean searchResultImage, boolean redirectIcon) {
         this.suggestions = suggestions;
         this.queryText = queryText;
         this.shouldHighlight = shouldHighlight;
-        this.topEntries = -1;
         this.showHits = showHits;
+        this.searchResultImage = searchResultImage;
+        this.redirectIcon = redirectIcon;
+        this.topEntries = -1;
     }
 
     /**
@@ -57,14 +63,18 @@ public class DefaultClientSuggestionsAdapter extends RecyclerView.Adapter<Client
      * @param queryText The text which is queried/written in the search bar
      * @param shouldHighlight Should highlight the queried text or not
      * @param showHits Should show number of hits or not
+     * @param searchResultImage Whether to show search image/icon before search results/suggestions
+     * @param redirectIcon Whether to show redirect icon for every search result entry
      * @param topEntries  Number of entries for which categories needs to be shown under search result
      */
-    public DefaultClientSuggestionsAdapter(ArrayList<ClientSuggestionsModel> suggestions, String queryText, boolean shouldHighlight, boolean showHits, int topEntries) {
+    public DefaultClientSuggestionsAdapter(ArrayList<ClientSuggestionsModel> suggestions, String queryText, boolean shouldHighlight, boolean showHits, boolean searchResultImage, boolean redirectIcon, int topEntries) {
         this.suggestions = suggestions;
         this.queryText = queryText;
         this.shouldHighlight = shouldHighlight;
-        this.topEntries = topEntries;
         this.showHits = showHits;
+        this.searchResultImage = searchResultImage;
+        this.redirectIcon = redirectIcon;
+        this.topEntries = topEntries;
     }
 
     @Override
@@ -100,8 +110,19 @@ public class DefaultClientSuggestionsAdapter extends RecyclerView.Adapter<Client
         } else
             holder.hits.setVisibility(View.GONE);
 
-        holder.searchIcon.setImageResource(suggestions.get(position).getSearchIcon());
-        holder.trendingIcon.setImageResource(suggestions.get(position).getTrendingIcon());
+        if(searchResultImage) {
+            holder.searchIcon.setVisibility(View.VISIBLE);
+            holder.searchIcon.setImageResource(suggestions.get(position).getSearchIcon());
+        }
+        else
+            holder.searchIcon.setVisibility(View.GONE);
+
+        if(redirectIcon) {
+            holder.trendingIcon.setVisibility(View.VISIBLE);
+            holder.trendingIcon.setImageResource(suggestions.get(position).getTrendingIcon());
+        } else
+            holder.trendingIcon.setVisibility(View.GONE);
+
         if (topEntries == -1)
             holder.category.setVisibility(View.GONE);
         else

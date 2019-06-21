@@ -48,6 +48,7 @@ public class MainActivity extends AppCompatActivity {
                 .setHighlight(true)
                 .setHighlightField(highlightFields)
                 .setTopEntriesForHighlight(2)
+                .setRedirectIcon(false)
                 .build();
 
         // To log the queries made by Appbase client for debugging
