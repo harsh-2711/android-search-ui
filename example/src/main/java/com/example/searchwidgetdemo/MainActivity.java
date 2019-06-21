@@ -47,7 +47,7 @@ public class MainActivity extends AppCompatActivity {
                 .setDebounce(100)
                 .setHighlight(true)
                 .setHighlightField(highlightFields)
-                .setTopEntriesForHighlight(2)
+                .setTopEntries(2)
                 .setRedirectIcon(false)
                 .build();
 

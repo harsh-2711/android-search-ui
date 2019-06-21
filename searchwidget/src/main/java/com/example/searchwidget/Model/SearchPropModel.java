@@ -15,7 +15,7 @@ public class SearchPropModel {
     private ArrayList<Pair<String, String>> defaultSuggestions;
     private boolean highlight;
     private ArrayList<String> highlightField;
-    private int topEntriesToHighlight;
+    private int topEntries;
     private String queryFormat;
     private String fuzziness;
     private int debounce;
@@ -28,7 +28,7 @@ public class SearchPropModel {
 
     public SearchPropModel(String componentId, ArrayList<String> dataField, String categoryField, String defaultValue,
                            ArrayList<Integer> weights, boolean autoSuggest, ArrayList<Pair<String, String>> defaultSuggestions,
-                           boolean highlight, ArrayList<String> highlightField, int topEntriesToHighlight, String queryFormat,
+                           boolean highlight, ArrayList<String> highlightField, int topEntries, String queryFormat,
                            String fuzziness, int debounce, boolean aggregation, ArrayList<String> aggregationFields, String aggregationName,
                            boolean hits, boolean searchResultImage, boolean redirectIcon) {
 
@@ -41,7 +41,7 @@ public class SearchPropModel {
         this.defaultSuggestions = defaultSuggestions;
         this.highlight = highlight;
         this.highlightField = highlightField;
-        this.topEntriesToHighlight = topEntriesToHighlight;
+        this.topEntries = topEntries;
         this.queryFormat = queryFormat;
         this.fuzziness = fuzziness;
         this.debounce = debounce;
@@ -124,12 +124,12 @@ public class SearchPropModel {
         this.highlightField = highlightField;
     }
 
-    public int getTopEntriesToHighlight() {
-        return topEntriesToHighlight;
+    public int getTopEntries() {
+        return topEntries;
     }
 
-    public void setTopEntriesToHighlight(int topEntriesToHighlight) {
-        this.topEntriesToHighlight = topEntriesToHighlight;
+    public void setTopEntries(int topEntries) {
+        this.topEntries = topEntries;
     }
 
     public String getQueryFormat() {
