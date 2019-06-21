@@ -16,7 +16,6 @@ public class MainActivity extends AppCompatActivity {
     SearchBar searchBar;
     private ArrayList<String> dataFields;
     private ArrayList<Integer> weights;
-    private ArrayList<String> highlightFields;
     private ArrayList<ClientSuggestionsModel> defaultSuggestions;
 
     @Override
@@ -37,22 +36,23 @@ public class MainActivity extends AppCompatActivity {
         dataFields.add("title");
         dataFields.add("title.search");
 
+        // Setting weights for dataFields
         weights = new ArrayList<>();
         weights.add(1);
         weights.add(3);
 
-        highlightFields = new ArrayList<>();
-        highlightFields.add("tags");
-
+        // Making list of default suggestions
         ArrayList<String> suggestions = new ArrayList<>();
         suggestions.add("Puma T-Shirt");
         suggestions.add("Apple iPhone XS");
         suggestions.add("Nike Trousers");
 
+        // Making list of default categories to be displayed
         ArrayList<String> categories = new ArrayList<>();
         categories.add("T-Shirt");
         categories.add("Mobiles");
 
+        // Setting default suggestions
         defaultSuggestions = new DefaultClientSuggestions(suggestions).setCategories(categories).build();
 
         SearchPropModel searchPropModel = searchBar.setSearchProp("Demo Widget", dataFields)
