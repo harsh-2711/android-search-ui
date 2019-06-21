@@ -46,7 +46,7 @@ public class MainActivity extends AppCompatActivity {
                 .setFuzziness("10")
                 .setDebounce(100)
                 .setHighlight(true)
-                .setHighlightField(highlightFields)
+                .setCategoryField("tags")
                 .setTopEntries(2)
                 .setRedirectIcon(false)
                 .build();
