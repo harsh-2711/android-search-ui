@@ -30,7 +30,7 @@
  <tr style="height: 56px;">
   <td id="projectalign" style="padding-left: 0.5em;">
    <div id="projectname">appbase-search-widget
-   &#160;<span id="projectnumber">v0.0.4</span>
+   &#160;<span id="projectnumber">v0.0.6</span>
    </div>
   </td>
  </tr>
@@ -96,9 +96,9 @@ $(document).ready(function(){initNavTree('classcom_1_1example_1_1searchwidget_1_
 <table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="pub-methods"></a>
 Public Member Functions</h2></td></tr>
-<tr class="memitem:a06a190d2345185df64f0bb59a27c4ae6"><td class="memItemLeft" align="right" valign="top"><a id="a06a190d2345185df64f0bb59a27c4ae6"></a>
-&#160;</td><td class="memItemRight" valign="bottom"><b>SearchPropModel</b> (String componentId, ArrayList&lt; String &gt; dataField, String categoryField, String defaultValue, ArrayList&lt; Integer &gt; weights, boolean autoSuggest, ArrayList&lt; Pair&lt; String, String &gt;&gt; defaultSuggestions, boolean highlight, ArrayList&lt; String &gt; highlightField, String queryFormat, String fuzziness, int debounce, boolean isAggregation, ArrayList&lt; String &gt; aggregationFields, String aggregationName)</td></tr>
-<tr class="separator:a06a190d2345185df64f0bb59a27c4ae6"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a2b702027808b13d33a4b1989fb2d49c4"><td class="memItemLeft" align="right" valign="top"><a id="a2b702027808b13d33a4b1989fb2d49c4"></a>
+&#160;</td><td class="memItemRight" valign="bottom"><b>SearchPropModel</b> (String componentId, ArrayList&lt; String &gt; dataField, String categoryField, String defaultValue, ArrayList&lt; Integer &gt; weights, boolean autoSuggest, ArrayList&lt; <a class="el" href="classcom_1_1example_1_1searchwidget_1_1_model_1_1_client_suggestions_model.html">ClientSuggestionsModel</a> &gt; defaultSuggestions, boolean highlight, ArrayList&lt; String &gt; highlightField, int topEntries, String queryFormat, String fuzziness, int debounce, boolean aggregation, ArrayList&lt; String &gt; aggregationFields, String aggregationName, boolean hits, boolean searchResultImage, boolean redirectIcon)</td></tr>
+<tr class="separator:a2b702027808b13d33a4b1989fb2d49c4"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a99e8d5e07bb749b6d076bf6751cfa2b3"><td class="memItemLeft" align="right" valign="top"><a id="a99e8d5e07bb749b6d076bf6751cfa2b3"></a>
 String&#160;</td><td class="memItemRight" valign="bottom"><b>getComponentId</b> ()</td></tr>
 <tr class="separator:a99e8d5e07bb749b6d076bf6751cfa2b3"><td class="memSeparator" colspan="2">&#160;</td></tr>
@@ -135,12 +135,12 @@ boolean&#160;</td><td class="memItemRight" valign="bottom"><b>isAutoSuggest</b> 
 <tr class="memitem:a37aaf38420aaa6725172748086e6edaa"><td class="memItemLeft" align="right" valign="top"><a id="a37aaf38420aaa6725172748086e6edaa"></a>
 void&#160;</td><td class="memItemRight" valign="bottom"><b>setAutoSuggest</b> (boolean autoSuggest)</td></tr>
 <tr class="separator:a37aaf38420aaa6725172748086e6edaa"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a685c60b4bf4c2bf1d4c4451b67c1f3dc"><td class="memItemLeft" align="right" valign="top"><a id="a685c60b4bf4c2bf1d4c4451b67c1f3dc"></a>
-ArrayList&lt; Pair&lt; String, String &gt; &gt;&#160;</td><td class="memItemRight" valign="bottom"><b>getDefaultSuggestions</b> ()</td></tr>
-<tr class="separator:a685c60b4bf4c2bf1d4c4451b67c1f3dc"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:acec96d90f553862ad765108ab2517cc0"><td class="memItemLeft" align="right" valign="top"><a id="acec96d90f553862ad765108ab2517cc0"></a>
-void&#160;</td><td class="memItemRight" valign="bottom"><b>setDefaultSuggestions</b> (ArrayList&lt; Pair&lt; String, String &gt;&gt; defaultSuggestions)</td></tr>
-<tr class="separator:acec96d90f553862ad765108ab2517cc0"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ab694c5396efde39592db4e2cd3fe7f9b"><td class="memItemLeft" align="right" valign="top"><a id="ab694c5396efde39592db4e2cd3fe7f9b"></a>
+ArrayList&lt; <a class="el" href="classcom_1_1example_1_1searchwidget_1_1_model_1_1_client_suggestions_model.html">ClientSuggestionsModel</a> &gt;&#160;</td><td class="memItemRight" valign="bottom"><b>getDefaultSuggestions</b> ()</td></tr>
+<tr class="separator:ab694c5396efde39592db4e2cd3fe7f9b"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a9bed2d1ea828551b10d948b93f917819"><td class="memItemLeft" align="right" valign="top"><a id="a9bed2d1ea828551b10d948b93f917819"></a>
+void&#160;</td><td class="memItemRight" valign="bottom"><b>setDefaultSuggestions</b> (ArrayList&lt; <a class="el" href="classcom_1_1example_1_1searchwidget_1_1_model_1_1_client_suggestions_model.html">ClientSuggestionsModel</a> &gt; defaultSuggestions)</td></tr>
+<tr class="separator:a9bed2d1ea828551b10d948b93f917819"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a655dae8245db6c6d28f0ecd90b8eea24"><td class="memItemLeft" align="right" valign="top"><a id="a655dae8245db6c6d28f0ecd90b8eea24"></a>
 boolean&#160;</td><td class="memItemRight" valign="bottom"><b>isHighlight</b> ()</td></tr>
 <tr class="separator:a655dae8245db6c6d28f0ecd90b8eea24"><td class="memSeparator" colspan="2">&#160;</td></tr>
@@ -153,6 +153,12 @@ ArrayList&lt; String &gt;&#160;</td><td class="memItemRight" valign="bottom"><b>
 <tr class="memitem:a2db0ecb8d6931b68581ec74d53326c5a"><td class="memItemLeft" align="right" valign="top"><a id="a2db0ecb8d6931b68581ec74d53326c5a"></a>
 void&#160;</td><td class="memItemRight" valign="bottom"><b>setHighlightField</b> (ArrayList&lt; String &gt; highlightField)</td></tr>
 <tr class="separator:a2db0ecb8d6931b68581ec74d53326c5a"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a21cd655ecb1db96a9d0e88a2162fd208"><td class="memItemLeft" align="right" valign="top"><a id="a21cd655ecb1db96a9d0e88a2162fd208"></a>
+int&#160;</td><td class="memItemRight" valign="bottom"><b>getTopEntries</b> ()</td></tr>
+<tr class="separator:a21cd655ecb1db96a9d0e88a2162fd208"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:aff21cef9bdb158bbab1a449634db8a60"><td class="memItemLeft" align="right" valign="top"><a id="aff21cef9bdb158bbab1a449634db8a60"></a>
+void&#160;</td><td class="memItemRight" valign="bottom"><b>setTopEntries</b> (int topEntries)</td></tr>
+<tr class="separator:aff21cef9bdb158bbab1a449634db8a60"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a67cb59ad29097fe0fb4240b657a7d402"><td class="memItemLeft" align="right" valign="top"><a id="a67cb59ad29097fe0fb4240b657a7d402"></a>
 String&#160;</td><td class="memItemRight" valign="bottom"><b>getQueryFormat</b> ()</td></tr>
 <tr class="separator:a67cb59ad29097fe0fb4240b657a7d402"><td class="memSeparator" colspan="2">&#160;</td></tr>
@@ -174,9 +180,9 @@ void&#160;</td><td class="memItemRight" valign="bottom"><b>setDebounce</b> (int 
 <tr class="memitem:a2a04097111b616db1849758b5eb32cd1"><td class="memItemLeft" align="right" valign="top"><a id="a2a04097111b616db1849758b5eb32cd1"></a>
 boolean&#160;</td><td class="memItemRight" valign="bottom"><b>getAggregrationState</b> ()</td></tr>
 <tr class="separator:a2a04097111b616db1849758b5eb32cd1"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a103abdd8a1bd9a6a79d3761565db8e06"><td class="memItemLeft" align="right" valign="top"><a id="a103abdd8a1bd9a6a79d3761565db8e06"></a>
-void&#160;</td><td class="memItemRight" valign="bottom"><b>setAggregrationState</b> (boolean aggregrationState)</td></tr>
-<tr class="separator:a103abdd8a1bd9a6a79d3761565db8e06"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a6c56ba4cbc52966678f1ff2e971bce12"><td class="memItemLeft" align="right" valign="top"><a id="a6c56ba4cbc52966678f1ff2e971bce12"></a>
+void&#160;</td><td class="memItemRight" valign="bottom"><b>setAggregrationState</b> (boolean aggregationState)</td></tr>
+<tr class="separator:a6c56ba4cbc52966678f1ff2e971bce12"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a87faf284d799e0245bb4421b5033f0a6"><td class="memItemLeft" align="right" valign="top"><a id="a87faf284d799e0245bb4421b5033f0a6"></a>
 ArrayList&lt; String &gt;&#160;</td><td class="memItemRight" valign="bottom"><b>getAggregationFields</b> ()</td></tr>
 <tr class="separator:a87faf284d799e0245bb4421b5033f0a6"><td class="memSeparator" colspan="2">&#160;</td></tr>
@@ -189,6 +195,24 @@ String&#160;</td><td class="memItemRight" valign="bottom"><b>getAggregationName<
 <tr class="memitem:a9478852effcc5c6049f192c5f36a03c3"><td class="memItemLeft" align="right" valign="top"><a id="a9478852effcc5c6049f192c5f36a03c3"></a>
 void&#160;</td><td class="memItemRight" valign="bottom"><b>setAggregationName</b> (String aggregationName)</td></tr>
 <tr class="separator:a9478852effcc5c6049f192c5f36a03c3"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a29bbdda2313e9afc8a5d737ef9280b38"><td class="memItemLeft" align="right" valign="top"><a id="a29bbdda2313e9afc8a5d737ef9280b38"></a>
+boolean&#160;</td><td class="memItemRight" valign="bottom"><b>getHitsState</b> ()</td></tr>
+<tr class="separator:a29bbdda2313e9afc8a5d737ef9280b38"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:af45f2abb84eb268768cb9d5e0a3e61d7"><td class="memItemLeft" align="right" valign="top"><a id="af45f2abb84eb268768cb9d5e0a3e61d7"></a>
+void&#160;</td><td class="memItemRight" valign="bottom"><b>setHitsState</b> (boolean hits)</td></tr>
+<tr class="separator:af45f2abb84eb268768cb9d5e0a3e61d7"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:af85ed3ffe472f9dc5b57ede202cc5574"><td class="memItemLeft" align="right" valign="top"><a id="af85ed3ffe472f9dc5b57ede202cc5574"></a>
+boolean&#160;</td><td class="memItemRight" valign="bottom"><b>isSearchResultImage</b> ()</td></tr>
+<tr class="separator:af85ed3ffe472f9dc5b57ede202cc5574"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a2b98b52d269cf1558434320d69606149"><td class="memItemLeft" align="right" valign="top"><a id="a2b98b52d269cf1558434320d69606149"></a>
+void&#160;</td><td class="memItemRight" valign="bottom"><b>setSearchResultImage</b> (boolean searchResultImage)</td></tr>
+<tr class="separator:a2b98b52d269cf1558434320d69606149"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:abf955883801bbfc0c24395aab66f6a5a"><td class="memItemLeft" align="right" valign="top"><a id="abf955883801bbfc0c24395aab66f6a5a"></a>
+boolean&#160;</td><td class="memItemRight" valign="bottom"><b>isRedirectIcon</b> ()</td></tr>
+<tr class="separator:abf955883801bbfc0c24395aab66f6a5a"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a04469962a886d40a444b0d5a09e02dd0"><td class="memItemLeft" align="right" valign="top"><a id="a04469962a886d40a444b0d5a09e02dd0"></a>
+void&#160;</td><td class="memItemRight" valign="bottom"><b>setRedirectIcon</b> (boolean redirectIcon)</td></tr>
+<tr class="separator:a04469962a886d40a444b0d5a09e02dd0"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table>
 <hr/>The documentation for this class was generated from the following file:<ul>
 <li>/Users/harshpatel/Desktop/Appbase/SearchWidgetDemo/searchwidget/src/main/java/com/example/searchwidget/Model/SearchPropModel.java</li>
