@@ -12,7 +12,7 @@ public class SearchPropModel {
     private String defaultValue;
     private ArrayList<Integer> weights;
     private boolean autoSuggest;
-    private ArrayList<Pair<String, String>> defaultSuggestions;
+    private ArrayList<ClientSuggestionsModel> defaultSuggestions;
     private boolean highlight;
     private ArrayList<String> highlightField;
     private int topEntries;
@@ -27,7 +27,7 @@ public class SearchPropModel {
     private boolean redirectIcon;
 
     public SearchPropModel(String componentId, ArrayList<String> dataField, String categoryField, String defaultValue,
-                           ArrayList<Integer> weights, boolean autoSuggest, ArrayList<Pair<String, String>> defaultSuggestions,
+                           ArrayList<Integer> weights, boolean autoSuggest, ArrayList<ClientSuggestionsModel> defaultSuggestions,
                            boolean highlight, ArrayList<String> highlightField, int topEntries, String queryFormat,
                            String fuzziness, int debounce, boolean aggregation, ArrayList<String> aggregationFields, String aggregationName,
                            boolean hits, boolean searchResultImage, boolean redirectIcon) {
@@ -100,11 +100,11 @@ public class SearchPropModel {
         this.autoSuggest = autoSuggest;
     }
 
-    public ArrayList<Pair<String, String>> getDefaultSuggestions() {
+    public ArrayList<ClientSuggestionsModel> getDefaultSuggestions() {
         return defaultSuggestions;
     }
 
-    public void setDefaultSuggestions(ArrayList<Pair<String, String>> defaultSuggestions) {
+    public void setDefaultSuggestions(ArrayList<ClientSuggestionsModel> defaultSuggestions) {
         this.defaultSuggestions = defaultSuggestions;
     }
 

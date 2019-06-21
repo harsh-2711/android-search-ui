@@ -1,5 +1,7 @@
 package com.example.searchwidget.Builder;
 
+import android.util.Log;
+
 import com.example.searchwidget.Model.ClientSuggestionsModel;
 import com.example.searchwidget.R;
 
@@ -84,7 +86,7 @@ public class DefaultClientSuggestions {
             if(this.categories == null)
                 category = null;
             else {
-                if(this.categories.size() >= i) {
+                if(this.categories.size() > i) {
                     category = this.categories.get(i);
                 }
                 else
@@ -94,7 +96,7 @@ public class DefaultClientSuggestions {
             if(this.hits == null)
                 hit = null;
             else {
-                if(this.hits.size() >= i) {
+                if(this.hits.size() > i) {
                     hit = this.hits.get(i);
                 }
                 else
@@ -104,7 +106,7 @@ public class DefaultClientSuggestions {
             if(this.searchIcon == null)
                 searchicon = R.drawable.ic_search_icon;
             else {
-                if(this.searchIcon.size() >= i) {
+                if(this.searchIcon.size() > i) {
                     searchicon = this.searchIcon.get(i);
                 }
                 else
@@ -114,7 +116,7 @@ public class DefaultClientSuggestions {
             if(this.trendingIcon == null)
                 trendingicon = R.drawable.top_left_arrow;
             else {
-                if(this.trendingIcon.size() >= i) {
+                if(this.trendingIcon.size() > i) {
                     trendingicon = this.trendingIcon.get(i);
                 }
                 else

@@ -969,13 +969,36 @@ public class SearchBar extends RelativeLayout implements View.OnClickListener,
         if (id == getId()) {
             if (!searchEnabled) {
                 enableSearch();
+                if(defaultSearchPropModel != null) {
+                    if(defaultSearchPropModel.getDefaultSuggestions() != null) {
+
+                        // Searching for categories count
+                        int categoriesCount = 0;
+                        for(int i = 0; i < defaultSearchPropModel.getDefaultSuggestions().size(); i++) {
+                            ClientSuggestionsModel clientSuggestionsModel = defaultSearchPropModel.getDefaultSuggestions().get(i);
+                            if(clientSuggestionsModel.getCategory() != null)
+                                categoriesCount += 1;
+                            else
+                                break;
+                        }
+                        defaultClientSuggestionsAdapter = new DefaultClientSuggestionsAdapter(defaultSearchPropModel.getDefaultSuggestions(), "", false, false, true, true, categoriesCount);
+                        recyclerView.setAdapter(defaultClientSuggestionsAdapter);
+                    }
+                }
             }
         } else if (id == R.id.arrow || !navIconShown) {
             disableSearch();
+
             if(defaultClientSuggestionsAdapter != null) {
                 defaultClientSuggestionsAdapter.clear();
                 recyclerView.setAdapter(defaultClientSuggestionsAdapter);
             }
+
+            if(defaultClientSuggestionsAdapter != null) {
+                defaultClientSuggestionsAdapter.clear();
+                recyclerView.setAdapter(defaultClientSuggestionsAdapter);
+            }
+
         } else if (id == R.id.search) {
             if (listenerExists())
                 onSearchActionListener.onButtonClicked(BUTTON_SPEECH);

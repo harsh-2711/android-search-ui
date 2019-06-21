@@ -2,6 +2,7 @@ package com.example.searchwidget.Builder;
 
 import android.util.Pair;
 
+import com.example.searchwidget.Model.ClientSuggestionsModel;
 import com.example.searchwidget.Model.SearchPropModel;
 
 import java.util.ArrayList;
@@ -14,7 +15,7 @@ public class SearchProp {
     private String defaultValue = null;
     private ArrayList<Integer> weights = null;
     private boolean autoSuggest = true;
-    private ArrayList<Pair<String, String>> defaultSuggestions = null;
+    private ArrayList<ClientSuggestionsModel> defaultSuggestions = null;
     private boolean highlight = false;
     private ArrayList<String> highlightField = null;
     private int topEntries = 1;
@@ -86,10 +87,10 @@ public class SearchProp {
     /**
      * Sets default suggestions for search bar
      *
-     * @param defaultSuggestions Preset search suggestions to be shown on focus when the search box does not have any search query text set
+     * @param defaultSuggestions Preset search suggestions to be shown on focus when the search box does not have any search query text set. Default suggestions should be an array list of suggestion model class
      * @return
      */
-    public SearchProp setDefaultSuggestions(ArrayList<Pair<String, String>> defaultSuggestions) {
+    public SearchProp setDefaultSuggestions(ArrayList<ClientSuggestionsModel> defaultSuggestions) {
         this.defaultSuggestions = defaultSuggestions;
         return this;
     }

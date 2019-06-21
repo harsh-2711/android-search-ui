@@ -4,6 +4,8 @@ import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.util.Log;
 
+import com.example.searchwidget.Builder.DefaultClientSuggestions;
+import com.example.searchwidget.Model.ClientSuggestionsModel;
 import com.example.searchwidget.Model.SearchPropModel;
 import com.example.searchwidget.SearchBar;
 
@@ -15,6 +17,7 @@ public class MainActivity extends AppCompatActivity {
     private ArrayList<String> dataFields;
     private ArrayList<Integer> weights;
     private ArrayList<String> highlightFields;
+    private ArrayList<ClientSuggestionsModel> defaultSuggestions;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -41,6 +44,17 @@ public class MainActivity extends AppCompatActivity {
         highlightFields = new ArrayList<>();
         highlightFields.add("tags");
 
+        ArrayList<String> suggestions = new ArrayList<>();
+        suggestions.add("Puma T-Shirt");
+        suggestions.add("Apple iPhone XS");
+        suggestions.add("Nike Trousers");
+
+        ArrayList<String> categories = new ArrayList<>();
+        categories.add("T-Shirt");
+        categories.add("Mobiles");
+
+        defaultSuggestions = new DefaultClientSuggestions(suggestions).setCategories(categories).build();
+
         SearchPropModel searchPropModel = searchBar.setSearchProp("Demo Widget", dataFields)
                 .setQueryFormat("or")
                 .setFuzziness("10")
@@ -49,6 +63,7 @@ public class MainActivity extends AppCompatActivity {
                 .setCategoryField("tags")
                 .setTopEntries(2)
                 .setRedirectIcon(false)
+                .setDefaultSuggestions(defaultSuggestions)
                 .build();
 
         // To log the queries made by Appbase client for debugging
