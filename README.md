@@ -154,7 +154,7 @@ public class MainActivity extends AppCompatActivity {
         dataFields = new ArrayList<>();
         dataFields.add("tags");
         dataFields.add("tags.search");
-        searchBar.setSearchProp("Demo Widget", dataFields)
+        SearchPropModel searchPropModel = searchBar.setSearchProp("Demo Widget", dataFields)
                 .setQueryFormat("and")
                 .setFuzziness("10")
                 .setDebounce(100)
@@ -174,7 +174,7 @@ public class MainActivity extends AppCompatActivity {
         });
 
         // Start search
-        searchBar.startSearch();
+        searchBar.startSearch(searchPropModel);
     }
 }
 ```
