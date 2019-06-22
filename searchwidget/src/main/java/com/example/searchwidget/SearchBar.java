@@ -38,6 +38,7 @@ import android.widget.TextView;
 import com.example.searchwidget.Adapter.DefaultLocalSuggestionsAdapter;
 import com.example.searchwidget.Builder.DefaultClientSuggestions;
 import com.example.searchwidget.Builder.SearchProp;
+import com.example.searchwidget.Listener.CustomRVItemTouchListener;
 import com.example.searchwidget.Model.ClientSuggestionsModel;
 import com.example.searchwidget.Adapter.DefaultClientSuggestionsAdapter;
 import com.example.searchwidget.Adapter.SuggestionsAdapter;
@@ -133,6 +134,7 @@ public class SearchBar extends RelativeLayout implements View.OnClickListener,
     private String clientType;
 
     private TextChangeListener textChangeListener;
+    private ItemClickListener itemClickListener;
 
     private boolean shouldLogQuery = false;
 
@@ -1335,6 +1337,32 @@ public class SearchBar extends RelativeLayout implements View.OnClickListener,
     }
 
     /**
+     * Registers listener for different click gestures callbacks
+     * @param itemClickListener Search item click callbacks
+     */
+    public void setOnItemClickListener(final ItemClickListener itemClickListener) {
+        this.itemClickListener = itemClickListener;
+
+        CustomRVItemTouchListener customRVItemTouchListener = new CustomRVItemTouchListener(getContext(), recyclerView, new CustomRVItemTouchListener.RecyclerViewItemClickListener() {
+            @Override
+            public void onClick(View view, int position) {
+                itemClickListener.onClick(view, position);
+            }
+
+            @Override
+            public void onLongClick(View view, int position) {
+                itemClickListener.onLongClick(view, position);
+            }
+        });
+
+        recyclerView.addOnItemTouchListener(customRVItemTouchListener);
+    }
+
+    private boolean itemClickListenerExists() {
+        return this.itemClickListener != null;
+    }
+
+    /**
      * Interface definition for MaterialSearchBar callbacks.
      */
     public interface OnSearchActionListener {
@@ -1370,6 +1398,28 @@ public class SearchBar extends RelativeLayout implements View.OnClickListener,
          * @param response Response for the query made from search prop parameters using Appbase client
          */
         void onTextChange(String response);
+    }
+
+    /**
+     * Interface for listening continuously to click events on search results
+     */
+    public interface ItemClickListener {
+
+        /**
+         * Invoked when a click is made on search result
+         *
+         * @param view View on which click event is registered
+         * @param position Position of the item clicked
+         */
+        void onClick(View view, int position);
+
+        /**
+         * Invoked when long click gesture is made on search result
+         *
+         * @param view View on which long click event is registered
+         * @param position Position of the item on which long click is done
+         */
+        void onLongClick(View view, int position);
     }
 
     private static class RequestParams {

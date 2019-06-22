@@ -3,6 +3,7 @@ package com.example.searchwidgetdemo;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.util.Log;
+import android.view.View;
 
 import com.example.searchwidget.Builder.DefaultClientSuggestions;
 import com.example.searchwidget.Model.ClientSuggestionsModel;
@@ -76,6 +77,21 @@ public class MainActivity extends AppCompatActivity {
                 // Responses to the queries passed in the Search Bar are available here
                 // Parse the response string and add the data in search list respectively
                 Log.d("Results", response);
+            }
+        });
+
+        // Setting click gestures on search results
+        searchBar.setOnItemClickListener(new SearchBar.ItemClickListener() {
+            @Override
+            public void onClick(View view, int position) {
+                // Single click event
+                Log.d("POSITION", String.valueOf(position));
+            }
+
+            @Override
+            public void onLongClick(View view, int position) {
+                // Long click event
+                Log.d("LONG POSITION", String.valueOf(position));
             }
         });
 
