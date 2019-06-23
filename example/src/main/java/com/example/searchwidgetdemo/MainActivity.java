@@ -83,15 +83,13 @@ public class MainActivity extends AppCompatActivity {
         // Setting click gestures on search results
         searchBar.setOnItemClickListener(new SearchBar.ItemClickListener() {
             @Override
-            public void onClick(View view, int position) {
-                // Single click event
-                Log.d("POSITION", String.valueOf(position));
+            public void onClick(View view, int position, ClientSuggestionsModel result) {
+                Log.d("Search Result", result.getText());
             }
 
             @Override
-            public void onLongClick(View view, int position) {
-                // Long click event
-                Log.d("LONG POSITION", String.valueOf(position));
+            public void onLongClick(View view, int position, ClientSuggestionsModel result) {
+                Log.d("Search Result", result.getText());
             }
         });
 

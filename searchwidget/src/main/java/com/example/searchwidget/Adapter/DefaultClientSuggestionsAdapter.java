@@ -172,12 +172,25 @@ public class DefaultClientSuggestionsAdapter extends RecyclerView.Adapter<Client
         notifyItemRemoved(position);
     }
 
+    /**
+     * Clears all items in adapter
+     */
     public void clear() {
         int size = getItemCount();
         for(int i = size - 1; i >= 0; i--) {
             suggestions.remove(i);
             notifyItemRemoved(i);
         }
+    }
+
+    /**
+     * Get search result at given position
+     *
+     * @param position Position of the search item to be returned
+     * @return Search item in form ClientSuggestionsModel
+     */
+    public ClientSuggestionsModel getItem(int position) {
+        return suggestions.get(position);
     }
 }
 

@@ -1346,12 +1346,12 @@ public class SearchBar extends RelativeLayout implements View.OnClickListener,
         CustomRVItemTouchListener customRVItemTouchListener = new CustomRVItemTouchListener(getContext(), recyclerView, new CustomRVItemTouchListener.RecyclerViewItemClickListener() {
             @Override
             public void onClick(View view, int position) {
-                itemClickListener.onClick(view, position);
+                itemClickListener.onClick(view, position, defaultClientSuggestionsAdapter.getItem(position));
             }
 
             @Override
             public void onLongClick(View view, int position) {
-                itemClickListener.onLongClick(view, position);
+                itemClickListener.onLongClick(view, position, defaultClientSuggestionsAdapter.getItem(position));
             }
         });
 
@@ -1411,7 +1411,7 @@ public class SearchBar extends RelativeLayout implements View.OnClickListener,
          * @param view View on which click event is registered
          * @param position Position of the item clicked
          */
-        void onClick(View view, int position);
+        void onClick(View view, int position, ClientSuggestionsModel result);
 
         /**
          * Invoked when long click gesture is made on search result
@@ -1419,7 +1419,7 @@ public class SearchBar extends RelativeLayout implements View.OnClickListener,
          * @param view View on which long click event is registered
          * @param position Position of the item on which long click is done
          */
-        void onLongClick(View view, int position);
+        void onLongClick(View view, int position, ClientSuggestionsModel result);
     }
 
     private static class RequestParams {
