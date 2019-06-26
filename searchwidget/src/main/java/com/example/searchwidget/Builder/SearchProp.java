@@ -1,7 +1,5 @@
 package com.example.searchwidget.Builder;
 
-import android.util.Pair;
-
 import com.example.searchwidget.Model.ClientSuggestionsModel;
 import com.example.searchwidget.Model.SearchPropModel;
 
@@ -11,6 +9,7 @@ public class SearchProp {
 
     private String componentId;
     private ArrayList<String> dataField;
+    private ArrayList<String> extraFields = null;
     private String categoryField = null;
     private String defaultValue = null;
     private ArrayList<Integer> weights = null;
@@ -38,6 +37,19 @@ public class SearchProp {
     public SearchProp(String componentId, ArrayList<String> dataField) {
         this.componentId = componentId;
         this.dataField = dataField;
+    }
+
+    /**
+     * Sets extra fields to be returned for every search result
+     * These fields are parsed from the JSON response returned for the given search query
+     * Mainly used for displaying complete information of a search result on click gesture
+     *
+     * @param extraFields List of extra fields to be retrieved
+     * @return
+     */
+    public SearchProp setExtraFields(ArrayList<String> extraFields) {
+        this.extraFields = extraFields;
+        return this;
     }
 
     /**
@@ -231,8 +243,8 @@ public class SearchProp {
      * @return Object of SearchPropModel
      */
     public SearchPropModel build() {
-        return new SearchPropModel(componentId, dataField, categoryField, defaultValue, weights, autoSuggest,
-                defaultSuggestions, highlight, highlightField, topEntries, queryFormat, fuzziness,
-                debounce, aggregation, aggregationFields, aggregationName, hits, searchResultImage, redirectIcon);
+        return new SearchPropModel(componentId, dataField, extraFields, categoryField, defaultValue, weights, autoSuggest,
+                defaultSuggestions, highlight, highlightField, topEntries, queryFormat, fuzziness, debounce,
+                aggregation, aggregationFields, aggregationName, hits, searchResultImage, redirectIcon);
     }
 }

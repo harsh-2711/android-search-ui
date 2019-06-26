@@ -1,6 +1,9 @@
 package com.example.searchwidget.Model;
 
 
+import java.util.ArrayList;
+import java.util.HashMap;
+
 public class ClientSuggestionsModel {
 
     private String text;
@@ -8,13 +11,15 @@ public class ClientSuggestionsModel {
     private String hits;
     private int searchIcon;
     private int trendingIcon;
+    private HashMap<String, ArrayList<String>> extraProperties;
 
-    public ClientSuggestionsModel(String text, String category, String hits, int searchIcon, int trendingIcon) {
+    public ClientSuggestionsModel(String text, String category, String hits, int searchIcon, int trendingIcon, HashMap<String, ArrayList<String>> extraProperties) {
         this.text = text;
         this.category = category;
         this.hits = hits;
         this.searchIcon = searchIcon;
         this.trendingIcon = trendingIcon;
+        this.extraProperties = extraProperties;
     }
 
     public String getText() {
@@ -55,5 +60,13 @@ public class ClientSuggestionsModel {
 
     public void setTrendingIcon(int trendingIcon) {
         this.trendingIcon = trendingIcon;
+    }
+
+    public HashMap<String, ArrayList<String>> getExtraProperties() {
+        return extraProperties;
+    }
+
+    public void setExtraProperties(HashMap<String, ArrayList<String>> extraProperties) {
+        this.extraProperties = extraProperties;
     }
 }

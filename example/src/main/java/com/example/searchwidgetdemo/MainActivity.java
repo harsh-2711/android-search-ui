@@ -11,6 +11,7 @@ import com.example.searchwidget.Model.SearchPropModel;
 import com.example.searchwidget.SearchBar;
 
 import java.util.ArrayList;
+import java.util.HashMap;
 
 public class MainActivity extends AppCompatActivity {
 
@@ -53,6 +54,10 @@ public class MainActivity extends AppCompatActivity {
         categories.add("T-Shirt");
         categories.add("Mobiles");
 
+        // Setting extra properties
+        ArrayList<String> extraProperties = new ArrayList<>();
+        extraProperties.add("images");
+
         // Setting default suggestions
         defaultSuggestions = new DefaultClientSuggestions(suggestions).setCategories(categories).build();
 
@@ -65,6 +70,7 @@ public class MainActivity extends AppCompatActivity {
                 .setTopEntries(2)
                 .setRedirectIcon(false)
                 .setDefaultSuggestions(defaultSuggestions)
+                .setExtraFields(extraProperties)
                 .build();
 
         // To log the queries made by Appbase client for debugging
@@ -85,6 +91,12 @@ public class MainActivity extends AppCompatActivity {
             @Override
             public void onClick(View view, int position, ClientSuggestionsModel result) {
                 Log.d("Search Result", result.getText());
+                HashMap<String, ArrayList<String>> hashMap = result.getExtraProperties();
+                try {
+                    Log.d("Extra property", hashMap.get("images").toString());
+                } catch (NullPointerException e) {
+                    //e.printStackTrace();
+                }
             }
 
             @Override

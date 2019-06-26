@@ -1,13 +1,12 @@
 package com.example.searchwidget.Model;
 
-import android.util.Pair;
-
 import java.util.ArrayList;
 
 public class SearchPropModel {
 
     private String componentId;
     private ArrayList<String> dataField;
+    private ArrayList<String> extraFields;
     private String categoryField;
     private String defaultValue;
     private ArrayList<Integer> weights;
@@ -26,7 +25,7 @@ public class SearchPropModel {
     private boolean searchResultImage;
     private boolean redirectIcon;
 
-    public SearchPropModel(String componentId, ArrayList<String> dataField, String categoryField, String defaultValue,
+    public SearchPropModel(String componentId, ArrayList<String> dataField, ArrayList<String> extraFields, String categoryField, String defaultValue,
                            ArrayList<Integer> weights, boolean autoSuggest, ArrayList<ClientSuggestionsModel> defaultSuggestions,
                            boolean highlight, ArrayList<String> highlightField, int topEntries, String queryFormat,
                            String fuzziness, int debounce, boolean aggregation, ArrayList<String> aggregationFields, String aggregationName,
@@ -34,6 +33,7 @@ public class SearchPropModel {
 
         this.componentId = componentId;
         this.dataField = dataField;
+        this.extraFields = extraFields;
         this.categoryField = categoryField;
         this.defaultValue = defaultValue;
         this.weights = weights;
@@ -48,6 +48,7 @@ public class SearchPropModel {
         this.aggregation = aggregation;
         this.aggregationFields = aggregationFields;
         this.aggregationName = aggregationName;
+        this.hits = hits;
         this.searchResultImage = searchResultImage;
         this.redirectIcon = redirectIcon;
     }
@@ -66,6 +67,14 @@ public class SearchPropModel {
 
     public void setDataField(ArrayList<String> dataField) {
         this.dataField = dataField;
+    }
+
+    public ArrayList<String> getExtraFields() {
+        return extraFields;
+    }
+
+    public void setExtraFields(ArrayList<String> extraFields) {
+        this.extraFields = extraFields;
     }
 
     public String getCategoryField() {

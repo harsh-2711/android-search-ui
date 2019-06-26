@@ -1,15 +1,15 @@
 package com.example.searchwidget.Builder;
 
-import android.util.Log;
-
 import com.example.searchwidget.Model.ClientSuggestionsModel;
 import com.example.searchwidget.R;
 
 import java.util.ArrayList;
+import java.util.HashMap;
 
 public class DefaultClientSuggestions {
 
     ArrayList<String> suggestions;
+    ArrayList<HashMap<String, ArrayList<String>>> extraProperties = null;
     ArrayList<String> categories = null;
     ArrayList<Integer> searchIcon = null;
     ArrayList<Integer> trendingIcon = null;
@@ -22,6 +22,17 @@ public class DefaultClientSuggestions {
      */
     public DefaultClientSuggestions(ArrayList<String> suggestions) {
         this.suggestions = suggestions;
+    }
+
+    /**
+     * Sets values for extra fields passed in key-value format
+     *
+     * @param extraProperties Values for given extra fields in key-value format using Hashmap data structure
+     * @return
+     */
+    public DefaultClientSuggestions setExtraProperties(ArrayList<HashMap<String, ArrayList<String>>> extraProperties) {
+        this.extraProperties = extraProperties;
+        return this;
     }
 
     /**
@@ -80,6 +91,7 @@ public class DefaultClientSuggestions {
         String hit;
         int searchicon;
         int trendingicon;
+        HashMap<String, ArrayList<String>> extraProperty;
 
         for(int i = 0; i < this.suggestions.size(); i++) {
 
@@ -123,7 +135,17 @@ public class DefaultClientSuggestions {
                     trendingicon = R.drawable.top_left_arrow;
             }
 
-            suggestions.add(new ClientSuggestionsModel(this.suggestions.get(i),category, hit, searchicon, trendingicon ));
+            if(this.extraProperties == null)
+                extraProperty = null;
+            else {
+                if(this.extraProperties.size() > i) {
+                    extraProperty = this.extraProperties.get(i);
+                }
+                else
+                    extraProperty = null;
+            }
+
+            suggestions.add(new ClientSuggestionsModel(this.suggestions.get(i), category, hit, searchicon, trendingicon, extraProperty));
         }
 
         return suggestions;

@@ -51,6 +51,7 @@ import org.json.JSONObject;
 import java.io.IOException;
 import java.lang.reflect.Field;
 import java.util.ArrayList;
+import java.util.HashMap;
 import java.util.List;
 
 
@@ -1479,6 +1480,7 @@ public class SearchBar extends RelativeLayout implements View.OnClickListener,
         ArrayList<String> duplicateCheck;
         String query;
         ArrayList<String> categories;
+        ArrayList<HashMap<String, ArrayList<String>>> extraProperties;
 
         @Override
         protected Void doInBackground(RequestParams... params) {
@@ -1500,6 +1502,7 @@ public class SearchBar extends RelativeLayout implements View.OnClickListener,
 
                     entries = new ArrayList<>();
                     categories = new ArrayList<>();
+                    extraProperties = new ArrayList<>();
                     duplicateCheck = new ArrayList<>();
                     for (int i = 0; i < finalHits.length(); i++) {
 
@@ -1516,7 +1519,6 @@ public class SearchBar extends RelativeLayout implements View.OnClickListener,
                                 }
                             } catch (JSONException e) {
                                 // Error finding data field
-                                e.printStackTrace();
                             }
 
                         }
@@ -1526,15 +1528,50 @@ public class SearchBar extends RelativeLayout implements View.OnClickListener,
                                 JSONArray categoryArray = source.getJSONArray(defaultSearchPropModel.getCategoryField());
                                 categories.add(categoryArray.get(0).toString());
                             } catch (JSONException e) {
-                                e.printStackTrace();
+
                                 try {
                                     String category = source.getString(defaultSearchPropModel.getCategoryField());
                                     categories.add(category);
                                 } catch (JSONException err) {
-                                    err.printStackTrace();
+                                    //err.printStackTrace();
                                 }
                             }
 
+                        }
+
+                        if(defaultSearchPropModel.getExtraFields() != null) {
+
+                            for(int j = 0; j < defaultSearchPropModel.getExtraFields().size(); j++) {
+
+                                try {
+                                    JSONArray extraFieldsArray = source.getJSONArray(defaultSearchPropModel.getExtraFields().get(j));
+
+                                    ArrayList<String> tempProperty = new ArrayList<>();
+                                    for(int k = 0; k < extraFieldsArray.length(); k++) {
+                                        JSONObject category = extraFieldsArray.getJSONObject(i);
+                                        tempProperty.add(category.toString());
+                                    }
+
+                                    HashMap<String, ArrayList<String>> hashMap = new HashMap<>();
+                                    hashMap.put(defaultSearchPropModel.getExtraFields().get(j), tempProperty);
+                                    extraProperties.add(hashMap);
+
+                                } catch (JSONException e) {
+
+                                    try {
+                                        String extraField = source.getString(defaultSearchPropModel.getExtraFields().get(j));
+
+                                        ArrayList<String> tempProperty = new ArrayList<>();
+                                        tempProperty.add(extraField);
+                                        HashMap<String, ArrayList<String>> hashMap = new HashMap<>();
+                                        hashMap.put(defaultSearchPropModel.getExtraFields().get(j), tempProperty);
+                                        extraProperties.add(hashMap);
+
+                                    } catch (JSONException err) {
+                                        //err.printStackTrace();
+                                    }
+                                }
+                            }
                         }
                     }
 
@@ -1553,7 +1590,7 @@ public class SearchBar extends RelativeLayout implements View.OnClickListener,
             if(defaultSearchPropModel.isAutoSuggest()) {
                 ArrayList<ClientSuggestionsModel> adapterEntries;
                 if(defaultSearchPropModel.getCategoryField() != null && categories != null) {
-                    adapterEntries = new DefaultClientSuggestions(entries).setCategories(categories).build();
+                    adapterEntries = new DefaultClientSuggestions(entries).setCategories(categories).setExtraProperties(extraProperties).build();
                     defaultClientSuggestionsAdapter = new DefaultClientSuggestionsAdapter(adapterEntries, query, defaultSearchPropModel.isHighlight(), defaultSearchPropModel.getHitsState(), defaultSearchPropModel.isSearchResultImage(), defaultSearchPropModel.isRedirectIcon(), defaultSearchPropModel.getTopEntries());
                 }
                 else {
