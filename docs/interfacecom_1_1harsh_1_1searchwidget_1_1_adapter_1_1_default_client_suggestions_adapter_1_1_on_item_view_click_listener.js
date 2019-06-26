@@ -1,0 +1,4 @@
+var interfacecom_1_1harsh_1_1searchwidget_1_1_adapter_1_1_default_client_suggestions_adapter_1_1_on_item_view_click_listener =
+[
+    [ "OnItemClickListener", "interfacecom_1_1harsh_1_1searchwidget_1_1_adapter_1_1_default_client_suggestions_adapter_1_1_on_item_view_click_listener.html#ae34afcb5d62ce37a1a57f15b530dc0fc", null ]
+];

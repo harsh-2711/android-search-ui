@@ -1,5 +1,5 @@
 var searchData=
 [
-  ['build',['build',['../classcom_1_1example_1_1searchwidget_1_1_builder_1_1_default_client_suggestions.html#adaa63185f7b7bd9904dcae387098f541',1,'com.example.searchwidget.Builder.DefaultClientSuggestions.build()'],['../classcom_1_1example_1_1searchwidget_1_1_builder_1_1_search_prop.html#a6f4eb04a2ba25982f3f4de5dd2a23664',1,'com.example.searchwidget.Builder.SearchProp.build()']]],
-  ['buildcustomsuggestions',['buildCustomSuggestions',['../classcom_1_1example_1_1searchwidget_1_1_search_bar.html#aefbd6c8b2be8192c57d6604dbbd475fb',1,'com::example::searchwidget::SearchBar']]]
+  ['build',['build',['../classcom_1_1harsh_1_1searchwidget_1_1_builder_1_1_default_client_suggestions.html#a51b7cb9aede78a6e50132a8f08f44a70',1,'com.harsh.searchwidget.Builder.DefaultClientSuggestions.build()'],['../classcom_1_1harsh_1_1searchwidget_1_1_builder_1_1_search_prop.html#a67bbcad48925180ce817ea933278fc7d',1,'com.harsh.searchwidget.Builder.SearchProp.build()']]],
+  ['buildcustomsuggestions',['buildCustomSuggestions',['../classcom_1_1harsh_1_1searchwidget_1_1_search_bar.html#aff5c2531b6804cff02cfa8bb8a3b1c51',1,'com::harsh::searchwidget::SearchBar']]]
 ];

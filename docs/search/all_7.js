@@ -1,9 +1,10 @@
 var searchData=
 [
-  ['inflatemenu',['inflateMenu',['../classcom_1_1example_1_1searchwidget_1_1_search_bar.html#a3b4bfd362b0867b487bb2cc354232e3e',1,'com.example.searchwidget.SearchBar.inflateMenu(int menuResource)'],['../classcom_1_1example_1_1searchwidget_1_1_search_bar.html#a71f7fc6ed5b0797b263734590ef49a16',1,'com.example.searchwidget.SearchBar.inflateMenu(int menuResource, int icon)']]],
-  ['insert',['insert',['../classcom_1_1example_1_1searchwidget_1_1_adapter_1_1_default_client_suggestions_adapter.html#aaef00578bf6faa511015c5d41562393a',1,'com::example::searchwidget::Adapter::DefaultClientSuggestionsAdapter']]],
-  ['issearchenabled',['isSearchEnabled',['../classcom_1_1example_1_1searchwidget_1_1_search_bar.html#a101525ef181280109b31396c3175c91c',1,'com::example::searchwidget::SearchBar']]],
-  ['isspeechmodeenabled',['isSpeechModeEnabled',['../classcom_1_1example_1_1searchwidget_1_1_search_bar.html#a1bf37ff1703370a852d5573dfffe5daf',1,'com::example::searchwidget::SearchBar']]],
-  ['issuggestionsenabled',['isSuggestionsEnabled',['../classcom_1_1example_1_1searchwidget_1_1_search_bar.html#afc87e89a8864899a626d2dcafb5db5b2',1,'com::example::searchwidget::SearchBar']]],
-  ['issuggestionsvisible',['isSuggestionsVisible',['../classcom_1_1example_1_1searchwidget_1_1_search_bar.html#aab6325bdf7997340d11ba29cbca66a34',1,'com::example::searchwidget::SearchBar']]]
+  ['inflatemenu',['inflateMenu',['../classcom_1_1harsh_1_1searchwidget_1_1_search_bar.html#aaa1342c3b89f0bf6fac2be2084665c20',1,'com.harsh.searchwidget.SearchBar.inflateMenu(int menuResource)'],['../classcom_1_1harsh_1_1searchwidget_1_1_search_bar.html#a4d4a831263bf5f8221dcc412c32b6292',1,'com.harsh.searchwidget.SearchBar.inflateMenu(int menuResource, int icon)']]],
+  ['insert',['insert',['../classcom_1_1harsh_1_1searchwidget_1_1_adapter_1_1_default_client_suggestions_adapter.html#afd5bd51c57c899598c5ae6b76d20222a',1,'com::harsh::searchwidget::Adapter::DefaultClientSuggestionsAdapter']]],
+  ['issearchenabled',['isSearchEnabled',['../classcom_1_1harsh_1_1searchwidget_1_1_search_bar.html#a2afeb7fbf76c7b9211d386a3d99e449b',1,'com::harsh::searchwidget::SearchBar']]],
+  ['isspeechmodeenabled',['isSpeechModeEnabled',['../classcom_1_1harsh_1_1searchwidget_1_1_search_bar.html#a4dfc20bb5d525ab8e1d064bb1b37a01d',1,'com::harsh::searchwidget::SearchBar']]],
+  ['issuggestionsenabled',['isSuggestionsEnabled',['../classcom_1_1harsh_1_1searchwidget_1_1_search_bar.html#add7da317d198e9042ecf93be54ada1f0',1,'com::harsh::searchwidget::SearchBar']]],
+  ['issuggestionsvisible',['isSuggestionsVisible',['../classcom_1_1harsh_1_1searchwidget_1_1_search_bar.html#a109b4c6ae47bfdb48cd5bcd9c8046eb2',1,'com::harsh::searchwidget::SearchBar']]],
+  ['itemclicklistener',['ItemClickListener',['../interfacecom_1_1harsh_1_1searchwidget_1_1_search_bar_1_1_item_click_listener.html',1,'com::harsh::searchwidget::SearchBar']]]
 ];

@@ -1,4 +1,4 @@
 var searchData=
 [
-  ['enablesearch',['enableSearch',['../classcom_1_1example_1_1searchwidget_1_1_search_bar.html#a039b132a7be1dda56d6020b07017b277',1,'com::example::searchwidget::SearchBar']]]
+  ['enablesearch',['enableSearch',['../classcom_1_1harsh_1_1searchwidget_1_1_search_bar.html#a019e9a0056219e55c6079e12a5b55846',1,'com::harsh::searchwidget::SearchBar']]]
 ];

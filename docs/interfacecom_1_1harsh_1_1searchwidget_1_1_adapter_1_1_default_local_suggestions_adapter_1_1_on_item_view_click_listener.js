@@ -1,0 +1,5 @@
+var interfacecom_1_1harsh_1_1searchwidget_1_1_adapter_1_1_default_local_suggestions_adapter_1_1_on_item_view_click_listener =
+[
+    [ "OnItemClickListener", "interfacecom_1_1harsh_1_1searchwidget_1_1_adapter_1_1_default_local_suggestions_adapter_1_1_on_item_view_click_listener.html#a29f991753f6400dfda28a1f808588173", null ],
+    [ "OnItemDeleteListener", "interfacecom_1_1harsh_1_1searchwidget_1_1_adapter_1_1_default_local_suggestions_adapter_1_1_on_item_view_click_listener.html#a5ff203335410526e8e822b8d21d38699", null ]
+];
