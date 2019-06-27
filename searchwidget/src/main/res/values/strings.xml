@@ -8,4 +8,10 @@
     //Menu Path Data
     <string name="menu_vector_path" translatable="false">M20 30,L80 30,M20 50,L80 50,M20 70,L80 70</string>
 
+    <!-- VoicePermissionDialogFragment -->
+    <string name="permission_title">You can use voice search to find products.</string>
+    <string name="permission_subtitle">May we access your device’s microphone to enable voice search?</string>
+    <string name="permission_button_allow">Allow microphone access</string>
+    <string name="permission_button_reject">No</string>
+
 </resources>

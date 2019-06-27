@@ -45,4 +45,11 @@
     <color name="searchBarHintColorDark">#42FFFFFF</color>
     <color name="searchBarPlaceholderColorDark">#8AFFFFFF</color>
     <color name="searchBarTextHighlightColorDark">#BF00a1ff</color>
+
+    //Permissions Dialog
+    <color name="white_trans">#42ffffff</color>
+    <color name="black_trans">#D9000000</color>
+    <color name="blue_light">#01adff</color>
+    <color name="blue_dark">#3369e6</color>
+
 </resources>
