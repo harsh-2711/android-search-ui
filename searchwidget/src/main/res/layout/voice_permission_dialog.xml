@@ -32,9 +32,8 @@
         app:layout_constraintTop_toTopOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        tools:text="@tools:sample/lorem/random"
         android:text="@string/permission_title"
-        android:textAppearance="?attr/textAppearanceHeadline6"
+        android:textAppearance="?android:attr/textAppearanceLarge"
         android:maxLines="3"
         app:layout_constraintVertical_chainStyle="packed"
         android:layout_marginStart="24dp"
@@ -43,21 +42,22 @@
         android:layout_marginEnd="24dp"
         app:layout_constraintBottom_toTopOf="@id/subtitle"
         android:layout_width="0dp"
-        android:layout_height="wrap_content"/>
+        android:layout_height="wrap_content"
+        android:textColor="@color/white" />
 
     <TextView
         android:id="@+id/subtitle"
         app:layout_constraintStart_toStartOf="@id/title"
         android:text="@string/permission_subtitle"
-        tools:text="@tools:sample/lorem/random"
         android:layout_marginTop="24dp"
-        android:textAppearance="?attr/textAppearanceBody1"
+        android:textAppearance="?android:attr/textAppearanceMedium"
         android:maxLines="3"
         app:layout_constraintEnd_toEndOf="@id/title"
         app:layout_constraintTop_toBottomOf="@id/title"
         android:layout_width="0dp"
         app:layout_constraintBottom_toTopOf="@id/guideline"
-        android:layout_height="wrap_content"/>
+        android:layout_height="wrap_content"
+        android:textColor="@color/white" />
 
     <android.support.constraint.Guideline
         android:id="@+id/guideline"
@@ -83,7 +83,8 @@
         app:layout_constraintBottom_toTopOf="@id/negative"
         app:layout_constraintVertical_chainStyle="packed"
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"/>
+        android:layout_height="wrap_content"
+        android:textColor="@color/white" />
 
     <android.support.v7.widget.AppCompatButton
         android:id="@+id/negative"
@@ -98,6 +99,7 @@
         app:layout_constraintTop_toBottomOf="@id/positive"
         app:layout_constraintBottom_toBottomOf="parent"
         android:layout_width="0dp"
-        android:layout_height="wrap_content"/>
+        android:layout_height="wrap_content"
+        android:textColor="@color/white" />
 
 </android.support.constraint.ConstraintLayout>
