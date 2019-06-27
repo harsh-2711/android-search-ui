@@ -8,7 +8,7 @@
     android:layout_height="match_parent">
 
     <android.support.v7.widget.AppCompatImageView
-        android:id="@+id/close"
+        android:id="@+id/cancel"
         app:layout_constraintTop_toTopOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
