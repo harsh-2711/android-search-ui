@@ -1,8 +1,10 @@
 package com.harsh.searchwidget;
 
+import android.Manifest;
 import android.animation.ValueAnimator;
 import android.annotation.TargetApi;
 import android.content.Context;
+import android.content.pm.PackageManager;
 import android.content.res.TypedArray;
 import android.graphics.PorterDuff;
 import android.graphics.drawable.Animatable;
@@ -138,6 +140,7 @@ public class SearchBar extends RelativeLayout implements View.OnClickListener,
     private ItemClickListener itemClickListener;
 
     private boolean shouldLogQuery = false;
+    private boolean speechPermissionGranted = false;
 
     private DefaultClientSuggestionsAdapter defaultClientSuggestionsAdapter;
     private RecyclerView recyclerView;
@@ -734,6 +737,30 @@ public class SearchBar extends RelativeLayout implements View.OnClickListener,
             searchIcon.setImageResource(searchIconRes);
             searchIcon.setClickable(false);
         }
+    }
+
+    /**
+     * Checks if the voice recording permission is granted for the device
+     * Also sets the state of speechPermissionGranted variable
+     *
+     * @return
+     */
+    public boolean isVoicePermissionGranted() {
+        if (ContextCompat.checkSelfPermission(getContext(), Manifest.permission.RECORD_AUDIO) != PackageManager.PERMISSION_GRANTED)
+            speechPermissionGranted = false;
+        else
+            speechPermissionGranted = true;
+
+        return speechPermissionGranted;
+    }
+
+    /**
+     * Sets the state of speechPermissionGranted variable
+     *
+     * @param state Whether voice recording permission is granted or not
+     */
+    public void setVoicePermissionGranted(boolean state) {
+        this.speechPermissionGranted = state;
     }
 
     /**

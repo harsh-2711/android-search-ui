@@ -6,6 +6,7 @@ import android.util.Log;
 import android.view.View;
 
 import com.harsh.searchwidget.Builder.DefaultClientSuggestions;
+import com.harsh.searchwidget.Fragments.VoicePermissionDialogFragment;
 import com.harsh.searchwidget.Model.ClientSuggestionsModel;
 import com.harsh.searchwidget.Model.SearchPropModel;
 import com.harsh.searchwidget.SearchBar;
@@ -110,5 +111,30 @@ public class MainActivity extends AppCompatActivity {
 
         // Sets navigation bar icon inside the search bar
         searchBar.setNavButtonEnabled(true);
+
+        searchBar.setSpeechMode(true);
+
+        searchBar.setOnSearchActionListener(new SearchBar.OnSearchActionListener() {
+            @Override
+            public void onSearchStateChanged(boolean enabled) {
+
+            }
+
+            @Override
+            public void onSearchConfirmed(CharSequence text) {
+
+            }
+
+            @Override
+            public void onButtonClicked(int buttonCode) {
+                if(buttonCode == SearchBar.BUTTON_SPEECH) {
+                    if(searchBar.isVoicePermissionGranted()) {
+
+                    } else {
+                        getSupportFragmentManager().beginTransaction().add(new VoicePermissionDialogFragment(), "H").commit();
+                    }
+                }
+            }
+        });
     }
 }
