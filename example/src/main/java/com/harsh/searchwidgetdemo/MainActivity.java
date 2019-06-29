@@ -62,7 +62,7 @@ public class MainActivity extends AppCompatActivity {
         // Setting default suggestions
         defaultSuggestions = new DefaultClientSuggestions(suggestions).setCategories(categories).build();
 
-        SearchPropModel searchPropModel = searchBar.setSearchProp("Demo Widget", dataFields)
+        final SearchPropModel searchPropModel = searchBar.setSearchProp("Demo Widget", dataFields)
                 .setQueryFormat("or")
                 .setFuzziness("10")
                 .setDebounce(100)
@@ -131,7 +131,7 @@ public class MainActivity extends AppCompatActivity {
             public void onButtonClicked(int buttonCode) {
                 if(buttonCode == SearchBar.BUTTON_SPEECH) {
                     if(searchBar.isVoicePermissionGranted()) {
-
+                        searchBar.startVoiceSearch(searchPropModel);
                     } else {
                         getSupportFragmentManager().beginTransaction().add(new VoicePermissionDialogFragment(), "Recording Permission").commit();
                     }

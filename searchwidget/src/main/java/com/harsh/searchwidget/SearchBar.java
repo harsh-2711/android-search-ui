@@ -4,6 +4,7 @@ import android.Manifest;
 import android.animation.ValueAnimator;
 import android.annotation.TargetApi;
 import android.content.Context;
+import android.content.Intent;
 import android.content.pm.PackageManager;
 import android.content.res.TypedArray;
 import android.graphics.PorterDuff;
@@ -11,8 +12,12 @@ import android.graphics.drawable.Animatable;
 import android.graphics.drawable.Drawable;
 import android.os.AsyncTask;
 import android.os.Build;
+import android.os.Bundle;
 import android.os.Parcel;
 import android.os.Parcelable;
+import android.speech.RecognitionListener;
+import android.speech.RecognizerIntent;
+import android.speech.SpeechRecognizer;
 import android.support.v4.content.ContextCompat;
 import android.support.v7.widget.CardView;
 import android.support.v7.widget.LinearLayoutManager;
@@ -55,6 +60,7 @@ import java.lang.reflect.Field;
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
+import java.util.Locale;
 
 
 import io.appbase.client.AppbaseClient;
@@ -1450,6 +1456,57 @@ public class SearchBar extends RelativeLayout implements View.OnClickListener,
         void onLongClick(View view, int position, ClientSuggestionsModel result);
     }
 
+    public class SpeechListener implements RecognitionListener {
+
+        public void onReadyForSpeech(Bundle params) {
+            Log.d(TAG, "onReadyForSpeech");
+        }
+
+        public void onBeginningOfSpeech() {
+            Log.d(TAG, "onBeginningOfSpeech");
+        }
+
+        public void onRmsChanged(float rmsdB) {
+            Log.d(TAG, "onRmsChanged");
+        }
+
+        public void onBufferReceived(byte[] buffer) {
+            Log.d(TAG, "onBufferReceived");
+        }
+
+        public void onEndOfSpeech() {
+            Log.d(TAG, "onEndofSpeech");
+        }
+
+        public void onError(int error) {
+            Log.d(TAG,  "error " +  error);
+        }
+
+        @Override
+        public void onResults(Bundle results) {
+            String str = new String();
+
+            ArrayList data = results.getStringArrayList(SpeechRecognizer.RESULTS_RECOGNITION);
+            for (int i = 0; i < data.size(); i++)
+            {
+                Log.d(TAG, "result " + data.get(i));
+                str += data.get(i);
+            }
+
+            Log.d(TAG, "onResults " + str);
+        }
+
+        @Override
+        public void onPartialResults(Bundle partialResults) {
+            Log.d(TAG, "onPartialResults");
+        }
+
+        @Override
+        public void onEvent(int eventType, Bundle params) {
+            Log.d(TAG, "onEvent");
+        }
+    }
+
     private static class RequestParams {
         String queryText;
         String requestedQuery;
@@ -1498,6 +1555,21 @@ public class SearchBar extends RelativeLayout implements View.OnClickListener,
 
             }
         });
+    }
+
+    public void startVoiceSearch(final SearchPropModel searchPropModel) {
+
+        placeholderText = "Listening";
+        SpeechRecognizer sr = SpeechRecognizer.createSpeechRecognizer(getContext());
+        sr.setRecognitionListener(new SpeechListener());
+
+        Intent intent = new Intent(RecognizerIntent.ACTION_RECOGNIZE_SPEECH);
+        intent.putExtra(RecognizerIntent.EXTRA_LANGUAGE_MODEL,RecognizerIntent.LANGUAGE_MODEL_FREE_FORM);
+        intent.putExtra(RecognizerIntent.EXTRA_LANGUAGE, Locale.ENGLISH);
+        intent.putExtra(RecognizerIntent.EXTRA_CALLING_PACKAGE,"com.harsh.searchwidget");
+        intent.putExtra(RecognizerIntent.EXTRA_MAX_RESULTS,1);
+
+        sr.startListening(intent);
     }
 
     private class StartSearching extends AsyncTask<RequestParams, Void, Void> {
