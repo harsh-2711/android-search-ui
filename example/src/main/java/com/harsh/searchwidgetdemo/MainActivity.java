@@ -64,12 +64,9 @@ public class MainActivity extends AppCompatActivity {
 
         final SearchPropModel searchPropModel = searchBar.setSearchProp("Demo Widget", dataFields)
                 .setQueryFormat("or")
-                .setFuzziness("10")
-                .setDebounce(100)
                 .setHighlight(true)
                 .setCategoryField("tags")
-                .setTopEntries(2)
-                .setRedirectIcon(false)
+                .setTopEntries(5)
                 .setDefaultSuggestions(defaultSuggestions)
                 .setExtraFields(extraProperties)
                 .build();

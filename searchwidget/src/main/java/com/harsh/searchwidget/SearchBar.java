@@ -76,6 +76,8 @@ public class SearchBar extends RelativeLayout implements View.OnClickListener,
     public static final int BUTTON_BACK = 3;
     public static final int VIEW_VISIBLE = 1;
     public static final int VIEW_INVISIBLE = 0;
+    private static final String listening = "Listening...";
+
     private CardView searchBarCardView;
     private LinearLayout inputContainer;
     private ImageView navIcon;
@@ -1456,57 +1458,6 @@ public class SearchBar extends RelativeLayout implements View.OnClickListener,
         void onLongClick(View view, int position, ClientSuggestionsModel result);
     }
 
-    public class SpeechListener implements RecognitionListener {
-
-        public void onReadyForSpeech(Bundle params) {
-            Log.d(TAG, "onReadyForSpeech");
-        }
-
-        public void onBeginningOfSpeech() {
-            Log.d(TAG, "onBeginningOfSpeech");
-        }
-
-        public void onRmsChanged(float rmsdB) {
-            Log.d(TAG, "onRmsChanged");
-        }
-
-        public void onBufferReceived(byte[] buffer) {
-            Log.d(TAG, "onBufferReceived");
-        }
-
-        public void onEndOfSpeech() {
-            Log.d(TAG, "onEndofSpeech");
-        }
-
-        public void onError(int error) {
-            Log.d(TAG,  "error " +  error);
-        }
-
-        @Override
-        public void onResults(Bundle results) {
-            String str = new String();
-
-            ArrayList data = results.getStringArrayList(SpeechRecognizer.RESULTS_RECOGNITION);
-            for (int i = 0; i < data.size(); i++)
-            {
-                Log.d(TAG, "result " + data.get(i));
-                str += data.get(i);
-            }
-
-            Log.d(TAG, "onResults " + str);
-        }
-
-        @Override
-        public void onPartialResults(Bundle partialResults) {
-            Log.d(TAG, "onPartialResults");
-        }
-
-        @Override
-        public void onEvent(int eventType, Bundle params) {
-            Log.d(TAG, "onEvent");
-        }
-    }
-
     private static class RequestParams {
         String queryText;
         String requestedQuery;
@@ -1557,19 +1508,108 @@ public class SearchBar extends RelativeLayout implements View.OnClickListener,
         });
     }
 
+    /**
+     * Starts voice search functionality
+     * The method first checks whether voice recording permission is given for the device
+     * 
+     * @param searchPropModel Model which is returned on building the search prop
+     */
     public void startVoiceSearch(final SearchPropModel searchPropModel) {
 
-        placeholderText = "Listening";
-        SpeechRecognizer sr = SpeechRecognizer.createSpeechRecognizer(getContext());
-        sr.setRecognitionListener(new SpeechListener());
+        if(speechPermissionGranted) {
 
-        Intent intent = new Intent(RecognizerIntent.ACTION_RECOGNIZE_SPEECH);
-        intent.putExtra(RecognizerIntent.EXTRA_LANGUAGE_MODEL,RecognizerIntent.LANGUAGE_MODEL_FREE_FORM);
-        intent.putExtra(RecognizerIntent.EXTRA_LANGUAGE, Locale.ENGLISH);
-        intent.putExtra(RecognizerIntent.EXTRA_CALLING_PACKAGE,"com.harsh.searchwidget");
-        intent.putExtra(RecognizerIntent.EXTRA_MAX_RESULTS,1);
+            placeHolder.setText(listening);
+            SpeechRecognizer sr = SpeechRecognizer.createSpeechRecognizer(getContext());
+            sr.setRecognitionListener(new RecognitionListener() {
+                @Override
+                public void onReadyForSpeech(Bundle params) {
 
-        sr.startListening(intent);
+                }
+
+                @Override
+                public void onBeginningOfSpeech() {
+
+                }
+
+                @Override
+                public void onRmsChanged(float rmsdB) {
+
+                }
+
+                @Override
+                public void onBufferReceived(byte[] buffer) {
+
+                }
+
+                @Override
+                public void onEndOfSpeech() {
+
+                }
+
+                @Override
+                public void onError(int error) {
+                    placeHolder.setText(placeholderText);
+                }
+
+                @Override
+                public void onResults(Bundle results) {
+
+                    String resultString;
+
+                    ArrayList data = results.getStringArrayList(SpeechRecognizer.RESULTS_RECOGNITION);
+                    assert data != null;
+                    resultString = data.get(0).toString();
+
+                    enableSearch();
+                    searchEdit.setText(resultString);
+
+                    if(!resultString.equals("")) {
+                        if(isPropSet && isAppbaseClientSet && textChangeListenerExists()) {
+                            searchPropModel.setDefaultValue(resultString);
+                            StartSearching startSearching = new StartSearching();
+                            RequestParams requestParams = new RequestParams(resultString, getRequestedQuery(searchPropModel));
+                            startSearching.execute(requestParams);
+                            if(shouldLogQuery)
+                                Log.d("QUERY", getRequestedQuery(searchPropModel));
+                        } else {
+                            Log.e("Error", "Please check if Appbase client, Search props and Text change listeners are set properly");
+                        }
+                    }
+
+                    placeHolder.setText(placeholderText);
+                }
+
+                @Override
+                public void onPartialResults(Bundle partialResults) {
+
+                    enableSearch();
+                    String partialResult;
+
+                    ArrayList data = partialResults.getStringArrayList(SpeechRecognizer.RESULTS_RECOGNITION);
+                    assert data != null;
+                    partialResult = data.get(0).toString();
+
+                    searchEdit.setText(partialResult);
+
+                }
+
+                @Override
+                public void onEvent(int eventType, Bundle params) {
+
+                }
+            });
+
+            Intent intent = new Intent(RecognizerIntent.ACTION_RECOGNIZE_SPEECH);
+            intent.putExtra(RecognizerIntent.EXTRA_LANGUAGE_MODEL,RecognizerIntent.LANGUAGE_MODEL_FREE_FORM);
+            intent.putExtra(RecognizerIntent.EXTRA_LANGUAGE, Locale.ENGLISH);
+            intent.putExtra(RecognizerIntent.EXTRA_CALLING_PACKAGE,"com.harsh.searchwidget");
+            intent.putExtra(RecognizerIntent.EXTRA_MAX_RESULTS,1);
+
+            sr.startListening(intent);
+
+        } else {
+            Log.e("Permission Error", "Voice Recording Permission not granted");
+        }
     }
 
     private class StartSearching extends AsyncTask<RequestParams, Void, Void> {
@@ -1590,6 +1630,9 @@ public class SearchBar extends RelativeLayout implements View.OnClickListener,
             } catch (IOException e) {
                 e.printStackTrace();
                 result = e.toString();
+            } catch (NullPointerException err) {
+                err.printStackTrace();
+                result = err.toString();
             }
             if(defaultSearchPropModel.isAutoSuggest()) {
 
