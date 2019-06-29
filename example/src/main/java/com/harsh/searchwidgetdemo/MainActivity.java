@@ -112,8 +112,10 @@ public class MainActivity extends AppCompatActivity {
         // Sets navigation bar icon inside the search bar
         searchBar.setNavButtonEnabled(true);
 
+        // Sets speech mode to true
         searchBar.setSpeechMode(true);
 
+        // Managing voice recording permissions on record button click
         searchBar.setOnSearchActionListener(new SearchBar.OnSearchActionListener() {
             @Override
             public void onSearchStateChanged(boolean enabled) {
@@ -131,7 +133,7 @@ public class MainActivity extends AppCompatActivity {
                     if(searchBar.isVoicePermissionGranted()) {
 
                     } else {
-                        getSupportFragmentManager().beginTransaction().add(new VoicePermissionDialogFragment(), "H").commit();
+                        getSupportFragmentManager().beginTransaction().add(new VoicePermissionDialogFragment(), "Recording Permission").commit();
                     }
                 }
             }
