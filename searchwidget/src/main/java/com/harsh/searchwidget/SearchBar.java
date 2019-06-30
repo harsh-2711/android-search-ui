@@ -61,6 +61,7 @@ import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Locale;
+import java.util.concurrent.ExecutionException;
 
 
 import io.appbase.client.AppbaseClient;
@@ -1202,14 +1203,14 @@ public class SearchBar extends RelativeLayout implements View.OnClickListener,
      *
      * @param query JSON structured body
      * @return Response received for the requested query
-     * @throws IOException
+     * @throws ExecutionException
+     * @throws InterruptedException
      */
-    public String search(String query) throws IOException {
-        if(isAppbaseClientSet) {
-            return client.prepareSearch(clientType, query).execute().body().string();
-        } else {
-            return "Please set Appbase client";
-        }
+    public String search(SearchPropModel searchPropModel, String query) throws ExecutionException, InterruptedException {
+
+        RequestParams requestParams = new RequestParams(query, getRequestedQuery(searchPropModel));
+        SingleResponseSearch singleResponseSearch = new SingleResponseSearch();
+        return singleResponseSearch.execute(requestParams).get();
     }
 
     /**
@@ -1742,6 +1743,26 @@ public class SearchBar extends RelativeLayout implements View.OnClickListener,
 
                 recyclerView.setAdapter(defaultClientSuggestionsAdapter);
             }
+        }
+    }
+
+    private class SingleResponseSearch extends AsyncTask<RequestParams,Void,String> {
+
+        String defaultResult = "Internal server error";
+
+        @Override
+        protected String doInBackground(RequestParams... params) {
+
+            if(isAppbaseClientSet) {
+                try {
+                    return client.prepareSearch(clientType, params[0].requestedQuery).execute().body().string();
+                } catch (IOException e) {
+                    e.printStackTrace();
+                }
+            } else {
+                return "Please set Appbase client";
+            }
+            return defaultResult;
         }
     }
 

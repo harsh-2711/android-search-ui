@@ -11,8 +11,10 @@ import com.harsh.searchwidget.Model.ClientSuggestionsModel;
 import com.harsh.searchwidget.Model.SearchPropModel;
 import com.harsh.searchwidget.SearchBar;
 
+import java.io.IOException;
 import java.util.ArrayList;
 import java.util.HashMap;
+import java.util.concurrent.ExecutionException;
 
 public class MainActivity extends AppCompatActivity {
 
@@ -57,7 +59,7 @@ public class MainActivity extends AppCompatActivity {
 
         // Setting extra properties
         ArrayList<String> extraProperties = new ArrayList<>();
-        extraProperties.add("images");
+        extraProperties.add("image");
 
         // Setting default suggestions
         defaultSuggestions = new DefaultClientSuggestions(suggestions).setCategories(categories).build();
@@ -91,7 +93,7 @@ public class MainActivity extends AppCompatActivity {
                 Log.d("Search Result", result.getText());
                 HashMap<String, ArrayList<String>> hashMap = result.getExtraProperties();
                 try {
-                    Log.d("Extra property", hashMap.get("images").toString());
+                    Log.d("Extra property", hashMap.get("image").toString());
                 } catch (NullPointerException e) {
                     //e.printStackTrace();
                 }
@@ -121,7 +123,15 @@ public class MainActivity extends AppCompatActivity {
 
             @Override
             public void onSearchConfirmed(CharSequence text) {
-
+                // On search pressed from soft keyboard
+                try {
+                    String response = searchBar.search(searchPropModel, String.valueOf(text));
+                    Log.d("RESPONSE", response);
+                } catch (InterruptedException e) {
+                    e.printStackTrace();
+                } catch (ExecutionException e) {
+                    e.printStackTrace();
+                }
             }
 
             @Override
