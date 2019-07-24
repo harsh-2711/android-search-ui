@@ -77,7 +77,7 @@ public class MainActivity extends AppCompatActivity {
          searchBar.setLoggingQuery(true);
 
         // Setting listener to handle callbacks
-        searchBar.setOnTextChangeListner(new SearchBar.TextChangeListener() {
+        searchBar.setOnTextChangeListener(new SearchBar.TextChangeListener() {
             @Override
             public void onTextChange(String response) {
                 // Responses to the queries passed in the Search Bar are available here

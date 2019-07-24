@@ -21,6 +21,7 @@ public class DefaultClientSuggestionsAdapter extends RecyclerView.Adapter<Client
     private boolean showHits;
     private boolean searchResultImage;
     private boolean redirectIcon;
+    private RedirectClickListener redirectClickListener;
 
     /**
      * Listener for click on recycler view's items
@@ -33,6 +34,20 @@ public class DefaultClientSuggestionsAdapter extends RecyclerView.Adapter<Client
          * @param v Context view
          */
         void OnItemClickListener(int position, View v);
+    }
+
+    /**
+     * Interface for handling click events on redirect icon
+     */
+    public interface RedirectClickListener {
+
+        /**
+         * Invoked when redirect icon is clicked
+         *
+         * @param position Position of the result selected from given search results
+         * @param responseText Text of the result selected
+         */
+        void onRedirectIconClicked(int position, String responseText);
     }
 
     /**
@@ -85,7 +100,9 @@ public class DefaultClientSuggestionsAdapter extends RecyclerView.Adapter<Client
     }
 
     @Override
-    public void onBindViewHolder(@NonNull ClientSuggestionsViewHolder holder, int position) {
+    public void onBindViewHolder(@NonNull ClientSuggestionsViewHolder holder, final int position) {
+
+        boolean shouldRedirect = false;
 
         if(shouldHighlight) {
             if(suggestions.get(position).getText().toLowerCase().contains(queryText.toLowerCase())) {
@@ -97,6 +114,9 @@ public class DefaultClientSuggestionsAdapter extends RecyclerView.Adapter<Client
                 String highlight = suggestions.get(position).getText().substring(start, end);
 
                 holder.text.setText(Html.fromHtml(firstHalf + "<font color=#000000>" + highlight + "</font>" + secondHalf));
+
+                if(secondHalf.length() >= 1)
+                    shouldRedirect = true;
             } else
                 holder.text.setText(suggestions.get(position).getText());
         }
@@ -117,11 +137,18 @@ public class DefaultClientSuggestionsAdapter extends RecyclerView.Adapter<Client
         else
             holder.searchIcon.setVisibility(View.GONE);
 
-        if(redirectIcon) {
+        if(redirectIcon && shouldRedirect) {
             holder.trendingIcon.setVisibility(View.VISIBLE);
             holder.trendingIcon.setImageResource(suggestions.get(position).getTrendingIcon());
         } else
             holder.trendingIcon.setVisibility(View.GONE);
+
+        holder.trendingIcon.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                redirectClickListener.onRedirectIconClicked(position, suggestions.get(position).getText());
+            }
+        });
 
         if (topEntries == -1)
             holder.category.setVisibility(View.GONE);
@@ -191,6 +218,14 @@ public class DefaultClientSuggestionsAdapter extends RecyclerView.Adapter<Client
      */
     public ClientSuggestionsModel getItem(int position) {
         return suggestions.get(position);
+    }
+
+    /**
+     * Registers listener for redirect icon click callbacks
+     * @param redirectClickListener Redirect icon click callbacks
+     */
+    public void setOnRedirectClickListener(RedirectClickListener redirectClickListener) {
+        this.redirectClickListener = redirectClickListener;
     }
 }
 

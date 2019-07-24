@@ -1365,7 +1365,7 @@ public class SearchBar extends RelativeLayout implements View.OnClickListener,
      * Registers listener for text change callbacks
      * @param textChangeListener Text change callbacks
      */
-    public void setOnTextChangeListner(TextChangeListener textChangeListener) {
+    public void setOnTextChangeListener(TextChangeListener textChangeListener) {
         this.textChangeListener = textChangeListener;
     }
 
@@ -1740,6 +1740,13 @@ public class SearchBar extends RelativeLayout implements View.OnClickListener,
                     adapterEntries = new DefaultClientSuggestions(entries).build();
                     defaultClientSuggestionsAdapter = new DefaultClientSuggestionsAdapter(adapterEntries, query, defaultSearchPropModel.isHighlight(), defaultSearchPropModel.getHitsState(), defaultSearchPropModel.isSearchResultImage(), defaultSearchPropModel.isRedirectIcon());
                 }
+
+                defaultClientSuggestionsAdapter.setOnRedirectClickListener(new DefaultClientSuggestionsAdapter.RedirectClickListener() {
+                    @Override
+                    public void onRedirectIconClicked(int position, String responseText) {
+                        searchEdit.setText(responseText);
+                    }
+                });
 
                 recyclerView.setAdapter(defaultClientSuggestionsAdapter);
             }
