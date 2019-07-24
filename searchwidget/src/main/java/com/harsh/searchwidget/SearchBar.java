@@ -1745,6 +1745,7 @@ public class SearchBar extends RelativeLayout implements View.OnClickListener,
                     @Override
                     public void onRedirectIconClicked(int position, String responseText) {
                         searchEdit.setText(responseText);
+                        searchEdit.setSelection(responseText.length());
                     }
                 });
 
