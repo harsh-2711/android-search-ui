@@ -30,8 +30,10 @@
             android:id="@+id/text"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:text="Last request"
-            android:textAppearance="?android:attr/textAppearanceSmall" />
+            android:text="Search Result"
+            android:textAppearance="?android:attr/textAppearanceSmall"
+            android:maxLines="1"
+            android:ellipsize="end"/>
 
         <TextView
             android:id="@+id/categoryText"
@@ -40,7 +42,9 @@
             android:text="in Category"
             android:textAppearance="?android:attr/textAppearanceSmall"
             android:textColor="@color/searchBarBackIconTintColorDark"
-            android:textStyle="bold" />
+            android:textStyle="bold"
+            android:maxLines="1"
+            android:ellipsize="end"/>
 
     </LinearLayout>
 
