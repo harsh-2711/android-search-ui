@@ -3,6 +3,7 @@ package com.harsh.searchwidget.Adapter;
 import android.support.annotation.NonNull;
 import android.support.v7.widget.RecyclerView;
 import android.text.Html;
+import android.text.TextUtils;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -22,6 +23,7 @@ public class DefaultClientSuggestionsAdapter extends RecyclerView.Adapter<Client
     private boolean searchResultImage;
     private boolean redirectIcon;
     private RedirectClickListener redirectClickListener;
+    private final int endTextLimit = 15;
 
     /**
      * Listener for click on recycler view's items
@@ -115,13 +117,24 @@ public class DefaultClientSuggestionsAdapter extends RecyclerView.Adapter<Client
 
                 holder.text.setText(Html.fromHtml(firstHalf + "<font color=#000000>" + highlight + "</font>" + secondHalf));
 
+                if(firstHalf.length() > secondHalf.length() + highlight.length())
+                    holder.text.setEllipsize(TextUtils.TruncateAt.START);
+                else if(secondHalf.length() < endTextLimit)
+                    holder.text.setEllipsize(TextUtils.TruncateAt.MIDDLE);
+                else
+                    holder.text.setEllipsize(TextUtils.TruncateAt.END);
+
                 if(secondHalf.length() >= 1)
                     shouldRedirect = true;
-            } else
+
+            } else {
                 holder.text.setText(suggestions.get(position).getText());
+                holder.text.setEllipsize(TextUtils.TruncateAt.END);
+            }
         }
         else {
             holder.text.setText(suggestions.get(position).getText());
+            holder.text.setEllipsize(TextUtils.TruncateAt.END);
         }
 
         if(showHits) {
