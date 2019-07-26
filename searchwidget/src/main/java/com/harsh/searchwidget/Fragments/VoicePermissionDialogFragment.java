@@ -51,6 +51,7 @@ public class VoicePermissionDialogFragment extends DialogFragment {
         positive.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
+                dismiss();
                 ActivityCompat.requestPermissions(requireActivity(), new String[]{Manifest.permission.RECORD_AUDIO},
                         PERMISSIONS_RECORD_AUDIO);
             }
