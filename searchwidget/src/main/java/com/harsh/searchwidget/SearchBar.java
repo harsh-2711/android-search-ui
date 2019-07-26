@@ -1025,7 +1025,20 @@ public class SearchBar extends RelativeLayout implements View.OnClickListener,
                     }
                 }
             }
-        } else if (id == R.id.arrow || !navIconShown) {
+        } else if (id == R.id.clear) {
+            searchEdit.setText("");
+
+            if(defaultClientSuggestionsAdapter != null) {
+                defaultClientSuggestionsAdapter.clear();
+                recyclerView.setAdapter(defaultClientSuggestionsAdapter);
+            }
+
+            if(defaultClientSuggestionsAdapter != null) {
+                defaultClientSuggestionsAdapter.clear();
+                recyclerView.setAdapter(defaultClientSuggestionsAdapter);
+            }
+        }
+        else if (id == R.id.arrow || !navIconShown) {
             disableSearch();
 
             if(defaultClientSuggestionsAdapter != null) {
@@ -1041,8 +1054,6 @@ public class SearchBar extends RelativeLayout implements View.OnClickListener,
         } else if (id == R.id.search) {
             if (listenerExists())
                 onSearchActionListener.onButtonClicked(BUTTON_SPEECH);
-        } else if (id == R.id.clear) {
-            searchEdit.setText("");
         } else if (id == R.id.menu) {
             popupMenu.show();
         } else if (id == R.id.nav)
