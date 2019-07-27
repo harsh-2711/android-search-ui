@@ -7,11 +7,11 @@ import android.view.View;
 
 import com.harsh.searchwidget.Builder.DefaultClientSuggestions;
 import com.harsh.searchwidget.Fragments.VoicePermissionDialogFragment;
+import com.harsh.searchwidget.Model.AnalyticsModel;
 import com.harsh.searchwidget.Model.ClientSuggestionsModel;
 import com.harsh.searchwidget.Model.SearchPropModel;
 import com.harsh.searchwidget.SearchBar;
 
-import java.io.IOException;
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.concurrent.ExecutionException;
@@ -145,5 +145,10 @@ public class MainActivity extends AppCompatActivity {
                 }
             }
         });
+
+        // Getting Analytics
+        AnalyticsModel analyticsModel = searchBar.setAnalyticsProps().setXSearchClick(true).build();
+        String analyticsResponse = searchBar.getAnalytics(analyticsModel);
+        Log.d("Analytics", analyticsResponse);
     }
 }

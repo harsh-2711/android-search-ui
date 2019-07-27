@@ -43,9 +43,11 @@ import android.widget.RelativeLayout;
 import android.widget.TextView;
 
 import com.harsh.searchwidget.Adapter.DefaultLocalSuggestionsAdapter;
+import com.harsh.searchwidget.Builder.Analytics;
 import com.harsh.searchwidget.Builder.DefaultClientSuggestions;
 import com.harsh.searchwidget.Builder.SearchProp;
 import com.harsh.searchwidget.Listener.CustomRVItemTouchListener;
+import com.harsh.searchwidget.Model.AnalyticsModel;
 import com.harsh.searchwidget.Model.ClientSuggestionsModel;
 import com.harsh.searchwidget.Adapter.DefaultClientSuggestionsAdapter;
 import com.harsh.searchwidget.Adapter.SuggestionsAdapter;
@@ -1796,6 +1798,73 @@ public class SearchBar extends RelativeLayout implements View.OnClickListener,
         searchPropModel.setAutoSuggest(true);
         defaultSearchPropModel = searchPropModel;
         return new DefaultClientSuggestions(suggestions);
+    }
+
+    /**
+     * Initiates Analytics Prop
+     *
+     * @return Analytics builder to set available properties
+     */
+    public Analytics setAnalyticsProps() {
+        return new Analytics();
+    }
+
+    /**
+     * Provides analytics for the given search id (previous search id by default)
+     *
+     * @param analyticsModel Analytics Model with all the necessary properties
+     * @return Analytics received for the given search id
+     */
+    public String getAnalytics(AnalyticsModel analyticsModel) {
+
+        if(isAppbaseClientSet) {
+            String XSearchId = analyticsModel.getXSearchId();
+            boolean XSearchClick = analyticsModel.isXSearchClick();
+            boolean XSearchConversion = analyticsModel.isXSearchConversion();
+            String XSearchClickPosition = analyticsModel.getXSearchClickPosition();
+
+            String query = "\"X-Search-Click\": \"" + XSearchClick + "\", \"X-Search-Conversion\": \"" + XSearchConversion + "\"";
+
+            if(XSearchClickPosition != null)
+                query = query + ", \"X-Search-ClickPosition\": " + XSearchClickPosition + "\"";
+
+            if(XSearchId != null)
+                query = query + ", \"X-Search-Id\": " + XSearchId + "\"";
+
+            try {
+                return new GetAnalytics().execute(query).get();
+            } catch (ExecutionException e) {
+                e.printStackTrace();
+            } catch (InterruptedException e) {
+                e.printStackTrace();
+            }
+
+        } else {
+            Log.e("Error", "Please set Appbase Client");
+        }
+
+        return null;
+    }
+
+    private class GetAnalytics extends AsyncTask<String,Void,String> {
+
+        String analytics = null;
+
+        @Override
+        protected String doInBackground(String... strings) {
+            try {
+                analytics = client.prepareAnalytics(strings[0]).execute().body().string();
+                return analytics;
+            } catch (IOException e) {
+                e.printStackTrace();
+            }
+            return null;
+        }
+
+        @Override
+        protected void onPostExecute(String s) {
+            super.onPostExecute(s);
+        }
     }
 
     private static class SavedState extends BaseSavedState {
