@@ -567,10 +567,18 @@ public class SearchBar extends RelativeLayout implements View.OnClickListener,
         animateSuggestions(getListHeight(false), 0);
     }
 
+    /**
+     * Clears the suggestions list
+     */
     public void clearSuggestions() {
         if (suggestionsVisible)
             animateSuggestions(getListHeight(false), 0);
         adapter.clearSuggestions();
+
+        if(defaultClientSuggestionsAdapter != null) {
+            defaultClientSuggestionsAdapter.clear();
+            animateSuggestions(getListHeight(false), 0);
+        }
     }
 
     /**
@@ -578,14 +586,14 @@ public class SearchBar extends RelativeLayout implements View.OnClickListener,
      *
      * @return return result
      */
-    public boolean isSuggestionsVisible() {
+    public boolean areSuggestionsVisible() {
         return suggestionsVisible;
     }
 
     /**
      * Check if suggestions are enabled
      */
-    public boolean isSuggestionsEnabled() {
+    public boolean areSuggestionsEnabled() {
         return isSuggestionsEnabled;
     }
 
