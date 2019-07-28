@@ -1,10 +1,11 @@
 var searchData=
 [
-  ['search',['search',['../classcom_1_1harsh_1_1searchwidget_1_1_search_bar.html#a7140d6b5721c999d278bcd83caa1c306',1,'com::harsh::searchwidget::SearchBar']]],
+  ['search',['search',['../classcom_1_1harsh_1_1searchwidget_1_1_search_bar.html#a83b100102422eebd3cc5c15987279460',1,'com::harsh::searchwidget::SearchBar']]],
   ['searchprop',['SearchProp',['../classcom_1_1harsh_1_1searchwidget_1_1_builder_1_1_search_prop.html#aeb58060393068cebd917b316e4d1f132',1,'com::harsh::searchwidget::Builder::SearchProp']]],
   ['setaggregationfields',['setAggregationFields',['../classcom_1_1harsh_1_1searchwidget_1_1_builder_1_1_search_prop.html#a60940bebe7c88b3275fdc3a0e8486366',1,'com::harsh::searchwidget::Builder::SearchProp']]],
   ['setaggregationname',['setAggregationName',['../classcom_1_1harsh_1_1searchwidget_1_1_builder_1_1_search_prop.html#ab56252d276b953af829e387d947c8443',1,'com::harsh::searchwidget::Builder::SearchProp']]],
   ['setaggregrationstate',['setAggregrationState',['../classcom_1_1harsh_1_1searchwidget_1_1_builder_1_1_search_prop.html#a11f7d47ed36880d9f365fc47e9f049b5',1,'com::harsh::searchwidget::Builder::SearchProp']]],
+  ['setanalyticsprops',['setAnalyticsProps',['../classcom_1_1harsh_1_1searchwidget_1_1_search_bar.html#a6264364df5b59ae99e29b6479dd6d1c7',1,'com::harsh::searchwidget::SearchBar']]],
   ['setappbaseclient',['setAppbaseClient',['../classcom_1_1harsh_1_1searchwidget_1_1_search_bar.html#a57d1a343aeb3207dc19e19e5059cdc1c',1,'com.harsh.searchwidget.SearchBar.setAppbaseClient(String url, String appName, String username, String password, String type)'],['../classcom_1_1harsh_1_1searchwidget_1_1_search_bar.html#a5a52c27c1f373e231d501fdb57361b72',1,'com.harsh.searchwidget.SearchBar.setAppbaseClient(String url, String appName, String username, String password)']]],
   ['setarrowicon',['setArrowIcon',['../classcom_1_1harsh_1_1searchwidget_1_1_search_bar.html#a0eb4f5bcdfa7d96496aaccbc3dba5aa1',1,'com::harsh::searchwidget::SearchBar']]],
   ['setarrowicontint',['setArrowIconTint',['../classcom_1_1harsh_1_1searchwidget_1_1_search_bar.html#abc4ad18621bfa4cbdd04fd8794ca4e96',1,'com::harsh::searchwidget::SearchBar']]],
@@ -34,9 +35,9 @@ var searchData=
   ['setmenuicontint',['setMenuIconTint',['../classcom_1_1harsh_1_1searchwidget_1_1_search_bar.html#ae8416bfb67cb33e2a27a2ea3cfeceb48',1,'com::harsh::searchwidget::SearchBar']]],
   ['setnavbuttonenabled',['setNavButtonEnabled',['../classcom_1_1harsh_1_1searchwidget_1_1_search_bar.html#a525f317f5736443ad0e5e2ef98d6879c',1,'com::harsh::searchwidget::SearchBar']]],
   ['setnavicontint',['setNavIconTint',['../classcom_1_1harsh_1_1searchwidget_1_1_search_bar.html#a151333fd9cd8a5aa6f40c667b3d7a7f9',1,'com::harsh::searchwidget::SearchBar']]],
-  ['setonitemclicklistener',['setOnItemClickListener',['../classcom_1_1harsh_1_1searchwidget_1_1_search_bar.html#ab9d0c262b5ef9aaaf4599726d684f8a8',1,'com::harsh::searchwidget::SearchBar']]],
+  ['setonredirectclicklistener',['setOnRedirectClickListener',['../classcom_1_1harsh_1_1searchwidget_1_1_adapter_1_1_default_client_suggestions_adapter.html#aaee1042ddaae470e9bcdd80899de6521',1,'com::harsh::searchwidget::Adapter::DefaultClientSuggestionsAdapter']]],
   ['setonsearchactionlistener',['setOnSearchActionListener',['../classcom_1_1harsh_1_1searchwidget_1_1_search_bar.html#ad88c41771063fe1e84e308104bf79b0e',1,'com::harsh::searchwidget::SearchBar']]],
-  ['setontextchangelistner',['setOnTextChangeListner',['../classcom_1_1harsh_1_1searchwidget_1_1_search_bar.html#adc98686f8f92648f2227dcb98f899b76',1,'com::harsh::searchwidget::SearchBar']]],
+  ['setontextchangelistener',['setOnTextChangeListener',['../classcom_1_1harsh_1_1searchwidget_1_1_search_bar.html#aee3face9840c008c37c273776d176a5f',1,'com::harsh::searchwidget::SearchBar']]],
   ['setplaceholdercolor',['setPlaceHolderColor',['../classcom_1_1harsh_1_1searchwidget_1_1_search_bar.html#a265dc3c5ba387c16cc116be2f87d0853',1,'com::harsh::searchwidget::SearchBar']]],
   ['setplaceholdertext',['setPlaceHolderText',['../classcom_1_1harsh_1_1searchwidget_1_1_search_bar.html#a662dc37afa45e24313336db973f7f305',1,'com::harsh::searchwidget::SearchBar']]],
   ['setqueryformat',['setQueryFormat',['../classcom_1_1harsh_1_1searchwidget_1_1_builder_1_1_search_prop.html#a6075911d903f28422d93ec8b4793c602',1,'com::harsh::searchwidget::Builder::SearchProp']]],
@@ -55,6 +56,12 @@ var searchData=
   ['settexthighlightcolor',['setTextHighlightColor',['../classcom_1_1harsh_1_1searchwidget_1_1_search_bar.html#a6caff633256c9f9440f1b10d4636bc65',1,'com::harsh::searchwidget::SearchBar']]],
   ['settexthintcolor',['setTextHintColor',['../classcom_1_1harsh_1_1searchwidget_1_1_search_bar.html#a2e32e9e44c7e2fc7559dd18150011cb4',1,'com::harsh::searchwidget::SearchBar']]],
   ['settopentries',['setTopEntries',['../classcom_1_1harsh_1_1searchwidget_1_1_builder_1_1_search_prop.html#aa12290397e2c2019597267bb5b086605',1,'com::harsh::searchwidget::Builder::SearchProp']]],
+  ['setvoicepermissiongranted',['setVoicePermissionGranted',['../classcom_1_1harsh_1_1searchwidget_1_1_search_bar.html#ade9997bccbd1a36a5ffbcd736ed7bdac',1,'com::harsh::searchwidget::SearchBar']]],
   ['setweights',['setWeights',['../classcom_1_1harsh_1_1searchwidget_1_1_builder_1_1_search_prop.html#ac0ecda41b54270c5a47690959450f698',1,'com::harsh::searchwidget::Builder::SearchProp']]],
-  ['startsearch',['startSearch',['../classcom_1_1harsh_1_1searchwidget_1_1_search_bar.html#a7935259ceb701aa5d0fa9ddcab290309',1,'com::harsh::searchwidget::SearchBar']]]
+  ['setxsearchclick',['setXSearchClick',['../classcom_1_1harsh_1_1searchwidget_1_1_builder_1_1_analytics.html#a202819a046bf1ef0110d71721e9d186c',1,'com::harsh::searchwidget::Builder::Analytics']]],
+  ['setxsearchclickposition',['setXSearchClickPosition',['../classcom_1_1harsh_1_1searchwidget_1_1_builder_1_1_analytics.html#a5aa98b75f53912904f00492e4fde0750',1,'com::harsh::searchwidget::Builder::Analytics']]],
+  ['setxsearchconversion',['setXSearchConversion',['../classcom_1_1harsh_1_1searchwidget_1_1_builder_1_1_analytics.html#a79a6855e873eba9bd1c9c23434445047',1,'com::harsh::searchwidget::Builder::Analytics']]],
+  ['setxsearchid',['setXSearchId',['../classcom_1_1harsh_1_1searchwidget_1_1_builder_1_1_analytics.html#a0173960765823586dfb7afde31562fe1',1,'com::harsh::searchwidget::Builder::Analytics']]],
+  ['startsearch',['startSearch',['../classcom_1_1harsh_1_1searchwidget_1_1_search_bar.html#ab253d43c8be0a15ae572ea2893eeb4ee',1,'com::harsh::searchwidget::SearchBar']]],
+  ['startvoicesearch',['startVoiceSearch',['../classcom_1_1harsh_1_1searchwidget_1_1_search_bar.html#ad629089077a27845ac5e8ad6d9519940',1,'com::harsh::searchwidget::SearchBar']]]
 ];

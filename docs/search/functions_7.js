@@ -4,6 +4,5 @@ var searchData=
   ['insert',['insert',['../classcom_1_1harsh_1_1searchwidget_1_1_adapter_1_1_default_client_suggestions_adapter.html#afd5bd51c57c899598c5ae6b76d20222a',1,'com::harsh::searchwidget::Adapter::DefaultClientSuggestionsAdapter']]],
   ['issearchenabled',['isSearchEnabled',['../classcom_1_1harsh_1_1searchwidget_1_1_search_bar.html#a2afeb7fbf76c7b9211d386a3d99e449b',1,'com::harsh::searchwidget::SearchBar']]],
   ['isspeechmodeenabled',['isSpeechModeEnabled',['../classcom_1_1harsh_1_1searchwidget_1_1_search_bar.html#a4dfc20bb5d525ab8e1d064bb1b37a01d',1,'com::harsh::searchwidget::SearchBar']]],
-  ['issuggestionsenabled',['isSuggestionsEnabled',['../classcom_1_1harsh_1_1searchwidget_1_1_search_bar.html#add7da317d198e9042ecf93be54ada1f0',1,'com::harsh::searchwidget::SearchBar']]],
-  ['issuggestionsvisible',['isSuggestionsVisible',['../classcom_1_1harsh_1_1searchwidget_1_1_search_bar.html#a109b4c6ae47bfdb48cd5bcd9c8046eb2',1,'com::harsh::searchwidget::SearchBar']]]
+  ['isvoicepermissiongranted',['isVoicePermissionGranted',['../classcom_1_1harsh_1_1searchwidget_1_1_search_bar.html#a0e8b1a694afbb68ea0ebec3902fc670d',1,'com::harsh::searchwidget::SearchBar']]]
 ];

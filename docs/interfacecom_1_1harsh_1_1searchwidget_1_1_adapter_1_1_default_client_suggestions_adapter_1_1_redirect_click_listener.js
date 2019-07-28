@@ -1,0 +1,4 @@
+var interfacecom_1_1harsh_1_1searchwidget_1_1_adapter_1_1_default_client_suggestions_adapter_1_1_redirect_click_listener =
+[
+    [ "onRedirectIconClicked", "interfacecom_1_1harsh_1_1searchwidget_1_1_adapter_1_1_default_client_suggestions_adapter_1_1_redirect_click_listener.html#a52c75e27cf009e12a93f9bf40b7fa707", null ]
+];

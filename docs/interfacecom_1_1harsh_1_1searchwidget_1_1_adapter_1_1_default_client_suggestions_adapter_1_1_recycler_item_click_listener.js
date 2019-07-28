@@ -1,0 +1,5 @@
+var interfacecom_1_1harsh_1_1searchwidget_1_1_adapter_1_1_default_client_suggestions_adapter_1_1_recycler_item_click_listener =
+[
+    [ "onItemClick", "interfacecom_1_1harsh_1_1searchwidget_1_1_adapter_1_1_default_client_suggestions_adapter_1_1_recycler_item_click_listener.html#a9ac7c7e53e2a8f05bbdd8639e66a0365", null ],
+    [ "onItemClickLong", "interfacecom_1_1harsh_1_1searchwidget_1_1_adapter_1_1_default_client_suggestions_adapter_1_1_recycler_item_click_listener.html#abc2103750b92c1f3ad1cd7c1391fb0e2", null ]
+];

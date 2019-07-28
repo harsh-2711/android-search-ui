@@ -30,8 +30,9 @@
  <tr style="height: 56px;">
   <td id="projectalign" style="padding-left: 0.5em;">
    <div id="projectname">appbase-search-widget
-   &#160;<span id="projectnumber">v0.1.1</span>
+   &#160;<span id="projectnumber">v0.1.6</span>
    </div>
+   <div id="projectbrief">A multi-purpose search widget which works both with offline and online databases(Appbase or ElasticSearch cluster). The search widget contains multiple functionalities like Voice Search, Smart Search, Analytics, etc.</div>
   </td>
  </tr>
  </tbody>
@@ -144,13 +145,12 @@ void&#160;</td><td class="memItemRight" valign="bottom"><b>showSuggestionsList</
 <tr class="memitem:a67b3e1c82fb7b06b4d79eb0091556827"><td class="memItemLeft" align="right" valign="top"><a id="a67b3e1c82fb7b06b4d79eb0091556827"></a>
 void&#160;</td><td class="memItemRight" valign="bottom"><b>hideSuggestionsList</b> ()</td></tr>
 <tr class="separator:a67b3e1c82fb7b06b4d79eb0091556827"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a4f925bc058d463b2e73c5f355bd3eef3"><td class="memItemLeft" align="right" valign="top"><a id="a4f925bc058d463b2e73c5f355bd3eef3"></a>
-void&#160;</td><td class="memItemRight" valign="bottom"><b>clearSuggestions</b> ()</td></tr>
+<tr class="memitem:a4f925bc058d463b2e73c5f355bd3eef3"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classcom_1_1harsh_1_1searchwidget_1_1_search_bar.html#a4f925bc058d463b2e73c5f355bd3eef3">clearSuggestions</a> ()</td></tr>
 <tr class="separator:a4f925bc058d463b2e73c5f355bd3eef3"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a109b4c6ae47bfdb48cd5bcd9c8046eb2"><td class="memItemLeft" align="right" valign="top">boolean&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classcom_1_1harsh_1_1searchwidget_1_1_search_bar.html#a109b4c6ae47bfdb48cd5bcd9c8046eb2">isSuggestionsVisible</a> ()</td></tr>
-<tr class="separator:a109b4c6ae47bfdb48cd5bcd9c8046eb2"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:add7da317d198e9042ecf93be54ada1f0"><td class="memItemLeft" align="right" valign="top">boolean&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classcom_1_1harsh_1_1searchwidget_1_1_search_bar.html#add7da317d198e9042ecf93be54ada1f0">isSuggestionsEnabled</a> ()</td></tr>
-<tr class="separator:add7da317d198e9042ecf93be54ada1f0"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a4ab2610359e61893c734c4f49ca80d66"><td class="memItemLeft" align="right" valign="top">boolean&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classcom_1_1harsh_1_1searchwidget_1_1_search_bar.html#a4ab2610359e61893c734c4f49ca80d66">areSuggestionsVisible</a> ()</td></tr>
+<tr class="separator:a4ab2610359e61893c734c4f49ca80d66"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a2646cd91312cf375e71c12e5c2d7a597"><td class="memItemLeft" align="right" valign="top">boolean&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classcom_1_1harsh_1_1searchwidget_1_1_search_bar.html#a2646cd91312cf375e71c12e5c2d7a597">areSuggestionsEnabled</a> ()</td></tr>
+<tr class="separator:a2646cd91312cf375e71c12e5c2d7a597"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a1f031c8accbe6dab2753c080184f5db6"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classcom_1_1harsh_1_1searchwidget_1_1_search_bar.html#a1f031c8accbe6dab2753c080184f5db6">setSuggestionsEnabled</a> (boolean suggestionsEnabled)</td></tr>
 <tr class="separator:a1f031c8accbe6dab2753c080184f5db6"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a37407303d76c706ca1dfb04e0c553241"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classcom_1_1harsh_1_1searchwidget_1_1_search_bar.html#a37407303d76c706ca1dfb04e0c553241">setMenuIcon</a> (int menuIconResId)</td></tr>
@@ -184,6 +184,10 @@ void&#160;</td><td class="memItemRight" valign="bottom"><b>setMenuDividerEnabled
 <tr class="separator:aebb3826ead7004600f484567c6bc935a"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a294f4cc31c59e17d44088b4874509c68"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classcom_1_1harsh_1_1searchwidget_1_1_search_bar.html#a294f4cc31c59e17d44088b4874509c68">setSpeechMode</a> (boolean speechMode)</td></tr>
 <tr class="separator:a294f4cc31c59e17d44088b4874509c68"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a0e8b1a694afbb68ea0ebec3902fc670d"><td class="memItemLeft" align="right" valign="top">boolean&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classcom_1_1harsh_1_1searchwidget_1_1_search_bar.html#a0e8b1a694afbb68ea0ebec3902fc670d">isVoicePermissionGranted</a> ()</td></tr>
+<tr class="separator:a0e8b1a694afbb68ea0ebec3902fc670d"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ade9997bccbd1a36a5ffbcd736ed7bdac"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classcom_1_1harsh_1_1searchwidget_1_1_search_bar.html#ade9997bccbd1a36a5ffbcd736ed7bdac">setVoicePermissionGranted</a> (boolean state)</td></tr>
+<tr class="separator:ade9997bccbd1a36a5ffbcd736ed7bdac"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a4dfc20bb5d525ab8e1d064bb1b37a01d"><td class="memItemLeft" align="right" valign="top">boolean&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classcom_1_1harsh_1_1searchwidget_1_1_search_bar.html#a4dfc20bb5d525ab8e1d064bb1b37a01d">isSpeechModeEnabled</a> ()</td></tr>
 <tr class="separator:a4dfc20bb5d525ab8e1d064bb1b37a01d"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a2afeb7fbf76c7b9211d386a3d99e449b"><td class="memItemLeft" align="right" valign="top">boolean&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classcom_1_1harsh_1_1searchwidget_1_1_search_bar.html#a2afeb7fbf76c7b9211d386a3d99e449b">isSearchEnabled</a> ()</td></tr>
@@ -260,22 +264,26 @@ boolean&#160;</td><td class="memItemRight" valign="bottom"><b>dispatchKeyEvent</
 <tr class="separator:a57d1a343aeb3207dc19e19e5059cdc1c"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a5a52c27c1f373e231d501fdb57361b72"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classcom_1_1harsh_1_1searchwidget_1_1_search_bar.html#a5a52c27c1f373e231d501fdb57361b72">setAppbaseClient</a> (String url, String appName, String username, String password)</td></tr>
 <tr class="separator:a5a52c27c1f373e231d501fdb57361b72"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a7140d6b5721c999d278bcd83caa1c306"><td class="memItemLeft" align="right" valign="top">String&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classcom_1_1harsh_1_1searchwidget_1_1_search_bar.html#a7140d6b5721c999d278bcd83caa1c306">search</a> (String query)  throws IOException </td></tr>
-<tr class="separator:a7140d6b5721c999d278bcd83caa1c306"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a83b100102422eebd3cc5c15987279460"><td class="memItemLeft" align="right" valign="top">String&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classcom_1_1harsh_1_1searchwidget_1_1_search_bar.html#a83b100102422eebd3cc5c15987279460">search</a> (<a class="el" href="classcom_1_1harsh_1_1searchwidget_1_1_model_1_1_search_prop_model.html">SearchPropModel</a> searchPropModel, String query)  throws ExecutionException, InterruptedException </td></tr>
+<tr class="separator:a83b100102422eebd3cc5c15987279460"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a839154a2bcea99816ee945c493964ba5"><td class="memItemLeft" align="right" valign="top"><a class="el" href="classcom_1_1harsh_1_1searchwidget_1_1_builder_1_1_search_prop.html">SearchProp</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classcom_1_1harsh_1_1searchwidget_1_1_search_bar.html#a839154a2bcea99816ee945c493964ba5">setSearchProp</a> (String componentId, ArrayList&lt; String &gt; dataFields)</td></tr>
 <tr class="separator:a839154a2bcea99816ee945c493964ba5"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a69c237a87cd1ca18c3465d9852fc1de5"><td class="memItemLeft" align="right" valign="top">String&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classcom_1_1harsh_1_1searchwidget_1_1_search_bar.html#a69c237a87cd1ca18c3465d9852fc1de5">getRequestedQuery</a> (<a class="el" href="classcom_1_1harsh_1_1searchwidget_1_1_model_1_1_search_prop_model.html">SearchPropModel</a> searchPropModel)</td></tr>
 <tr class="separator:a69c237a87cd1ca18c3465d9852fc1de5"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a29cbee4e74fbbf8bb35adc53e4c421ed"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classcom_1_1harsh_1_1searchwidget_1_1_search_bar.html#a29cbee4e74fbbf8bb35adc53e4c421ed">setLoggingQuery</a> (boolean state)</td></tr>
 <tr class="separator:a29cbee4e74fbbf8bb35adc53e4c421ed"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:adc98686f8f92648f2227dcb98f899b76"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classcom_1_1harsh_1_1searchwidget_1_1_search_bar.html#adc98686f8f92648f2227dcb98f899b76">setOnTextChangeListner</a> (<a class="el" href="interfacecom_1_1harsh_1_1searchwidget_1_1_search_bar_1_1_text_change_listener.html">TextChangeListener</a> textChangeListener)</td></tr>
-<tr class="separator:adc98686f8f92648f2227dcb98f899b76"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:ab9d0c262b5ef9aaaf4599726d684f8a8"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classcom_1_1harsh_1_1searchwidget_1_1_search_bar.html#ab9d0c262b5ef9aaaf4599726d684f8a8">setOnItemClickListener</a> (final <a class="el" href="interfacecom_1_1harsh_1_1searchwidget_1_1_search_bar_1_1_item_click_listener.html">ItemClickListener</a> itemClickListener)</td></tr>
-<tr class="separator:ab9d0c262b5ef9aaaf4599726d684f8a8"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a7935259ceb701aa5d0fa9ddcab290309"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classcom_1_1harsh_1_1searchwidget_1_1_search_bar.html#a7935259ceb701aa5d0fa9ddcab290309">startSearch</a> (final <a class="el" href="classcom_1_1harsh_1_1searchwidget_1_1_model_1_1_search_prop_model.html">SearchPropModel</a> searchPropModel)</td></tr>
-<tr class="separator:a7935259ceb701aa5d0fa9ddcab290309"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:aee3face9840c008c37c273776d176a5f"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classcom_1_1harsh_1_1searchwidget_1_1_search_bar.html#aee3face9840c008c37c273776d176a5f">setOnTextChangeListener</a> (<a class="el" href="interfacecom_1_1harsh_1_1searchwidget_1_1_search_bar_1_1_text_change_listener.html">TextChangeListener</a> textChangeListener)</td></tr>
+<tr class="separator:aee3face9840c008c37c273776d176a5f"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ab253d43c8be0a15ae572ea2893eeb4ee"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classcom_1_1harsh_1_1searchwidget_1_1_search_bar.html#ab253d43c8be0a15ae572ea2893eeb4ee">startSearch</a> (final <a class="el" href="classcom_1_1harsh_1_1searchwidget_1_1_model_1_1_search_prop_model.html">SearchPropModel</a> searchPropModel, final <a class="el" href="interfacecom_1_1harsh_1_1searchwidget_1_1_search_bar_1_1_item_click_listener.html">ItemClickListener</a> itemClickListener)</td></tr>
+<tr class="separator:ab253d43c8be0a15ae572ea2893eeb4ee"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ad629089077a27845ac5e8ad6d9519940"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classcom_1_1harsh_1_1searchwidget_1_1_search_bar.html#ad629089077a27845ac5e8ad6d9519940">startVoiceSearch</a> (final <a class="el" href="classcom_1_1harsh_1_1searchwidget_1_1_model_1_1_search_prop_model.html">SearchPropModel</a> searchPropModel, final <a class="el" href="interfacecom_1_1harsh_1_1searchwidget_1_1_search_bar_1_1_item_click_listener.html">ItemClickListener</a> itemClickListener)</td></tr>
+<tr class="separator:ad629089077a27845ac5e8ad6d9519940"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:aff5c2531b6804cff02cfa8bb8a3b1c51"><td class="memItemLeft" align="right" valign="top"><a class="el" href="classcom_1_1harsh_1_1searchwidget_1_1_builder_1_1_default_client_suggestions.html">DefaultClientSuggestions</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classcom_1_1harsh_1_1searchwidget_1_1_search_bar.html#aff5c2531b6804cff02cfa8bb8a3b1c51">buildCustomSuggestions</a> (<a class="el" href="classcom_1_1harsh_1_1searchwidget_1_1_model_1_1_search_prop_model.html">SearchPropModel</a> searchPropModel, ArrayList&lt; String &gt; suggestions)</td></tr>
 <tr class="separator:aff5c2531b6804cff02cfa8bb8a3b1c51"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a6264364df5b59ae99e29b6479dd6d1c7"><td class="memItemLeft" align="right" valign="top"><a class="el" href="classcom_1_1harsh_1_1searchwidget_1_1_builder_1_1_analytics.html">Analytics</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classcom_1_1harsh_1_1searchwidget_1_1_search_bar.html#a6264364df5b59ae99e29b6479dd6d1c7">setAnalyticsProps</a> ()</td></tr>
+<tr class="separator:a6264364df5b59ae99e29b6479dd6d1c7"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a442804a182a1ccd023400f0b84df6d81"><td class="memItemLeft" align="right" valign="top">String&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classcom_1_1harsh_1_1searchwidget_1_1_search_bar.html#a442804a182a1ccd023400f0b84df6d81">getAnalytics</a> (<a class="el" href="classcom_1_1harsh_1_1searchwidget_1_1_model_1_1_analytics_model.html">AnalyticsModel</a> analyticsModel)</td></tr>
+<tr class="separator:a442804a182a1ccd023400f0b84df6d81"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table><table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="pub-static-attribs"></a>
 Static Public Attributes</h2></td></tr>
@@ -330,6 +338,43 @@ void&#160;</td><td class="memItemRight" valign="bottom"><b>onRestoreInstanceStat
 
 </div>
 </div>
+<a id="a2646cd91312cf375e71c12e5c2d7a597"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a2646cd91312cf375e71c12e5c2d7a597">&#9670;&nbsp;</a></span>areSuggestionsEnabled()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">boolean com.harsh.searchwidget.SearchBar.areSuggestionsEnabled </td>
+          <td>(</td>
+          <td class="paramname"></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+<p>Check if suggestions are enabled </p>
+
+</div>
+</div>
+<a id="a4ab2610359e61893c734c4f49ca80d66"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a4ab2610359e61893c734c4f49ca80d66">&#9670;&nbsp;</a></span>areSuggestionsVisible()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">boolean com.harsh.searchwidget.SearchBar.areSuggestionsVisible </td>
+          <td>(</td>
+          <td class="paramname"></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+<p>Check if suggestions are shown</p>
+<dl class="section return"><dt>Returns</dt><dd>return result </dd></dl>
+
+</div>
+</div>
 <a id="aff5c2531b6804cff02cfa8bb8a3b1c51"></a>
 <h2 class="memtitle"><span class="permalink"><a href="#aff5c2531b6804cff02cfa8bb8a3b1c51">&#9670;&nbsp;</a></span>buildCustomSuggestions()</h2>
 
@@ -367,6 +412,24 @@ void&#160;</td><td class="memItemRight" valign="bottom"><b>onRestoreInstanceStat
 
 </div>
 </div>
+<a id="a4f925bc058d463b2e73c5f355bd3eef3"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a4f925bc058d463b2e73c5f355bd3eef3">&#9670;&nbsp;</a></span>clearSuggestions()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">void com.harsh.searchwidget.SearchBar.clearSuggestions </td>
+          <td>(</td>
+          <td class="paramname"></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+<p>Clears the suggestions list </p>
+
+</div>
+</div>
 <a id="a25d394189032026346cd9b5d2b44cd29"></a>
 <h2 class="memtitle"><span class="permalink"><a href="#a25d394189032026346cd9b5d2b44cd29">&#9670;&nbsp;</a></span>disableSearch()</h2>
 
@@ -400,6 +463,32 @@ void&#160;</td><td class="memItemRight" valign="bottom"><b>onRestoreInstanceStat
       </table>
 </div><div class="memdoc">
 <p>Shows search input and close arrow </p>
+
+</div>
+</div>
+<a id="a442804a182a1ccd023400f0b84df6d81"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a442804a182a1ccd023400f0b84df6d81">&#9670;&nbsp;</a></span>getAnalytics()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">String com.harsh.searchwidget.SearchBar.getAnalytics </td>
+          <td>(</td>
+          <td class="paramtype"><a class="el" href="classcom_1_1harsh_1_1searchwidget_1_1_model_1_1_analytics_model.html">AnalyticsModel</a>&#160;</td>
+          <td class="paramname"><em>analyticsModel</em></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+<p>Provides analytics for the given search id (previous search id by default)</p>
+<dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">analyticsModel</td><td>Analytics Model with all the necessary properties </td></tr>
+  </table>
+  </dd>
+</dl>
+<dl class="section return"><dt>Returns</dt><dd>Analytics received for the given search id </dd></dl>
 
 </div>
 </div>
@@ -608,45 +697,27 @@ void&#160;</td><td class="memItemRight" valign="bottom"><b>onRestoreInstanceStat
 
 </div>
 </div>
-<a id="add7da317d198e9042ecf93be54ada1f0"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#add7da317d198e9042ecf93be54ada1f0">&#9670;&nbsp;</a></span>isSuggestionsEnabled()</h2>
+<a id="a0e8b1a694afbb68ea0ebec3902fc670d"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a0e8b1a694afbb68ea0ebec3902fc670d">&#9670;&nbsp;</a></span>isVoicePermissionGranted()</h2>
 
 <div class="memitem">
 <div class="memproto">
       <table class="memname">
         <tr>
-          <td class="memname">boolean com.harsh.searchwidget.SearchBar.isSuggestionsEnabled </td>
+          <td class="memname">boolean com.harsh.searchwidget.SearchBar.isVoicePermissionGranted </td>
           <td>(</td>
           <td class="paramname"></td><td>)</td>
           <td></td>
         </tr>
       </table>
 </div><div class="memdoc">
-<p>Check if suggestions are enabled </p>
+<p>Checks if the voice recording permission is granted for the device Also sets the state of speechPermissionGranted variable</p>
+<dl class="section return"><dt>Returns</dt><dd></dd></dl>
 
 </div>
 </div>
-<a id="a109b4c6ae47bfdb48cd5bcd9c8046eb2"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#a109b4c6ae47bfdb48cd5bcd9c8046eb2">&#9670;&nbsp;</a></span>isSuggestionsVisible()</h2>
-
-<div class="memitem">
-<div class="memproto">
-      <table class="memname">
-        <tr>
-          <td class="memname">boolean com.harsh.searchwidget.SearchBar.isSuggestionsVisible </td>
-          <td>(</td>
-          <td class="paramname"></td><td>)</td>
-          <td></td>
-        </tr>
-      </table>
-</div><div class="memdoc">
-<p>Check if suggestions are shown</p>
-<dl class="section return"><dt>Returns</dt><dd>return result </dd></dl>
-
-</div>
-</div>
-<a id="a7140d6b5721c999d278bcd83caa1c306"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#a7140d6b5721c999d278bcd83caa1c306">&#9670;&nbsp;</a></span>search()</h2>
+<a id="a83b100102422eebd3cc5c15987279460"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a83b100102422eebd3cc5c15987279460">&#9670;&nbsp;</a></span>search()</h2>
 
 <div class="memitem">
 <div class="memproto">
@@ -654,9 +725,19 @@ void&#160;</td><td class="memItemRight" valign="bottom"><b>onRestoreInstanceStat
         <tr>
           <td class="memname">String com.harsh.searchwidget.SearchBar.search </td>
           <td>(</td>
+          <td class="paramtype"><a class="el" href="classcom_1_1harsh_1_1searchwidget_1_1_model_1_1_search_prop_model.html">SearchPropModel</a>&#160;</td>
+          <td class="paramname"><em>searchPropModel</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
           <td class="paramtype">String&#160;</td>
-          <td class="paramname"><em>query</em></td><td>)</td>
-          <td> throws IOException</td>
+          <td class="paramname"><em>query</em>&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td> throws ExecutionException, InterruptedException</td>
         </tr>
       </table>
 </div><div class="memdoc">
@@ -670,10 +751,30 @@ void&#160;</td><td class="memItemRight" valign="bottom"><b>onRestoreInstanceStat
 <dl class="section return"><dt>Returns</dt><dd>Response received for the requested query </dd></dl>
 <dl class="exception"><dt>Exceptions</dt><dd>
   <table class="exception">
-    <tr><td class="paramname">IOException</td><td></td></tr>
+    <tr><td class="paramname">ExecutionException</td><td></td></tr>
+    <tr><td class="paramname">InterruptedException</td><td></td></tr>
   </table>
   </dd>
 </dl>
+
+</div>
+</div>
+<a id="a6264364df5b59ae99e29b6479dd6d1c7"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a6264364df5b59ae99e29b6479dd6d1c7">&#9670;&nbsp;</a></span>setAnalyticsProps()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname"><a class="el" href="classcom_1_1harsh_1_1searchwidget_1_1_builder_1_1_analytics.html">Analytics</a> com.harsh.searchwidget.SearchBar.setAnalyticsProps </td>
+          <td>(</td>
+          <td class="paramname"></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+<p>Initiates Analytics Prop</p>
+<dl class="section return"><dt>Returns</dt><dd>Analytics builder to set available properties </dd></dl>
 
 </div>
 </div>
@@ -1162,30 +1263,6 @@ void&#160;</td><td class="memItemRight" valign="bottom"><b>onRestoreInstanceStat
 
 </div>
 </div>
-<a id="ab9d0c262b5ef9aaaf4599726d684f8a8"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#ab9d0c262b5ef9aaaf4599726d684f8a8">&#9670;&nbsp;</a></span>setOnItemClickListener()</h2>
-
-<div class="memitem">
-<div class="memproto">
-      <table class="memname">
-        <tr>
-          <td class="memname">void com.harsh.searchwidget.SearchBar.setOnItemClickListener </td>
-          <td>(</td>
-          <td class="paramtype">final <a class="el" href="interfacecom_1_1harsh_1_1searchwidget_1_1_search_bar_1_1_item_click_listener.html">ItemClickListener</a>&#160;</td>
-          <td class="paramname"><em>itemClickListener</em></td><td>)</td>
-          <td></td>
-        </tr>
-      </table>
-</div><div class="memdoc">
-<p>Registers listener for different click gestures callbacks </p><dl class="params"><dt>Parameters</dt><dd>
-  <table class="params">
-    <tr><td class="paramname">itemClickListener</td><td>Search item click callbacks </td></tr>
-  </table>
-  </dd>
-</dl>
-
-</div>
-</div>
 <a id="ad88c41771063fe1e84e308104bf79b0e"></a>
 <h2 class="memtitle"><span class="permalink"><a href="#ad88c41771063fe1e84e308104bf79b0e">&#9670;&nbsp;</a></span>setOnSearchActionListener()</h2>
 
@@ -1211,14 +1288,14 @@ void&#160;</td><td class="memItemRight" valign="bottom"><b>onRestoreInstanceStat
 
 </div>
 </div>
-<a id="adc98686f8f92648f2227dcb98f899b76"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#adc98686f8f92648f2227dcb98f899b76">&#9670;&nbsp;</a></span>setOnTextChangeListner()</h2>
+<a id="aee3face9840c008c37c273776d176a5f"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#aee3face9840c008c37c273776d176a5f">&#9670;&nbsp;</a></span>setOnTextChangeListener()</h2>
 
 <div class="memitem">
 <div class="memproto">
       <table class="memname">
         <tr>
-          <td class="memname">void com.harsh.searchwidget.SearchBar.setOnTextChangeListner </td>
+          <td class="memname">void com.harsh.searchwidget.SearchBar.setOnTextChangeListener </td>
           <td>(</td>
           <td class="paramtype"><a class="el" href="interfacecom_1_1harsh_1_1searchwidget_1_1_search_bar_1_1_text_change_listener.html">TextChangeListener</a>&#160;</td>
           <td class="paramname"><em>textChangeListener</em></td><td>)</td>
@@ -1569,8 +1646,33 @@ void&#160;</td><td class="memItemRight" valign="bottom"><b>onRestoreInstanceStat
 
 </div>
 </div>
-<a id="a7935259ceb701aa5d0fa9ddcab290309"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#a7935259ceb701aa5d0fa9ddcab290309">&#9670;&nbsp;</a></span>startSearch()</h2>
+<a id="ade9997bccbd1a36a5ffbcd736ed7bdac"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#ade9997bccbd1a36a5ffbcd736ed7bdac">&#9670;&nbsp;</a></span>setVoicePermissionGranted()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">void com.harsh.searchwidget.SearchBar.setVoicePermissionGranted </td>
+          <td>(</td>
+          <td class="paramtype">boolean&#160;</td>
+          <td class="paramname"><em>state</em></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+<p>Sets the state of speechPermissionGranted variable</p>
+<dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">state</td><td>Whether voice recording permission is granted or not </td></tr>
+  </table>
+  </dd>
+</dl>
+
+</div>
+</div>
+<a id="ab253d43c8be0a15ae572ea2893eeb4ee"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#ab253d43c8be0a15ae572ea2893eeb4ee">&#9670;&nbsp;</a></span>startSearch()</h2>
 
 <div class="memitem">
 <div class="memproto">
@@ -1579,8 +1681,18 @@ void&#160;</td><td class="memItemRight" valign="bottom"><b>onRestoreInstanceStat
           <td class="memname">void com.harsh.searchwidget.SearchBar.startSearch </td>
           <td>(</td>
           <td class="paramtype">final <a class="el" href="classcom_1_1harsh_1_1searchwidget_1_1_model_1_1_search_prop_model.html">SearchPropModel</a>&#160;</td>
-          <td class="paramname"><em>searchPropModel</em></td><td>)</td>
+          <td class="paramname"><em>searchPropModel</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
           <td></td>
+          <td class="paramtype">final <a class="el" href="interfacecom_1_1harsh_1_1searchwidget_1_1_search_bar_1_1_item_click_listener.html">ItemClickListener</a>&#160;</td>
+          <td class="paramname"><em>itemClickListener</em>&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td>
         </tr>
       </table>
 </div><div class="memdoc">
@@ -1588,6 +1700,43 @@ void&#160;</td><td class="memItemRight" valign="bottom"><b>onRestoreInstanceStat
 <dl class="params"><dt>Parameters</dt><dd>
   <table class="params">
     <tr><td class="paramname">searchPropModel</td><td>Model which is returned on building the search prop </td></tr>
+    <tr><td class="paramname">itemClickListener</td><td>Listener to handle callbacks from click and long click events </td></tr>
+  </table>
+  </dd>
+</dl>
+
+</div>
+</div>
+<a id="ad629089077a27845ac5e8ad6d9519940"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#ad629089077a27845ac5e8ad6d9519940">&#9670;&nbsp;</a></span>startVoiceSearch()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">void com.harsh.searchwidget.SearchBar.startVoiceSearch </td>
+          <td>(</td>
+          <td class="paramtype">final <a class="el" href="classcom_1_1harsh_1_1searchwidget_1_1_model_1_1_search_prop_model.html">SearchPropModel</a>&#160;</td>
+          <td class="paramname"><em>searchPropModel</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">final <a class="el" href="interfacecom_1_1harsh_1_1searchwidget_1_1_search_bar_1_1_item_click_listener.html">ItemClickListener</a>&#160;</td>
+          <td class="paramname"><em>itemClickListener</em>&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+<p>Starts voice search functionality The method first checks whether voice recording permission is given for the device</p>
+<dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">searchPropModel</td><td>Model which is returned on building the search prop </td></tr>
+    <tr><td class="paramname">itemClickListener</td><td>Listener to handle callbacks from click and long click events </td></tr>
   </table>
   </dd>
 </dl>

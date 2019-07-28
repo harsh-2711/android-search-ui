@@ -30,8 +30,9 @@
  <tr style="height: 56px;">
   <td id="projectalign" style="padding-left: 0.5em;">
    <div id="projectname">appbase-search-widget
-   &#160;<span id="projectnumber">v0.1.1</span>
+   &#160;<span id="projectnumber">v0.1.6</span>
    </div>
+   <div id="projectbrief">A multi-purpose search widget which works both with offline and online databases(Appbase or ElasticSearch cluster). The search widget contains multiple functionalities like Voice Search, Smart Search, Analytics, etc.</div>
   </td>
  </tr>
  </tbody>
@@ -92,12 +93,22 @@ $(document).ready(function(){initNavTree('functions.html','');});
 <li>addTextChangeListener()
 : <a class="el" href="classcom_1_1harsh_1_1searchwidget_1_1_search_bar.html#a94a0b8d856ae9928e9521c40f88a7bbb">com.harsh.searchwidget.SearchBar</a>
 </li>
+<li>Analytics()
+: <a class="el" href="classcom_1_1harsh_1_1searchwidget_1_1_builder_1_1_analytics.html#a7e4e673ad5e2b7700601aa66f6f56491">com.harsh.searchwidget.Builder.Analytics</a>
+</li>
+<li>areSuggestionsEnabled()
+: <a class="el" href="classcom_1_1harsh_1_1searchwidget_1_1_search_bar.html#a2646cd91312cf375e71c12e5c2d7a597">com.harsh.searchwidget.SearchBar</a>
+</li>
+<li>areSuggestionsVisible()
+: <a class="el" href="classcom_1_1harsh_1_1searchwidget_1_1_search_bar.html#a4ab2610359e61893c734c4f49ca80d66">com.harsh.searchwidget.SearchBar</a>
+</li>
 </ul>
 
 
 <h3><a id="index_b"></a>- b -</h3><ul>
 <li>build()
-: <a class="el" href="classcom_1_1harsh_1_1searchwidget_1_1_builder_1_1_default_client_suggestions.html#a51b7cb9aede78a6e50132a8f08f44a70">com.harsh.searchwidget.Builder.DefaultClientSuggestions</a>
+: <a class="el" href="classcom_1_1harsh_1_1searchwidget_1_1_builder_1_1_analytics.html#ae15c2a3bc758017291a0c139ef340072">com.harsh.searchwidget.Builder.Analytics</a>
+, <a class="el" href="classcom_1_1harsh_1_1searchwidget_1_1_builder_1_1_default_client_suggestions.html#a51b7cb9aede78a6e50132a8f08f44a70">com.harsh.searchwidget.Builder.DefaultClientSuggestions</a>
 , <a class="el" href="classcom_1_1harsh_1_1searchwidget_1_1_builder_1_1_search_prop.html#a67bbcad48925180ce817ea933278fc7d">com.harsh.searchwidget.Builder.SearchProp</a>
 </li>
 <li>buildCustomSuggestions()
@@ -109,6 +120,9 @@ $(document).ready(function(){initNavTree('functions.html','');});
 <h3><a id="index_c"></a>- c -</h3><ul>
 <li>clear()
 : <a class="el" href="classcom_1_1harsh_1_1searchwidget_1_1_adapter_1_1_default_client_suggestions_adapter.html#a965beed8380db5f824e74ca55379b4ab">com.harsh.searchwidget.Adapter.DefaultClientSuggestionsAdapter</a>
+</li>
+<li>clearSuggestions()
+: <a class="el" href="classcom_1_1harsh_1_1searchwidget_1_1_search_bar.html#a4f925bc058d463b2e73c5f355bd3eef3">com.harsh.searchwidget.SearchBar</a>
 </li>
 </ul>
 
@@ -134,6 +148,9 @@ $(document).ready(function(){initNavTree('functions.html','');});
 
 
 <h3><a id="index_g"></a>- g -</h3><ul>
+<li>getAnalytics()
+: <a class="el" href="classcom_1_1harsh_1_1searchwidget_1_1_search_bar.html#a442804a182a1ccd023400f0b84df6d81">com.harsh.searchwidget.SearchBar</a>
+</li>
 <li>getFilter()
 : <a class="el" href="classcom_1_1harsh_1_1searchwidget_1_1_adapter_1_1_suggestions_adapter.html#a842bb93c11013e2294fceb6c64f5ac6e">com.harsh.searchwidget.Adapter.SuggestionsAdapter&lt; S, V extends RecyclerView.ViewHolder &gt;</a>
 </li>
@@ -184,11 +201,8 @@ $(document).ready(function(){initNavTree('functions.html','');});
 <li>isSpeechModeEnabled()
 : <a class="el" href="classcom_1_1harsh_1_1searchwidget_1_1_search_bar.html#a4dfc20bb5d525ab8e1d064bb1b37a01d">com.harsh.searchwidget.SearchBar</a>
 </li>
-<li>isSuggestionsEnabled()
-: <a class="el" href="classcom_1_1harsh_1_1searchwidget_1_1_search_bar.html#add7da317d198e9042ecf93be54ada1f0">com.harsh.searchwidget.SearchBar</a>
-</li>
-<li>isSuggestionsVisible()
-: <a class="el" href="classcom_1_1harsh_1_1searchwidget_1_1_search_bar.html#a109b4c6ae47bfdb48cd5bcd9c8046eb2">com.harsh.searchwidget.SearchBar</a>
+<li>isVoicePermissionGranted()
+: <a class="el" href="classcom_1_1harsh_1_1searchwidget_1_1_search_bar.html#a0e8b1a694afbb68ea0ebec3902fc670d">com.harsh.searchwidget.SearchBar</a>
 </li>
 </ul>
 
@@ -203,11 +217,20 @@ $(document).ready(function(){initNavTree('functions.html','');});
 <li>onClick()
 : <a class="el" href="interfacecom_1_1harsh_1_1searchwidget_1_1_search_bar_1_1_item_click_listener.html#a883a9921ad13662d69e6f6d79e920d27">com.harsh.searchwidget.SearchBar.ItemClickListener</a>
 </li>
+<li>onItemClick()
+: <a class="el" href="interfacecom_1_1harsh_1_1searchwidget_1_1_adapter_1_1_default_client_suggestions_adapter_1_1_recycler_item_click_listener.html#a9ac7c7e53e2a8f05bbdd8639e66a0365">com.harsh.searchwidget.Adapter.DefaultClientSuggestionsAdapter.RecyclerItemClickListener</a>
+</li>
 <li>OnItemClickListener()
 : <a class="el" href="interfacecom_1_1harsh_1_1searchwidget_1_1_adapter_1_1_default_client_suggestions_adapter_1_1_on_item_view_click_listener.html#ae34afcb5d62ce37a1a57f15b530dc0fc">com.harsh.searchwidget.Adapter.DefaultClientSuggestionsAdapter.OnItemViewClickListener</a>
 </li>
+<li>onItemClickLong()
+: <a class="el" href="interfacecom_1_1harsh_1_1searchwidget_1_1_adapter_1_1_default_client_suggestions_adapter_1_1_recycler_item_click_listener.html#abc2103750b92c1f3ad1cd7c1391fb0e2">com.harsh.searchwidget.Adapter.DefaultClientSuggestionsAdapter.RecyclerItemClickListener</a>
+</li>
 <li>onLongClick()
 : <a class="el" href="interfacecom_1_1harsh_1_1searchwidget_1_1_search_bar_1_1_item_click_listener.html#aec146b44b65365f047fa0a5b882a1045">com.harsh.searchwidget.SearchBar.ItemClickListener</a>
+</li>
+<li>onRedirectIconClicked()
+: <a class="el" href="interfacecom_1_1harsh_1_1searchwidget_1_1_adapter_1_1_default_client_suggestions_adapter_1_1_redirect_click_listener.html#a52c75e27cf009e12a93f9bf40b7fa707">com.harsh.searchwidget.Adapter.DefaultClientSuggestionsAdapter.RedirectClickListener</a>
 </li>
 <li>onSearchConfirmed()
 : <a class="el" href="interfacecom_1_1harsh_1_1searchwidget_1_1_search_bar_1_1_on_search_action_listener.html#ae1ad7cab133b433e02929f75da31ec28">com.harsh.searchwidget.SearchBar.OnSearchActionListener</a>
@@ -230,7 +253,7 @@ $(document).ready(function(){initNavTree('functions.html','');});
 
 <h3><a id="index_s"></a>- s -</h3><ul>
 <li>search()
-: <a class="el" href="classcom_1_1harsh_1_1searchwidget_1_1_search_bar.html#a7140d6b5721c999d278bcd83caa1c306">com.harsh.searchwidget.SearchBar</a>
+: <a class="el" href="classcom_1_1harsh_1_1searchwidget_1_1_search_bar.html#a83b100102422eebd3cc5c15987279460">com.harsh.searchwidget.SearchBar</a>
 </li>
 <li>SearchProp()
 : <a class="el" href="classcom_1_1harsh_1_1searchwidget_1_1_builder_1_1_search_prop.html#aeb58060393068cebd917b316e4d1f132">com.harsh.searchwidget.Builder.SearchProp</a>
@@ -243,6 +266,9 @@ $(document).ready(function(){initNavTree('functions.html','');});
 </li>
 <li>setAggregrationState()
 : <a class="el" href="classcom_1_1harsh_1_1searchwidget_1_1_builder_1_1_search_prop.html#a11f7d47ed36880d9f365fc47e9f049b5">com.harsh.searchwidget.Builder.SearchProp</a>
+</li>
+<li>setAnalyticsProps()
+: <a class="el" href="classcom_1_1harsh_1_1searchwidget_1_1_search_bar.html#a6264364df5b59ae99e29b6479dd6d1c7">com.harsh.searchwidget.SearchBar</a>
 </li>
 <li>setAppbaseClient()
 : <a class="el" href="classcom_1_1harsh_1_1searchwidget_1_1_search_bar.html#a57d1a343aeb3207dc19e19e5059cdc1c">com.harsh.searchwidget.SearchBar</a>
@@ -331,14 +357,14 @@ $(document).ready(function(){initNavTree('functions.html','');});
 <li>setNavIconTint()
 : <a class="el" href="classcom_1_1harsh_1_1searchwidget_1_1_search_bar.html#a151333fd9cd8a5aa6f40c667b3d7a7f9">com.harsh.searchwidget.SearchBar</a>
 </li>
-<li>setOnItemClickListener()
-: <a class="el" href="classcom_1_1harsh_1_1searchwidget_1_1_search_bar.html#ab9d0c262b5ef9aaaf4599726d684f8a8">com.harsh.searchwidget.SearchBar</a>
+<li>setOnRedirectClickListener()
+: <a class="el" href="classcom_1_1harsh_1_1searchwidget_1_1_adapter_1_1_default_client_suggestions_adapter.html#aaee1042ddaae470e9bcdd80899de6521">com.harsh.searchwidget.Adapter.DefaultClientSuggestionsAdapter</a>
 </li>
 <li>setOnSearchActionListener()
 : <a class="el" href="classcom_1_1harsh_1_1searchwidget_1_1_search_bar.html#ad88c41771063fe1e84e308104bf79b0e">com.harsh.searchwidget.SearchBar</a>
 </li>
-<li>setOnTextChangeListner()
-: <a class="el" href="classcom_1_1harsh_1_1searchwidget_1_1_search_bar.html#adc98686f8f92648f2227dcb98f899b76">com.harsh.searchwidget.SearchBar</a>
+<li>setOnTextChangeListener()
+: <a class="el" href="classcom_1_1harsh_1_1searchwidget_1_1_search_bar.html#aee3face9840c008c37c273776d176a5f">com.harsh.searchwidget.SearchBar</a>
 </li>
 <li>setPlaceHolderColor()
 : <a class="el" href="classcom_1_1harsh_1_1searchwidget_1_1_search_bar.html#a265dc3c5ba387c16cc116be2f87d0853">com.harsh.searchwidget.SearchBar</a>
@@ -394,11 +420,29 @@ $(document).ready(function(){initNavTree('functions.html','');});
 <li>setTopEntries()
 : <a class="el" href="classcom_1_1harsh_1_1searchwidget_1_1_builder_1_1_search_prop.html#aa12290397e2c2019597267bb5b086605">com.harsh.searchwidget.Builder.SearchProp</a>
 </li>
+<li>setVoicePermissionGranted()
+: <a class="el" href="classcom_1_1harsh_1_1searchwidget_1_1_search_bar.html#ade9997bccbd1a36a5ffbcd736ed7bdac">com.harsh.searchwidget.SearchBar</a>
+</li>
 <li>setWeights()
 : <a class="el" href="classcom_1_1harsh_1_1searchwidget_1_1_builder_1_1_search_prop.html#ac0ecda41b54270c5a47690959450f698">com.harsh.searchwidget.Builder.SearchProp</a>
 </li>
+<li>setXSearchClick()
+: <a class="el" href="classcom_1_1harsh_1_1searchwidget_1_1_builder_1_1_analytics.html#a202819a046bf1ef0110d71721e9d186c">com.harsh.searchwidget.Builder.Analytics</a>
+</li>
+<li>setXSearchClickPosition()
+: <a class="el" href="classcom_1_1harsh_1_1searchwidget_1_1_builder_1_1_analytics.html#a5aa98b75f53912904f00492e4fde0750">com.harsh.searchwidget.Builder.Analytics</a>
+</li>
+<li>setXSearchConversion()
+: <a class="el" href="classcom_1_1harsh_1_1searchwidget_1_1_builder_1_1_analytics.html#a79a6855e873eba9bd1c9c23434445047">com.harsh.searchwidget.Builder.Analytics</a>
+</li>
+<li>setXSearchId()
+: <a class="el" href="classcom_1_1harsh_1_1searchwidget_1_1_builder_1_1_analytics.html#a0173960765823586dfb7afde31562fe1">com.harsh.searchwidget.Builder.Analytics</a>
+</li>
 <li>startSearch()
-: <a class="el" href="classcom_1_1harsh_1_1searchwidget_1_1_search_bar.html#a7935259ceb701aa5d0fa9ddcab290309">com.harsh.searchwidget.SearchBar</a>
+: <a class="el" href="classcom_1_1harsh_1_1searchwidget_1_1_search_bar.html#ab253d43c8be0a15ae572ea2893eeb4ee">com.harsh.searchwidget.SearchBar</a>
+</li>
+<li>startVoiceSearch()
+: <a class="el" href="classcom_1_1harsh_1_1searchwidget_1_1_search_bar.html#ad629089077a27845ac5e8ad6d9519940">com.harsh.searchwidget.SearchBar</a>
 </li>
 </ul>
 
