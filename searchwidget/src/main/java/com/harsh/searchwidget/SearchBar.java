@@ -1394,28 +1394,6 @@ public class SearchBar extends RelativeLayout implements View.OnClickListener,
         return textChangeListener != null;
     }
 
-    /**
-     * Registers listener for different click gestures callbacks
-     * @param itemClickListener Search item click callbacks
-     */
-    public void setOnItemClickListener(final ItemClickListener itemClickListener) {
-        this.itemClickListener = itemClickListener;
-
-        CustomRVItemTouchListener customRVItemTouchListener = new CustomRVItemTouchListener(getContext(), recyclerView, new CustomRVItemTouchListener.RecyclerViewItemClickListener() {
-            @Override
-            public void onClick(View view, int position) {
-                itemClickListener.onClick(view, position, defaultClientSuggestionsAdapter.getItem(position));
-            }
-
-            @Override
-            public void onLongClick(View view, int position) {
-                itemClickListener.onLongClick(view, position, defaultClientSuggestionsAdapter.getItem(position));
-            }
-        });
-
-        recyclerView.addOnItemTouchListener(customRVItemTouchListener);
-    }
-
     private boolean itemClickListenerExists() {
         return this.itemClickListener != null;
     }
@@ -1490,13 +1468,27 @@ public class SearchBar extends RelativeLayout implements View.OnClickListener,
         }
     }
 
+    private static class SearchParams {
+        String queryText;
+        String requestedQuery;
+        ItemClickListener itemClickListener;
+
+        SearchParams(String queryText, String requestedQuery, ItemClickListener itemClickListener) {
+            this.queryText = queryText;
+            this.requestedQuery = requestedQuery;
+            this.itemClickListener = itemClickListener;
+        }
+    }
+
     /**
      * Starts on text change callbacks to be handled by the listener.
      * Call this method after setting TextChangeListener to start its functionality
      *
      * @param searchPropModel Model which is returned on building the search prop
+     * @param itemClickListener Listener to handle callbacks from click and long click events
      */
-    public void startSearch(final SearchPropModel searchPropModel) {
+    public void startSearch(final SearchPropModel searchPropModel, final ItemClickListener itemClickListener) {
+        this.itemClickListener = itemClickListener;
 
         defaultSearchPropModel = searchPropModel;
 
@@ -1513,8 +1505,8 @@ public class SearchBar extends RelativeLayout implements View.OnClickListener,
                     if(isPropSet && isAppbaseClientSet && textChangeListenerExists()) {
                         searchPropModel.setDefaultValue(String.valueOf(s));
                         StartSearching startSearching = new StartSearching();
-                        RequestParams requestParams = new RequestParams(String.valueOf(s), getRequestedQuery(searchPropModel));
-                        startSearching.execute(requestParams);
+                        SearchParams searchParams = new SearchParams(String.valueOf(s), getRequestedQuery(searchPropModel), itemClickListener);
+                        startSearching.execute(searchParams);
                         if(shouldLogQuery)
                             Log.d("QUERY", getRequestedQuery(searchPropModel));
                     } else {
@@ -1535,8 +1527,10 @@ public class SearchBar extends RelativeLayout implements View.OnClickListener,
      * The method first checks whether voice recording permission is given for the device
      * 
      * @param searchPropModel Model which is returned on building the search prop
+     * @param itemClickListener Listener to handle callbacks from click and long click events
      */
-    public void startVoiceSearch(final SearchPropModel searchPropModel) {
+    public void startVoiceSearch(final SearchPropModel searchPropModel, final ItemClickListener itemClickListener) {
+        this.itemClickListener = itemClickListener;
 
         if(speechPermissionGranted) {
 
@@ -1589,8 +1583,8 @@ public class SearchBar extends RelativeLayout implements View.OnClickListener,
                         if(isPropSet && isAppbaseClientSet && textChangeListenerExists()) {
                             searchPropModel.setDefaultValue(resultString);
                             StartSearching startSearching = new StartSearching();
-                            RequestParams requestParams = new RequestParams(resultString, getRequestedQuery(searchPropModel));
-                            startSearching.execute(requestParams);
+                            SearchParams searchParams = new SearchParams(resultString, getRequestedQuery(searchPropModel), itemClickListener);
+                            startSearching.execute(searchParams);
                             if(shouldLogQuery)
                                 Log.d("QUERY", getRequestedQuery(searchPropModel));
                         } else {
@@ -1634,7 +1628,7 @@ public class SearchBar extends RelativeLayout implements View.OnClickListener,
         }
     }
 
-    private class StartSearching extends AsyncTask<RequestParams, Void, Void> {
+    private class StartSearching extends AsyncTask<SearchParams, Void, Void> {
 
         String result = "Query wasn't initiated";
         ArrayList<String> entries;
@@ -1642,10 +1636,12 @@ public class SearchBar extends RelativeLayout implements View.OnClickListener,
         String query;
         ArrayList<String> categories;
         ArrayList<HashMap<String, ArrayList<String>>> extraProperties;
+        ItemClickListener itemClickListener;
 
         @Override
-        protected Void doInBackground(RequestParams... params) {
+        protected Void doInBackground(SearchParams... params) {
             query = params[0].queryText;
+            itemClickListener = params[0].itemClickListener;
 
             try {
                 result = client.prepareSearch(clientType, params[0].requestedQuery).execute().body().string();
@@ -1767,6 +1763,18 @@ public class SearchBar extends RelativeLayout implements View.OnClickListener,
                     public void onRedirectIconClicked(int position, String responseText) {
                         searchEdit.setText(responseText);
                         searchEdit.setSelection(responseText.length());
+                    }
+                });
+
+                defaultClientSuggestionsAdapter.setRecyclerItemClickListener(new DefaultClientSuggestionsAdapter.RecyclerItemClickListener() {
+                    @Override
+                    public void onItemClick(View v, int position) {
+                        itemClickListener.onClick(v, position, defaultClientSuggestionsAdapter.getItem(position));
+                    }
+
+                    @Override
+                    public void onItemClickLong(View v, int position) {
+                        itemClickListener.onLongClick(v, position, defaultClientSuggestionsAdapter.getItem(position));
                     }
                 });
 

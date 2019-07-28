@@ -23,6 +23,7 @@ public class DefaultClientSuggestionsAdapter extends RecyclerView.Adapter<Client
     private boolean searchResultImage;
     private boolean redirectIcon;
     private RedirectClickListener redirectClickListener;
+    private RecyclerItemClickListener recyclerItemClickListener;
     private final int endTextLimit = 15;
 
     /**
@@ -50,6 +51,27 @@ public class DefaultClientSuggestionsAdapter extends RecyclerView.Adapter<Client
          * @param responseText Text of the result selected
          */
         void onRedirectIconClicked(int position, String responseText);
+    }
+
+    /**
+     * Interface for handling click events on search results
+     */
+    public interface RecyclerItemClickListener {
+
+        /**
+         * Invoked when search result is clicked once
+         *
+         * @param v Context view
+         * @param position Position of the result clicked from given search results
+         */
+        void onItemClick(View v, int position);
+
+        /**
+         * Invoked when search result is long pressed
+         * @param v Context view
+         * @param position Position of the result clicked from given search results
+         */
+        void onItemClickLong(View v, int position);
     }
 
     /**
@@ -174,6 +196,21 @@ public class DefaultClientSuggestionsAdapter extends RecyclerView.Adapter<Client
             }
             else
                 holder.category.setVisibility(View.GONE);
+
+        holder.touchListener.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                recyclerItemClickListener.onItemClick(v, position);
+            }
+        });
+
+        holder.touchListener.setOnLongClickListener(new View.OnLongClickListener() {
+            @Override
+            public boolean onLongClick(View v) {
+                recyclerItemClickListener.onItemClickLong(v, position);
+                return true;
+            }
+        });
     }
 
     @Override
@@ -239,6 +276,10 @@ public class DefaultClientSuggestionsAdapter extends RecyclerView.Adapter<Client
      */
     public void setOnRedirectClickListener(RedirectClickListener redirectClickListener) {
         this.redirectClickListener = redirectClickListener;
+    }
+
+    public void setRecyclerItemClickListener(RecyclerItemClickListener recyclerItemClickListener) {
+        this.recyclerItemClickListener = recyclerItemClickListener;
     }
 }
 

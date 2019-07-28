@@ -13,7 +13,6 @@ import com.harsh.searchwidget.Model.SearchPropModel;
 import com.harsh.searchwidget.SearchBar;
 
 import java.util.ArrayList;
-import java.util.HashMap;
 import java.util.concurrent.ExecutionException;
 
 public class MainActivity extends AppCompatActivity {
@@ -86,27 +85,18 @@ public class MainActivity extends AppCompatActivity {
             }
         });
 
-        // Setting click gestures on search results
-        searchBar.setOnItemClickListener(new SearchBar.ItemClickListener() {
+        // Start search
+        searchBar.startSearch(searchPropModel, new SearchBar.ItemClickListener() {
             @Override
             public void onClick(View view, int position, ClientSuggestionsModel result) {
-                Log.d("Search Result", result.getText());
-                HashMap<String, ArrayList<String>> hashMap = result.getExtraProperties();
-                try {
-                    Log.d("Extra property", hashMap.get("image").toString());
-                } catch (NullPointerException e) {
-                    //e.printStackTrace();
-                }
+                Log.d("Click Listener", "CLICKED");
             }
 
             @Override
             public void onLongClick(View view, int position, ClientSuggestionsModel result) {
-                Log.d("Search Result", result.getText());
+                Log.d("Click Listener", "LONG CLICKED");
             }
         });
-
-        // Start search
-        searchBar.startSearch(searchPropModel);
 
         // Sets navigation bar icon inside the search bar
         searchBar.setNavButtonEnabled(true);
@@ -138,7 +128,17 @@ public class MainActivity extends AppCompatActivity {
             public void onButtonClicked(int buttonCode) {
                 if(buttonCode == SearchBar.BUTTON_SPEECH) {
                     if(searchBar.isVoicePermissionGranted()) {
-                        searchBar.startVoiceSearch(searchPropModel);
+                        searchBar.startVoiceSearch(searchPropModel, new SearchBar.ItemClickListener() {
+                            @Override
+                            public void onClick(View view, int position, ClientSuggestionsModel result) {
+                                // Handle item click events
+                            }
+
+                            @Override
+                            public void onLongClick(View view, int position, ClientSuggestionsModel result) {
+                                // Handle long click events
+                            }
+                        });
                     } else {
                         getSupportFragmentManager().beginTransaction().add(new VoicePermissionDialogFragment(), "Recording Permission").commit();
                     }
