@@ -46,7 +46,6 @@ import com.harsh.searchwidget.Adapter.DefaultLocalSuggestionsAdapter;
 import com.harsh.searchwidget.Builder.Analytics;
 import com.harsh.searchwidget.Builder.DefaultClientSuggestions;
 import com.harsh.searchwidget.Builder.SearchProp;
-import com.harsh.searchwidget.Listener.CustomRVItemTouchListener;
 import com.harsh.searchwidget.Model.AnalyticsModel;
 import com.harsh.searchwidget.Model.ClientSuggestionsModel;
 import com.harsh.searchwidget.Adapter.DefaultClientSuggestionsAdapter;
@@ -1380,6 +1379,15 @@ public class SearchBar extends RelativeLayout implements View.OnClickListener,
      */
     public void setLoggingQuery(boolean state) {
         this.shouldLogQuery = state;
+    }
+
+    /**
+     * Provides recycler view for attaching custom adapter
+     *
+     * @return Search results recycler view
+     */
+    public RecyclerView getRecyclerView() {
+        return recyclerView;
     }
 
     /**
