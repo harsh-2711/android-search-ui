@@ -624,6 +624,18 @@ public class SearchBar extends RelativeLayout implements View.OnClickListener,
     }
 
     /**
+     * Sets visibility of search icon in search bar
+     *
+     * @param state Boolean state visibility for search icon
+     */
+    public void setSearchIconVisibility(boolean state) {
+        if(state)
+            this.searchIcon.setVisibility(VISIBLE);
+        else
+            this.searchIcon.setVisibility(GONE);
+    }
+
+    /**
      * Set back arrow icon drawable
      *
      * @param arrowIconResId icon resource id
@@ -641,6 +653,18 @@ public class SearchBar extends RelativeLayout implements View.OnClickListener,
     public void setClearIcon(int clearIconResId) {
         this.clearIconRes = clearIconResId;
         this.clearIcon.setImageResource(clearIconRes);
+    }
+
+    /**
+     * Sets visibility of clear icon in search bar
+     *
+     * @param state Boolean state visibility for clear icon
+     */
+    public void setClearIconVisibility(boolean state) {
+        if(state)
+            this.clearIcon.setVisibility(VISIBLE);
+        else
+            this.clearIcon.setVisibility(GONE);
     }
 
     /**
