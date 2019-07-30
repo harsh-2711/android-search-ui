@@ -1544,6 +1544,10 @@ public class SearchBar extends RelativeLayout implements View.OnClickListener,
                     } else {
                         Log.e("Error", "Please check if Appbase client, Search props and Text change listeners are set properly");
                     }
+                } else {
+                    // TO DO: Make this feature available for custom adapters
+                    if(defaultClientSuggestionsAdapter != null)
+                        defaultClientSuggestionsAdapter.clear();
                 }
             }
 
@@ -1622,6 +1626,10 @@ public class SearchBar extends RelativeLayout implements View.OnClickListener,
                         } else {
                             Log.e("Error", "Please check if Appbase client, Search props and Text change listeners are set properly");
                         }
+                    } else {
+                        // TO DO: Make this feature available for custom adapters
+                        if(defaultClientSuggestionsAdapter != null)
+                            defaultClientSuggestionsAdapter.clear();
                     }
 
                     placeHolder.setText(placeholderText);
