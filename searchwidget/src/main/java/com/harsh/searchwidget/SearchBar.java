@@ -1510,7 +1510,7 @@ public class SearchBar extends RelativeLayout implements View.OnClickListener,
             public void onTextChanged(CharSequence s, int start, int before, int count) {
 
                 if(!String.valueOf(s).equals("")) {
-                    if(isPropSet && isAppbaseClientSet && textChangeListenerExists()) {
+                    if(isPropSet && isAppbaseClientSet) {
                         searchPropModel.setDefaultValue(String.valueOf(s));
                         StartSearching startSearching = new StartSearching();
                         SearchParams searchParams = new SearchParams(String.valueOf(s), getRequestedQuery(searchPropModel), itemClickListener);
@@ -1588,7 +1588,7 @@ public class SearchBar extends RelativeLayout implements View.OnClickListener,
                     searchEdit.setText(resultString);
 
                     if(!resultString.equals("")) {
-                        if(isPropSet && isAppbaseClientSet && textChangeListenerExists()) {
+                        if(isPropSet && isAppbaseClientSet) {
                             searchPropModel.setDefaultValue(resultString);
                             StartSearching startSearching = new StartSearching();
                             SearchParams searchParams = new SearchParams(resultString, getRequestedQuery(searchPropModel), itemClickListener);
@@ -1753,7 +1753,9 @@ public class SearchBar extends RelativeLayout implements View.OnClickListener,
         @Override
         protected void onPostExecute(Void aVoid) {
             super.onPostExecute(aVoid);
-            textChangeListener.onTextChange(result);
+
+            if(textChangeListenerExists())
+                textChangeListener.onTextChange(result);
 
             if(defaultSearchPropModel.isAutoSuggest()) {
                 ArrayList<ClientSuggestionsModel> adapterEntries;
