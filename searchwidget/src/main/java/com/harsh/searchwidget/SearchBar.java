@@ -95,6 +95,7 @@ public class SearchBar extends RelativeLayout implements View.OnClickListener,
     private boolean searchEnabled;
     private boolean suggestionsVisible;
     private boolean isSuggestionsEnabled = true;
+    private boolean isSearchIconVisible = true;
     private SuggestionsAdapter adapter;
     private float destiny;
 
@@ -489,7 +490,10 @@ public class SearchBar extends RelativeLayout implements View.OnClickListener,
         Animation out = AnimationUtils.loadAnimation(getContext(), R.anim.fade_out);
         Animation in = AnimationUtils.loadAnimation(getContext(), R.anim.fade_in_right);
         out.setAnimationListener(this);
-        searchIcon.setVisibility(VISIBLE);
+
+        if(isSearchIconVisible)
+            searchIcon.setVisibility(VISIBLE);
+
         inputContainer.startAnimation(out);
         searchIcon.startAnimation(in);
 
@@ -629,10 +633,14 @@ public class SearchBar extends RelativeLayout implements View.OnClickListener,
      * @param state Boolean state visibility for search icon
      */
     public void setSearchIconVisibility(boolean state) {
-        if(state)
+        if(state) {
             this.searchIcon.setVisibility(VISIBLE);
-        else
+            isSearchIconVisible = true;
+        }
+        else {
             this.searchIcon.setVisibility(GONE);
+            isSearchIconVisible = false;
+        }
     }
 
     /**
