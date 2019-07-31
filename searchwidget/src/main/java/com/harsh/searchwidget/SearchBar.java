@@ -223,6 +223,7 @@ public class SearchBar extends RelativeLayout implements View.OnClickListener,
         recyclerView = findViewById(R.id.recycler);
         recyclerView.setAdapter(adapter);
         recyclerView.setLayoutManager(new LinearLayoutManager(getContext()));
+        recyclerView.setVisibility(GONE);
 
         array.recycle();
 
@@ -485,6 +486,7 @@ public class SearchBar extends RelativeLayout implements View.OnClickListener,
      * Hides search input and close arrow
      */
     public void disableSearch() {
+        recyclerView.setVisibility(GONE);
         animateNavIcon();
         searchEnabled = false;
         Animation out = AnimationUtils.loadAnimation(getContext(), R.anim.fade_out);
@@ -582,6 +584,8 @@ public class SearchBar extends RelativeLayout implements View.OnClickListener,
             defaultClientSuggestionsAdapter.clear();
             animateSuggestions(getListHeight(false), 0);
         }
+
+        recyclerView.setVisibility(GONE);
     }
 
     /**
@@ -1061,12 +1065,18 @@ public class SearchBar extends RelativeLayout implements View.OnClickListener,
                             else
                                 break;
                         }
+
                         defaultClientSuggestionsAdapter = new DefaultClientSuggestionsAdapter(defaultSearchPropModel.getDefaultSuggestions(), "", false, false, true, true, categoriesCount);
                         recyclerView.setAdapter(defaultClientSuggestionsAdapter);
+                        if(defaultClientSuggestionsAdapter.getItemCount() > 0)
+                            recyclerView.setVisibility(VISIBLE);
+                        else
+                            recyclerView.setVisibility(GONE);
                     }
                 }
             }
         } else if (id == R.id.clear) {
+            recyclerView.setVisibility(GONE);
             searchEdit.setText("");
 
             if(defaultClientSuggestionsAdapter != null) {
@@ -1556,6 +1566,7 @@ public class SearchBar extends RelativeLayout implements View.OnClickListener,
                     // TO DO: Make this feature available for custom adapters
                     if(defaultClientSuggestionsAdapter != null)
                         defaultClientSuggestionsAdapter.clear();
+                    recyclerView.setVisibility(GONE);
                 }
             }
 
@@ -1638,6 +1649,7 @@ public class SearchBar extends RelativeLayout implements View.OnClickListener,
                         // TO DO: Make this feature available for custom adapters
                         if(defaultClientSuggestionsAdapter != null)
                             defaultClientSuggestionsAdapter.clear();
+                        recyclerView.setVisibility(GONE);
                     }
 
                     placeHolder.setText(placeholderText);
@@ -1829,6 +1841,10 @@ public class SearchBar extends RelativeLayout implements View.OnClickListener,
                 });
 
                 recyclerView.setAdapter(defaultClientSuggestionsAdapter);
+                if(defaultClientSuggestionsAdapter.getItemCount() > 0)
+                    recyclerView.setVisibility(VISIBLE);
+                else
+                    recyclerView.setVisibility(GONE);
             }
         }
     }

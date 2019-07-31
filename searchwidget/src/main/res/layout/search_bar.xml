@@ -129,7 +129,13 @@
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     app:layoutManager="LinearLayoutManager"
-                    android:background="@drawable/recycler_view_card_background" />
+                    android:background="@drawable/recycler_view_card_background"
+                    android:paddingBottom="12dp"
+                    android:paddingLeft="10dp"
+                    android:paddingStart="10dp"
+                    android:paddingRight="10dp"
+                    android:paddingEnd="10dp"
+                    android:paddingTop="10dp"/>
 
             </RelativeLayout>
 
