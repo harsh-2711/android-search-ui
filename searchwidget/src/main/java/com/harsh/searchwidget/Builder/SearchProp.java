@@ -17,7 +17,7 @@ public class SearchProp {
     private ArrayList<ClientSuggestionsModel> defaultSuggestions = null;
     private boolean highlight = false;
     private ArrayList<String> highlightField = null;
-    private int topEntries = 1;
+    private int topEntries = 2;
     private String queryFormat = "or";
     private String fuzziness = "0";
     private int debounce = 0;
