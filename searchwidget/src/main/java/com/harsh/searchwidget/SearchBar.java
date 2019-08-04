@@ -1390,6 +1390,11 @@ public class SearchBar extends RelativeLayout implements View.OnClickListener,
         return "{ \"size\": \"" + maxSuggestionCount + "\", \"query\":" + query + " }";
     }
 
+    private String getCategoryAggregrationQuery(String categoryField, String aggregrationName) {
+
+        return  "\"aggs\": { \"" + aggregrationName + "\": { \"terms\": { \"field\": \"" + categoryField + "\" } } }";
+    }
+
     /**
      * The query built using search prop parameters and which can be directly passed into Appbase search client
      *
@@ -1402,9 +1407,14 @@ public class SearchBar extends RelativeLayout implements View.OnClickListener,
             defaultQuery = getDefaultQuery(searchPropModel);
             defaultQuery = getWrappedQuery(defaultQuery);
 
-            if (searchPropModel.getAggregrationState()) {
+            if(searchPropModel.getAggregrationState()) {
                 defaultQuery = defaultQuery.substring(0, defaultQuery.length() - 1);
                 defaultQuery = defaultQuery + ", " + getAggsQuery(searchPropModel) + " }";
+            }
+
+            if(searchPropModel.getCategoryField() != null && !searchPropModel.isInPlaceCategory()) {
+                defaultQuery = defaultQuery.substring(0, defaultQuery.length() - 1);
+                defaultQuery = defaultQuery + ", " + getCategoryAggregrationQuery(searchPropModel.getCategoryField(), searchPropModel.getAggregationName()) + " }";
             }
 
             return defaultQuery;
@@ -1697,6 +1707,7 @@ public class SearchBar extends RelativeLayout implements View.OnClickListener,
         ArrayList<String> categories;
         ArrayList<HashMap<String, ArrayList<String>>> extraProperties;
         ItemClickListener itemClickListener;
+        int categoriesCount = 0;
 
         @Override
         protected Void doInBackground(SearchParams... params) {
@@ -1715,12 +1726,38 @@ public class SearchBar extends RelativeLayout implements View.OnClickListener,
             if(defaultSearchPropModel.isAutoSuggest()) {
 
                 JSONObject resultJSON = null;
+                entries = new ArrayList<>();
+
+                if(defaultSearchPropModel.getCategoryField() != null && !defaultSearchPropModel.isInPlaceCategory()) {
+
+                    /* Aggregation for categories */
+                    try {
+                        resultJSON = new JSONObject(result);
+                        JSONObject categoryObject = resultJSON.getJSONObject("aggregations");
+                        JSONObject aggregrationObject = categoryObject.getJSONObject(defaultSearchPropModel.getAggregationName());
+                        JSONArray buckets = aggregrationObject.getJSONArray("buckets");
+
+                        for(int i = 0; i < buckets.length(); i++) {
+
+                            JSONObject obj = buckets.getJSONObject(i);
+                            String key = obj.getString("key");
+
+                            if(i < defaultSearchPropModel.getTopEntries() && query.length() >= 3) {
+                                entries.add(query + " in " + key);
+                                categoriesCount++;
+                            }
+                        }
+                    } catch (JSONException e) {
+                        e.printStackTrace();
+                    }
+                }
+
+                /* Search query */
                 try {
                     resultJSON = new JSONObject(result);
                     JSONObject hits = resultJSON.getJSONObject("hits");
                     JSONArray finalHits = hits.getJSONArray("hits");
 
-                    entries = new ArrayList<>();
                     categories = new ArrayList<>();
                     extraProperties = new ArrayList<>();
                     duplicateCheck = new ArrayList<>();
@@ -1743,7 +1780,7 @@ public class SearchBar extends RelativeLayout implements View.OnClickListener,
 
                         }
 
-                        if(defaultSearchPropModel.getCategoryField() != null) {
+                        if(defaultSearchPropModel.getCategoryField() != null && defaultSearchPropModel.isInPlaceCategory()) {
                             try {
                                 JSONArray categoryArray = source.getJSONArray(defaultSearchPropModel.getCategoryField());
                                 categories.add(categoryArray.get(0).toString());
@@ -1811,9 +1848,13 @@ public class SearchBar extends RelativeLayout implements View.OnClickListener,
 
             if(defaultSearchPropModel.isAutoSuggest()) {
                 ArrayList<ClientSuggestionsModel> adapterEntries;
-                if(defaultSearchPropModel.getCategoryField() != null && categories != null) {
+                if(defaultSearchPropModel.getCategoryField() != null && categories != null && defaultSearchPropModel.isInPlaceCategory()) {
                     adapterEntries = new DefaultClientSuggestions(entries).setCategories(categories).setExtraProperties(extraProperties).build();
                     defaultClientSuggestionsAdapter = new DefaultClientSuggestionsAdapter(adapterEntries, query, defaultSearchPropModel.isHighlight(), defaultSearchPropModel.getHitsState(), defaultSearchPropModel.isSearchResultImage(), defaultSearchPropModel.isRedirectIcon(), defaultSearchPropModel.getTopEntries());
+                }
+                else if(defaultSearchPropModel.getCategoryField() != null && categories != null && !defaultSearchPropModel.isInPlaceCategory()) {
+                    adapterEntries = new DefaultClientSuggestions(entries).build();
+                    defaultClientSuggestionsAdapter = new DefaultClientSuggestionsAdapter(adapterEntries, categoriesCount, query, defaultSearchPropModel.isHighlight(), defaultSearchPropModel.getHitsState(), defaultSearchPropModel.isSearchResultImage(), defaultSearchPropModel.isRedirectIcon());
                 }
                 else {
                     adapterEntries = new DefaultClientSuggestions(entries).build();

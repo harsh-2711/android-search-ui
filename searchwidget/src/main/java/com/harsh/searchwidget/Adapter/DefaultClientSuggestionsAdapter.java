@@ -25,6 +25,7 @@ public class DefaultClientSuggestionsAdapter extends RecyclerView.Adapter<Client
     private RedirectClickListener redirectClickListener;
     private RecyclerItemClickListener recyclerItemClickListener;
     private final int endTextLimit = 15;
+    private int customCategoriesCount;
 
     /**
      * Listener for click on recycler view's items
@@ -93,6 +94,7 @@ public class DefaultClientSuggestionsAdapter extends RecyclerView.Adapter<Client
         this.searchResultImage = searchResultImage;
         this.redirectIcon = redirectIcon;
         this.topEntries = -1;
+        this.customCategoriesCount = -1;
     }
 
     /**
@@ -114,6 +116,29 @@ public class DefaultClientSuggestionsAdapter extends RecyclerView.Adapter<Client
         this.searchResultImage = searchResultImage;
         this.redirectIcon = redirectIcon;
         this.topEntries = topEntries;
+        this.customCategoriesCount = -1;
+    }
+
+    /**
+     * Initiates DefaultClientSuggestionsAdapter with separate results for categories
+     *
+     * @param suggestions List of suggestions to be added
+     * @param customCategoriesCount Number of extra search results to be added on top for categorical search
+     * @param queryText The text which is queried/written in the search bar
+     * @param shouldHighlight Should highlight the queried text or not
+     * @param showHits Should show number of hits or not
+     * @param searchResultImage Whether to show search image/icon before search results/suggestions
+     * @param redirectIcon Whether to show redirect icon for every search result entry
+     */
+    public DefaultClientSuggestionsAdapter(ArrayList<ClientSuggestionsModel> suggestions, int customCategoriesCount, String queryText, boolean shouldHighlight, boolean showHits, boolean searchResultImage, boolean redirectIcon) {
+        this.suggestions = suggestions;
+        this.queryText = queryText;
+        this.shouldHighlight = shouldHighlight;
+        this.showHits = showHits;
+        this.searchResultImage = searchResultImage;
+        this.redirectIcon = redirectIcon;
+        this.topEntries = -1;
+        this.customCategoriesCount = customCategoriesCount;
     }
 
     @Override
@@ -128,7 +153,13 @@ public class DefaultClientSuggestionsAdapter extends RecyclerView.Adapter<Client
 
         boolean shouldRedirect = false;
 
-        if(shouldHighlight) {
+        if(customCategoriesCount != -1 && position < customCategoriesCount) {
+            String firstHalf = suggestions.get(position).getText().substring(0, queryText.length());
+            String secondHalf = suggestions.get(position).getText().substring(queryText.length());
+
+            holder.text.setText(Html.fromHtml("<font color=#00a1ff> <b>" + firstHalf + "</b>" + secondHalf + "</font>"));
+        }
+        else if(shouldHighlight) {
             if(suggestions.get(position).getText().toLowerCase().contains(queryText.toLowerCase())) {
                 int start = suggestions.get(position).getText().toLowerCase().indexOf(queryText.toLowerCase());
                 int end = start + queryText.length();
@@ -172,7 +203,7 @@ public class DefaultClientSuggestionsAdapter extends RecyclerView.Adapter<Client
         else
             holder.searchIcon.setVisibility(View.GONE);
 
-        if(redirectIcon && shouldRedirect) {
+        if(redirectIcon && shouldRedirect && (customCategoriesCount == -1 || position >= customCategoriesCount)) {
             holder.trendingIcon.setVisibility(View.VISIBLE);
             holder.trendingIcon.setImageResource(suggestions.get(position).getTrendingIcon());
         } else

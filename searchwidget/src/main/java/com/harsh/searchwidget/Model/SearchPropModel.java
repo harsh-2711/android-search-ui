@@ -8,6 +8,7 @@ public class SearchPropModel {
     private ArrayList<String> dataField;
     private ArrayList<String> extraFields;
     private String categoryField;
+    private boolean inPlaceCategory;
     private String defaultValue;
     private ArrayList<Integer> weights;
     private boolean autoSuggest;
@@ -25,16 +26,17 @@ public class SearchPropModel {
     private boolean searchResultImage;
     private boolean redirectIcon;
 
-    public SearchPropModel(String componentId, ArrayList<String> dataField, ArrayList<String> extraFields, String categoryField, String defaultValue,
-                           ArrayList<Integer> weights, boolean autoSuggest, ArrayList<ClientSuggestionsModel> defaultSuggestions,
-                           boolean highlight, ArrayList<String> highlightField, int topEntries, String queryFormat,
-                           String fuzziness, int debounce, boolean aggregation, ArrayList<String> aggregationFields, String aggregationName,
+    public SearchPropModel(String componentId, ArrayList<String> dataField, ArrayList<String> extraFields, String categoryField, boolean inPlaceCategory,
+                           String defaultValue, ArrayList<Integer> weights, boolean autoSuggest, ArrayList<ClientSuggestionsModel> defaultSuggestions,
+                           boolean highlight, ArrayList<String> highlightField, int topEntries, String queryFormat, String fuzziness,
+                           int debounce, boolean aggregation, ArrayList<String> aggregationFields, String aggregationName,
                            boolean hits, boolean searchResultImage, boolean redirectIcon) {
 
         this.componentId = componentId;
         this.dataField = dataField;
         this.extraFields = extraFields;
         this.categoryField = categoryField;
+        this.inPlaceCategory = inPlaceCategory;
         this.defaultValue = defaultValue;
         this.weights = weights;
         this.autoSuggest = autoSuggest;
@@ -83,6 +85,14 @@ public class SearchPropModel {
 
     public void setCategoryField(String categoryField) {
         this.categoryField = categoryField;
+    }
+
+    public boolean isInPlaceCategory() {
+        return inPlaceCategory;
+    }
+
+    public void setInPlaceCategory(boolean inPlaceCategory) {
+        this.inPlaceCategory = inPlaceCategory;
     }
 
     public String getDefaultValue() {

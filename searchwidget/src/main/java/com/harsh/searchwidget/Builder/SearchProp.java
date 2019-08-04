@@ -11,6 +11,7 @@ public class SearchProp {
     private ArrayList<String> dataField;
     private ArrayList<String> extraFields = null;
     private String categoryField = null;
+    private boolean inPlaceCategory = true;
     private String defaultValue = null;
     private ArrayList<Integer> weights = null;
     private boolean autoSuggest = true;
@@ -60,6 +61,19 @@ public class SearchProp {
      */
     public SearchProp setCategoryField(String categoryField) {
         this.categoryField = categoryField;
+        return this;
+    }
+
+    /**
+     * Sets position of category text
+     * - true: Below the search result
+     * - false: As a separate result at the top
+     *
+     * @param inPlaceCategory Boolean state for positioning category text
+     * @return
+     */
+    public SearchProp setInPlaceCategory(boolean inPlaceCategory) {
+        this.inPlaceCategory = inPlaceCategory;
         return this;
     }
 
@@ -243,8 +257,8 @@ public class SearchProp {
      * @return Object of SearchPropModel
      */
     public SearchPropModel build() {
-        return new SearchPropModel(componentId, dataField, extraFields, categoryField, defaultValue, weights, autoSuggest,
-                defaultSuggestions, highlight, highlightField, topEntries, queryFormat, fuzziness, debounce,
-                aggregation, aggregationFields, aggregationName, hits, searchResultImage, redirectIcon);
+        return new SearchPropModel(componentId, dataField, extraFields, categoryField, inPlaceCategory, defaultValue,
+                weights, autoSuggest, defaultSuggestions, highlight, highlightField, topEntries, queryFormat, fuzziness,
+                debounce, aggregation, aggregationFields, aggregationName, hits, searchResultImage, redirectIcon);
     }
 }
