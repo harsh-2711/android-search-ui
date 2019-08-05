@@ -1572,12 +1572,12 @@ public class SearchBar extends RelativeLayout implements View.OnClickListener,
 
                 if(!String.valueOf(s).equals("")) {
                     if(isPropSet && isAppbaseClientSet) {
-                        searchPropModel.setDefaultValue(String.valueOf(s));
+                        defaultSearchPropModel.setDefaultValue(String.valueOf(s));
                         StartSearching startSearching = new StartSearching();
-                        SearchParams searchParams = new SearchParams(String.valueOf(s), getRequestedQuery(searchPropModel), itemClickListener);
+                        SearchParams searchParams = new SearchParams(String.valueOf(s), getRequestedQuery(defaultSearchPropModel), itemClickListener);
                         startSearching.execute(searchParams);
                         if(shouldLogQuery)
-                            Log.d("QUERY", getRequestedQuery(searchPropModel));
+                            Log.d("QUERY", getRequestedQuery(defaultSearchPropModel));
                     } else {
                         Log.e("Error", "Please check if Appbase client, Search props and Text change listeners are set properly");
                     }
@@ -1605,6 +1605,7 @@ public class SearchBar extends RelativeLayout implements View.OnClickListener,
      */
     public void startVoiceSearch(final SearchPropModel searchPropModel, final ItemClickListener itemClickListener) {
         this.itemClickListener = itemClickListener;
+        defaultSearchPropModel = searchPropModel;
 
         if(speechPermissionGranted) {
 
@@ -1655,12 +1656,12 @@ public class SearchBar extends RelativeLayout implements View.OnClickListener,
 
                     if(!resultString.equals("")) {
                         if(isPropSet && isAppbaseClientSet) {
-                            searchPropModel.setDefaultValue(resultString);
+                            defaultSearchPropModel.setDefaultValue(resultString);
                             StartSearching startSearching = new StartSearching();
-                            SearchParams searchParams = new SearchParams(resultString, getRequestedQuery(searchPropModel), itemClickListener);
+                            SearchParams searchParams = new SearchParams(resultString, getRequestedQuery(defaultSearchPropModel), itemClickListener);
                             startSearching.execute(searchParams);
                             if(shouldLogQuery)
-                                Log.d("QUERY", getRequestedQuery(searchPropModel));
+                                Log.d("QUERY", getRequestedQuery(defaultSearchPropModel));
                         } else {
                             Log.e("Error", "Please check if Appbase client, Search props and Text change listeners are set properly");
                         }
