@@ -1541,6 +1541,15 @@ public class SearchBar extends RelativeLayout implements View.OnClickListener,
     }
 
     /**
+     * Sets new SearchPropModel which is used by startSearch method
+     *
+     * @param searchPropModel SearchPropModel object
+     */
+    public void setSearchPropModel(SearchPropModel searchPropModel) {
+        defaultSearchPropModel = searchPropModel;
+    }
+
+    /**
      * Starts on text change callbacks to be handled by the listener.
      * Call this method after setting TextChangeListener to start its functionality
      *
