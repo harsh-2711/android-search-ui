@@ -1570,23 +1570,27 @@ public class SearchBar extends RelativeLayout implements View.OnClickListener,
             @Override
             public void onTextChanged(CharSequence s, int start, int before, int count) {
 
-                if(!String.valueOf(s).equals("")) {
-                    if(isPropSet && isAppbaseClientSet) {
-                        defaultSearchPropModel.setDefaultValue(String.valueOf(s));
-                        StartSearching startSearching = new StartSearching();
-                        SearchParams searchParams = new SearchParams(String.valueOf(s), getRequestedQuery(defaultSearchPropModel), itemClickListener);
-                        startSearching.execute(searchParams);
-                        if(shouldLogQuery)
-                            Log.d("QUERY", getRequestedQuery(defaultSearchPropModel));
+                if(recyclerView.getAdapter() instanceof DefaultClientSuggestionsAdapter) {
+
+                    if(!String.valueOf(s).equals("")) {
+                        if(isPropSet && isAppbaseClientSet) {
+                            defaultSearchPropModel.setDefaultValue(String.valueOf(s));
+                            StartSearching startSearching = new StartSearching();
+                            SearchParams searchParams = new SearchParams(String.valueOf(s), getRequestedQuery(defaultSearchPropModel), itemClickListener);
+                            startSearching.execute(searchParams);
+                            if(shouldLogQuery)
+                                Log.d("QUERY", getRequestedQuery(defaultSearchPropModel));
+                        } else {
+                            Log.e("Error", "Please check if Appbase client, Search props and Text change listeners are set properly");
+                        }
                     } else {
-                        Log.e("Error", "Please check if Appbase client, Search props and Text change listeners are set properly");
+                        // TODO: Make this feature available for custom adapters
+                        if(defaultClientSuggestionsAdapter != null)
+                            defaultClientSuggestionsAdapter.clear();
+                        recyclerView.setVisibility(GONE);
                     }
-                } else {
-                    // TO DO: Make this feature available for custom adapters
-                    if(defaultClientSuggestionsAdapter != null)
-                        defaultClientSuggestionsAdapter.clear();
-                    recyclerView.setVisibility(GONE);
                 }
+
             }
 
             @Override
@@ -1654,22 +1658,25 @@ public class SearchBar extends RelativeLayout implements View.OnClickListener,
                     enableSearch();
                     searchEdit.setText(resultString);
 
-                    if(!resultString.equals("")) {
-                        if(isPropSet && isAppbaseClientSet) {
-                            defaultSearchPropModel.setDefaultValue(resultString);
-                            StartSearching startSearching = new StartSearching();
-                            SearchParams searchParams = new SearchParams(resultString, getRequestedQuery(defaultSearchPropModel), itemClickListener);
-                            startSearching.execute(searchParams);
-                            if(shouldLogQuery)
-                                Log.d("QUERY", getRequestedQuery(defaultSearchPropModel));
+                    if(recyclerView.getAdapter() instanceof DefaultClientSuggestionsAdapter) {
+
+                        if(!resultString.equals("")) {
+                            if(isPropSet && isAppbaseClientSet) {
+                                defaultSearchPropModel.setDefaultValue(resultString);
+                                StartSearching startSearching = new StartSearching();
+                                SearchParams searchParams = new SearchParams(resultString, getRequestedQuery(defaultSearchPropModel), itemClickListener);
+                                startSearching.execute(searchParams);
+                                if(shouldLogQuery)
+                                    Log.d("QUERY", getRequestedQuery(defaultSearchPropModel));
+                            } else {
+                                Log.e("Error", "Please check if Appbase client, Search props and Text change listeners are set properly");
+                            }
                         } else {
-                            Log.e("Error", "Please check if Appbase client, Search props and Text change listeners are set properly");
+                            // TO DO: Make this feature available for custom adapters
+                            if(defaultClientSuggestionsAdapter != null)
+                                defaultClientSuggestionsAdapter.clear();
+                            recyclerView.setVisibility(GONE);
                         }
-                    } else {
-                        // TO DO: Make this feature available for custom adapters
-                        if(defaultClientSuggestionsAdapter != null)
-                            defaultClientSuggestionsAdapter.clear();
-                        recyclerView.setVisibility(GONE);
                     }
 
                     placeHolder.setText(placeholderText);
