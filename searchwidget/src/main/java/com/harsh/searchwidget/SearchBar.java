@@ -1570,25 +1570,22 @@ public class SearchBar extends RelativeLayout implements View.OnClickListener,
             @Override
             public void onTextChanged(CharSequence s, int start, int before, int count) {
 
-                if(recyclerView.getAdapter() instanceof DefaultClientSuggestionsAdapter) {
-
-                    if(!String.valueOf(s).equals("")) {
-                        if(isPropSet && isAppbaseClientSet) {
-                            defaultSearchPropModel.setDefaultValue(String.valueOf(s));
-                            StartSearching startSearching = new StartSearching();
-                            SearchParams searchParams = new SearchParams(String.valueOf(s), getRequestedQuery(defaultSearchPropModel), itemClickListener);
-                            startSearching.execute(searchParams);
-                            if(shouldLogQuery)
-                                Log.d("QUERY", getRequestedQuery(defaultSearchPropModel));
-                        } else {
-                            Log.e("Error", "Please check if Appbase client, Search props and Text change listeners are set properly");
-                        }
+                if(!String.valueOf(s).equals("")) {
+                    if(isPropSet && isAppbaseClientSet) {
+                        defaultSearchPropModel.setDefaultValue(String.valueOf(s));
+                        StartSearching startSearching = new StartSearching();
+                        SearchParams searchParams = new SearchParams(String.valueOf(s), getRequestedQuery(defaultSearchPropModel), itemClickListener);
+                        startSearching.execute(searchParams);
+                        if(shouldLogQuery)
+                            Log.d("QUERY", getRequestedQuery(defaultSearchPropModel));
                     } else {
-                        // TODO: Make this feature available for custom adapters
-                        if(defaultClientSuggestionsAdapter != null)
-                            defaultClientSuggestionsAdapter.clear();
-                        recyclerView.setVisibility(GONE);
+                        Log.e("Error", "Please check if Appbase client, Search props and Text change listeners are set properly");
                     }
+                } else {
+                    // TODO: Make this feature available for custom adapters
+                    if(defaultClientSuggestionsAdapter != null)
+                        defaultClientSuggestionsAdapter.clear();
+                    recyclerView.setVisibility(GONE);
                 }
 
             }
@@ -1658,25 +1655,22 @@ public class SearchBar extends RelativeLayout implements View.OnClickListener,
                     enableSearch();
                     searchEdit.setText(resultString);
 
-                    if(recyclerView.getAdapter() instanceof DefaultClientSuggestionsAdapter) {
-
-                        if(!resultString.equals("")) {
-                            if(isPropSet && isAppbaseClientSet) {
-                                defaultSearchPropModel.setDefaultValue(resultString);
-                                StartSearching startSearching = new StartSearching();
-                                SearchParams searchParams = new SearchParams(resultString, getRequestedQuery(defaultSearchPropModel), itemClickListener);
-                                startSearching.execute(searchParams);
-                                if(shouldLogQuery)
-                                    Log.d("QUERY", getRequestedQuery(defaultSearchPropModel));
-                            } else {
-                                Log.e("Error", "Please check if Appbase client, Search props and Text change listeners are set properly");
-                            }
+                    if(!resultString.equals("")) {
+                        if(isPropSet && isAppbaseClientSet) {
+                            defaultSearchPropModel.setDefaultValue(resultString);
+                            StartSearching startSearching = new StartSearching();
+                            SearchParams searchParams = new SearchParams(resultString, getRequestedQuery(defaultSearchPropModel), itemClickListener);
+                            startSearching.execute(searchParams);
+                            if(shouldLogQuery)
+                                Log.d("QUERY", getRequestedQuery(defaultSearchPropModel));
                         } else {
-                            // TO DO: Make this feature available for custom adapters
-                            if(defaultClientSuggestionsAdapter != null)
-                                defaultClientSuggestionsAdapter.clear();
-                            recyclerView.setVisibility(GONE);
+                            Log.e("Error", "Please check if Appbase client, Search props and Text change listeners are set properly");
                         }
+                    } else {
+                        // TO DO: Make this feature available for custom adapters
+                        if(defaultClientSuggestionsAdapter != null)
+                            defaultClientSuggestionsAdapter.clear();
+                        recyclerView.setVisibility(GONE);
                     }
 
                     placeHolder.setText(placeholderText);
@@ -1863,46 +1857,49 @@ public class SearchBar extends RelativeLayout implements View.OnClickListener,
             if(textChangeListenerExists())
                 textChangeListener.onTextChange(result);
 
-            if(defaultSearchPropModel.isAutoSuggest()) {
-                ArrayList<ClientSuggestionsModel> adapterEntries;
-                if(defaultSearchPropModel.getCategoryField() != null && categories != null && defaultSearchPropModel.isInPlaceCategory()) {
-                    adapterEntries = new DefaultClientSuggestions(entries).setCategories(categories).setExtraProperties(extraProperties).build();
-                    defaultClientSuggestionsAdapter = new DefaultClientSuggestionsAdapter(adapterEntries, query, defaultSearchPropModel.isHighlight(), defaultSearchPropModel.getHitsState(), defaultSearchPropModel.isSearchResultImage(), defaultSearchPropModel.isRedirectIcon(), defaultSearchPropModel.getTopEntries());
-                }
-                else if(defaultSearchPropModel.getCategoryField() != null && categories != null && !defaultSearchPropModel.isInPlaceCategory()) {
-                    adapterEntries = new DefaultClientSuggestions(entries).build();
-                    defaultClientSuggestionsAdapter = new DefaultClientSuggestionsAdapter(adapterEntries, categoriesCount, query, defaultSearchPropModel.isHighlight(), defaultSearchPropModel.getHitsState(), defaultSearchPropModel.isSearchResultImage(), defaultSearchPropModel.isRedirectIcon());
-                }
-                else {
-                    adapterEntries = new DefaultClientSuggestions(entries).build();
-                    defaultClientSuggestionsAdapter = new DefaultClientSuggestionsAdapter(adapterEntries, query, defaultSearchPropModel.isHighlight(), defaultSearchPropModel.getHitsState(), defaultSearchPropModel.isSearchResultImage(), defaultSearchPropModel.isRedirectIcon());
-                }
+            if(recyclerView.getAdapter() instanceof DefaultClientSuggestionsAdapter) {
 
-                defaultClientSuggestionsAdapter.setOnRedirectClickListener(new DefaultClientSuggestionsAdapter.RedirectClickListener() {
-                    @Override
-                    public void onRedirectIconClicked(int position, String responseText) {
-                        searchEdit.setText(responseText);
-                        searchEdit.setSelection(responseText.length());
+                if(defaultSearchPropModel.isAutoSuggest()) {
+                    ArrayList<ClientSuggestionsModel> adapterEntries;
+                    if(defaultSearchPropModel.getCategoryField() != null && categories != null && defaultSearchPropModel.isInPlaceCategory()) {
+                        adapterEntries = new DefaultClientSuggestions(entries).setCategories(categories).setExtraProperties(extraProperties).build();
+                        defaultClientSuggestionsAdapter = new DefaultClientSuggestionsAdapter(adapterEntries, query, defaultSearchPropModel.isHighlight(), defaultSearchPropModel.getHitsState(), defaultSearchPropModel.isSearchResultImage(), defaultSearchPropModel.isRedirectIcon(), defaultSearchPropModel.getTopEntries());
                     }
-                });
-
-                defaultClientSuggestionsAdapter.setRecyclerItemClickListener(new DefaultClientSuggestionsAdapter.RecyclerItemClickListener() {
-                    @Override
-                    public void onItemClick(View v, int position) {
-                        itemClickListener.onClick(v, position, defaultClientSuggestionsAdapter.getItem(position));
+                    else if(defaultSearchPropModel.getCategoryField() != null && categories != null && !defaultSearchPropModel.isInPlaceCategory()) {
+                        adapterEntries = new DefaultClientSuggestions(entries).build();
+                        defaultClientSuggestionsAdapter = new DefaultClientSuggestionsAdapter(adapterEntries, categoriesCount, query, defaultSearchPropModel.isHighlight(), defaultSearchPropModel.getHitsState(), defaultSearchPropModel.isSearchResultImage(), defaultSearchPropModel.isRedirectIcon());
+                    }
+                    else {
+                        adapterEntries = new DefaultClientSuggestions(entries).build();
+                        defaultClientSuggestionsAdapter = new DefaultClientSuggestionsAdapter(adapterEntries, query, defaultSearchPropModel.isHighlight(), defaultSearchPropModel.getHitsState(), defaultSearchPropModel.isSearchResultImage(), defaultSearchPropModel.isRedirectIcon());
                     }
 
-                    @Override
-                    public void onItemClickLong(View v, int position) {
-                        itemClickListener.onLongClick(v, position, defaultClientSuggestionsAdapter.getItem(position));
-                    }
-                });
+                    defaultClientSuggestionsAdapter.setOnRedirectClickListener(new DefaultClientSuggestionsAdapter.RedirectClickListener() {
+                        @Override
+                        public void onRedirectIconClicked(int position, String responseText) {
+                            searchEdit.setText(responseText);
+                            searchEdit.setSelection(responseText.length());
+                        }
+                    });
 
-                recyclerView.setAdapter(defaultClientSuggestionsAdapter);
-                if(defaultClientSuggestionsAdapter.getItemCount() > 0)
-                    recyclerView.setVisibility(VISIBLE);
-                else
-                    recyclerView.setVisibility(GONE);
+                    defaultClientSuggestionsAdapter.setRecyclerItemClickListener(new DefaultClientSuggestionsAdapter.RecyclerItemClickListener() {
+                        @Override
+                        public void onItemClick(View v, int position) {
+                            itemClickListener.onClick(v, position, defaultClientSuggestionsAdapter.getItem(position));
+                        }
+
+                        @Override
+                        public void onItemClickLong(View v, int position) {
+                            itemClickListener.onLongClick(v, position, defaultClientSuggestionsAdapter.getItem(position));
+                        }
+                    });
+
+                    recyclerView.setAdapter(defaultClientSuggestionsAdapter);
+                    if(defaultClientSuggestionsAdapter.getItemCount() > 0)
+                        recyclerView.setVisibility(VISIBLE);
+                    else
+                        recyclerView.setVisibility(GONE);
+                }
             }
         }
     }
