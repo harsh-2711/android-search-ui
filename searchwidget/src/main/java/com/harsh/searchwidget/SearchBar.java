@@ -153,6 +153,8 @@ public class SearchBar extends RelativeLayout implements View.OnClickListener,
     private boolean shouldLogQuery = false;
     private boolean speechPermissionGranted = false;
 
+    private TextWatcher textWatcher;
+
     private DefaultClientSuggestionsAdapter defaultClientSuggestionsAdapter;
     private RecyclerView recyclerView;
 
@@ -1019,10 +1021,21 @@ public class SearchBar extends RelativeLayout implements View.OnClickListener,
     /**
      * Set search text
      *
-     * @param text text
+     * @param text Text value
      */
     public void setText(String text) {
         searchEdit.setText(text);
+    }
+
+    /**
+     * Sets text in search bar without activating onTextChangeListener
+     *
+     * @param text Text value
+     */
+    public void setTextWithoutActivatingTextWatcher(String text) {
+        searchEdit.removeTextChangedListener(this.textWatcher);
+        searchEdit.setText(text);
+        searchEdit.addTextChangedListener(this.textWatcher);
     }
 
     /**
@@ -1032,6 +1045,7 @@ public class SearchBar extends RelativeLayout implements View.OnClickListener,
      */
     public void addTextChangeListener(TextWatcher textWatcher) {
         searchEdit.addTextChangedListener(textWatcher);
+        this.textWatcher = textWatcher;
     }
 
     public EditText getSearchEditText() {
@@ -1561,7 +1575,7 @@ public class SearchBar extends RelativeLayout implements View.OnClickListener,
 
         defaultSearchPropModel = searchPropModel;
 
-        searchEdit.addTextChangedListener(new TextWatcher() {
+        TextWatcher textWatcher = new TextWatcher() {
             @Override
             public void beforeTextChanged(CharSequence s, int start, int count, int after) {
 
@@ -1594,7 +1608,10 @@ public class SearchBar extends RelativeLayout implements View.OnClickListener,
             public void afterTextChanged(Editable s) {
 
             }
-        });
+        };
+
+        searchEdit.addTextChangedListener(textWatcher);
+        this.textWatcher = textWatcher;
     }
 
     /**
