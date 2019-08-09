@@ -8,14 +8,16 @@ public class ClientSuggestionsModel {
 
     private String text;
     private String category;
+    private boolean isCategoricalSearch;
     private String hits;
     private int searchIcon;
     private int trendingIcon;
     private HashMap<String, ArrayList<String>> extraProperties;
 
-    public ClientSuggestionsModel(String text, String category, String hits, int searchIcon, int trendingIcon, HashMap<String, ArrayList<String>> extraProperties) {
+    public ClientSuggestionsModel(String text, String category, boolean isCategoricalSearch, String hits, int searchIcon, int trendingIcon, HashMap<String, ArrayList<String>> extraProperties) {
         this.text = text;
         this.category = category;
+        this.isCategoricalSearch = isCategoricalSearch;
         this.hits = hits;
         this.searchIcon = searchIcon;
         this.trendingIcon = trendingIcon;
@@ -36,6 +38,14 @@ public class ClientSuggestionsModel {
 
     public void setCategory(String category) {
         this.category = category;
+    }
+
+    public boolean isCategoricalSearch() {
+        return isCategoricalSearch;
+    }
+
+    public void setCategoricalSearch(boolean categoricalSearch) {
+        isCategoricalSearch = categoricalSearch;
     }
 
     public String getHits() {

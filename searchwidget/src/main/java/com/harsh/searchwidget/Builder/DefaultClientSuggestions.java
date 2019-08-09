@@ -11,6 +11,7 @@ public class DefaultClientSuggestions {
     ArrayList<String> suggestions;
     ArrayList<HashMap<String, ArrayList<String>>> extraProperties = null;
     ArrayList<String> categories = null;
+    ArrayList<Boolean> categoricalSearch = null;
     ArrayList<Integer> searchIcon = null;
     ArrayList<Integer> trendingIcon = null;
     ArrayList<String> hits = null;
@@ -43,6 +44,11 @@ public class DefaultClientSuggestions {
      */
     public DefaultClientSuggestions setCategories(ArrayList<String> categories) {
         this.categories = categories;
+        return this;
+    }
+
+    public DefaultClientSuggestions setCategoricalSearch(ArrayList<Boolean> categoricalSearch) {
+        this.categoricalSearch = categoricalSearch;
         return this;
     }
 
@@ -88,6 +94,7 @@ public class DefaultClientSuggestions {
 
         ArrayList<ClientSuggestionsModel> suggestions = new ArrayList<>();
         String category;
+        boolean isCategoricalSearch;
         String hit;
         int searchicon;
         int trendingicon;
@@ -103,6 +110,15 @@ public class DefaultClientSuggestions {
                 }
                 else
                     category = null;
+            }
+
+            if(this.categoricalSearch == null)
+                isCategoricalSearch = false;
+            else {
+                if(this.categoricalSearch.size() > i)
+                    isCategoricalSearch = this.categoricalSearch.get(i);
+                else
+                    isCategoricalSearch = false;
             }
 
             if(this.hits == null)
@@ -145,7 +161,7 @@ public class DefaultClientSuggestions {
                     extraProperty = null;
             }
 
-            suggestions.add(new ClientSuggestionsModel(this.suggestions.get(i), category, hit, searchicon, trendingicon, extraProperty));
+            suggestions.add(new ClientSuggestionsModel(this.suggestions.get(i), category, isCategoricalSearch, hit, searchicon, trendingicon, extraProperty));
         }
 
         return suggestions;

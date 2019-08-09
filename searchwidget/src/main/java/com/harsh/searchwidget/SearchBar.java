@@ -1596,7 +1596,6 @@ public class SearchBar extends RelativeLayout implements View.OnClickListener,
                         Log.e("Error", "Please check if Appbase client, Search props and Text change listeners are set properly");
                     }
                 } else {
-                    // TODO: Make this feature available for custom adapters
                     if(defaultClientSuggestionsAdapter != null)
                         defaultClientSuggestionsAdapter.clear();
                     recyclerView.setVisibility(GONE);
@@ -1733,6 +1732,7 @@ public class SearchBar extends RelativeLayout implements View.OnClickListener,
         ArrayList<String> duplicateCheck;
         String query;
         ArrayList<String> categories;
+        ArrayList<Boolean> categoricalSearch;
         ArrayList<HashMap<String, ArrayList<String>>> extraProperties;
         ItemClickListener itemClickListener;
         int categoriesCount = 0;
@@ -1755,6 +1755,7 @@ public class SearchBar extends RelativeLayout implements View.OnClickListener,
 
                 JSONObject resultJSON = null;
                 entries = new ArrayList<>();
+                categoricalSearch = new ArrayList<>();
 
                 if(defaultSearchPropModel.getCategoryField() != null && !defaultSearchPropModel.isInPlaceCategory()) {
 
@@ -1772,6 +1773,7 @@ public class SearchBar extends RelativeLayout implements View.OnClickListener,
 
                             if(i < defaultSearchPropModel.getTopEntries() && query.length() >= 3) {
                                 entries.add(query + " in " + key);
+                                categoricalSearch.add(true);
                                 categoriesCount++;
                             }
                         }
@@ -1800,6 +1802,8 @@ public class SearchBar extends RelativeLayout implements View.OnClickListener,
                                 String entry = source.getString(defaultSearchPropModel.getDataField().get(j));
                                 if(!duplicateCheck.contains(entry.toLowerCase())) {
                                     entries.add(entry);
+                                    categoricalSearch.add(false);
+
                                     duplicateCheck.add(entry.toLowerCase());
                                 }
                             } catch (JSONException e) {
@@ -1879,15 +1883,15 @@ public class SearchBar extends RelativeLayout implements View.OnClickListener,
                 if(defaultSearchPropModel.isAutoSuggest()) {
                     ArrayList<ClientSuggestionsModel> adapterEntries;
                     if(defaultSearchPropModel.getCategoryField() != null && categories != null && defaultSearchPropModel.isInPlaceCategory()) {
-                        adapterEntries = new DefaultClientSuggestions(entries).setCategories(categories).setExtraProperties(extraProperties).build();
+                        adapterEntries = new DefaultClientSuggestions(entries).setCategories(categories).setCategoricalSearch(categoricalSearch).setExtraProperties(extraProperties).build();
                         defaultClientSuggestionsAdapter = new DefaultClientSuggestionsAdapter(adapterEntries, query, defaultSearchPropModel.isHighlight(), defaultSearchPropModel.getHitsState(), defaultSearchPropModel.isSearchResultImage(), defaultSearchPropModel.isRedirectIcon(), defaultSearchPropModel.getTopEntries());
                     }
                     else if(defaultSearchPropModel.getCategoryField() != null && categories != null && !defaultSearchPropModel.isInPlaceCategory()) {
-                        adapterEntries = new DefaultClientSuggestions(entries).build();
+                        adapterEntries = new DefaultClientSuggestions(entries).setCategoricalSearch(categoricalSearch).build();
                         defaultClientSuggestionsAdapter = new DefaultClientSuggestionsAdapter(adapterEntries, categoriesCount, query, defaultSearchPropModel.isHighlight(), defaultSearchPropModel.getHitsState(), defaultSearchPropModel.isSearchResultImage(), defaultSearchPropModel.isRedirectIcon());
                     }
                     else {
-                        adapterEntries = new DefaultClientSuggestions(entries).build();
+                        adapterEntries = new DefaultClientSuggestions(entries).setCategoricalSearch(categoricalSearch).build();
                         defaultClientSuggestionsAdapter = new DefaultClientSuggestionsAdapter(adapterEntries, query, defaultSearchPropModel.isHighlight(), defaultSearchPropModel.getHitsState(), defaultSearchPropModel.isSearchResultImage(), defaultSearchPropModel.isRedirectIcon());
                     }
 

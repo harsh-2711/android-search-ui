@@ -91,11 +91,17 @@ public class MainActivity extends AppCompatActivity {
             @Override
             public void onClick(View view, int position, ClientSuggestionsModel result) {
                 Log.d("Click Listener", "CLICKED");
+
+                // Checking if it should be categorical search
+                Log.d("Categorical Search", String.valueOf(result.isCategoricalSearch()));
             }
 
             @Override
             public void onLongClick(View view, int position, ClientSuggestionsModel result) {
                 Log.d("Click Listener", "LONG CLICKED");
+
+                // Checking if it should be categorical search
+                Log.d("Categorical Search", String.valueOf(result.isCategoricalSearch()));
             }
         });
 
