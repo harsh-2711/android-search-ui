@@ -1504,7 +1504,7 @@ public class SearchBar extends RelativeLayout implements View.OnClickListener,
             }
         }
 
-        return "{ \"bool\": { \"should\": [ { \"multi_match\": { \"query\": \"" + value +  "\", " +
+        return "{ \"bool\": { \"must\": [ { \"multi_match\": { \"query\": \"" + value +  "\", " +
                 "\"fields\": [" + fields + "], \"type\": \"best_fields\", \"operator\": \"or\", " +
                 "\"fuzziness\": \"" + fuzziness + "\" } }, { \"multi_match\": { \"query\": \"" + value + "\", " +
                 "\"fields\": [ " + fields + " ], \"type\": \"phrase_prefix\", \"operator\": \"or\" } } ], " +
