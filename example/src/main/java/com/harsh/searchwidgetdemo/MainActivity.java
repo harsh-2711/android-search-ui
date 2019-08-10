@@ -93,7 +93,17 @@ public class MainActivity extends AppCompatActivity {
                 Log.d("Click Listener", "CLICKED");
 
                 // Checking if it should be categorical search
-                Log.d("Categorical Search", String.valueOf(result.isCategoricalSearch()));
+                if(result.isCategoricalSearch()) {
+                    String category = result.getText().substring(searchBar.getText().length() + 4);
+                    try {
+                        String response = searchBar.search(searchPropModel, searchBar.getText(), category, true);
+                        Log.d("Categorical Search", response);
+                    } catch (ExecutionException e) {
+                        e.printStackTrace();
+                    } catch (InterruptedException e) {
+                        e.printStackTrace();
+                    }
+                }
             }
 
             @Override

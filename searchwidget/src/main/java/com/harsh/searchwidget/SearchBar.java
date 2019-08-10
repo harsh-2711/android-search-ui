@@ -1277,16 +1277,49 @@ public class SearchBar extends RelativeLayout implements View.OnClickListener,
     /**
      * Gives response for the requested query using Appbase client
      *
-     * @param query JSON structured body
+     * @param searchPropModel Model which is returned on building the search prop
+     * @param query Query Text
      * @return Response received for the requested query
+     *
      * @throws ExecutionException
      * @throws InterruptedException
      */
     public String search(SearchPropModel searchPropModel, String query) throws ExecutionException, InterruptedException {
 
+        searchPropModel.setDefaultValue(query);
+
         RequestParams requestParams = new RequestParams(query, getRequestedQuery(searchPropModel));
         SingleResponseSearch singleResponseSearch = new SingleResponseSearch();
         return singleResponseSearch.execute(requestParams).get();
+    }
+
+    /**
+     * Gives response for the requested query using Appbase client
+     *
+     * @param searchPropModel Model which is returned on building the search prop
+     * @param query Query Text
+     * @param category Category to search in
+     * @param isCategoricalSearch If the search query should be categorical
+     * @return Response received for the requested query
+     *
+     * @throws ExecutionException
+     * @throws InterruptedException
+     */
+    public String search(SearchPropModel searchPropModel, String query, String category, boolean isCategoricalSearch) throws ExecutionException, InterruptedException {
+
+        searchPropModel.setDefaultValue(query);
+
+        if(isCategoricalSearch) {
+            Log.d("Query", getCategoricalSearchQuery(searchPropModel, category));
+            RequestParams requestParams = new RequestParams(query, getCategoricalSearchQuery(searchPropModel, category));
+            SingleResponseSearch singleResponseSearch = new SingleResponseSearch();
+            return singleResponseSearch.execute(requestParams).get();
+        }
+        else {
+            RequestParams requestParams = new RequestParams(query, getRequestedQuery(searchPropModel));
+            SingleResponseSearch singleResponseSearch = new SingleResponseSearch();
+            return singleResponseSearch.execute(requestParams).get();
+        }
     }
 
     /**
@@ -1431,6 +1464,77 @@ public class SearchBar extends RelativeLayout implements View.OnClickListener,
                 defaultQuery = defaultQuery + ", " + getCategoryAggregrationQuery(searchPropModel.getCategoryField(), searchPropModel.getAggregationName()) + " }";
             }
 
+            return defaultQuery;
+
+        } else {
+            Log.e("Error", "Please set search prop properly");
+            return "";
+        }
+    }
+
+    private String getCategoricalQuery(SearchPropModel searchPropModel) {
+
+        String value = searchPropModel.getDefaultValue() != null ? searchPropModel.getDefaultValue() : "";
+        String fuzziness = searchPropModel.getFuzziness() != null ? searchPropModel.getFuzziness() : "0";
+        String fields = "";
+
+        if(searchPropModel.getWeights() != null) {
+            if(searchPropModel.getWeights().size() == searchPropModel.getDataField().size()) {
+                for(int i = 0; i < searchPropModel.getDataField().size(); i++) {
+                    if(i == searchPropModel.getDataField().size()-1)
+                        fields = fields + "\"" + searchPropModel.getDataField().get(i) + "^" + searchPropModel.getWeights().get(i) + "\"";
+                    else
+                        fields = fields + "\"" + searchPropModel.getDataField().get(i) + "^" + searchPropModel.getWeights().get(i) + "\",";
+                }
+            } else {
+                Log.d("Size Error", "Size of weights array doesn't match size of dataFields array");
+                for(int i = 0; i < searchPropModel.getDataField().size(); i++) {
+                    if(i == searchPropModel.getDataField().size()-1)
+                        fields = fields + "\"" + searchPropModel.getDataField().get(i) + "\"";
+                    else
+                        fields = fields + "\"" + searchPropModel.getDataField().get(i) + "\",";
+                }
+            }
+        } else {
+            for(int i = 0; i < searchPropModel.getDataField().size(); i++) {
+                if(i == searchPropModel.getDataField().size()-1)
+                    fields = fields + "\"" + searchPropModel.getDataField().get(i) + "\"";
+                else
+                    fields = fields + "\"" + searchPropModel.getDataField().get(i) + "\",";
+            }
+        }
+
+        return "{ \"bool\": { \"should\": [ { \"multi_match\": { \"query\": \"" + value +  "\", " +
+                "\"fields\": [" + fields + "], \"type\": \"best_fields\", \"operator\": \"or\", " +
+                "\"fuzziness\": \"" + fuzziness + "\" } }, { \"multi_match\": { \"query\": \"" + value + "\", " +
+                "\"fields\": [ " + fields + " ], \"type\": \"phrase_prefix\", \"operator\": \"or\" } } ], " +
+                "\"minimum_should_match\": \"1\" } }";
+    }
+
+    private String getTermsQuery(SearchPropModel searchPropModel, String category) {
+
+        String term =searchPropModel.getCategoryField();
+
+        return "{ \"term\": { \"" + term + "\": \"" + category + "\" } }";
+    }
+
+    private String getCustomWrapper(SearchPropModel searchPropModel, String category) {
+
+        return "{ \"bool\": { \"must\": [ { \"bool\": { \"should\": [ [ " + getCategoricalQuery(searchPropModel) + "" +
+                ", " + getTermsQuery(searchPropModel, category) + " ] ], \"minimum_should_match\": \"1\" } } ] } }";
+    }
+
+    /**
+     * Search query for making a categorical search
+     *
+     * @param searchPropModel Model which is returned on building the search prop
+     * @return Returns the query built by search prop parameters
+     */
+    public String getCategoricalSearchQuery(SearchPropModel searchPropModel, String category) {
+
+        if(isPropSet) {
+            defaultQuery = " { \"bool\": { \"must\": [ " + getCustomWrapper(searchPropModel, category) + " ] } }";
+            defaultQuery = getWrappedQuery(defaultQuery);
             return defaultQuery;
 
         } else {
