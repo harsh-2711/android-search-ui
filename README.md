@@ -54,7 +54,7 @@ public class MainActivity extends AppCompatActivity {
 }
 ```
 
-### Example
+### Examples
 
 #### Classic Search Bar
 
@@ -179,7 +179,11 @@ public class MainActivity extends AppCompatActivity {
 }
 ```
 
-For more detailed examples, checkout [MainActivity.java](https://github.com/harsh-2711/appbase-search-widget/blob/master/example/src/main/java/com/example/searchwidgetdemo/MainActivity.java) file in [example](https://github.com/harsh-2711/appbase-search-widget/tree/master/example) app
+For more detailed examples, checkout -
+
+1. [MainActivity.java](https://github.com/harsh-2711/appbase-search-widget/blob/master/example/src/main/java/com/example/searchwidgetdemo/MainActivity.java) file in [example](https://github.com/harsh-2711/appbase-search-widget/tree/master/example) app - Extended code of the above example including usage of all the main functions available with the Search UI component
+2. [MagicPrint App](https://github.com/harsh-2711/Appbase_ECommerce_Sample) - The app demonstrates the use of search functionality of the Search UI component on large scale and huge database apps.
+3. [KitchenSink App](https://github.com/harsh-2711/KitchenSinkApp) - An Android app which demonstrates every feature available in the [android-search-ui](https://github.com/harsh-2711/android-search-ui) library in detail with reconfigurable codebase for manual testing
 
 #### Quick Fixes
 
