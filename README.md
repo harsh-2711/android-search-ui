@@ -97,7 +97,6 @@ public class MainActivity extends AppCompatActivity {
                         Toast.makeText(getApplicationContext(), "Open Navigation Drawer", Toast.LENGTH_SHORT).show();
                         break;
                     case SearchBar.BUTTON_SPEECH:
-                        // Yet to come
                         Toast.makeText(getApplicationContext(), "Start voice recognition module", Toast.LENGTH_SHORT).show();
                         break;
                 }
@@ -215,4 +214,4 @@ in the app level dependencies
 
 ### Documentation
 
-The documentation for appbase-search-widget library is hosted on [GitHub pages](https://harsh-2711.github.io/appbase-search-widget/)
+The documentation for appbase-search-widget library is hosted on [GitHub pages](https://harsh-2711.github.io/android-search-ui/)
