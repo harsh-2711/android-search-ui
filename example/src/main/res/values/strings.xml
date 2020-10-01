@@ -1,3 +1,14 @@
 <resources>
     <string name="app_name">Search Widget Demo</string>
+    <string name="search_hint">Search Books</string>
+    <string name="search_placeholder">Search</string>
+
+    <string name="first_default_suggestion">Puma T-Shirt</string>
+    <string name="second_default_suggestion">Apple iPhone XS</string>
+    <string name="third_default_suggestion">Nike Trousers</string>
+
+    <string name="first_default_category">T-Shirt</string>
+    <string name="second_default_category">Mobiles</string>
+
+
 </resources>

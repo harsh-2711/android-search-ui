@@ -10,8 +10,8 @@
         android:id="@+id/searchBar"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        app:maxSuggestionsCount="10"
-        app:hint="Search Books"
-        app:placeholder="Search" />
+        app:maxSuggestionsCount="@integer/max_suggestions_count"
+        app:hint="@string/search_hint"
+        app:placeholder="@string/search_placeholder" />
 
 </LinearLayout>

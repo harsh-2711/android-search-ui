@@ -14,4 +14,9 @@
     <string name="permission_button_allow">Allow microphone access</string>
     <string name="permission_button_reject">No</string>
 
+
+    <string name="search_result_label">Search Result</string>
+    <string name="category_label">in Category</string>
+    <string name="last_request_label">Last request</string>
+
 </resources>

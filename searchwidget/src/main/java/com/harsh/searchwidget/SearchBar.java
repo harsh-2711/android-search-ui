@@ -252,7 +252,7 @@ public class SearchBar extends RelativeLayout implements View.OnClickListener,
         navIcon.setOnClickListener(this);
 
         // Placeholder
-        placeholderText = "Search Widget";
+        placeholderText = "@string/app_name";
 
         postSetup();
     }
