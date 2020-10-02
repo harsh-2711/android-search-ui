@@ -1,2 +1,1 @@
-include ':mylibrary'
 include ':example', ':searchwidget'
