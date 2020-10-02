@@ -52,4 +52,6 @@
     <color name="blue_light">#01adff</color>
     <color name="blue_dark">#3369e6</color>
 
+    <color name="black">@android:color/black</color>
+
 </resources>

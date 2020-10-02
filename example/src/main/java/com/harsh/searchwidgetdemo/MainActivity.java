@@ -47,14 +47,14 @@ public class MainActivity extends AppCompatActivity {
 
         // Making list of default suggestions
         ArrayList<String> suggestions = new ArrayList<>();
-        suggestions.add("Puma T-Shirt");
-        suggestions.add("Apple iPhone XS");
-        suggestions.add("Nike Trousers");
+        suggestions.add(getString(R.string.first_default_suggestion));
+        suggestions.add(getString(R.string.second_default_suggestion));
+        suggestions.add(getString(R.string.third_default_suggestion));
 
         // Making list of default categories to be displayed
         ArrayList<String> categories = new ArrayList<>();
-        categories.add("T-Shirt");
-        categories.add("Mobiles");
+        categories.add(getString(R.string.first_default_category));
+        categories.add(getString(R.string.second_default_category));
 
         // Setting extra properties
         ArrayList<String> extraProperties = new ArrayList<>();
