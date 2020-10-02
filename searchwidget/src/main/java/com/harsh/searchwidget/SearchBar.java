@@ -252,8 +252,7 @@ public class SearchBar extends RelativeLayout implements View.OnClickListener,
         navIcon.setOnClickListener(this);
 
         // Placeholder
-        placeholderText = "@string/app_name";
-
+        placeholderText = getResources().getString(R.string.search_bar_placeholder);
         postSetup();
     }
 

@@ -16,14 +16,14 @@
         android:padding="13dp" />
 
     <TextView
-        android:layout_width="0dp"
-        android:layout_weight="1"
-        android:layout_height="wrap_content"
-        android:textAppearance="?android:attr/textAppearanceSmall"
-        android:text="@string/last_request_label"
         android:id="@+id/text"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
         android:layout_marginLeft="10dp"
-        android:textColor="@color/last_result_color" />
+        android:layout_weight="1"
+        android:text="@string/last_request_label"
+        android:textAppearance="?android:attr/textAppearanceSmall"
+        android:textColor="@color/black" />
 
     <ImageView
         android:id="@+id/iv_delete"
