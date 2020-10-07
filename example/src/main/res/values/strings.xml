@@ -9,4 +9,6 @@
 
     <string name="first_default_category">T-Shirt</string>
     <string name="second_default_category">Mobiles</string>
+    <string name="menu_java">java</string>
+    <string name="menu_kotlin">kotlin</string>
 </resources>

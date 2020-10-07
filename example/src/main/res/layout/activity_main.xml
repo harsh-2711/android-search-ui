@@ -1,17 +1,19 @@
 <?xml version="1.0" encoding="utf-8"?>
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
-    xmlns:tools="http://schemas.android.com/tools"
+    android:orientation="vertical"
     android:layout_width="match_parent"
-    android:layout_height="match_parent"
-    tools:context=".MainActivity">
-
-    <com.harsh.searchwidget.SearchBar
-        android:id="@+id/searchBar"
+    android:layout_height="match_parent">
+    <FrameLayout
+        android:id="@+id/framel"
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        app:maxSuggestionsCount="@integer/max_suggestions_count"
-        app:hint="@string/search_hint"
-        app:placeholder="@string/search_placeholder" />
-
+        android:layout_height="0dp"
+        android:layout_weight="1"
+        />
+    <android.support.design.widget.BottomNavigationView
+        android:id="@+id/bn"
+        android:layout_width="match_parent"
+        android:layout_height="40dp"
+        app:menu="@menu/mymenu"
+        android:background="@color/colorPrimaryDark"/>
 </LinearLayout>
