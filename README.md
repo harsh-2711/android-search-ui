@@ -1,4 +1,4 @@
-# appbase-search-widget
+![Project Banner](https://github.com/harsh-2711/android-search-ui/blob/master/images/project-banner.png?raw=true)
 
 ### Installation
 
