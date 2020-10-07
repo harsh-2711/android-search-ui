@@ -17,7 +17,7 @@ import java.util.concurrent.ExecutionException;
 
 public class MainActivity extends AppCompatActivity {
 
-    SearchBar searchBar;
+    SearchBar<?,?> searchBar;
     private ArrayList<String> dataFields;
     private ArrayList<Integer> weights;
     private ArrayList<ClientSuggestionsModel> defaultSuggestions;
@@ -27,7 +27,7 @@ public class MainActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
 
-        searchBar = (SearchBar) findViewById(R.id.searchBar);
+        searchBar = (SearchBar<?,?>) findViewById(R.id.searchBar);
 
         // Setting max suggestions count
         searchBar.setMaxSuggestionCount(5);
