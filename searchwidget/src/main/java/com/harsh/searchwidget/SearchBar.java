@@ -1453,7 +1453,7 @@ public class SearchBar extends RelativeLayout implements View.OnClickListener,
             defaultQuery = getDefaultQuery(searchPropModel);
             defaultQuery = getWrappedQuery(defaultQuery);
 
-            if(searchPropModel.getAggregrationState()) {
+            if(searchPropModel.getAggregationState()) {
                 defaultQuery = defaultQuery.substring(0, defaultQuery.length() - 1);
                 defaultQuery = defaultQuery + ", " + getAggsQuery(searchPropModel) + " }";
             }
