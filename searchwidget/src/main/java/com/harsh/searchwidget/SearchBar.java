@@ -69,7 +69,7 @@ import io.appbase.client.AppbaseClient;
 
 import static android.content.ContentValues.TAG;
 
-public class SearchBar extends RelativeLayout implements View.OnClickListener,
+public class SearchBar<S, T extends RecyclerView.ViewHolder> extends RelativeLayout implements View.OnClickListener,
         Animation.AnimationListener, SuggestionsAdapter.OnItemViewClickListener,
         View.OnFocusChangeListener, TextView.OnEditorActionListener {
 
@@ -96,7 +96,7 @@ public class SearchBar extends RelativeLayout implements View.OnClickListener,
     private boolean suggestionsVisible;
     private boolean isSuggestionsEnabled = true;
     private boolean isSearchIconVisible = true;
-    private SuggestionsAdapter adapter;
+    private SuggestionsAdapter<S,T> adapter;
     private float destiny;
 
     private PopupMenu popupMenu;
@@ -217,7 +217,7 @@ public class SearchBar extends RelativeLayout implements View.OnClickListener,
 
         destiny = getResources().getDisplayMetrics().density;
         if (adapter == null) {
-            adapter = new DefaultLocalSuggestionsAdapter(LayoutInflater.from(getContext()));
+            adapter = (SuggestionsAdapter<S, T>) new DefaultLocalSuggestionsAdapter(LayoutInflater.from(getContext()));
         }
         if (adapter instanceof DefaultLocalSuggestionsAdapter)
             ((DefaultLocalSuggestionsAdapter) adapter).setListener(this);
@@ -851,7 +851,7 @@ public class SearchBar extends RelativeLayout implements View.OnClickListener,
      *
      * @param suggestionAdapter customized adapter
      */
-    public void setCustomSuggestionAdapter(SuggestionsAdapter suggestionAdapter) {
+    public void setCustomSuggestionAdapter(SuggestionsAdapter<S, T> suggestionAdapter) {
         this.adapter = suggestionAdapter;
         RecyclerView recyclerView = findViewById(R.id.recycler);
         recyclerView.setAdapter(adapter);
@@ -883,7 +883,7 @@ public class SearchBar extends RelativeLayout implements View.OnClickListener,
      * @see #getLastSuggestions()
      * @see #setMaxSuggestionCount(int)
      */
-    public void setLastSuggestions(List suggestions) {
+    public void setLastSuggestions(List<S> suggestions) {
         adapter.setSuggestions(suggestions);
     }
 
@@ -893,10 +893,10 @@ public class SearchBar extends RelativeLayout implements View.OnClickListener,
      *
      * @param suggestions an array of queries
      */
-    public void updateLastSuggestions(List suggestions) {
+    public void updateLastSuggestions(List<S> suggestions) {
         int startHeight = getListHeight(false);
         if (suggestions.size() > 0) {
-            List newSuggestions = new ArrayList<>(suggestions);
+            List<S> newSuggestions = new ArrayList<>(suggestions);
             adapter.setSuggestions(newSuggestions);
             animateSuggestions(startHeight, getListHeight(false));
         } else {
@@ -1170,7 +1170,7 @@ public class SearchBar extends RelativeLayout implements View.OnClickListener,
         if (suggestionsVisible)
             hideSuggestionsList();
         if (adapter instanceof DefaultLocalSuggestionsAdapter)
-            adapter.addSuggestion(searchEdit.getText().toString());
+            adapter.addSuggestion((S) searchEdit.getText().toString());
         return true;
     }
 
@@ -1200,7 +1200,7 @@ public class SearchBar extends RelativeLayout implements View.OnClickListener,
             /*Order of two line should't be change,
             because should calculate the height of item first*/
             animateSuggestions(getListHeight(false), getListHeight(true));
-            adapter.deleteSuggestion(position, v.getTag());
+            adapter.deleteSuggestion(position, (S) v.getTag());
         }
     }
 
@@ -1224,7 +1224,7 @@ public class SearchBar extends RelativeLayout implements View.OnClickListener,
         super.onRestoreInstanceState(savedState.getSuperState());
         searchEnabled = savedState.isSearchBarVisible == VIEW_VISIBLE;
         suggestionsVisible = savedState.suggestionsVisible == VIEW_VISIBLE;
-        setLastSuggestions(savedState.suggestions);
+        setLastSuggestions((List<S>) savedState.suggestions);
         if (suggestionsVisible)
             animateSuggestions(0, getListHeight(false));
         if (searchEnabled) {
@@ -1767,7 +1767,7 @@ public class SearchBar extends RelativeLayout implements View.OnClickListener,
 
                     String resultString;
 
-                    ArrayList data = results.getStringArrayList(SpeechRecognizer.RESULTS_RECOGNITION);
+                    ArrayList<? extends String> data = results.getStringArrayList(SpeechRecognizer.RESULTS_RECOGNITION);
                     assert data != null;
                     resultString = data.get(0).toString();
 
@@ -1801,7 +1801,7 @@ public class SearchBar extends RelativeLayout implements View.OnClickListener,
                     enableSearch();
                     String partialResult;
 
-                    ArrayList data = partialResults.getStringArrayList(SpeechRecognizer.RESULTS_RECOGNITION);
+                    ArrayList<? extends String> data = partialResults.getStringArrayList(SpeechRecognizer.RESULTS_RECOGNITION);
                     assert data != null;
                     partialResult = data.get(0).toString();
 
@@ -2146,7 +2146,7 @@ public class SearchBar extends RelativeLayout implements View.OnClickListener,
         private int searchIconRes;
         private int navIconResId;
         private String hint;
-        private List suggestions;
+        private List<Object> suggestions;
         private int maxSuggestions;
 
         public SavedState(Parcel source) {
