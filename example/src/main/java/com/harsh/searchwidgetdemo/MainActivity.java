@@ -10,19 +10,27 @@ import android.view.MenuItem;
 import android.widget.FrameLayout;
 
 public class MainActivity extends AppCompatActivity implements BottomNavigationView.OnNavigationItemSelectedListener {
-    BottomNavigationView bn;
-    FrameLayout frameLayout;
+
+    BottomNavigationView bottomNavigationView;
     JavaUsage javaUsage;
     KotlinUsage kotlinUsage;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
-        bn = findViewById(R.id.bn);
-        frameLayout = findViewById(R.id.framel);
-        bn.setOnNavigationItemSelectedListener(this);
+
+        //Getting Views
+        bottomNavigationView = findViewById(R.id.bottom_navigation);
+
+        //Adding Listener
+        bottomNavigationView.setOnNavigationItemSelectedListener(this);
+
+        //Creating instances of fragments
         javaUsage = new JavaUsage();
         kotlinUsage = new KotlinUsage();
+
+        //Loading Java Fragment by Default
         loadFragment(javaUsage);
     }
 
@@ -35,14 +43,15 @@ public class MainActivity extends AppCompatActivity implements BottomNavigationV
             case R.id.kotlin:
                 loadFragment(kotlinUsage);
                 return true;
-    }
-    return false;
+        }
+        return false;
     }
 
     private void loadFragment(Fragment fragment) {
-            FragmentTransaction transaction = getSupportFragmentManager().beginTransaction();
-            transaction.replace(R.id.framel, fragment);
-            transaction.addToBackStack(null);
-            transaction.commit();
-        }
+        // Function To load Fragment
+        FragmentTransaction transaction = getSupportFragmentManager().beginTransaction();
+        transaction.replace(R.id.frame_layout, fragment);
+        transaction.addToBackStack(null);
+        transaction.commit();
+    }
 }

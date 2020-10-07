@@ -20,13 +20,13 @@ import java.util.ArrayList;
 import java.util.concurrent.ExecutionException;
 
 public class JavaUsage extends Fragment {
-    SearchBar<?,?> searchBar;
+    SearchBar<?, ?> searchBar;
 
 
     @Nullable
     @Override
     public View onCreateView(@NonNull LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
-        View view = inflater.inflate(R.layout.fragment_layout,container,false);
+        View view = inflater.inflate(R.layout.fragment_layout, container, false);
 
         searchBar = view.findViewById(R.id.searchBar);
 
@@ -94,7 +94,7 @@ public class JavaUsage extends Fragment {
                 Log.d("Click Listener", "CLICKED");
 
                 // Checking if it should be categorical search
-                if(result.isCategoricalSearch()) {
+                if (result.isCategoricalSearch()) {
                     String category = result.getText().substring(searchBar.getText().length() + 4);
                     try {
                         String response = searchBar.search(searchPropModel, searchBar.getText(), category, true);
@@ -144,8 +144,8 @@ public class JavaUsage extends Fragment {
 
             @Override
             public void onButtonClicked(int buttonCode) {
-                if(buttonCode == SearchBar.BUTTON_SPEECH) {
-                    if(searchBar.isVoicePermissionGranted()) {
+                if (buttonCode == SearchBar.BUTTON_SPEECH) {
+                    if (searchBar.isVoicePermissionGranted()) {
                         searchBar.startVoiceSearch(searchPropModel, new SearchBar.ItemClickListener() {
                             @Override
                             public void onClick(View view, int position, ClientSuggestionsModel result) {
@@ -169,5 +169,6 @@ public class JavaUsage extends Fragment {
         String analyticsResponse = searchBar.getAnalytics(analyticsModel);
         Log.d("Analytics", analyticsResponse);
 
-    return view;}
+        return view;
+    }
 }
