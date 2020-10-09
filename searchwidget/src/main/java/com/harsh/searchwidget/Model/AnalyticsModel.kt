@@ -5,7 +5,9 @@ package com.harsh.searchwidget.Model
  * Removes verbosity introduces due to getters and setters in Java
  */
 
-data class AnalyticsModel(var xSearchId: String?,
-                     var isXSearchClick: Boolean,
-                     var xSearchClickPosition: String?,
-                     var isXSearchConversion: Boolean)
+data class AnalyticsModel(
+        var xSearchId: String?,
+        var isXSearchClick: Boolean,
+        var xSearchClickPosition: String?,
+        var isXSearchConversion: Boolean
+)
