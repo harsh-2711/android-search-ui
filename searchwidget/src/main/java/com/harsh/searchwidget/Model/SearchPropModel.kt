@@ -2,12 +2,6 @@ package com.harsh.searchwidget.Model
 
 import java.util.*
 
-/**
- * A Kotin Data class that holds properties of Searches
- * Removes verbosity introduces due to getters and setters in Java
- */
-
-
 data class SearchPropModel(
         var componentId: String,
         var dataField: ArrayList<String>,
