@@ -1,7 +1,7 @@
 package com.harsh.searchwidget.Model
 
 /**
- * A Kotlin Data class that holds properties of Searches
+ * A Kotlin Data class that holds data pertaining to Analytics
  */
 
 data class AnalyticsModel(
