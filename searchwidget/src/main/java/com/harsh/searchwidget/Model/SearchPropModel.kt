@@ -2,6 +2,10 @@ package com.harsh.searchwidget.Model
 
 import java.util.*
 
+/**
+ * A Kotlin Data class that holds properties of Searches
+ */
+
 data class SearchPropModel(
         var componentId: String,
         var dataField: ArrayList<String>,
