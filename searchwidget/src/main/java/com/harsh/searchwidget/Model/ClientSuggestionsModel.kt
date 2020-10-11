@@ -2,6 +2,10 @@ package com.harsh.searchwidget.Model
 
 import java.util.*
 
+/**
+ * A Kotlin Data class that holds data pertaining to ClientSuggestions
+ */
+
 data class ClientSuggestionsModel(
         var text: String,
         var category: String?,
