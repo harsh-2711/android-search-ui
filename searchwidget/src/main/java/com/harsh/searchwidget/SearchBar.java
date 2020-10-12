@@ -1080,6 +1080,20 @@ public class SearchBar extends RelativeLayout implements View.OnClickListener,
                         }
 
                         defaultClientSuggestionsAdapter = new DefaultClientSuggestionsAdapter(defaultSearchPropModel.getDefaultSuggestions(), "", false, false, true, true, categoriesCount);
+
+                        //Setting OnClick Listener For Default Suggestions
+                        defaultClientSuggestionsAdapter.setRecyclerItemClickListener(new DefaultClientSuggestionsAdapter.RecyclerItemClickListener() {
+                            @Override
+                            public void onItemClick(View v, int position) {
+                                itemClickListener.onClick(v, position, defaultClientSuggestionsAdapter.getItem(position));
+                            }
+
+                            @Override
+                            public void onItemClickLong(View v, int position) {
+                                itemClickListener.onLongClick(v, position, defaultClientSuggestionsAdapter.getItem(position));
+                            }
+                        });
+
                         recyclerView.setAdapter(defaultClientSuggestionsAdapter);
                         if(defaultClientSuggestionsAdapter.getItemCount() > 0)
                             recyclerView.setVisibility(VISIBLE);
