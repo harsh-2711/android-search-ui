@@ -63,6 +63,7 @@ public class MainActivity extends AppCompatActivity {
         // Setting default suggestions
         defaultSuggestions = new DefaultClientSuggestions(suggestions).setCategories(categories).build();
 
+        // added a method call for setting aggregationFields on the SearchPropModel object
         final SearchPropModel searchPropModel = searchBar.setSearchProp("Demo Widget", dataFields)
                 .setQueryFormat("or")
                 .setHighlight(true)
@@ -71,6 +72,7 @@ public class MainActivity extends AppCompatActivity {
                 .setTopEntries(2)
                 .setDefaultSuggestions(defaultSuggestions)
                 .setExtraFields(extraProperties)
+                .setAggregationFields(new ArrayList<String>())
                 .build();
 
         // To log the queries made by Appbase client for debugging
