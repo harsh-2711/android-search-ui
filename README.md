@@ -14,9 +14,9 @@ A fully customizable search bar for Android with direct integrations to multiple
 2 [Adding Search Bar](#adding-search-bar-into-android-project)
 
 3 [Examples](#examples)
-*  [Classic Search Bar](#classic-search-bar)
-*  [Appbase Client Search Bar](#appbase-client-search-bar)
-*  [Quick Fixes](#quick-fixes)
+*	[Classic Search Bar](#classic-search-bar)
+*	[Appbase Client Search Bar](#appbase-client-search-bar)
+*	[Quick Fixes](#quick-fixes)
 
 4 [Documentation](#documentation)
 
