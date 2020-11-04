@@ -1110,19 +1110,9 @@ public class SearchBar extends RelativeLayout implements View.OnClickListener,
                 defaultClientSuggestionsAdapter.clear();
                 recyclerView.setAdapter(defaultClientSuggestionsAdapter);
             }
-
-            if(defaultClientSuggestionsAdapter != null) {
-                defaultClientSuggestionsAdapter.clear();
-                recyclerView.setAdapter(defaultClientSuggestionsAdapter);
-            }
         }
         else if (id == R.id.arrow || !navIconShown) {
             disableSearch();
-
-            if(defaultClientSuggestionsAdapter != null) {
-                defaultClientSuggestionsAdapter.clear();
-                recyclerView.setAdapter(defaultClientSuggestionsAdapter);
-            }
 
             if(defaultClientSuggestionsAdapter != null) {
                 defaultClientSuggestionsAdapter.clear();
