@@ -1,4 +1,5 @@
 # Android Search UI
+
 [![Codacy Badge](https://app.codacy.com/project/badge/Grade/f2b88c8a5c4d4825919bb9ee27606cf6)](https://www.codacy.com/gh/abhinav78910/android-search-ui/dashboard?utm_source=github.com&amp;utm_medium=referral&amp;utm_content=abhinav78910/android-search-ui&amp;utm_campaign=Badge_Grade)
 ![GitHub tag (latest by date)](https://img.shields.io/github/v/tag/harsh-2711/android-search-ui)
 ![Gitter](https://img.shields.io/gitter/room/dsc-slop/AndroidSearchUI)
@@ -9,16 +10,16 @@ A fully customizable search bar for Android with direct integrations to multiple
 
 ## Table of Contents
 
-1. [Installation](#installation)
+1 [Installation](#installation)
 
-2. [Adding Search Bar](#adding-search-bar-into-android-project)
+2 [Adding Search Bar](#adding-search-bar-into-android-project)
 
-3. [Examples](#examples)
-    * [Classic Search Bar](#classic-search-bar)
-    * [Appbase Client Search Bar](#appbase-client-search-bar)
-    * [Quick Fixes](#quick-fixes)
+3 [Examples](#examples)
+* [Classic Search Bar](#classic-search-bar)
+* [Appbase Client Search Bar](#appbase-client-search-bar)
+* [Quick Fixes](#quick-fixes)
 
-4. [Documentation](#documentation)
+4 [Documentation](#documentation)
 
 ### Installation
 
