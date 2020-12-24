@@ -10,34 +10,32 @@ A fully customizable search bar for Android with direct integrations to multiple
 
 ## Table of Contents
 
-1 [Installation](#installation)  
-2 [Adding Search Bar](#adding-search-bar-into-android-project)  
-3 [Examples](#examples)
-
-  - [Classic Search Bar](#classic-search-bar)
-  - [Appbase Client Search Bar](#appbase-client-search-bar)
-  - [Quick Fixes](#quick-fixes)
-  
-4 [Documentation](#documentation)
+1. [Installation](#installation)  
+2. [Adding Search Bar](#adding-search-bar-into-android-project)  
+3. [Examples](#examples)
+    - [Classic Search Bar](#classic-search-bar)
+    - [Appbase Client Search Bar](#appbase-client-search-bar)
+    - [Quick Fixes](#quick-fixes)
+4. [Documentation](#documentation)
 
 ### Installation
 
-* Add the Jitpack.io dependency in project level gradle file
+- Add the Jitpack.io dependency in project level gradle file
 
-```
+```gradle
 allprojects {
   repositories {
     ...
-    	maven { url 'https://jitpack.io' }
+    maven { url 'https://jitpack.io' }
   }
 }
 ```
 
-* Add `appbase-search-widget` dependency in app level gradle file
+- Add `appbase-search-widget` dependency in app level gradle file
 
-```
+```gradle
 dependencies {
-	implementation 'com.github.harsh-2711:appbase-search-widget:tag'
+    implementation 'com.github harsh-2711:appbase-search-widget:tag'
 }
 ```
 
@@ -45,9 +43,9 @@ NOTE: Latest tag is [v0.1.6](https://github.com/harsh-2711/appbase-search-widget
 
 ### Adding Search Bar into Android project
 
-* Add SearchBar in the XML layout
+- Add SearchBar in the XML layout
 
-```
+```xml
 <com.example.searchwidget.SearchBar
         android:id="@+id/searchBar"
         android:layout_width="match_parent"
@@ -57,7 +55,7 @@ NOTE: Latest tag is [v0.1.6](https://github.com/harsh-2711/appbase-search-widget
         app:placeholder="Search" />
 ```
 
-* Find the SearchBar view in Java file and a basic search bar is ready for implementation
+- Find the SearchBar view in Java file and a basic search bar is ready for implementation
 
 ```java
 public class MainActivity extends AppCompatActivity {
@@ -208,25 +206,26 @@ For more detailed examples, checkout -
 
 If you are facing this error
 
-```
+```java
 error: cannot access RecyclerView
 class file for android.support.v7.widget.RecyclerView not found
 ```
 
 and/or this one
 
-```
+```java
 error: method does not override or implement a method from a supertype
 ```
 
 and/or this one
-```
+
+```java
 error: cannot find symbol constructor ()
 ```
 
-there should be a problem with the recycler view version in the project. A quick fix would be to add 
+there should be a problem with the recycler view version in the project. A quick fix would be to add
 
-```
+```gradle
 implementation "com.android.support:recyclerview-v7:28.0.0"
 ```
 
